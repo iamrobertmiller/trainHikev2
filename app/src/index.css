@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* MapLibre GL overrides */
+.maplibregl-map {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.maplibregl-ctrl-top-right {
+  top: 64px;
+}

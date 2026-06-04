@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Murray to Mountains Rail Trail</name>
+	<LookAt>
+		<longitude>146.6428681</longitude>
+		<latitude>-36.52304596</latitude>
+		<altitude>0</altitude>
+		<heading>0</heading>
+		<tilt>0</tilt>
+		<range>60602.58534</range>
+		<altitudeMode>relativeToGround</altitudeMode>
+	</LookAt>
+	<Style id="path0Style">
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="path1Style">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Waypoints</name>
+		<Placemark>
+			<name>Car park</name>
+			<description>Car park</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3287479803,-36.3519569859,148</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Car park</name>
+			<description>Car park</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7125627026,-36.5545454063,218</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Car park</name>
+			<description>Car park</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.5446601063,-36.4051330369,241</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Car park</name>
+			<description>Car park</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.4987769816,-36.3739550393,185</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Car park</name>
+			<description>Car park</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3677069824,-36.3171490375,157</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Car park</name>
+			<description>Car park</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6892378777,-36.3630033284,549</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.5446528979,-36.4051340427,249</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.9463298749,-36.7225101124,315</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7124537379,-36.5543786902,218</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.9098879583,-36.6992230061,276</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.863517845,-36.6392271873,258</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7304124683,-36.5671201888,219</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.4990120102,-36.3738527801,186</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.4060349949,-36.33124304,157</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Picnic table</name>
+			<description>Picnic table</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6890392266,-36.3629760034,549</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Apex Park Wangaratta</name>
+			<description>POI Apex Park Wangaratta</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3287479803,-36.3519569859,148</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Flame Trees MTB Trail</name>
+			<description>POI Flame Trees MTB Trail</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6149890516,-36.4095045347,386</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Flame Trees MTB Trail</name>
+			<description>POI Flame Trees MTB Trail</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6348720156,-36.4033995755,438</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Flame Trees MTB Trail</name>
+			<description>POI Flame Trees MTB Trail</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6396677215,-36.4032693207,452.9999999999999</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Flame Trees MTB Trail</name>
+			<description>POI Flame Trees MTB Trail</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6523780394,-36.3971529622,490.9999999999999</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Happy Valley Hotel</name>
+			<description>POI Happy Valley Hotel</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7594110034,-36.5870149713,228</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Historic Kiln</name>
+			<description>POI Historic Kiln</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.712517608,-36.5543858148,218</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Historical Marker</name>
+			<description>POI Historical Marker</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.5542500094,-36.4535650145,186</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Baarmutha Station</name>
+			<description>POI Old Baarmutha Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6577527672,-36.3950121403,494.9999999999999</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Bowser Station</name>
+			<description>POI Old Bowser Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3677069824,-36.3171509653,157</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Bright Station</name>
+			<description>POI Old Bright Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.9569690246,-36.7299731076,319.9999999999999</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Brookfield Station</name>
+			<description>POI Old Brookfield Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.5528509859,-36.4509040117,185</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Eurobin Station</name>
+			<description>POI Old Eurobin Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.8634783663,-36.6392418556,258</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Everton Station</name>
+			<description>POI Old Everton Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.5446608607,-36.4051298518,249</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Londrigan Station</name>
+			<description>POI Old Londrigan Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.4175069705,-36.3364730123,164</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Old Wangaratta Station</name>
+			<description>POI Old Wangaratta Station</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3287479803,-36.3519569859,148</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Pennyweight Winery</name>
+			<description>POI Pennyweight Winery</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6812806018,-36.3771488797,566</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Playground</name>
+			<description>POI Playground</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7124412488,-36.5543333441,218</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Playground</name>
+			<description>POI Playground</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3287479803,-36.3519569859,148</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Rail Trail Cafe</name>
+			<description>POI Rail Trail Cafe</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.9126420841,-36.7011833657,283</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI Reform Hill State Forest Entrance</name>
+			<description>POI Reform Hill State Forest Entrance</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7304143962,-36.5671196021,219</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI The Big Tree</name>
+			<description>POI The Big Tree</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7224850319,-36.5585740004,220</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>POI The Phoenix Tree</name>
+			<description>POI The Phoenix Tree</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7188529857,-36.5574730374,218</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet disabled flushing</name>
+			<description>Toilet disabled flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7128269002,-36.5546933468,218</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet disabled flushing</name>
+			<description>Toilet disabled flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3677669968,-36.3170900289,157</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet disabled flushing</name>
+			<description>Toilet disabled flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6890905239,-36.3628832996,550</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet disabled flushing</name>
+			<description>Toilet disabled flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.3287479803,-36.3519569859,148</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet flushing</name>
+			<description>Toilet flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.909876978,-36.6992220003,275</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet flushing</name>
+			<description>Toilet flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.863473421,-36.6392137762,258</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet flushing</name>
+			<description>Toilet flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.4990094118,-36.3738536183,185</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Toilet flushing</name>
+			<description>Toilet flushing</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.5446565859,-36.4051353,249</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Water point</name>
+			<description>Drinking tap</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.7122389097,-36.5538162645,216</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Water point</name>
+			<description>Drinking tap</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6890883446,-36.3628850598,549</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Water point unreliable</name>
+			<description>Rainwater tank - water should be treated before use</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.863473421,-36.6392137762,258</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Water point unreliable</name>
+			<description>Rainwater tank - water should be treated before use</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6566480324,-36.492016241,311</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Water point unreliable</name>
+			<description>Rainwater tank - water should be treated before use</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.4990114234,-36.3738545403,185</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Water point unreliable</name>
+			<description>Rainwater tank - water should be treated before use</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.6103168949,-36.4116273355,368</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Water point unreliable</name>
+			<description>Rainwater tank - water should be treated before use</description>
+			<Style>
+				<IconStyle>
+					<scale>0.9</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>146.5446570888,-36.4051304385,249</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+	<Folder>
+		<name>Tracks</name>
+		<Folder>
+			<name>Paths</name>
+			<Placemark>
+				<name>Murray to Mountains Rail Trail</name>
+				<styleUrl>#path0Style</styleUrl>
+				<MultiGeometry>
+					<LineString>
+						<coordinates>
+							146.9569882192,-36.7299798131,0 146.9559412356,-36.7299251631,0 146.9547307212,-36.7298856005,0 146.953699328,-36.7298437748,0 146.9531767163,-36.7298132647,0 146.9524660148,-36.7297785636,0 146.9519057684,-36.7296683416,0 146.95140386,-36.7294979375,0 146.9508913904,-36.7292669322,0 146.9503769092,-36.7290179897,0 146.949932836,-36.7287307419,0 146.949465964,-36.7284251377,0 146.9490938075,-36.7280553281,0 146.9487983454,-36.7277190462,0 146.9485691004,-36.7273566965,0 146.9483083393,-36.726898374,0 146.947830487,-36.7259900272,0 146.9474018365,-36.7251648288,0 146.9469802268,-36.7243537121,0 146.9465283584,-36.7235412542,0 146.9462092593,-36.7228957638,0 146.9457651861,-36.7219882552,0 146.9453755952,-36.721154172,0 146.9449054543,-36.7201928515,0 146.9444408454,-36.7193058785,0 146.9439945929,-36.7184606474,0 146.9435939379,-36.7175978143,0 146.9431357831,-36.7167369928,0 146.9427599385,-36.7159787659,0 146.9427399896,-36.7157221958,0 146.9424454495,-36.7154141609,0 146.9419058226,-36.7149357218,0 146.9413226936,-36.7145334743,0 146.9403486326,-36.7138905823,0 146.9395021442,-36.7133146618,0 146.9386790413,-36.7127046268,0 146.93782744,-36.7120545264,0 146.9369737431,-36.7114361934,0 146.9359912165,-36.7107907031,0 146.9351249468,-36.710674949,0 146.9339277595,-36.7098071706,0 146.9331080932,-36.7091891728,0 146.9321824796,-36.708508227,0 146.9312395155,-36.7078787461,0 146.9305062667,-36.7073718086,0 146.9295396656,-36.7066557426,0 146.9287030678,-36.7060529161,0 146.9277861714,-36.7053584754,0 146.9269834366,-36.7047493625,0 146.9259937014,-36.7040980048,0 146.9253252447,-36.7036108486,0 146.924265353,-36.7028791085,0 146.9229992665,-36.7026044335,0 146.9218857307,-36.7023869231,0 146.9207428582,-36.7022547405,0 146.9196314178,-36.7020493839,0 146.9183722883,-36.7018694244,0 146.9172946271,-36.7016778141,0 146.9162316341,-36.7014831863,0 146.9149642065,-36.7012256104,0 146.9140134472,-36.7010233551,0 146.9127062056,-36.7008152325,0 146.9124997593,-36.7008648533,0 146.9122188818,-36.7007579841,0 146.9118092582,-36.700558411,0 146.9109191839,-36.7000344582,0 146.9104879349,-36.6997001879,0 146.9101846777,-36.6994354874,0 146.9099120982,-36.6991237644,0 146.9097214937,-36.698976662,0 146.9095492456,-36.6987375263,0 146.9094352517,-36.6985560581,0 146.9092242792,-36.698198989,0 146.9091965351,-36.6979720909,0 146.9092810247,-36.6977814026,0 146.9094548654,-36.6974752955,0 146.909745466,-36.6969606467,0 146.909920983,-36.6964341793,0 146.9098917302,-36.6960938741,0 146.909812605,-36.6957244836,0 146.9096945878,-36.6954706796,0 146.9095128682,-36.6951241717,0 146.9090506062,-36.694275504,0 146.9085586723,-36.6934154369,0 146.908045616,-36.6925842874,0 146.9075354096,-36.6917550657,0 146.9071825314,-36.6913156025,0 146.9061063789,-36.6903061699,0 146.9063902739,-36.6899661999,0 146.9055890478,-36.6896030959,0 146.9051231816,-36.6893565841,0 146.9046799466,-36.6890719347,0 146.9042707421,-36.6888094135,0 146.9036363997,-36.6884003766,0 146.9029185735,-36.6880038287,0 146.902884962,-36.6878247075,0 146.9028763287,-36.6876972187,0 146.9027616642,-36.6875240486,0 146.902152719,-36.6872390639,0 146.9011800829,-36.686792979,0 146.9001001585,-36.6862648353,0 146.8990710285,-36.6857555509,0 146.8980697263,-36.6852960549,0 146.8973183725,-36.6848932207,0 146.8970607966,-36.6847561765,0 146.8963127118,-36.6841239296,0 146.8954948056,-36.6834205203,0 146.8946132809,-36.6827099025,0 146.8938249629,-36.6820589639,0 146.8930614553,-36.6814346798,0 146.8927013688,-36.6811646987,0 146.8923155498,-36.6807284206,0 146.8919830397,-36.6802710202,0 146.8917263858,-36.6798859555,0 146.8914621044,-36.6793417186,0 146.8912733439,-36.6789601743,0 146.8908570148,-36.6780931503,0 146.8905981816,-36.6777142044,0 146.8904799968,-36.6775025614,0 146.890178835,-36.6771861445,0 146.8894255534,-36.6766733397,0 146.8884557672,-36.6760501452,0 146.8876532,-36.6754842829,0 146.8866586033,-36.6748785228,0 146.8857520167,-36.6743166,0 146.8848872557,-36.6737258434,0 146.8840397615,-36.6731380206,0 146.8837292958,-36.6728546284,0 146.8832969572,-36.67240276,0 146.8828856573,-36.6719943099,0 146.8825815618,-36.6717296932,0 146.8818494026,-36.6709466558,0 146.8811160699,-36.6702034324,0 146.880369829,-36.6694114264,0 146.8796660006,-36.6686625872,0 146.8789427262,-36.667900756,0 146.8782288395,-36.6671920661,0 146.8775101751,-36.6664164048,0 146.8767905887,-36.6656830721,0 146.8760817312,-36.664920738,0 146.8753890507,-36.6641556378,0 146.8746775948,-36.6634138394,0 146.8739647977,-36.6626248509,0 146.873404216,-36.6618885845,0 146.8732652441,-36.6617008299,0 146.872848412,-36.6610746179,0 146.872608522,-36.6607388388,0 146.8723097909,-36.6602545325,0 146.8718702439,-36.6594657954,0 146.8716430105,-36.6590731032,0 146.8713416811,-36.6585483123,0 146.8710336462,-36.6577065177,0 146.870625196,-36.6568115819,0 146.8701955397,-36.6559925862,0 146.8699256424,-36.6556514427,0 146.8697069585,-36.6551617719,0 146.8693063874,-36.6542589571,0 146.868942529,-36.6534160729,0 146.8685307261,-36.652471181,0 146.8681264669,-36.6515403707,0 146.867749365,-36.6506793816,0 146.8673787173,-36.6498272773,0 146.8670035433,-36.648958493,0 146.8666272797,-36.6481021978,0 146.8662275467,-36.6471912526,0 146.8658517022,-36.6463055369,0 146.8656691443,-36.645899266,0 146.8655060325,-36.6455365811,0 146.8654770311,-36.645391155,0 146.8654305954,-36.6452179849,0 146.8654124904,-36.6448444873,0 146.8653198704,-36.6445035115,0 146.865139408,-36.6435918957,0 146.8649197184,-36.6427022405,0 146.8645758927,-36.6418187879,0 146.8642096035,-36.6409638338,0 146.8638304062,-36.6400749329,0 146.863450706,-36.6392515786,0 146.8632119056,-36.6387339123,0 146.8628045451,-36.6377968993,0 146.8623965979,-36.6368809249,0 146.8620106112,-36.6360107996,0 146.8614584953,-36.6351877805,0 146.8607285153,-36.6344505083,0 146.8601587135,-36.634046752,0 146.8598376028,-36.6337978933,0 146.8594354391,-36.6335723363,0 146.8588355463,-36.6333000921,0 146.8583348114,-36.6331393272,0 146.8577308953,-36.6329717729,0 146.8566684052,-36.6326812562,0 146.8555541988,-36.6323903203,0 146.8543986697,-36.6320687067,0 146.8532847986,-36.6317636892,0 146.8522110768,-36.631473843,0 146.8511394504,-36.6311878525,0 146.8500139285,-36.6309015267,0 146.8489246164,-36.6305726208,0 146.8486610055,-36.6304986924,0 146.8478336278,-36.6301771626,0 146.8468307331,-36.6297519486,0 146.8457790557,-36.6292885132,0 146.8447086029,-36.6288289335,0 146.8437090609,-36.6284061503,0 146.8426635861,-36.6279703751,0 146.8416452687,-36.6275291517,0 146.8406444695,-36.6271114815,0 146.8396440893,-36.6266721021,0 146.8386722077,-36.6262639873,0 146.8376766052,-36.6258484125,0 146.836579917,-36.6254221927,0 146.8362512626,-36.6253078636,0 146.835983796,-36.625239132,0 146.8358056806,-36.6252016649,0 146.8354702368,-36.6251534689,0 146.8347410951,-36.6250562388,0 146.834650822,-36.6250959691,0 146.8332931213,-36.6249126568,0 146.8321240135,-36.6248513851,0 146.8309072964,-36.6247706674,0 146.8297643401,-36.624700008,0 146.8286099005,-36.6246279236,0 146.8274521083,-36.624555001,0 146.826266069,-36.6244830843,0 146.8250944465,-36.6244140174,0 146.8239576928,-36.6243455373,0 146.8227164168,-36.6241554357,0 146.8217223231,-36.623874139,0 146.8206264731,-36.6234728973,0 146.8195830099,-36.623079367,0 146.8185110483,-36.6226524767,0 146.8174656574,-36.6222477145,0 146.8164470047,-36.6218226682,0 146.815463556,-36.6214324906,0 146.8144174945,-36.6210175864,0 146.8133992609,-36.6206143331,0 146.8123882357,-36.6202034522,0 146.8113801442,-36.6197959241,0 146.810363587,-36.6193845402,0 146.8094028533,-36.6189037543,0 146.8085587118,-36.6182874329,0 146.8077080324,-36.6176619753,0 146.8068557605,-36.6169537883,0 146.8060815241,-36.6163264029,0 146.8052767776,-36.6157003585,0 146.8043675926,-36.6150686983,0 146.8034416437,-36.6144650336,0 146.8025427684,-36.6138500534,0 146.8016248662,-36.613236079,0 146.8007290922,-36.6126831248,0 146.7998312227,-36.6121067852,0 146.7988999933,-36.6115938965,0 146.7979514971,-36.6111029685,0 146.796901077,-36.6106509324,0 146.7958269361,-36.6102879122,0 146.7947692238,-36.6099388059,0 146.7937295325,-36.6095795576,0 146.7926725745,-36.6092139389,0 146.7916231602,-36.608867934,0 146.7905368656,-36.6084999684,0 146.7894566059,-36.6081077792,0 146.7884451617,-36.6076727584,0 146.7874473799,-36.6072284337,0 146.7864086945,-36.6066598892,0 146.7854412552,-36.606140295,0 146.7845158931,-36.6056318488,0 146.7835921235,-36.6051319521,0 146.7826334015,-36.6045751423,0 146.7816725839,-36.6040479206,0 146.7807141133,-36.6035280749,0 146.7797996476,-36.6030184552,0 146.7788580246,-36.6024986934,0 146.7778711393,-36.6019650176,0 146.7769446876,-36.601440981,0 146.7759937607,-36.6009179503,0 146.775071919,-36.600395171,0 146.7740739696,-36.5998474136,0 146.7731194384,-36.5993160848,0 146.7720921524,-36.5987635497,0 146.7712435685,-36.5981155448,0 146.770377215,-36.5974849742,0 146.7695736419,-36.596814841,0 146.7687544785,-36.5961148683,0 146.7679434456,-36.5953862295,0 146.767164683,-36.5946556628,0 146.7664184421,-36.5938963462,0 146.7656838521,-36.5931322519,0 146.7649138067,-36.5923660621,0 146.7642688192,-36.591732474,0 146.7643876746,-36.5915446356,0 146.7637122609,-36.5908688866,0 146.763010025,-36.5901394095,0 146.7622984014,-36.5894017182,0 146.7614369933,-36.5887548868,0 146.760597378,-36.5880463645,0 146.7597920448,-36.5873338189,0 146.7594230734,-36.5870448947,0 146.7589189857,-36.5873392671,0 146.7580229603,-36.5867499355,0 146.7571052257,-36.5861585923,0 146.7561816238,-36.5855744574,0 146.7552624643,-36.5849883948,0 146.7543127108,-36.584389424,0 146.7534129974,-36.5838315245,0 146.752453018,-36.5832328051,0 146.7520914227,-36.5829634946,0 146.7515991535,-36.5825719759,0 146.7514328565,-36.582404254,0 146.7513077985,-36.5822614264,0 146.7510154378,-36.581789609,0 146.7506716959,-36.5813311189,0 146.7504770681,-36.5809484851,0 146.7501753196,-36.5803724807,0 146.7499689572,-36.5799192712,0 146.7496952042,-36.5792024508,0 146.7493440025,-36.5783127956,0 146.7489223089,-36.5774318576,0 146.7483307142,-36.5766342357,0 146.7479372676,-36.5762448963,0 146.7475321703,-36.575958319,0 146.7465925589,-36.575434953,0 146.7461736314,-36.5752614476,0 146.745543899,-36.5750767943,0 146.7444581073,-36.5747925639,0 146.7433866486,-36.5745064896,0 146.742255846,-36.5741813555,0 146.7411702219,-36.5738617536,0 146.740095662,-36.5735424031,0 146.7389489338,-36.5732937958,0 146.7378486414,-36.5730024409,0 146.7367452476,-36.5727140196,0 146.7356671672,-36.5724703576,0 146.7345626839,-36.5720805153,0 146.734123053,-36.5719062556,0 146.733532967,-36.571605932,0 146.7330955155,-36.5713592526,0 146.7326209322,-36.5710162651,0 146.7323891725,-36.5708651394,0 146.7322375439,-36.5707071405,0 146.7320402339,-36.5704936534,0 146.7319652997,-36.5704231616,0 146.7318055406,-36.5703183878,0 146.7314542551,-36.5701900609,0 146.7312204838,-36.5699961875,0 146.7312943283,-36.5699328203,0 146.7310218327,-36.5696025733,0 146.731233811,-36.5694456641,0 146.7310578749,-36.569008464,0 146.7307198327,-36.5681563597,0 146.7303747497,-36.5672467556,0 146.7300937884,-36.5664414223,0 146.7297459394,-36.5655015595,0 146.7295345478,-36.5648628585,0 146.7295591906,-36.5647252277,0 146.7295904551,-36.5646436717,0 146.7297114898,-36.5645526443,0 146.7300361209,-36.5643357206,0 146.7297917884,-36.5640074853,0 146.7291686777,-36.5631649364,0 146.7286241893,-36.5624715015,0 146.7285386939,-36.5624673944,0 146.7284884024,-36.5623470303,0 146.7280149087,-36.5617317148,0 146.7276438419,-36.5613753162,0 146.7272869404,-36.561028054,0 146.7269942444,-36.5608165786,0 146.7268387601,-36.5606836416,0 146.7259699758,-36.5600809827,0 146.7251452804,-36.5594992787,0 146.7241691239,-36.5589296445,0 146.7241103668,-36.5589268785,0 146.7240696307,-36.558960909,0 146.7236905172,-36.5593107697,0 146.7224434577,-36.5585363656,0 146.7220966145,-36.5583212022,0 146.7212018464,-36.5577586927,0 146.7207246646,-36.5574143641,0 146.7199676111,-36.5581783745,0 146.7186747864,-36.5573616419,0 146.7177609075,-36.5567920916,0 146.716819033,-36.5562363714,0 146.7158921622,-36.5556773823,0 146.7149755172,-36.5551475622,0 146.7140560225,-36.5546356793,0 146.7130946182,-36.5541187674,0 146.7127438355,-36.5538931265,0 146.7122699227,-36.5536581818,0 146.7120213993,-36.5542220324,0 146.7128119804,-36.5546871442,0 146.712027099,-36.55421759,0 146.7122925539,-36.5535969101,0 146.7123840842,-36.5534134302,0 146.7124579288,-36.5532638971,0 146.7125463579,-36.5531653259,0 146.7135422118,-36.5523613337,0 146.7128567398,-36.5519231278,0 146.7124264967,-36.5517182741,0 146.711800117,-36.5515362192,0 146.7115149647,-36.5514834132,0 146.7111448199,-36.5514432639,0 146.7105372157,-36.5514025278,0 146.7100370675,-36.5513901226,0 146.7093525175,-36.5514483768,0 146.7087475955,-36.5515431762,0 146.7081758659,-36.5516659711,0 146.7070360947,-36.5518537257,0 146.7059401609,-36.5520674642,0 146.7047583126,-36.5523181669,0 146.7036635522,-36.5525310673,0 146.7025223561,-36.552780848,0 146.7014846765,-36.5529764816,0 146.7008540221,-36.5530480631,0 146.7002225295,-36.5530243423,0 146.6996627022,-36.5529273637,0 146.6990253422,-36.5527412016,0 146.6985384375,-36.5525454003,0 146.6980008222,-36.5522488486,0 146.6975217126,-36.551890187,0 146.6971737798,-36.5515620355,0 146.6968648229,-36.5511892084,0 146.6965839453,-36.550757708,0 146.6963591427,-36.5503494255,0 146.6962178238,-36.5498958807,0 146.6958548035,-36.5490292758,0 146.6954778694,-36.5481197555,0 146.6951243207,-36.5472241491,0 146.6947728675,-36.546316389,0 146.6943874676,-36.5454041865,0 146.6940275487,-36.5445154533,0 146.6936631035,-36.5436111297,0 146.693290947,-36.5426845104,0 146.6929475404,-36.5418044943,0 146.6925646551,-36.5409304295,0 146.6922118608,-36.5400080848,0 146.6920920834,-36.5395463258,0 146.6920757387,-36.5390831418,0 146.6920324042,-36.5381370764,0 146.692092251,-36.5372429788,0 146.692177495,-36.5363015234,0 146.6922971886,-36.5353547037,0 146.6923163831,-36.5350155719,0 146.6922201589,-36.5344228875,0 146.6921423748,-36.5339646488,0 146.6920243576,-36.5335339867,0 146.6919077653,-36.5331847128,0 146.6916534584,-36.53266537,0 146.6914354451,-36.532283742,0 146.6913161706,-36.5320577659,0 146.6910785437,-36.5317845158,0 146.6908979136,-36.5315396804,0 146.6904344782,-36.5310316533,0 146.6898048297,-36.5304030944,0 146.6890906077,-36.5296474658,0 146.6883403435,-36.5289002191,0 146.6876314022,-36.5281807166,0 146.6868852451,-36.5274813306,0 146.6861228272,-36.5267782565,0 146.6853955295,-36.5260361228,0 146.6846299265,-36.5253024548,0 146.6839338094,-36.5245789289,0 146.6832016502,-36.5238240547,0 146.6825274099,-36.5230659116,0 146.6818450391,-36.5222808626,0 146.681245314,-36.5214776248,0 146.6806089599,-36.5206735488,0 146.6799663194,-36.5199571475,0 146.6796123516,-36.5196145792,0 146.6793334018,-36.5192232281,0 146.6790604871,-36.5187604632,0 146.6788605787,-36.5183185693,0 146.6786387935,-36.5177177545,0 146.6785550583,-36.5173889324,0 146.6784223728,-36.5168975014,0 146.6783714108,-36.5164657496,0 146.6782484483,-36.5155578218,0 146.6781459376,-36.5146121755,0 146.678027669,-36.5136821195,0 146.6779166926,-36.5127676539,0 146.6778443567,-36.5118302219,0 146.6777241603,-36.5108922031,0 146.6775527503,-36.5099233389,0 146.6774143651,-36.5089309216,0 146.6773149557,-36.5085233096,0 146.6771636624,-36.5080217365,0 146.6766574793,-36.5071195085,0 146.6760751884,-36.506340662,0 146.6758298501,-36.5060213115,0 146.6753734555,-36.505593583,0 146.6749983653,-36.5052680299,0 146.6745884065,-36.5049500205,0 146.6736575123,-36.5044102259,0 146.6726775002,-36.5039343014,0 146.6716476157,-36.5035084169,0 146.6706127021,-36.5030770842,0 146.6695267428,-36.5026762616,0 146.6684935894,-36.5022694878,0 146.6674235556,-36.5018649772,0 146.6668276023,-36.5015771426,0 146.6664435435,-36.50133566,0 146.6662527714,-36.5011930838,0 146.6660050023,-36.5009882301,0 146.6657079477,-36.5005799476,0 146.6655018367,-36.5001761913,0 146.6653606016,-36.4996765461,0 146.6652813926,-36.4993340615,0 146.665251134,-36.4987394493,0 146.6651707515,-36.4977777097,0 146.6650995892,-36.497317208,0 146.6649593599,-36.4968731347,0 146.664838912,-36.4965537842,0 146.6646792367,-36.4962641057,0 146.6645079106,-36.4960211981,0 146.664422499,-36.4959109761,0 146.6642075032,-36.4956854191,0 146.6637875699,-36.4953069761,0 146.6634659562,-36.4950685948,0 146.6628646385,-36.4947187342,0 146.6624540091,-36.4945406187,0 146.6618429683,-36.4943312388,0 146.6607872676,-36.4939271472,0 146.6602736246,-36.4936772827,0 146.6598055791,-36.4934255742,0 146.6593999788,-36.4931933116,0 146.6588850785,-36.4928552695,0 146.6579892207,-36.4922869764,0 146.6573558003,-36.4927703608,0 146.6570035927,-36.4925125334,0 146.6568305064,-36.4923142176,0 146.6567624453,-36.4922410436,0 146.656730175,-36.4921789337,0 146.6566819791,-36.4921098668,0 146.6566567495,-36.4920702204,0 146.6566358786,-36.4920128044,0 146.6566099785,-36.4919629321,0 146.6565733496,-36.4917652868,0 146.6565492935,-36.4914844092,0 146.6565755289,-36.4911306091,0 146.6565359663,-36.4908783976,0 146.6564592719,-36.4906090032,0 146.6561042145,-36.4902412891,0 146.6556794196,-36.4899410494,0 146.6551820375,-36.4896573219,0 146.6545972321,-36.4894644544,0 146.6540411767,-36.4893379714,0 146.6537178867,-36.4893187769,0 146.6533635836,-36.4893093053,0 146.6528231185,-36.4893831499,0 146.6522743553,-36.4894952159,0 146.6517340578,-36.4896399714,0 146.6512235999,-36.4897566475,0 146.6506248806,-36.4899631776,0 146.649550572,-36.4904167224,0 146.6485343501,-36.4909011126,0 146.6480756924,-36.4910976682,0 146.6475644801,-36.4912942238,0 146.6470182315,-36.4913890231,0 146.6463838052,-36.4914405718,0 146.6458310187,-36.4914038591,0 146.6452184692,-36.4913042821,0 146.6446640901,-36.491136644,0 146.6441445798,-36.4909172896,0 146.6436753608,-36.4906504937,0 146.6432997677,-36.4903256949,0 146.6426180676,-36.4895877521,0 146.6417846549,-36.4888836723,0 146.6413695831,-36.4885799959,0 146.6410605423,-36.4884436224,0 146.6407934111,-36.4883422852,0 146.6404656786,-36.4882569574,0 146.6396375466,-36.4880546182,0 146.6385374218,-36.4878200926,0 146.6373830661,-36.4875424001,0 146.6362676024,-36.4872955531,0 146.6351313516,-36.4870424196,0 146.633997364,-36.4867983386,0 146.6335314978,-36.486709239,0 146.6328846663,-36.4865589514,0 146.6324281879,-36.486405395,0 146.6318331566,-36.4861966018,0 146.6313229501,-36.485995939,0 146.6308143362,-36.4857766684,0 146.6297355015,-36.4853546396,0 146.6287366301,-36.484989943,0 146.6276007984,-36.4847202133,0 146.6264897771,-36.4844645653,0 146.6253842879,-36.4842241723,0 146.6242538206,-36.4839622378,0 146.6231067572,-36.4837174863,0 146.6220363881,-36.4834292326,0 146.6214784048,-36.4832201041,0 146.621016562,-36.4829486143,0 146.6207505204,-36.482782485,0 146.6205088701,-36.4825830795,0 146.6202264838,-36.4822454564,0 146.6198647209,-36.4818664268,0 146.61952517,-36.4815497585,0 146.6190733016,-36.4811252989,0 146.6186855547,-36.480821874,0 146.6178377252,-36.4801377431,0 146.6174570192,-36.4798698574,0 146.6169557814,-36.4795724675,0 146.6163286474,-36.4792117104,0 146.6159572452,-36.4790534601,0 146.614899952,-36.4786990732,0 146.6138198599,-36.4783629589,0 146.6127629019,-36.4780356456,0 146.6116880067,-36.4777016267,0 146.6105948389,-36.4773812704,0 146.6094861645,-36.4770397078,0 146.6083934158,-36.4767129812,0 146.6073130723,-36.4763934631,0 146.6062394343,-36.4760482125,0 146.605115924,-36.4757087454,0 146.604060391,-36.4753809292,0 146.6029861663,-36.4750589803,0 146.601845976,-36.4747291524,0 146.6007684823,-36.4744042698,0 146.5996544436,-36.4740390703,0 146.5986238047,-36.4737334661,0 146.5975902323,-36.4734295383,0 146.596481977,-36.4731049072,0 146.5959290229,-36.472924361,0 146.5953677706,-36.4727100357,0 146.5948756691,-36.4724939503,0 146.5943874232,-36.4722571615,0 146.5934501588,-36.4717472903,0 146.5924998187,-36.471178662,0 146.5915495623,-36.470608525,0 146.5906019881,-36.4700571634,0 146.5897021908,-36.4694968332,0 146.5887547843,-36.4689264446,0 146.5877968166,-36.4683717303,0 146.5868763998,-36.4678200334,0 146.5859741718,-36.4672623854,0 146.5849720314,-36.4667532686,0 146.5840342641,-36.466287151,0 146.5829991829,-36.4658215363,0 146.5819822066,-36.4653847553,0 146.5809665713,-36.4649525844,0 146.5799539536,-36.464513205,0 146.5789109934,-36.4640682936,0 146.5778595675,-36.4636336081,0 146.5768264141,-36.4631929714,0 146.5758077614,-36.4627745468,0 146.5747518092,-36.4623479079,0 146.5744515695,-36.4622075949,0 146.5735440608,-36.4618092868,0 146.5725295153,-36.4613802172,0 146.5715056658,-36.4609262533,0 146.5704868454,-36.4604928251,0 146.5694554523,-36.4600770827,0 146.5684064571,-36.4596282318,0 146.5674241818,-36.4591828175,0 146.5663829818,-36.4587301947,0 146.5653387643,-36.4583250973,0 146.5643107239,-36.4578732289,0 146.563217137,-36.4574349392,0 146.5622506198,-36.4570063725,0 146.5611758921,-36.4565490559,0 146.5601838939,-36.4561162982,0 146.5591519978,-36.4556821994,0 146.5580880828,-36.4552455023,0 146.5570954978,-36.454833867,0 146.5560761746,-36.4544210583,0 146.5555469412,-36.4541440364,0 146.5550959948,-36.4538751449,0 146.5544707887,-36.4535141364,0 146.5542636719,-36.4535668585,0 146.5544724651,-36.4535164833,0 146.5545666777,-36.4534057584,0 146.5541136358,-36.4530310873,0 146.5537603386,-36.452595396,0 146.5535011701,-36.4522315376,0 146.5530040395,-36.4514044113,0 146.5525896382,-36.4505350403,0 146.552094603,-36.4497064892,0 146.5518866479,-36.4493641723,0 146.5516938642,-36.4488221146,0 146.5513635334,-36.4479066432,0 146.5513173491,-36.4469937701,0 146.5512814745,-36.4460631274,0 146.5512499586,-36.4451122005,0 146.5511982422,-36.4441583399,0 146.5511580929,-36.4432256855,0 146.551116854,-36.4423148241,0 146.5510896128,-36.4414113387,0 146.5510430094,-36.4404703863,0 146.5510049555,-36.4395519812,0 146.5509679914,-36.4386230987,0 146.5509323683,-36.4377073757,0 146.5508994274,-36.4367858693,0 146.5508463699,-36.435853634,0 146.5508135129,-36.4349340554,0 146.5507770516,-36.4339943603,0 146.5507414285,-36.4330442715,0 146.5507028718,-36.4321226813,0 146.5506556816,-36.4311998338,0 146.5506116766,-36.430257624,0 146.5505904704,-36.4293528814,0 146.5505659115,-36.4292369597,0 146.5505598765,-36.4291694853,0 146.5505300369,-36.4284607116,0 146.5504948329,-36.4274983853,0 146.5504543483,-36.4265399985,0 146.5504240058,-36.4256321546,0 146.5503851976,-36.4246710856,0 146.5503467247,-36.4237537701,0 146.5503116883,-36.4228180982,0 146.550274808,-36.421894161,0 146.5502255224,-36.4209891669,0 146.5501911566,-36.4200550038,0 146.5501536056,-36.4191474952,0 146.5501105227,-36.4182106499,0 146.5500715468,-36.4172826894,0 146.5500324871,-36.4163527172,0 146.5500048269,-36.4154208172,0 146.5499499254,-36.4144794457,0 146.5498746559,-36.4135247469,0 146.5497146454,-36.4126055874,0 146.5494818799,-36.4116784651,0 146.5491639543,-36.41078596,0 146.548757432,-36.4099010825,0 146.548265079,-36.4090379979,0 146.5476925112,-36.4082342573,0 146.5470364597,-36.4074470289,0 146.5463768039,-36.4066807553,0 146.5456106141,-36.4060201775,0 146.5448598471,-36.4053124934,0 146.5447395667,-36.405193219,0 146.5446457732,-36.4051166084,0 146.5439287852,-36.4044506662,0 146.5431668703,-36.4037920162,0 146.5424313582,-36.4030813146,0 146.5416628215,-36.4023693558,0 146.5409212746,-36.4016848896,0 146.5401518159,-36.4009897783,0 146.5393601451,-36.4002645761,0 146.538631171,-36.3995630108,0 146.5378607903,-36.3988423347,0 146.5371077601,-36.398147475,0 146.5363269858,-36.3974421378,0 146.5355550125,-36.3967430871,0 146.5348105319,-36.3960572798,0 146.534065716,-36.3953697123,0 146.5333082434,-36.3947020099,0 146.5325874835,-36.394028943,0 146.5318391472,-36.3933375198,0 146.5310678445,-36.3926263992,0 146.5302946977,-36.3919120096,0 146.529525239,-36.3912174013,0 146.5287454706,-36.3905001618,0 146.5279859863,-36.3897868618,0 146.5272157732,-36.3890786748,0 146.5264619887,-36.3883911073,0 146.5256915241,-36.3876788132,0 146.5249238256,-36.3869691174,0 146.5241752379,-36.3862622716,0 146.5234099701,-36.3855581917,0 146.5225852747,-36.3849122822,0 146.5217231121,-36.3842874113,0 146.520830607,-36.3837295119,0 146.5198319871,-36.3831904717,0 146.5187969897,-36.3826987054,0 146.5177926701,-36.38223988,0 146.5167398192,-36.3817672245,0 146.5157401096,-36.3813043758,0 146.5147499554,-36.3808460534,0 146.5137078334,-36.3803859707,0 146.5127266478,-36.3799394667,0 146.5116991103,-36.3794776239,0 146.5107329283,-36.3790407591,0 146.5097234119,-36.3785814308,0 146.5087398794,-36.3781333342,0 146.5077708475,-36.377690183,0 146.5067934338,-36.377242757,0 146.5058073867,-36.3767887931,0 146.5047912486,-36.3763322309,0 146.5037709195,-36.3758687116,0 146.5027514286,-36.3754051086,0 146.501765633,-36.3749574311,0 146.5007575415,-36.3745025452,0 146.4997756016,-36.3740393613,0 146.4992380701,-36.3738448173,0 146.4991167001,-36.3737991359,0 146.4981137216,-36.3733269833,0 146.4971225616,-36.3728684932,0 146.4960796013,-36.372389216,0 146.4950920455,-36.3719432987,0 146.4940773323,-36.3714575674,0 146.4931098092,-36.3710097224,0 146.4921206608,-36.3705554232,0 146.4911403134,-36.3701056503,0 146.4901053999,-36.3696438912,0 146.4891357813,-36.3691870775,0 146.4881031308,-36.368719032,0 146.4871075284,-36.368271606,0 146.4861239959,-36.367826527,0 146.4851620048,-36.3673745748,0 146.4841850102,-36.3669320103,0 146.4831718896,-36.3664649706,0 146.4821926318,-36.3660118449,0 146.4812053274,-36.3655550312,0 146.4801693242,-36.3650897518,0 146.4791365899,-36.3646137435,0 146.4781526383,-36.3641578518,0 146.4771126118,-36.3636898901,0 146.4760839846,-36.3632155582,0 146.4751068223,-36.3627679646,0 146.4741135668,-36.3623129949,0 146.4730873704,-36.3618422672,0 146.4720962103,-36.3613915723,0 146.4710835088,-36.3609245326,0 146.4701107051,-36.3604824711,0 146.4691088162,-36.3600429241,0 146.4681008086,-36.3595949113,0 146.4671264123,-36.359144384,0 146.4661053289,-36.3586624246,0 146.4651088044,-36.3581896015,0 146.4640759863,-36.3577157725,0 146.4630245604,-36.3572467212,0 146.4620356634,-36.3568047434,0 146.4610684756,-36.3563507795,0 146.4600421954,-36.3558997493,0 146.4590304159,-36.3554283511,0 146.4580467995,-36.3549964316,0 146.4570102096,-36.3545396179,0 146.4559855219,-36.3540980592,0 146.4550677035,-36.3536298461,0 146.4540408365,-36.3531550113,0 146.453031823,-36.3526928332,0 146.452054074,-36.3522510231,0 146.4510433003,-36.3517930359,0 146.4500329457,-36.3513344619,0 146.4490348287,-36.350874044,0 146.4480688982,-36.3504370116,0 146.4470785763,-36.3499913458,0 146.4460687246,-36.3495221268,0 146.4450487308,-36.3490572665,0 146.4440042619,-36.3485796656,0 146.4430142753,-36.3481183257,0 146.4420226123,-36.3476594165,0 146.4409975056,-36.3471944723,0 146.4399988856,-36.3467440289,0 146.4390076417,-36.3462875504,0 146.4379907493,-36.3458205946,0 146.436979305,-36.3453705702,0 146.4359562099,-36.3448944781,0 146.434915429,-36.3444240019,0 146.4339408651,-36.3439743966,0 146.432947861,-36.3435182534,0 146.4319442958,-36.3430756051,0 146.4309493639,-36.3426125888,0 146.4299634844,-36.3421742991,0 146.4289268944,-36.3417086843,0 146.4279286936,-36.3412523735,0 146.4268936124,-36.3407864235,0 146.4258954115,-36.3403158635,0 146.4249150641,-36.3398622349,0 146.4238982555,-36.3393938541,0 146.4228670299,-36.338921953,0 146.4218425099,-36.3384540752,0 146.4208183251,-36.3379938249,0 146.4198464435,-36.337539861,0 146.4188256953,-36.3370930217,0 146.4178551547,-36.3366442546,0 146.4174928889,-36.3364668936,0 146.4175088983,-36.33643982,0 146.416514134,-36.3359870296,0 146.4155214652,-36.3355452195,0 146.4145326521,-36.3350936864,0 146.4135246444,-36.3346226234,0 146.4125240967,-36.3341780473,0 146.411549449,-36.3337362371,0 146.4105536789,-36.333281016,0 146.409557825,-36.3328240346,0 146.4085891284,-36.3323743455,0 146.4075706434,-36.3319201302,0 146.4065867756,-36.331472788,0 146.4056316577,-36.3310477417,0 146.4046477061,-36.330597382,0 146.4036433026,-36.3301352039,0 146.4026534837,-36.329679396,0 146.4016439673,-36.3292244263,0 146.4006307628,-36.3287512679,0 146.3996254373,-36.3282802049,0 146.398585327,-36.3278076332,0 146.3975566998,-36.3273353968,0 146.3965625223,-36.3268743921,0 146.3955645729,-36.3264268823,0 146.3945693057,-36.325975433,0 146.3935633097,-36.3255242351,0 146.3925346825,-36.3250627276,0 146.3915504795,-36.3246096857,0 146.3905473333,-36.3241385389,0 146.3895699196,-36.3236943819,0 146.388587812,-36.3232713472,0 146.3875584304,-36.3227905612,0 146.3865712937,-36.3223331608,0 146.3855724223,-36.3218612596,0 146.3845325634,-36.3213931303,0 146.3834722526,-36.320903711,0 146.3824580424,-36.3204481546,0 146.3814006653,-36.3199594896,0 146.3803279493,-36.319474848,0 146.3793273177,-36.3190109096,0 146.3783090003,-36.3185338955,0 146.3773188461,-36.3180908281,0 146.3762872852,-36.3176248781,0 146.3753127214,-36.3171814755,0 146.3750830572,-36.3170634583,0 146.3748906087,-36.316859778,0 146.3748167641,-36.3165864442,0 146.3746761158,-36.3164672535,0 146.3744192943,-36.3164147828,0 146.374172112,-36.3163769804,0 146.372983139,-36.3161742222,0 146.3718563598,-36.3161121123,0 146.3716006279,-36.3161938358,0 146.3714313973,-36.3163504936,0 146.3712345902,-36.3164708577,0 146.3709207717,-36.3165330514,0 146.3697851915,-36.3166628033,0 146.3686698955,-36.3169181999,0 146.3677962497,-36.3170632068,0 146.3677268475,-36.3171671424,0 146.3677246682,-36.3171530608,0 146.3669227716,-36.317711547,0 146.3665314205,-36.3180411234,0 146.3661233056,-36.3183273654,0 146.3652378414,-36.3189408369,0 146.3642502017,-36.3194159232,0 146.36325703,-36.3198891655,0 146.3622429874,-36.320375232,0 146.3612679206,-36.3208367396,0 146.3603002299,-36.321318699,0 146.3593295217,-36.3217983115,0 146.3583519403,-36.322269123,0 146.3573614508,-36.3227343187,0 146.356382193,-36.3232224807,0 146.3553938828,-36.3237185217,0 146.3544325624,-36.3242007326,0 146.3534622733,-36.3246726338,0 146.3529915456,-36.3249121048,0 146.3527638093,-36.3250221591,0 146.3525020424,-36.3252000231,0 146.352130305,-36.3254280109,0 146.3516962063,-36.3257960603,0 146.35154441,-36.3259730022,0 146.3514732476,-36.3261576556,0 146.3514780253,-36.326400144,0 146.3515327591,-36.3266179897,0 146.352094179,-36.3274174556,0 146.3525739592,-36.3282122277,0 146.352489721,-36.3282712363,0 146.3526556827,-36.3286004774,0 146.3527021185,-36.3288232684,0 146.3527209777,-36.3289131224,0 146.3526768889,-36.3290166389,0 146.3517201785,-36.3295141049,0 146.3507003523,-36.3300050329,0 146.3497307338,-36.3304660376,0 146.3487108238,-36.3308703806,0 146.3475919235,-36.3311457261,0 146.3464980852,-36.3313822635,0 146.3458524272,-36.3315462135,0 146.3455964439,-36.3316757977,0 146.3454261236,-36.3317770511,0 146.3452812843,-36.3318691682,0 146.3450735807,-36.3320238981,0 146.3446277473,-36.3324406464,0 146.3438870385,-36.333157802,0 146.343566766,-36.3335235883,0 146.343394937,-36.3337266818,0 146.3433407899,-36.3339733612,0 146.3433668576,-36.3343741838,0 146.3434660155,-36.3349277247,0 146.343482947,-36.3353106938,0 146.3434540294,-36.335861804,0 146.3433753233,-36.3368294947,0 146.3433459029,-36.3370487653,0 146.3432342559,-36.3373135496,0 146.3431382831,-36.3375027291,0 146.3429967966,-36.337724179,0 146.342670992,-36.3381234091,0 146.3424879313,-36.3382483833,0 146.3421886973,-36.3383788057,0 146.3416735455,-36.3385576755,0 146.3410761673,-36.3387637027,0 146.3405424915,-36.338982638,0 146.3402747735,-36.3391416427,0 146.3401363045,-36.3392766751,0 146.3398060575,-36.3396049943,0 146.339444546,-36.340085445,0 146.3392130379,-36.3404280134,0 146.338989744,-36.3409852423,0 146.338820681,-36.3414910063,0 146.3387894165,-36.3419083413,0 146.3388434798,-36.3424545899,0 146.3388815336,-36.3428218011,0 146.3389251195,-36.3430464361,0 146.3390214276,-36.3431899343,0 146.3391930051,-36.3432195224,0 146.3393749762,-36.3432984799,0 146.3395437039,-36.3433895912,0 146.3396986853,-36.3435373642,0 146.3400585204,-36.3442598004,0 146.3404300902,-36.345095979,0 146.3404946309,-36.3456593268,0 146.3405823894,-36.3459832035,0 146.3407021668,-36.3464217447,0 146.3407356944,-36.3468832523,0 146.340649277,-36.3471437618,0 146.3404770289,-36.3474030141,0 146.3402569201,-36.3477276452,0 146.3397307042,-36.3485085871,0 146.3391847908,-36.3493621163,0 146.3386564795,-36.350172814,0 146.3382462692,-36.3508121856,0 146.3380760327,-36.3509650715,0 146.3375863619,-36.3513732702,0 146.3373559434,-36.3515983243,0 146.3365963753,-36.3522775937,0 146.335832784,-36.3530027121,0 146.3356141001,-36.3530540094,0 146.3353985175,-36.3530493993,0 146.3347875606,-36.3528650813,0 146.3346459065,-36.3528532628,0 146.3345082756,-36.3528877124,0 146.3343022484,-36.3529957552,0 146.3337622024,-36.353234807,0 146.3335028663,-36.3533089869,0 146.3332036324,-36.3533477951,0 146.3329162169,-36.3533759583,0 146.3326246943,-36.3533445261,0 146.3315383997,-36.3530255109,0 146.3305363432,-36.3531526644,0 146.3303642627,-36.3530341443,0 146.3299887534,-36.352859633,0 146.3298432436,-36.3528074138,0 146.3296482805,-36.3528068271,0 146.3294622023,-36.3527002092,0 146.3288801629,-36.3521238696,0 146.3287495729,-36.3519755937,0 
+						</coordinates>
+					</LineString>
+				</MultiGeometry>
+			</Placemark>
+			<Placemark>
+				<name>Murray to Mountains Rail Trail Beechworth-Everton</name>
+				<styleUrl>#path1Style</styleUrl>
+				<MultiGeometry>
+					<LineString>
+						<coordinates>
+							146.689938521,-36.3621073868,0 146.6892779432,-36.3628624287,0 146.6891649552,-36.3630076032,0 146.6890948825,-36.3630943559,0 146.6886242386,-36.3636682648,0 146.6879934166,-36.3644424174,0 146.687383214,-36.3652492594,0 146.6867953911,-36.3660575263,0 146.6862913873,-36.3669038471,0 146.6859813407,-36.367466189,0 146.6858235095,-36.3677380141,0 146.6853214335,-36.3686057087,0 146.6848322656,-36.3694299012,0 146.6843263339,-36.3702775631,0 146.6838527564,-36.3711093832,0 146.6833791789,-36.371921422,0 146.6828922741,-36.3727866858,0 146.6824812256,-36.3736703061,0 146.6820277646,-36.37451143,0 146.6816573683,-36.375381723,0 146.6814146284,-36.376280766,0 146.681296695,-36.3771639671,0 146.6812925879,-36.3780906703,0 146.6813950147,-36.3790331315,0 146.6815214138,-36.3799878303,0 146.6816757247,-36.3809355721,0 146.6817760561,-36.3818623591,0 146.681672791,-36.3827893138,0 146.6813951824,-36.3837263267,0 146.680959072,-36.3846013136,0 146.6803813912,-36.3854243327,0 146.6801111586,-36.385788694,0 146.679589469,-36.3861529715,0 146.6791285481,-36.3865020778,0 146.6786717344,-36.3868182432,0 146.6779515613,-36.3872054871,0 146.6776510701,-36.3873399328,0 146.6771357507,-36.3875088282,0 146.6764997318,-36.3876911346,0 146.6754261777,-36.3879474532,0 146.6743229516,-36.3881359622,0 146.6737607773,-36.3882243913,0 146.6731914785,-36.3883482758,0 146.6725384444,-36.3885144051,0 146.6721039265,-36.388662681,0 146.671620626,-36.3888465799,0 146.6710414365,-36.3891030662,0 146.6700975504,-36.3896751311,0 146.6692109965,-36.3902163506,0 146.668285802,-36.3908046763,0 146.6677310038,-36.391119333,0 146.6667375807,-36.391710341,0 146.6657611728,-36.3922368083,0 146.6647480521,-36.392682055,0 146.6637392063,-36.3930651918,0 146.6626315378,-36.3933870569,0 146.6614783555,-36.3937548548,0 146.6604397539,-36.3940856047,0 146.6593303252,-36.3944293465,0 146.6582506523,-36.3947849907,0 146.6574257053,-36.3950413093,0 146.6563226469,-36.3953842968,0 146.6556669306,-36.3956090994,0 146.6552728135,-36.3957618177,0 146.6548113059,-36.3959382568,0 146.6542818211,-36.3961787336,0 146.6533194948,-36.3966508862,0 146.652308302,-36.3971629366,0 146.6523740161,-36.3971320912,0 146.6523607727,-36.3971501961,0 146.6513279546,-36.3976650964,0 146.6503301729,-36.3981735427,0 146.6492954269,-36.3986995071,0 146.6483108047,-36.3992000744,0 146.6473351512,-36.3996982947,0 146.6463522054,-36.4002040587,0 146.6453967523,-36.4006777201,0 146.644397378,-36.4011841547,0 146.6433443595,-36.4017053414,0 146.6423267964,-36.4022131171,0 146.6413258296,-36.4027301967,0 146.6408957541,-36.4029389899,0 146.6402636748,-36.4031119086,0 146.6397623532,-36.4032647945,0 146.6390690859,-36.4033109788,0 146.6386872064,-36.4033268206,0 146.637920849,-36.403292371,0 146.6367550939,-36.4032350387,0 146.6355765983,-36.4032860007,0 146.6350590158,-36.4033394773,0 146.6343827639,-36.4034784492,0 146.6332343593,-36.4036827162,0 146.6320457216,-36.4038707223,0 146.6308863368,-36.4040760789,0 146.6296421271,-36.4043204952,0 146.6284845024,-36.4045355748,0 146.6273700446,-36.4047478884,0 146.6262066364,-36.4049676619,0 146.6250823718,-36.4051975776,0 146.6240246594,-36.4054166805,0 146.6230014805,-36.4056559838,0 146.6218975838,-36.4059688803,0 146.620770134,-36.4063151367,0 146.6197178699,-36.4067148697,0 146.6186492611,-36.4071909618,0 146.6176997591,-36.4076452609,0 146.6172814183,-36.407867549,0 146.6167590581,-36.4082110394,0 146.6163916793,-36.4084352553,0 146.6157901101,-36.408857787,0 146.614997685,-36.4095111564,0 146.6144781746,-36.4099160023,0 146.6137720831,-36.4106184058,0 146.6132793948,-36.4109288715,0 146.612717472,-36.4111270197,0 146.611913899,-36.411359366,0 146.6112267505,-36.4114965778,0 146.6103438847,-36.4116070513,0 146.609225655,-36.4116772916,0 146.6080488358,-36.4117566682,0 146.6069421731,-36.4119932055,0 146.6058635898,-36.4123392943,0 146.6047860123,-36.4126169868,0 146.6036426369,-36.4127277117,0 146.6024507303,-36.4126940165,0 146.6012679599,-36.4125951938,0 146.6007888503,-36.4124805294,0 146.6000366583,-36.4124268014,0 146.5987961367,-36.412384389,0 146.597559806,-36.41249042,0 146.5963672288,-36.4127194136,0 146.5954712033,-36.413060138,0 146.5943827294,-36.4136861823,0 146.5934753045,-36.4142739214,0 146.5926163271,-36.4149124548,0 146.5917714313,-36.4155287761,0 146.5908930916,-36.416181894,0 146.5900035203,-36.4167666994,0 146.5890908986,-36.4174520876,0 146.5882557258,-36.4180934709,0 146.5873630531,-36.4187037572,0 146.5864703804,-36.4193354174,0 146.5861160774,-36.4196014591,0 146.5855287574,-36.4199431892,0 146.5848398488,-36.420240663,0 146.5845345799,-36.4203052875,0 146.5840580687,-36.4203956444,0 146.5832729358,-36.4204652142,0 146.5825879667,-36.42048751,0 146.5817987267,-36.4204254001,0 146.5808218997,-36.4202257432,0 146.5798387863,-36.4199884515,0 146.5786657389,-36.4197467174,0 146.5781018045,-36.4196227491,0 146.5769724268,-36.419380093,0 146.5758628305,-36.4191769995,0 146.5747057926,-36.4189232793,0 146.5735826176,-36.4186672121,0 146.573204929,-36.4185828064,0 146.5729222074,-36.4185163379,0 146.5717676003,-36.4182519726,0 146.5706296731,-36.4180066343,0 146.5695158858,-36.417754842,0 146.5684313513,-36.4175078273,0 146.5673122834,-36.4172647521,0 146.5661860909,-36.417016061,0 146.5651085973,-36.4167666994,0 146.5639570076,-36.4165250491,0 146.5628635045,-36.4162543975,0 146.5617628768,-36.4158563409,0 146.560728047,-36.4153410215,0 146.5597948059,-36.4147945214,0 146.5588272829,-36.414237041,0 146.5578646213,-36.413675705,0 146.5569172986,-36.4131152071,0 146.5559912659,-36.4125755802,0 146.5550876129,-36.4120562375,0 146.5541714709,-36.4115143474,0 146.5532305185,-36.4109691046,0 146.5522783343,-36.4104692917,0 146.5513080452,-36.4099293295,0 146.5503952559,-36.4093912113,0 146.5493636951,-36.4088116866,0 146.5484223235,-36.4082479198,0 146.5475502703,-36.4077464305,0 146.5467361361,-36.4071503934,0 146.5460252669,-36.4063836168,0 146.5452482644,-36.4056820516,0 146.5446650516,-36.4051323663,0 
+						</coordinates>
+					</LineString>
+				</MultiGeometry>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>

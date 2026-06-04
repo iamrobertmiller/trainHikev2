@@ -1,0 +1,1433 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.132025,
+          -36.538133
+        ]
+      },
+      "properties": {
+        "name": "Dogmans Hut (Tom Groggin) - Refuge only",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.301451,
+          -36.113866
+        ]
+      },
+      "properties": {
+        "name": "Granya Scout Hut",
+        "park": "Mount Granya State Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.759344,
+          -34.811029
+        ]
+      },
+      "properties": {
+        "name": "Mopoke Hut",
+        "park": "Murray - Sunset National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.34996,
+          -36.850435
+        ]
+      },
+      "properties": {
+        "name": "Johnston Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.423236,
+          -37.895947
+        ]
+      },
+      "properties": {
+        "name": "Huts - Aberfeldy River",
+        "park": "Baw Baw National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.74802,
+          -37.407419
+        ]
+      },
+      "properties": {
+        "name": "Kelly Hut (Holmes Plain) - Heritage Refuge Only",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.096614,
+          -37.029797
+        ]
+      },
+      "properties": {
+        "name": "Mussurie Hut site (burnt in 2003)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.495423,
+          -37.023566
+        ]
+      },
+      "properties": {
+        "name": "Heatherlie (Mt Difficult) Quarry - Cottage (East)",
+        "park": "Grampians National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.494994,
+          -37.023472
+        ]
+      },
+      "properties": {
+        "name": "Heatherlie (Mt Difficult) Quarry - Cottage (West)",
+        "park": "Grampians National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.495242,
+          -37.023478
+        ]
+      },
+      "properties": {
+        "name": "Heatherlie (Mt Difficult) Quarry - Cottage (Central)",
+        "park": "Grampians National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.203131,
+          -36.897734
+        ]
+      },
+      "properties": {
+        "name": "Tawonga Huts - Accommodation Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.187689,
+          -36.916906
+        ]
+      },
+      "properties": {
+        "name": "Weston Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.215158,
+          -36.951701
+        ]
+      },
+      "properties": {
+        "name": "Young Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.983395,
+          -37.485574
+        ]
+      },
+      "properties": {
+        "name": "Horseyard Flat",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.167549,
+          -36.916085
+        ]
+      },
+      "properties": {
+        "name": "Rogers Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.329093,
+          -37.197853
+        ]
+      },
+      "properties": {
+        "name": "Fred Fry's Hut",
+        "park": "Howqua Hills H.A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.362283,
+          -37.190537
+        ]
+      },
+      "properties": {
+        "name": "Noonans Hut",
+        "park": "Howqua Hills H.A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.353293,
+          -37.187784
+        ]
+      },
+      "properties": {
+        "name": "Pickering's Hut",
+        "park": "Howqua Hills H.A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.52423,
+          -37.216348
+        ]
+      },
+      "properties": {
+        "name": "Bluff Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.474348,
+          -37.196496
+        ]
+      },
+      "properties": {
+        "name": "Ritchie's Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.139024,
+          -36.643465
+        ]
+      },
+      "properties": {
+        "name": "Davies Plain Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.65591,
+          -36.817247
+        ]
+      },
+      "properties": {
+        "name": "Kennedy Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.303117,
+          -36.904065
+        ]
+      },
+      "properties": {
+        "name": "Rover Scout Chalet",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.303249,
+          -36.775751
+        ]
+      },
+      "properties": {
+        "name": "Cairn Creek Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.332137,
+          -36.848124
+        ]
+      },
+      "properties": {
+        "name": "Edmondson Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.307183,
+          -36.896492
+        ]
+      },
+      "properties": {
+        "name": "Wallace Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.576444,
+          -37.899503
+        ]
+      },
+      "properties": {
+        "name": "Kurth Kiln Hut 2 (building 07)",
+        "park": "Kurth Kiln R.P."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.575365,
+          -37.901176
+        ]
+      },
+      "properties": {
+        "name": "Kurth Kiln Hut 3 (building 08)",
+        "park": "Kurth Kiln R.P."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.576444,
+          -37.899503
+        ]
+      },
+      "properties": {
+        "name": "Kurth Kiln Hut 4 (bathroom hut) (building 09)",
+        "park": "Kurth Kiln R.P."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.236779,
+          -37.020746
+        ]
+      },
+      "properties": {
+        "name": "Country Roads Board Hut - Dinner Plain",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.320058,
+          -36.888687
+        ]
+      },
+      "properties": {
+        "name": "Maddison's Huts",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.261084,
+          -36.931723
+        ]
+      },
+      "properties": {
+        "name": "Campbells Yards Huts - Feed Store Nth",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.203131,
+          -36.897734
+        ]
+      },
+      "properties": {
+        "name": "Tawonga Huts - Feed Store - Hut closest to falls creek - Hut 4",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.261084,
+          -36.931723
+        ]
+      },
+      "properties": {
+        "name": "Campbells Yards Huts - Quarters",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.261084,
+          -36.931723
+        ]
+      },
+      "properties": {
+        "name": "Campbells Yards Huts - Feed Store Sth",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.543519,
+          -37.167009
+        ]
+      },
+      "properties": {
+        "name": "Bindaree Hut at Alpine NP",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.413941,
+          -36.922539
+        ]
+      },
+      "properties": {
+        "name": "Gattamurh Creek Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.376914,
+          -37.192499
+        ]
+      },
+      "properties": {
+        "name": "Gardners Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.166585,
+          -37.113713
+        ]
+      },
+      "properties": {
+        "name": "Lankey Plain Hut (refuge only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.668478,
+          -38.268145
+        ]
+      },
+      "properties": {
+        "name": "Queenscliff Pier Lifeboat Shed",
+        "park": "Queenscliff Harbour Precinct Reserve"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.440053,
+          -36.966459
+        ]
+      },
+      "properties": {
+        "name": "Top Crossing Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.468028,
+          -36.794859
+        ]
+      },
+      "properties": {
+        "name": "Woollybutt Hut",
+        "park": "Mount Wills H.A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.740249,
+          -36.726607
+        ]
+      },
+      "properties": {
+        "name": "Lazy H Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.570167,
+          -37.089614
+        ]
+      },
+      "properties": {
+        "name": "King River Hut ",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.69787,
+          -37.233333
+        ]
+      },
+      "properties": {
+        "name": "Howitt Plains Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.752315,
+          -37.29022
+        ]
+      },
+      "properties": {
+        "name": "Guys Hut and Yards",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.626332,
+          -37.049537
+        ]
+      },
+      "properties": {
+        "name": "Lake Cobbler Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.932053,
+          -37.510316
+        ]
+      },
+      "properties": {
+        "name": "Moroka Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.668823,
+          -37.172861
+        ]
+      },
+      "properties": {
+        "name": "Vallejo Gantner Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.261084,
+          -36.931723
+        ]
+      },
+      "properties": {
+        "name": "Campbell Yard Hut Three",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.29262,
+          -36.90667
+        ]
+      },
+      "properties": {
+        "name": "Cope Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.261219,
+          -36.921941
+        ]
+      },
+      "properties": {
+        "name": "Cope Saddle Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.328676,
+          -36.933015
+        ]
+      },
+      "properties": {
+        "name": "Faithfull's Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.322455,
+          -36.88494
+        ]
+      },
+      "properties": {
+        "name": "Langford Gap Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.333926,
+          -36.954924
+        ]
+      },
+      "properties": {
+        "name": "McNamara Hut (Buckety Plain)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.203131,
+          -36.897734
+        ]
+      },
+      "properties": {
+        "name": "Tawonga Hut Complex - Hut 1 - kitchen, closest to gate",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.177342,
+          -36.899154
+        ]
+      },
+      "properties": {
+        "name": "Tawonga Hut Complex - Hut 3",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.3146,
+          -36.988762
+        ]
+      },
+      "properties": {
+        "name": "McNamara Hut (Dinner Plain)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.821147,
+          -37.541856
+        ]
+      },
+      "properties": {
+        "name": "Miller Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.352883,
+          -37.883774
+        ]
+      },
+      "properties": {
+        "name": "N B W Hut",
+        "park": "Baw Baw National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.173191,
+          -36.920065
+        ]
+      },
+      "properties": {
+        "name": "Blair's Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.221632,
+          -37.023155
+        ]
+      },
+      "properties": {
+        "name": "J.B. Plain Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.126944,
+          -36.884985
+        ]
+      },
+      "properties": {
+        "name": "Melbourne Uni Mountaineering Club Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.138958,
+          -36.643555
+        ]
+      },
+      "properties": {
+        "name": "Davies Plain Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.066284,
+          -36.969581
+        ]
+      },
+      "properties": {
+        "name": "Biplane Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.343828,
+          -37.885374
+        ]
+      },
+      "properties": {
+        "name": "J.W. McMahon Rover Hut or Rover Hut",
+        "park": "Baw Baw National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.05116,
+          -35.585118
+        ]
+      },
+      "properties": {
+        "name": "Wonga Hut",
+        "park": "Wyperfeld National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.829822,
+          -37.210159
+        ]
+      },
+      "properties": {
+        "name": "Wonnangatta Hut - Refuge Only",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.615998,
+          -36.733625
+        ]
+      },
+      "properties": {
+        "name": "Quart Pot Flat Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.595081,
+          -36.780607
+        ]
+      },
+      "properties": {
+        "name": "Wombat Post Office Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.18241,
+          -36.94869
+        ]
+      },
+      "properties": {
+        "name": "Dibbins Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.365226,
+          -36.876252
+        ]
+      },
+      "properties": {
+        "name": "Fitzgeralds Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.312749,
+          -36.719744
+        ]
+      },
+      "properties": {
+        "name": "Michell Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.250842,
+          -36.893667
+        ]
+      },
+      "properties": {
+        "name": "Pretty Valley Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.122605,
+          -36.901513
+        ]
+      },
+      "properties": {
+        "name": "Federation Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.185018,
+          -36.833714
+        ]
+      },
+      "properties": {
+        "name": "Bogong Jack Saddle Hut (Refuge Shelter Only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.371689,
+          -36.874023
+        ]
+      },
+      "properties": {
+        "name": "Kelly's Hut at Alpine NP_x000D_\n",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.338983,
+          -37.194339
+        ]
+      },
+      "properties": {
+        "name": "Blackbird Hut",
+        "park": "Howqua Hills H.A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.261583,
+          -36.855778
+        ]
+      },
+      "properties": {
+        "name": "Teddington Hut",
+        "park": "Kara Kara National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.510994,
+          -37.182104
+        ]
+      },
+      "properties": {
+        "name": "Pikes Flat Hut - Refuge",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.301957,
+          -36.906115
+        ]
+      },
+      "properties": {
+        "name": "EMS - Rover Chalet",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.261583,
+          -36.855778
+        ]
+      },
+      "properties": {
+        "name": "Teddington Hut",
+        "park": "Kara Kara National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.751359,
+          -37.422749
+        ]
+      },
+      "properties": {
+        "name": "Mc.Michael Hut - non heritage Refuge Only",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.922959,
+          -36.48013
+        ]
+      },
+      "properties": {
+        "name": "Shelter",
+        "park": "Little Desert National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.8727,
+          -36.553502
+        ]
+      },
+      "properties": {
+        "name": "Shelter",
+        "park": "Little Desert National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.465093,
+          -39.042401
+        ]
+      },
+      "properties": {
+        "name": "Refuge Cove Rangers hut",
+        "park": "Wilsons Promontory National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.444236,
+          -39.021758
+        ]
+      },
+      "properties": {
+        "name": "Sealers Cove Rangers Hut",
+        "park": "Wilsons Promontory National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.492097,
+          -38.767295
+        ]
+      },
+      "properties": {
+        "name": "Cattlemans Hut Horse feed shed",
+        "park": "Nooramunga Marine & Coastal Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.540696,
+          -38.778003
+        ]
+      },
+      "properties": {
+        "name": "Fibro Hut",
+        "park": "Nooramunga Marine & Coastal Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.572765,
+          -36.506576
+        ]
+      },
+      "properties": {
+        "name": "Mt Benambra (Towermans Hut)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.16883,
+          -37.111005
+        ]
+      },
+      "properties": {
+        "name": "Lankey Plain Hut (Refuge only)",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.492097,
+          -38.767295
+        ]
+      },
+      "properties": {
+        "name": "Cattlemans Hut - Main Sleeping Quarters",
+        "park": "Nooramunga Marine & Coastal Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.540696,
+          -38.778003
+        ]
+      },
+      "properties": {
+        "name": "Cattlemans Hut Kitchen",
+        "park": "Nooramunga Marine & Coastal Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.492097,
+          -38.767295
+        ]
+      },
+      "properties": {
+        "name": "Cattlemans Jones Hut - 8 bed",
+        "park": "Nooramunga Marine & Coastal Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.383928,
+          -39.08511
+        ]
+      },
+      "properties": {
+        "name": "Halfway Hut",
+        "park": "Wilsons Promontory National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.293924,
+          -36.713671
+        ]
+      },
+      "properties": {
+        "name": "Bivouac Hut",
+        "park": "Alpine National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.160241,
+          -38.045901
+        ]
+      },
+      "properties": {
+        "name": "Battersbys Walkers Shelter_x000D_\n",
+        "park": "Lower Glenelg National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.311245,
+          -38.213703
+        ]
+      },
+      "properties": {
+        "name": "Swan Lake Walkers Camp - Shelter_x000D_\n",
+        "park": "Discovery Bay Coastal Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.183931,
+          -38.135156
+        ]
+      },
+      "properties": {
+        "name": "Lake Monibeong  Walkers Camp - Shelter_x000D_\n",
+        "park": "Discovery Bay Coastal Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.061075,
+          -38.003129
+        ]
+      },
+      "properties": {
+        "name": "Pattersons Walkers Camp Shelter_x000D_\n",
+        "park": "Lower Glenelg National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.993995,
+          -38.033618
+        ]
+      },
+      "properties": {
+        "name": "Lower Glenelg National Park_x000D_\n",
+        "park": "Lower Glenelg National Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.331368,
+          -36.810202
+        ]
+      },
+      "properties": {
+        "name": "Ropers Hut at Camping Area_x000D_\n_x000D_\n",
+        "park": "Alpine National Park"
+      }
+    }
+  ]
+}

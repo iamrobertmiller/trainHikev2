@@ -1,0 +1,5515 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.831917,
+          -36.003972
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Boort camping area 11",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-11",
+        "location": "23 km north of Boort",
+        "latitude": "-36.003972",
+        "longitude": "143.831917",
+        "co-ordinates": "-36.003972' 143.831917",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.003306,
+          -36.484472
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Serpentine camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-serpentine-camping-area-2",
+        "location": "9 km south of Serpentine",
+        "latitude": "-36.484472",
+        "longitude": "144.003306",
+        "co-ordinates": "-36.484472' 144.003306",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.393044,
+          -36.105575
+        ]
+      },
+      "properties": {
+        "name": "Broken Creek - Numurkah camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Broken-Creek-Numurkah-Camping-Area-3",
+        "location": "10.9 km south west of Numurkah",
+        "latitude": "-36.105575",
+        "longitude": "145.393044",
+        "co-ordinates": "-36.105575' 145.393044",
+        "river": "Broken Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.58719,
+          -35.260549
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Swan Hill camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Swan-Hill-Camping-Area-4",
+        "location": "11 km north of Swan Hill",
+        "latitude": "-35.260549",
+        "longitude": "143.58719",
+        "co-ordinates": "-35.260549' 143.58719",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.390861,
+          -37.553303
+        ]
+      },
+      "properties": {
+        "name": "Glenelg River - Casterton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Glenelg-River-Casterton-Camping-Area-1",
+        "location": "5 km north of Casterton",
+        "latitude": "-37.553303",
+        "longitude": "141.390861",
+        "co-ordinates": "-37.553303' 141.390861",
+        "river": "Glenelg River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.404972,
+          -37.600639
+        ]
+      },
+      "properties": {
+        "name": "Glenelg River - Casterton camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/glenelg-river-casterton-camping-area-4",
+        "location": "1.6 km south of Casterton",
+        "latitude": "-37.600639",
+        "longitude": "141.404972",
+        "co-ordinates": "-37.600639' 141.404972",
+        "river": "Glenelg River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.140667,
+          -36.662
+        ]
+      },
+      "properties": {
+        "name": "Kiewa River - Mount Beauty camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/kiewa-river-mount-beauty-camping-area-1",
+        "location": "2.6 km north of Tawonga",
+        "latitude": "-36.662",
+        "longitude": "147.140667",
+        "co-ordinates": "-36.662' 147.140667",
+        "river": "Kiewa River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.921129,
+          -35.670336
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Kerang camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Loddon-River-Kerang-Camping-Area-3",
+        "location": "8 km north of Kerang",
+        "latitude": "-35.670336",
+        "longitude": "143.921129",
+        "co-ordinates": "-35.670336' 143.921129",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.891333,
+          -35.854722
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Kerang camping area 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-kerang-camping-area-6",
+        "location": "19 km south of Kerang",
+        "latitude": "-35.854722",
+        "longitude": "143.891333",
+        "co-ordinates": "-35.854722' 143.891333",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.856,
+          -35.555639
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Murrabit camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-murrabit-camping-area-1",
+        "location": "28 km south-west of Murrabit",
+        "latitude": "-35.555639",
+        "longitude": "143.856",
+        "co-ordinates": "-35.555639' 143.856",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.283646,
+          -37.029391
+        ]
+      },
+      "properties": {
+        "name": "Middle Creek - Moonambel camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Middle-Creek-Moonambel-Camping-Area-2",
+        "location": "8 km south of Moonambel",
+        "latitude": "-37.029391",
+        "longitude": "143.283646",
+        "co-ordinates": "-37.029391' 143.283646",
+        "river": "Middle Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.800963,
+          -35.433391
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Swan Hill camping area 1, 2 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Swan-Hill-Camping-Area-1,-2-and-3",
+        "location": "31 km east of Swan Hill",
+        "latitude": "-35.433391",
+        "longitude": "143.800963",
+        "co-ordinates": "-35.433391' 143.800963",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.555257,
+          -35.236078
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Swan Hill camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Swan-Hill-Camping-Area-5",
+        "location": "14 km north of Swan Hill",
+        "latitude": "-35.236078",
+        "longitude": "143.555257",
+        "co-ordinates": "-35.236078' 143.555257",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.482396,
+          -35.221987
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Swan Hill camping area 8 and 9",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Swan-Hill-Camping-Area-8-and-9",
+        "location": "17 km north of Swan Hill",
+        "latitude": "-35.221987",
+        "longitude": "143.482396",
+        "co-ordinates": "-35.221987' 143.482396",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.333694,
+          -37.629566
+        ]
+      },
+      "properties": {
+        "name": "Wannon River - Dunkeld camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wannon-river-dunkeld-camping-area-5",
+        "location": "3 km north of Dunkeld",
+        "latitude": "-37.629566",
+        "longitude": "142.333694",
+        "co-ordinates": "-37.629566' 142.333694",
+        "river": "Wannon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.456,
+          -37.623861
+        ]
+      },
+      "properties": {
+        "name": "Wannon River -\u00a0Sandford camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wannon-river-sandford-camping-area-1",
+        "location": "2 km south of Sandford",
+        "latitude": "-37.623861",
+        "longitude": "141.456",
+        "co-ordinates": "-37.623861' 141.456",
+        "river": "Wannon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.52779,
+          -37.601721
+        ]
+      },
+      "properties": {
+        "name": "Wannon River -\u00a0Sandford camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wannon-River-Sandford-Camping-Area-3",
+        "location": "10 km east of Sandford",
+        "latitude": "-37.601721",
+        "longitude": "141.52779",
+        "co-ordinates": "-37.601721' 141.52779",
+        "river": "Wannon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.433421,
+          -36.440017
+        ]
+      },
+      "properties": {
+        "name": "Watchingorra Creek - Mitta Mitta camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Watchingorra-Creek-Mitta-Mitta-Camping-Area-2",
+        "location": "20 km north of Mitta Mitta",
+        "latitude": "-36.440017",
+        "longitude": "147.433421",
+        "co-ordinates": "-36.440017' 147.433421",
+        "river": "Watchingorra Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.423025,
+          -36.704177
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Longerenong camping area 10",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wimmera-River-Longerenong-Camping-Area-10",
+        "location": "18 km south-east of Longerenong",
+        "latitude": "-36.704177",
+        "longitude": "142.423025",
+        "co-ordinates": "-36.704177' 142.423025",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.398352,
+          -36.463065
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Kellalac camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yarriambiack-Creek-Kellalac-Camping-Area-3",
+        "location": "8 km south of Kellalac",
+        "latitude": "-36.463065",
+        "longitude": "142.398352",
+        "co-ordinates": "-36.463065' 142.398352",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.403,
+          -36.365272
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Warracknabeal camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yarriambiack-Creek-Warracknabeal-Camping-Area-1",
+        "location": "15 km south of Warracknabeal",
+        "latitude": "-36.365272",
+        "longitude": "142.403",
+        "co-ordinates": "-36.365272' 142.403",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.389453,
+          -36.108984
+        ]
+      },
+      "properties": {
+        "name": "Broken Creek - Numurkah camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Broken-Creek-Numurkah-Camping-Area-2",
+        "location": "7.4 km south west of Numurkah",
+        "latitude": "-36.108984",
+        "longitude": "145.389453",
+        "co-ordinates": "-36.108984' 145.389453",
+        "river": "Broken Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.827779,
+          -36.243555
+        ]
+      },
+      "properties": {
+        "name": "Broken Creek - Tungamah camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Broken-Creek-Tungamah-Camping-Area-1",
+        "location": "14 km south of Tungamah",
+        "latitude": "-36.243555",
+        "longitude": "145.827779",
+        "co-ordinates": "-36.243555' 145.827779",
+        "river": "Broken Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.751449,
+          -36.623602
+        ]
+      },
+      "properties": {
+        "name": "Buffalo Creek - Myrtleford camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Buffalo-Creek-Myrtleford-camping-area-4",
+        "location": "11 km south of Myrtleford",
+        "latitude": "-36.623602",
+        "longitude": "146.751449",
+        "co-ordinates": "-36.623602' 146.751449",
+        "river": "Buffalo Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.892139,
+          -36.615778
+        ]
+      },
+      "properties": {
+        "name": "Bullabul Creek - Bullabul camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bullabul-creek-bullabul-camping-area-1-and-2",
+        "location": "5.6 km south of Bridgewater on Loddon",
+        "latitude": "-36.615778",
+        "longitude": "143.892139",
+        "co-ordinates": "-36.615778' 143.892139",
+        "river": "Bullabul Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.738233,
+          -36.16362
+        ]
+      },
+      "properties": {
+        "name": "Campaspe River \u00a0- Echuca camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Campaspe-River-Echuca-camping-area-1",
+        "location": "6 km south of Echuca",
+        "latitude": "-36.16362",
+        "longitude": "144.738233",
+        "co-ordinates": "-36.16362' 144.738233",
+        "river": "Campaspe River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.232278,
+          -36.62025
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Murchison camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-murchison-camping-area-2",
+        "location": "1.5 km east of Murchison",
+        "latitude": "-36.62025",
+        "longitude": "145.232278",
+        "co-ordinates": "-36.62025' 145.232278",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.821659,
+          -37.251722
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Thornton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Goulburn-River-Thornton-Camping-Area-1",
+        "location": "2.5 km east of Thornton",
+        "latitude": "-37.251722",
+        "longitude": "145.821659",
+        "co-ordinates": "-37.251722' 145.821659",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.491614,
+          -35.988477
+        ]
+      },
+      "properties": {
+        "name": "Gunbower Creek - Torrumbarry camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Gunbower-Creek-Torrumbarry-Camping-Area-1",
+        "location": "8 km north-west of Torrumbarry",
+        "latitude": "-35.988477",
+        "longitude": "144.491614",
+        "co-ordinates": "-35.988477' 144.491614",
+        "river": "Gunbower Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.314965,
+          -35.856485
+        ]
+      },
+      "properties": {
+        "name": "Gunbower Creek - Wee Wee Rup camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Gunbower-Creek-Wee-Wee-Rup-Camping-Area-1",
+        "location": "4.7 km east of Wee Wee Rup",
+        "latitude": "-35.856485",
+        "longitude": "144.314965",
+        "co-ordinates": "-35.856485' 144.314965",
+        "river": "Gunbower Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.562037,
+          -38.167787
+        ]
+      },
+      "properties": {
+        "name": "La Trobe River - Glengarry camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/La-Trobe-River-Glengarry-Camping-Area-2",
+        "location": "5 km south of Glengarry",
+        "latitude": "-38.167787",
+        "longitude": "146.562037",
+        "co-ordinates": "-38.167787' 146.562037",
+        "river": "La Trobe River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.53098,
+          -37.188733
+        ]
+      },
+      "properties": {
+        "name": "Livingstone Creek - Omeo camping area 2, 3 and 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Livingstone-Creek-Omeo-Camping-Area-2,-3-and-4",
+        "location": "13 km south of Omeo",
+        "latitude": "-37.188733",
+        "longitude": "147.53098",
+        "co-ordinates": "-37.188733' 147.53098",
+        "river": "Livingstone Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.985,
+          -36.500361
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Bridgewater camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-bridgewater-camping-area-1",
+        "location": "13 km north of Bridgewater",
+        "latitude": "-36.500361",
+        "longitude": "143.985",
+        "co-ordinates": "-36.500361' 143.985",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.258278,
+          -36.450609
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River - Eskdale camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Mitta-Mitta-River-Eskdale-Camping-Area-3",
+        "location": "2 km north-west of Eskdale",
+        "latitude": "-36.450609",
+        "longitude": "147.258278",
+        "co-ordinates": "-36.450609' 147.258278",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.353694,
+          -36.486361
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River - Neilson Rd camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mitta-mitta-river-neilson-road-camping-area-1",
+        "location": "6 km north of Mitta Mitta",
+        "latitude": "-36.486361",
+        "longitude": "147.353694",
+        "co-ordinates": "-36.486361' 147.353694",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.270083,
+          -36.395083
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River - Tallangatta camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mitta-mitta-river-tallangatta-camping-area-1",
+        "location": "20 km south of Tallangatta",
+        "latitude": "-36.395083",
+        "longitude": "147.270083",
+        "co-ordinates": "-36.395083' 147.270083",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.237222,
+          -36.271722
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River - Tallangatta camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mitta-mitta-river-tallangatta-camping-area-2",
+        "location": "8 km south of Tallangatta",
+        "latitude": "-36.271722",
+        "longitude": "147.237222",
+        "co-ordinates": "-36.271722' 147.237222",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.364083,
+          -36.501167
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River -\u00a0Mitta Mitta North Road camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mitta-mitta-river-mitta-north-road-camping-area-1",
+        "location": "3.8 km north of Mitta Mitta",
+        "latitude": "-36.501167",
+        "longitude": "147.364083",
+        "co-ordinates": "-36.501167' 147.364083",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.052798,
+          -36.323095
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Biggara camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Biggara-Camping-Area-1",
+        "location": "13 km south-east of Biggara",
+        "latitude": "-36.323095",
+        "longitude": "148.052798",
+        "co-ordinates": "-36.323095' 148.052798",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.285944,
+          -36.03525
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Corowa camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/murray-river-corowa-camping-area-1",
+        "location": "5.4 km east of Brimin",
+        "latitude": "-36.03525",
+        "longitude": "146.285944",
+        "co-ordinates": "-36.03525' 146.285944",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.931768,
+          -35.502548
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Murrabit camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Murrabit-Camping-Area-1",
+        "location": "5 km north-west of Murrabit",
+        "latitude": "-35.502548",
+        "longitude": "143.931768",
+        "co-ordinates": "-35.502548' 143.931768",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.885928,
+          -35.48619
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Murrabit camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Murrabit-Camping-Area-2",
+        "location": "12 km north-west of Murrabit",
+        "latitude": "-35.48619",
+        "longitude": "143.885928",
+        "co-ordinates": "-35.48619' 143.885928",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.415635,
+          -35.198389
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Nyah camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Nyah-camping-area-1",
+        "location": "11 km east of Nyah West",
+        "latitude": "-35.198389",
+        "longitude": "143.415635",
+        "co-ordinates": "-35.198389' 143.415635",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.336173,
+          -35.079569
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Piangil camping area 1, 2 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Piangil-Camping-Area-1,-2-and-3",
+        "location": "5 km south of Piangil",
+        "latitude": "-35.079569",
+        "longitude": "143.336173",
+        "co-ordinates": "-35.079569' 143.336173",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.338901,
+          -35.086077
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Piangil camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Piangil-Camping-Area-4",
+        "location": "6 km south of Piangil",
+        "latitude": "-35.086077",
+        "longitude": "143.338901",
+        "co-ordinates": "-35.086077' 143.338901",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.342169,
+          -35.094402
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Piangil camping area 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Piangil-Camping-Area-6",
+        "location": "7 km south of Piangil",
+        "latitude": "-35.094402",
+        "longitude": "143.342169",
+        "co-ordinates": "-35.094402' 143.342169",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.668991,
+          -36.53315
+        ]
+      },
+      "properties": {
+        "name": "Ovens River - Gapsted camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Ovens-River-Gapsted-Camping-Area-1",
+        "location": "4 km south west of Gapsted",
+        "latitude": "-36.53315",
+        "longitude": "146.668991",
+        "co-ordinates": "-36.53315' 146.668991",
+        "river": "Ovens River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.411833,
+          -36.496539
+        ]
+      },
+      "properties": {
+        "name": "Seven Creeks - Shepparton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Seven-Creeks-Shepparton-Camping-Area-1",
+        "location": "17 km south of Shepparton",
+        "latitude": "-36.496539",
+        "longitude": "145.411833",
+        "co-ordinates": "-36.496539' 145.411833",
+        "river": "Seven Creeks"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.819279,
+          -36.810119
+        ]
+      },
+      "properties": {
+        "name": "Seven Creeks - Strathbogie North camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Seven-Creeks-Strathbogie-North-Camping-Area-1",
+        "location": "11 km north-east of Strathbogie",
+        "latitude": "-36.810119",
+        "longitude": "145.819279",
+        "co-ordinates": "-36.810119' 145.819279",
+        "river": "Seven Creeks"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.926787,
+          -38.67384
+        ]
+      },
+      "properties": {
+        "name": "Tarwin River - Tarwin camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Tarwin-River-Tarwin-Camping-Area-1",
+        "location": "9 km south of Tarwin",
+        "latitude": "-38.67384",
+        "longitude": "145.926787",
+        "co-ordinates": "-38.67384' 145.926787",
+        "river": "Tarwin River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.4395,
+          -37.597944
+        ]
+      },
+      "properties": {
+        "name": "Wannon River - Casterton camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wannon-river-casterton-camping-area-3",
+        "location": "4 km southeast of Casterton",
+        "latitude": "-37.597944",
+        "longitude": "141.4395",
+        "co-ordinates": "-37.597944' 141.4395",
+        "river": "Wannon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.472404,
+          -37.644574
+        ]
+      },
+      "properties": {
+        "name": "Wannon River -\u00a0Sandford camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wannon-River-Sandford-Camping-Area-2",
+        "location": "5 km south-east of Sandford",
+        "latitude": "-37.644574",
+        "longitude": "141.472404",
+        "co-ordinates": "-37.644574' 141.472404",
+        "river": "Wannon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.400514,
+          -36.368834
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Kellalac camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yarriambiack-Creek-Kellalac-Camping-Area-2",
+        "location": "4 km south of Kellalac",
+        "latitude": "-36.368834",
+        "longitude": "142.400514",
+        "co-ordinates": "-36.368834' 142.400514",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.384463,
+          -36.552414
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Murtoa camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yarriambiack-Creek-Murtoa-camping-area-5",
+        "location": "10 km north west of Murtoa",
+        "latitude": "-36.552414",
+        "longitude": "142.384463",
+        "co-ordinates": "-36.552414' 142.384463",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.389647,
+          -36.573687
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Murtoa camping area 6 and 7",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yarriambiack-Creek-Murtoa-Camping-Area-6-and-7",
+        "location": "14 km north west of Murtoa",
+        "latitude": "-36.573687",
+        "longitude": "142.389647",
+        "co-ordinates": "-36.573687' 142.389647",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.838087,
+          -36.283019
+        ]
+      },
+      "properties": {
+        "name": "Broken Creek - Tungamah camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Broken-Creek-Tungamah-Camping-Area-2",
+        "location": "24 km south of Tungamah",
+        "latitude": "-36.283019",
+        "longitude": "145.838087",
+        "co-ordinates": "-36.283019' 145.838087",
+        "river": "Broken Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.935611,
+          -36.570833
+        ]
+      },
+      "properties": {
+        "name": "Bullabul Creek -Bridgewater on Loddon camping area 1, 2 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bullabul-Creek-Bridgewater-on-Loddon-Camping-area-1,-2-and-3",
+        "location": "3.5 km north of Bridgewater on Loddon",
+        "latitude": "-36.570833",
+        "longitude": "143.935611",
+        "co-ordinates": "-36.570833' 143.935611",
+        "river": "Bullabul Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.577788,
+          -36.763609
+        ]
+      },
+      "properties": {
+        "name": "Forest Creek - Axedale camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Forest-Creek-Axedale-Camping-Area-1",
+        "location": "11 km east of Axedale",
+        "latitude": "-36.763609",
+        "longitude": "144.577788",
+        "co-ordinates": "-36.763609' 144.577788",
+        "river": "Forest Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.931139,
+          -37.150222
+        ]
+      },
+      "properties": {
+        "name": "Glenelg River - Balmoral camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Glenelg-river-balmoral-camping-area-3",
+        "location": "14 km north of Balmoral",
+        "latitude": "-37.150222",
+        "longitude": "141.931139",
+        "co-ordinates": "-37.150222' 141.931139",
+        "river": "Glenelg River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.266806,
+          -37.838306
+        ]
+      },
+      "properties": {
+        "name": "Glenelg River - Dartmoor camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/glenelg-river-dartmoor-camping-area-3",
+        "location": "10 km north of Dartmoor",
+        "latitude": "-37.838306",
+        "longitude": "141.266806",
+        "co-ordinates": "-37.838306' 141.266806",
+        "river": "Glenelg River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.284667,
+          -37.927806
+        ]
+      },
+      "properties": {
+        "name": "Glenelg River - Dartmoor camping area 4 and 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/glenelg-river-dartmoor-camping-area-4-and-5",
+        "location": "1 km east of Dartmoor",
+        "latitude": "-37.927806",
+        "longitude": "141.284667",
+        "co-ordinates": "-37.927806' 141.284667",
+        "river": "Glenelg River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.239688,
+          -37.367507
+        ]
+      },
+      "properties": {
+        "name": "Glenelg River - Dergholm camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Glenelg-River-Dergholm-Camping-Area-1",
+        "location": "2.5 km east of Dergholm",
+        "latitude": "-37.367507",
+        "longitude": "141.239688",
+        "co-ordinates": "-37.367507' 141.239688",
+        "river": "Glenelg River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.868289,
+          -36.091626
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Echuca camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Goulburn-River-Echuca-Camping-Area-1",
+        "location": "14 km east of Echuca",
+        "latitude": "-36.091626",
+        "longitude": "144.868289",
+        "co-ordinates": "-36.091626' 144.868289",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.326889,
+          -37.179028
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Kerrisdale camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-kerrisdale-camping-area-1",
+        "location": "20 km from Seymour and Yea",
+        "latitude": "-37.179028",
+        "longitude": "145.326889",
+        "co-ordinates": "-37.179028' 145.326889",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.488083,
+          -37.153583
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Molesworth camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-molesworth-camping-area-1",
+        "location": "Between Moleswoth and Ghin Ghin",
+        "latitude": "-37.153583",
+        "longitude": "145.488083",
+        "co-ordinates": "-37.153583' 145.488083",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.480694,
+          -37.153778
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Molesworth camping area 2a and 2b",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-molesworth-camping-area-2",
+        "location": "Between Moleswoth and Ghin Ghin",
+        "latitude": "-37.153778",
+        "longitude": "145.480694",
+        "co-ordinates": "-37.153778' 145.480694",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.21125,
+          -36.678306
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Murchison camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-murchison-camping-area-1",
+        "location": "7 km south of Murchison",
+        "latitude": "-36.678306",
+        "longitude": "145.21125",
+        "co-ordinates": "-36.678306' 145.21125",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.284806,
+          -36.585083
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Murchison camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-murchison-camping-area-4",
+        "location": "7 km east of Murchison",
+        "latitude": "-36.585083",
+        "longitude": "145.284806",
+        "co-ordinates": "-36.585083' 145.284806",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.216528,
+          -36.643389
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Murchison camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-murchison-camping-area-5",
+        "location": "4 km south of Murchison",
+        "latitude": "-36.643389",
+        "longitude": "145.216528",
+        "co-ordinates": "-36.643389' 145.216528",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.224944,
+          -36.633139
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Murchison camping area 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-murchison-camping-area-6",
+        "location": "2 km south of Murchison",
+        "latitude": "-36.633139",
+        "longitude": "145.224944",
+        "co-ordinates": "-36.633139' 145.224944",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.164639,
+          -37.080306
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Tallarook camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-tallarook-camping-area-1",
+        "location": "7 km south-east of Seymour",
+        "latitude": "-37.080306",
+        "longitude": "145.164639",
+        "co-ordinates": "-37.080306' 145.164639",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.204694,
+          -35.758083
+        ]
+      },
+      "properties": {
+        "name": "Gunbower Creek - Cohuna camping area 2 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Gunbower-Creek-Cohuna-Camping-area-2-and-3",
+        "location": "7.5 km north of Cohuna",
+        "latitude": "-35.758083",
+        "longitude": "144.204694",
+        "co-ordinates": "-35.758083' 144.204694",
+        "river": "Gunbower Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.314045,
+          -35.85621
+        ]
+      },
+      "properties": {
+        "name": "Gunbower Creek - Cohuna camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Gunbower-Creek-Cohuna-Camping-Area-4",
+        "location": "12 km south-east of Cohuna",
+        "latitude": "-35.85621",
+        "longitude": "144.314045",
+        "co-ordinates": "-35.85621' 144.314045",
+        "river": "Gunbower Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.428649,
+          -35.998748
+        ]
+      },
+      "properties": {
+        "name": "Gunbower Creek - Patho camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Gunbower-Creek-Patho-Camping-Area-1",
+        "location": "8 km south-east of Gunbower",
+        "latitude": "-35.998748",
+        "longitude": "144.428649",
+        "co-ordinates": "-35.998748' 144.428649",
+        "river": "Gunbower Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.045444,
+          -36.425444
+        ]
+      },
+      "properties": {
+        "name": "Kiewa River - Gundowring camping area 3, 4 and 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/kiewa-river-gundowring-camping-areas-3,-4-and-5",
+        "location": "30 km south east of Yackandandah",
+        "latitude": "-36.425444",
+        "longitude": "147.045444",
+        "co-ordinates": "-36.425444' 147.045444",
+        "river": "Kiewa River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.032306,
+          -36.3285
+        ]
+      },
+      "properties": {
+        "name": "Kiewa River - Kergunyah camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/kiewa-river-kergunyah-camping-area-1",
+        "location": "300 m east of Kergunyah",
+        "latitude": "-36.3285",
+        "longitude": "147.032306",
+        "co-ordinates": "-36.3285' 147.032306",
+        "river": "Kiewa River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.116917,
+          -36.635444
+        ]
+      },
+      "properties": {
+        "name": "Kiewa River -\u00a0\u00a0Tawonga camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/kiewa-river-tawonga-camping-area-1",
+        "location": "15 km north of Mt Beauty",
+        "latitude": "-36.635444",
+        "longitude": "147.116917",
+        "co-ordinates": "-36.635444' 147.116917",
+        "river": "Kiewa River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.418528,
+          -36.724639
+        ]
+      },
+      "properties": {
+        "name": "King River - Whitfield camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/king-river-whitfield-camping-area-1",
+        "location": "4.5 km north of Whitfield",
+        "latitude": "-36.724639",
+        "longitude": "146.418528",
+        "co-ordinates": "-36.724639' 146.418528",
+        "river": "King River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.479354,
+          -37.236186
+        ]
+      },
+      "properties": {
+        "name": "Livingstone Creek - Omeo camping area 13",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Livingstone-Creek-Omeo-Camping-Area-13",
+        "location": "21 km south-west of Omeo",
+        "latitude": "-37.236186",
+        "longitude": "147.479354",
+        "co-ordinates": "-37.236186' 147.479354",
+        "river": "Livingstone Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.599753,
+          -37.046551
+        ]
+      },
+      "properties": {
+        "name": "Livingstone Creek - Omeo camping area 7",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Livingstone-Creek-Omeo-Camping-Area-7",
+        "location": "6 km north of Omeo",
+        "latitude": "-37.046551",
+        "longitude": "147.599753",
+        "co-ordinates": "-37.046551' 147.599753",
+        "river": "Livingstone Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.842028,
+          -35.989806
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Boort camping area 10",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-10",
+        "location": "23 km north of Boort",
+        "latitude": "-35.989806",
+        "longitude": "143.842028",
+        "co-ordinates": "-35.989806' 143.842028",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.840306,
+          -36.116556
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Boort camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-3",
+        "location": "13 km east of Boort",
+        "latitude": "-36.116556",
+        "longitude": "143.840306",
+        "co-ordinates": "-36.116556' 143.840306",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.862639,
+          -35.934944
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Boort camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-5",
+        "location": "25 km west of Boort",
+        "latitude": "-35.934944",
+        "longitude": "143.862639",
+        "co-ordinates": "-35.934944' 143.862639",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.864111,
+          -35.943889
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Boort camping area 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-6",
+        "location": "25 km west of Boort",
+        "latitude": "-35.943889",
+        "longitude": "143.864111",
+        "co-ordinates": "-35.943889' 143.864111",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.832444,
+          -36.003694
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Boort camping area 7",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-7",
+        "location": "24 km north of Boort",
+        "latitude": "-36.003694",
+        "longitude": "143.832444",
+        "co-ordinates": "-36.003694' 143.832444",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.825889,
+          -36.003389
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Boort camping area 8",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-8",
+        "location": "23 km north of Boort",
+        "latitude": "-36.003389",
+        "longitude": "143.825889",
+        "co-ordinates": "-36.003389' 143.825889",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.951056,
+          -36.590167
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Bridgewater camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-bridgewater-camping-area-2",
+        "location": "1.3 km north of Bridgewater",
+        "latitude": "-36.590167",
+        "longitude": "143.951056",
+        "co-ordinates": "-36.590167' 143.951056",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.926556,
+          -36.66225
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Bridgewater camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-bridgewater-camping-area-3",
+        "location": "7 km south of Bridgewater",
+        "latitude": "-36.66225",
+        "longitude": "143.926556",
+        "co-ordinates": "-36.66225' 143.926556",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.912028,
+          -35.661361
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Kerang camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-kerang-camping-area-2",
+        "location": "24 km south of Kerang",
+        "latitude": "-35.661361",
+        "longitude": "143.912028",
+        "co-ordinates": "-35.661361' 143.912028",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.870583,
+          -35.899861
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Kerang camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-kerang-camping-area-4",
+        "location": "9 km north of Kerang",
+        "latitude": "-35.899861",
+        "longitude": "143.870583",
+        "co-ordinates": "-35.899861' 143.870583",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.870583,
+          -35.899861
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Kerang camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-kerang-camping-area-5",
+        "location": "24 km south of Kerang",
+        "latitude": "-35.899861",
+        "longitude": "143.870583",
+        "co-ordinates": "-35.899861' 143.870583",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.890472,
+          -35.858111
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Kerang camping area 7",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Loddon-River-Kerang-Camping-area-7",
+        "location": "19 km south of Kerang",
+        "latitude": "-35.858111",
+        "longitude": "143.890472",
+        "co-ordinates": "-35.858111' 143.890472",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.904861,
+          -36.825722
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Laanecoorie camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-laanecoorie-camping-area-1",
+        "location": "300 m north east of Laanecoorie",
+        "latitude": "-36.825722",
+        "longitude": "143.904861",
+        "co-ordinates": "-36.825722' 143.904861",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.967111,
+          -36.445583
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Serpentine camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-serpentine-camping-area-1",
+        "location": "4 km south of Serpentine",
+        "latitude": "-36.445583",
+        "longitude": "143.967111",
+        "co-ordinates": "-36.445583' 143.967111",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.842056,
+          -35.989806
+        ]
+      },
+      "properties": {
+        "name": "Loddon River -Boort camping area 9",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-boort-camping-area-9",
+        "location": "23 km north of Boort",
+        "latitude": "-35.989806",
+        "longitude": "143.842056",
+        "co-ordinates": "-35.989806' 143.842056",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.332726,
+          -38.314571
+        ]
+      },
+      "properties": {
+        "name": "Middle Creek - Yinnar camping area 1 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Middle-Creek-Yinnar-camping-area-1-and-3",
+        "location": "2 km north of Yinnar",
+        "latitude": "-38.314571",
+        "longitude": "146.332726",
+        "co-ordinates": "-38.314571' 146.332726",
+        "river": "Middle Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.265556,
+          -36.402194
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River - Tallandoon camping area 1a and 1b",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mitta-mitta-river-tallandoon-camping-area-1",
+        "location": "6.8 km north-east of Tallandoon",
+        "latitude": "-36.402194",
+        "longitude": "147.265556",
+        "co-ordinates": "-36.402194' 147.265556",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.231833,
+          -36.407306
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River - Tallandoon camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mitta-mitta-river-tallandoon-camping-area-3",
+        "location": "4.3 km north-east of Tallandoon",
+        "latitude": "-36.407306",
+        "longitude": "147.231833",
+        "co-ordinates": "-36.407306' 147.231833",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.581917,
+          -35.34918
+        ]
+      },
+      "properties": {
+        "name": "Murray River -\u00a0Swan Hill camping area 6 and 7",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Swan-Hill-Camping-Area-6-and-7",
+        "location": "8 km east of Swan Hill",
+        "latitude": "-35.34918",
+        "longitude": "143.581917",
+        "co-ordinates": "-35.34918' 143.581917",
+        "river": "Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.230616,
+          -36.512113
+        ]
+      },
+      "properties": {
+        "name": "Neilborough Creek -\u00a0Raywood camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Neilborough-Creek-Raywood-Camping-Area-2",
+        "location": "4 km north-west of Raywood",
+        "latitude": "-36.512113",
+        "longitude": "144.230616",
+        "co-ordinates": "-36.512113' 144.230616",
+        "river": "Neilborough Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.759278,
+          -36.595028
+        ]
+      },
+      "properties": {
+        "name": "Ovens River - Ovens camping areas 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/ovens-river-ovens-camping-area-1-and-2",
+        "location": "Between Myrtleford and Ovens",
+        "latitude": "-36.595028",
+        "longitude": "146.759278",
+        "co-ordinates": "-36.595028' 146.759278",
+        "river": "Ovens River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.317833,
+          -36.335389
+        ]
+      },
+      "properties": {
+        "name": "Ovens River - Wangaratta camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/ovens-river-wangaratta-camping-area-1",
+        "location": "North of Wangaratta",
+        "latitude": "-36.335389",
+        "longitude": "146.317833",
+        "co-ordinates": "-36.335389' 146.317833",
+        "river": "Ovens River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.342917,
+          -36.359639
+        ]
+      },
+      "properties": {
+        "name": "Ovens River - Wangaratta camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/ovens-river-wangaratta-camping-area-4",
+        "location": "East of Wangaratta",
+        "latitude": "-36.359639",
+        "longitude": "146.342917",
+        "co-ordinates": "-36.359639' 146.342917",
+        "river": "Ovens River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.345639,
+          -36.35525
+        ]
+      },
+      "properties": {
+        "name": "Ovens River -\u00a0Wangaratta camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/ovens-river-wangaratta-camping-area-2",
+        "location": "Approximately 3 km west of Wangaratta",
+        "latitude": "-36.35525",
+        "longitude": "146.345639",
+        "co-ordinates": "-36.35525' 146.345639",
+        "river": "Ovens River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.3515,
+          -36.366
+        ]
+      },
+      "properties": {
+        "name": "Ovens River -\u00a0Wangaratta camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/ovens-river-wangaratta-camping-area-3",
+        "location": "East of Wangaratta",
+        "latitude": "-36.366",
+        "longitude": "146.3515",
+        "co-ordinates": "-36.366' 146.3515",
+        "river": "Ovens River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.88175,
+          -36.504917
+        ]
+      },
+      "properties": {
+        "name": "Richardson River - Banyena camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Richardson-river-banyena-camping-area-3",
+        "location": "11.5 km north east of Banyena",
+        "latitude": "-36.504917",
+        "longitude": "142.88175",
+        "co-ordinates": "-36.504917' 142.88175",
+        "river": "Richardson River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.806694,
+          -36.761417
+        ]
+      },
+      "properties": {
+        "name": "Richardson River - Marnoo West camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/richardson-river-marnoo-west-camping-area-1",
+        "location": "4.5 km south east of Marnoo West",
+        "latitude": "-36.761417",
+        "longitude": "142.806694",
+        "co-ordinates": "-36.761417' 142.806694",
+        "river": "Richardson River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.833694,
+          -36.534389
+        ]
+      },
+      "properties": {
+        "name": "Richardson River - Rupanyup camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/richardson-river-rupanyup-camping-area-1",
+        "location": "29 km north east of Rupanyup",
+        "latitude": "-36.534389",
+        "longitude": "142.833694",
+        "co-ordinates": "-36.534389' 142.833694",
+        "river": "Richardson River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.743472,
+          -36.73525
+        ]
+      },
+      "properties": {
+        "name": "Richardson River - Rupanyup camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/richardson-river-rupanyup-camping-area-2",
+        "location": "23 km south east of Rupanyup",
+        "latitude": "-36.73525",
+        "longitude": "142.743472",
+        "co-ordinates": "-36.73525' 142.743472",
+        "river": "Richardson River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.935528,
+          -36.240389
+        ]
+      },
+      "properties": {
+        "name": "Serpentine Creek -Fernihurst camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/serpentine-creek-fernihurst-camping-area-1",
+        "location": "20 km north of Serpentine",
+        "latitude": "-36.240389",
+        "longitude": "143.935528",
+        "co-ordinates": "-36.240389' 143.935528",
+        "river": "Serpentine Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.256556,
+          -37.614472
+        ]
+      },
+      "properties": {
+        "name": "Wannon River - Dunkeld camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wannon-river-dunkeld-camping-area-1-and-2",
+        "location": "8.5 km north west of Dunkeld",
+        "latitude": "-37.614472",
+        "longitude": "142.256556",
+        "co-ordinates": "-37.614472' 142.256556",
+        "river": "Wannon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.106417,
+          -37.152444
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Crowlands camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-crowlands-camping-area-5",
+        "location": "Within Crowlands township",
+        "latitude": "-37.152444",
+        "longitude": "143.106417",
+        "co-ordinates": "-37.152444' 143.106417",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.054472,
+          -37.104167
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Crowlands camping area 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wimmera-River-Crowlands-Camping-area-6",
+        "location": "8 km north-west of Crowlands",
+        "latitude": "-37.104167",
+        "longitude": "143.054472",
+        "co-ordinates": "-37.104167' 143.054472",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.508472,
+          -36.812028
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Glenorchy camping area 1, 2 and 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-glenorchy-camping-area-1-2-and-4",
+        "location": "18 km north-west of Glenorchy",
+        "latitude": "-36.812028",
+        "longitude": "142.508472",
+        "co-ordinates": "-36.812028' 142.508472",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.494667,
+          -36.797306
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Glenorchy camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-glenorchy-camping-area-3",
+        "location": "21 km north-west of Glenorchy",
+        "latitude": "-36.797306",
+        "longitude": "142.494667",
+        "co-ordinates": "-36.797306' 142.494667",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.003417,
+          -36.5705
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Horsham camping area 11 and 12",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-horsham-camping-area-11-and-12",
+        "location": "29 km north-west of Horsham",
+        "latitude": "-36.5705",
+        "longitude": "142.003417",
+        "co-ordinates": "-36.5705' 142.003417",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.039111,
+          -36.780861
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Horsham camping area 2, 3 and 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-horsham-camping-area-2-3-4",
+        "location": "18 km south-west of Horsham",
+        "latitude": "-36.780861",
+        "longitude": "142.039111",
+        "co-ordinates": "-36.780861' 142.039111",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.002278,
+          -36.734083
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Horsham camping area 5 and 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-horsham-camping-area-5-and-6",
+        "location": "6.8 km east of Natimuk",
+        "latitude": "-36.734083",
+        "longitude": "142.002278",
+        "co-ordinates": "-36.734083' 142.002278",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.338722,
+          -36.721778
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Longerenong camping area 5, 6 and 7",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-longerenong-camping-area-5-6-and-7",
+        "location": "13.5 km east of Horsham",
+        "latitude": "-36.721778",
+        "longitude": "142.338722",
+        "co-ordinates": "-36.721778' 142.338722",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.381391,
+          -35.775857
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Hopetoun camping area 3, 4 and 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yarriambiack-Creek-Hopetoun-Camping-Area-3,-4-and-5",
+        "location": "9 km south of Hopetoun",
+        "latitude": "-35.775857",
+        "longitude": "142.381391",
+        "co-ordinates": "-35.775857' 142.381391",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.371701,
+          -36.621098
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Jung camping area 1 &2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/yarriambiack-creek-jung-camping-area-1-and-2",
+        "location": "2 km south of Jung",
+        "latitude": "-36.621098",
+        "longitude": "142.371701",
+        "co-ordinates": "-36.621098' 142.371701",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.395173,
+          -36.469194
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Kellalac camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/yarriambiack-creek-kellalac-camping-area-1",
+        "location": "5.5 km south of Kallalac",
+        "latitude": "-36.469194",
+        "longitude": "142.395173",
+        "co-ordinates": "-36.469194' 142.395173",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.394722,
+          -36.513694
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Murtoa camping area 1, 2 &3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/yarriambiack-creek-murtoa-camping-area-1-2-and-3",
+        "location": "37?km north east of Horsham",
+        "latitude": "-36.513694",
+        "longitude": "142.394722",
+        "co-ordinates": "-36.513694' 142.394722",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.156139,
+          -37.080528
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Tallarook camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-tallarook-camping-area-2",
+        "location": "7 km south-east of Seymour",
+        "latitude": "-37.080528",
+        "longitude": "145.156139",
+        "co-ordinates": "-37.080528' 145.156139",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.368972,
+          -37.181861
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Yea camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-yea-camping-area-1",
+        "location": "6 km west of Yea",
+        "latitude": "-37.181861",
+        "longitude": "145.368972",
+        "co-ordinates": "-37.181861' 145.368972",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.389917,
+          -37.181472
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Yea camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-yea-camping-area-2",
+        "location": "5 km west of Yea",
+        "latitude": "-37.181472",
+        "longitude": "145.389917",
+        "co-ordinates": "-37.181472' 145.389917",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.915083,
+          -35.633444
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Kerang camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-kerang-camping-area-1",
+        "location": "18 km north of Kerang",
+        "latitude": "-35.633444",
+        "longitude": "143.915083",
+        "co-ordinates": "-35.633444' 143.915083",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.327778,
+          -36.721278
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Longerenong camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wimmera-River-Longerenong-Camping-Area-3",
+        "location": "12.5?km east of Horsham",
+        "latitude": "-36.721278",
+        "longitude": "142.327778",
+        "co-ordinates": "-36.721278' 142.327778",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.141472,
+          -37.034361
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Seymour camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-seymour-camping-area-1",
+        "location": "1 km south of Seymour",
+        "latitude": "-37.034361",
+        "longitude": "145.141472",
+        "co-ordinates": "-37.034361' 145.141472",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.41825,
+          -36.6975
+        ]
+      },
+      "properties": {
+        "name": "King River - Whitfield camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/king-river-whitfield-camping-area-2",
+        "location": "8 km north of Whitfield",
+        "latitude": "-36.6975",
+        "longitude": "146.41825",
+        "co-ordinates": "-36.6975' 146.41825",
+        "river": "King River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.707972,
+          -37.300111
+        ]
+      },
+      "properties": {
+        "name": "Acheron River - Alexandra camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/acheron-river-alexandra-camping-area-1",
+        "location": "4 km north of Taggerty",
+        "latitude": "-37.300111",
+        "longitude": "145.707972",
+        "co-ordinates": "-37.300111' 145.707972",
+        "river": "Acheron River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.707972,
+          -37.300111
+        ]
+      },
+      "properties": {
+        "name": "Acheron River - Alexandra camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/acheron-river-alexandra-camping-area-2",
+        "location": "4 km north of Taggerty",
+        "latitude": "-37.300111",
+        "longitude": "145.707972",
+        "co-ordinates": "-37.300111' 145.707972",
+        "river": "Acheron River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.341312,
+          -35.462707
+        ]
+      },
+      "properties": {
+        "name": "Acheron River - Granton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Acheron-River-Granton-Camping-Area-1",
+        "location": "6.3 km west of Marysville",
+        "latitude": "-35.4627068",
+        "longitude": "149.3413118",
+        "co-ordinates": "-37.532242' 145.687544",
+        "river": "Acheron River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.402444,
+          -37.215667
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Amphitheatre camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-amphitheatre-camping-area-1",
+        "location": "4 km south of Amphitheatre",
+        "latitude": "-37.215667",
+        "longitude": "143.402444",
+        "co-ordinates": "-37.215667' 143.402444",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.402306,
+          -37.230417
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Amphitheatre camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-amphitheatre-camping-area-2",
+        "location": "6 km south of Amphitheatre",
+        "latitude": "-37.230417",
+        "longitude": "143.402306",
+        "co-ordinates": "-37.230417' 143.402306",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.390944,
+          -37.242389
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Amphitheatre camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-amphitheatre-camping-area-3",
+        "location": "8 km south of Amphitheatre",
+        "latitude": "-37.242389",
+        "longitude": "143.390944",
+        "co-ordinates": "-37.242389' 143.390944",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.379111,
+          -37.250056
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Amphitheatre camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-amphitheatre-camping-area-4",
+        "location": "8 km south of Amphitheatre",
+        "latitude": "-37.250056",
+        "longitude": "143.379111",
+        "co-ordinates": "-37.250056' 143.379111",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.491528,
+          -36.80775
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Bealiba camping area 1 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-bealiba-camping-area-1-and-3",
+        "location": "10.3 km south-west of Bealiba",
+        "latitude": "-36.80775",
+        "longitude": "143.491528",
+        "co-ordinates": "-36.80775' 143.491528",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.509083,
+          -36.848444
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Bealiba camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-bealiba-caming-area-2",
+        "location": "12 km south of Bealiba",
+        "latitude": "-36.848444",
+        "longitude": "143.509083",
+        "co-ordinates": "-36.848444' 143.509083",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.292917,
+          -36.432194
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-1",
+        "location": "20 km south of Charlton",
+        "latitude": "-36.432194",
+        "longitude": "143.292917",
+        "co-ordinates": "-36.432194' 143.292917",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.369833,
+          -36.20275
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 10 and 11",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-10-and-11",
+        "location": "8.6 km north-east of Charlton",
+        "latitude": "-36.20275",
+        "longitude": "143.369833",
+        "co-ordinates": "-36.20275' 143.369833",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.369833,
+          -36.20275
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 12",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-12",
+        "location": "8.6 km north-east of Charlton",
+        "latitude": "-36.20275",
+        "longitude": "143.369833",
+        "co-ordinates": "-36.20275' 143.369833",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.369944,
+          -36.202667
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 15",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-15",
+        "location": "8.6 km north-east of Charlton",
+        "latitude": "-36.202667",
+        "longitude": "143.369944",
+        "co-ordinates": "-36.202667' 143.369944",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.346833,
+          -36.16825
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 18",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Charlton-Camping-Area-18",
+        "location": "12 km north of Charlton",
+        "latitude": "-36.16825",
+        "longitude": "143.346833",
+        "co-ordinates": "-36.16825' 143.346833",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.374078,
+          -36.174872
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 19",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Charlton-Camping-Area-19",
+        "location": "13 km north of Charlton",
+        "latitude": "-36.174872",
+        "longitude": "143.374078",
+        "co-ordinates": "-36.174872' 143.374078",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.287333,
+          -36.414139
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-2",
+        "location": "18 km south-west of Charlton",
+        "latitude": "-36.414139",
+        "longitude": "143.287333",
+        "co-ordinates": "-36.414139' 143.287333",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.346833,
+          -36.16825
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 20, 21 and 22",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-20,-21-and-22",
+        "location": "12.3 km north of Charlton",
+        "latitude": "-36.16825",
+        "longitude": "143.346833",
+        "co-ordinates": "-36.16825' 143.346833",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.323444,
+          -36.283861
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 23",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-23",
+        "location": "4.5 km south-west of Charlton",
+        "latitude": "-36.283861",
+        "longitude": "143.323444",
+        "co-ordinates": "-36.283861' 143.323444",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.314833,
+          -36.295139
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 24 and 25",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-24-and-25",
+        "location": "5.8 km south-west of Charlton",
+        "latitude": "-36.295139",
+        "longitude": "143.314833",
+        "co-ordinates": "-36.295139' 143.314833",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.280806,
+          -36.401667
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-3",
+        "location": "16 km south of Charlton",
+        "latitude": "-36.401667",
+        "longitude": "143.280806",
+        "co-ordinates": "-36.401667' 143.280806",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.280225,
+          -36.386557
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Charlton-Camping-Area-4",
+        "location": "16 km south of Charlton",
+        "latitude": "-36.386557",
+        "longitude": "143.280225",
+        "co-ordinates": "-36.386557' 143.280225",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.358333,
+          -36.256861
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 5 and 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-5-and-6",
+        "location": "1.4 km north of Charlton",
+        "latitude": "-36.256861",
+        "longitude": "143.358333",
+        "co-ordinates": "-36.256861' 143.358333",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.385222,
+          -36.241389
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 7 and 8",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-7-and-8",
+        "location": "6 km north of Charlton",
+        "latitude": "-36.241389",
+        "longitude": "143.385222",
+        "co-ordinates": "-36.241389' 143.385222",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.3665,
+          -36.219889
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Charlton Camping area 9",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-charlton-camping-area-9",
+        "location": "5.3 km north of Wycheproof",
+        "latitude": "-36.219889",
+        "longitude": "143.3665",
+        "co-ordinates": "-36.219889' 143.3665",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.473905,
+          -35.929657
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Quambatook Camping area 12 and 13",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Quambatook-Camping-Area-12-and-13",
+        "location": "10 km south of Quambatook",
+        "latitude": "-35.929657",
+        "longitude": "143.473905",
+        "co-ordinates": "-35.929657' 143.473905",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.496779,
+          -35.918862
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Quambatook Camping area 16, 17, 18 and 19",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Quambatook-Camping-Area-16,-17,-18-and-19",
+        "location": "8 km south of Quambatook",
+        "latitude": "-35.918862",
+        "longitude": "143.496779",
+        "co-ordinates": "-35.918862' 143.496779",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.492973,
+          -35.918322
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Quambatook Camping area 20, 21, 22, 23, 24 and 25",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Quambatook-camping-area-20,-21,-22,-23,-24-and-25",
+        "location": "8 km south of Quambatook",
+        "latitude": "-35.918322",
+        "longitude": "143.492973",
+        "co-ordinates": "-35.918322' 143.492973",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.570944,
+          -35.809556
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Quambatook camping area 3, 4a and 4b",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-quambatook-camping-area-3,-4a-and-4b",
+        "location": "7 km north of Quambatook",
+        "latitude": "-35.809556",
+        "longitude": "143.570944",
+        "co-ordinates": "-35.809556' 143.570944",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.661,
+          -35.752944
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Quambatook camping area 5 and 6",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-quambatook-camping-area-5-and-6",
+        "location": "20 km north-east of Quambatook",
+        "latitude": "-35.752944",
+        "longitude": "143.661",
+        "co-ordinates": "-35.752944' 143.661",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.530528,
+          -35.835361
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Quambatook Camping area 7 and 8",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Quambatook-Camping-Area-7-and-8",
+        "location": "3.7 km north-east of Quambatook",
+        "latitude": "-35.835361",
+        "longitude": "143.530528",
+        "co-ordinates": "-35.835361' 143.530528",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.468378,
+          -35.944831
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Quambatook Camping area 9, 10, 11, 14 and 15",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avoca-River-Quambatook-Camping-Area-9,-10,-11,-14-and-15",
+        "location": "13 km south of Quambatook",
+        "latitude": "-35.944831",
+        "longitude": "143.468378",
+        "co-ordinates": "-35.944831' 143.468378",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.441667,
+          -36.599528
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - St Arnaud camping area 1 and 10",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-st-arnaud-camping-area-1-and-10",
+        "location": "23 km north-east of St Arnaud",
+        "latitude": "-36.599528",
+        "longitude": "143.441667",
+        "co-ordinates": "-36.599528' 143.441667",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.404722,
+          -36.552278
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - St Arnaud camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-st-arnaud-camping-area-2",
+        "location": "15 km east of St Arnaud",
+        "latitude": "-36.552278",
+        "longitude": "143.404722",
+        "co-ordinates": "-36.552278' 143.404722",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.389972,
+          -36.542639
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - St Arnaud camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-st-arnaud-camping-area-3",
+        "location": "17 km north-east of St Arnaud",
+        "latitude": "-36.542639",
+        "longitude": "143.389972",
+        "co-ordinates": "-36.542639' 143.389972",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.380361,
+          -36.539194
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - St Arnaud camping area 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-st-arnaud-camping-area-4",
+        "location": "17 km north-east of St Arnaud",
+        "latitude": "-36.539194",
+        "longitude": "143.380361",
+        "co-ordinates": "-36.539194' 143.380361",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.357278,
+          -36.523833
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - St Arnaud camping area 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-st-arnaud-camping-area-5",
+        "location": "16 km north-east of St Arnaud",
+        "latitude": "-36.523833",
+        "longitude": "143.357278",
+        "co-ordinates": "-36.523833' 143.357278",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.358972,
+          -36.097056
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Wycheproof camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-wycheproof-camping-area-1",
+        "location": "11 km east of Wycheproof",
+        "latitude": "-36.097056",
+        "longitude": "143.358972",
+        "co-ordinates": "-36.097056' 143.358972",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.405778,
+          -36.018472
+        ]
+      },
+      "properties": {
+        "name": "Avoca River - Wycheproof camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avoca-river-wycheproof-camping-area-2",
+        "location": "19 km north-east of Wycheproof",
+        "latitude": "-36.018472",
+        "longitude": "143.405778",
+        "co-ordinates": "-36.018472' 143.405778",
+        "river": "Avoca River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.158972,
+          -36.690222
+        ]
+      },
+      "properties": {
+        "name": "Avon River - Beazleys Bridge camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avon-River-Beazleys-Bridge-Camping-Area-1-and-2",
+        "location": "13 km south-west of St Arnaud",
+        "latitude": "-36.690222",
+        "longitude": "143.158972",
+        "co-ordinates": "-36.690222' 143.158972",
+        "river": "Avon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.125056,
+          -36.643528
+        ]
+      },
+      "properties": {
+        "name": "Avon River - Darcys Bridge camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/avon-river-darcy-bridge-camping-area-1",
+        "location": "15 km west of St Arnaud",
+        "latitude": "-36.643528",
+        "longitude": "143.125056",
+        "co-ordinates": "-36.643528' 143.125056",
+        "river": "Avon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.036365,
+          -36.66788
+        ]
+      },
+      "properties": {
+        "name": "Avon River - Gre Gre camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avon-River-Gre-Gre-Camping-Area-1",
+        "location": "17 km east of Marnoo",
+        "latitude": "-36.66788",
+        "longitude": "143.036365",
+        "co-ordinates": "-36.66788' 143.036365",
+        "river": "Avon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.005055,
+          -36.660655
+        ]
+      },
+      "properties": {
+        "name": "Avon River - Marnoo camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avon-River-Marnoo-Camping-Area-1",
+        "location": "15 km east of Marnoo",
+        "latitude": "-36.660655",
+        "longitude": "143.005055",
+        "co-ordinates": "-36.660655' 143.005055",
+        "river": "Avon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.974661,
+          -36.639823
+        ]
+      },
+      "properties": {
+        "name": "Avon River - Marnoo East camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avon-River-Marnoo-East-Camping-Area-1",
+        "location": "11 km east of Marnoo",
+        "latitude": "-36.639823",
+        "longitude": "142.974661",
+        "co-ordinates": "-36.639823' 142.974661",
+        "river": "Avon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.174266,
+          -38.024841
+        ]
+      },
+      "properties": {
+        "name": "Avon River - Stratford camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Avon-River-Stratford-Camping-Area-1",
+        "location": "15 km south east of Stratford",
+        "latitude": "-38.024841",
+        "longitude": "147.174266",
+        "co-ordinates": "-38.024841' 147.174266",
+        "river": "Avon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.960111,
+          -37.161722
+        ]
+      },
+      "properties": {
+        "name": "Back Creek - Bendoc camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/back-creek-bendoc-camping-area-1-and-2",
+        "location": "7 km east of Bendoc",
+        "latitude": "-37.161722",
+        "longitude": "148.960111",
+        "co-ordinates": "-37.161722' 148.960111",
+        "river": "Back Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.948405,
+          -37.174923
+        ]
+      },
+      "properties": {
+        "name": "Back Creek - Bendoc camping area 3, 4 and 5",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/back-creek-bendoc-camping-area-3,-4-and-5",
+        "location": "7 km east of Bendoc",
+        "latitude": "-37.1749228",
+        "longitude": "148.9484051",
+        "co-ordinates": "-37.1749228' 148.9484051",
+        "river": "Back Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.310106,
+          -37.231154
+        ]
+      },
+      "properties": {
+        "name": "Back Creek - Drummond camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Back-Creek-Drummond-Camping-Area-1",
+        "location": "4 km south-east of Boort",
+        "latitude": "-37.231154",
+        "longitude": "144.310106",
+        "co-ordinates": "-37.231154' 144.310106",
+        "river": "Back Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.178732,
+          -36.516834
+        ]
+      },
+      "properties": {
+        "name": "Back Creek - Penny Flat camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Back-Creek-Penny-Flat-Camping-Area-1",
+        "location": "11 km south-west of Eskdale",
+        "latitude": "-36.516834",
+        "longitude": "147.178732",
+        "co-ordinates": "-36.516834' 147.178732",
+        "river": "Back Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.411861,
+          -35.914893
+        ]
+      },
+      "properties": {
+        "name": "Back Creek - Towaninny camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Back-Creek-Towaninny-Camping-Area-1",
+        "location": "27 km south-east of Towaninny",
+        "latitude": "-35.914893",
+        "longitude": "143.411861",
+        "co-ordinates": "-35.914893' 143.411861",
+        "river": "Back Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.015532,
+          -35.703518
+        ]
+      },
+      "properties": {
+        "name": "Barr Creek - Kerang camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Barr-Creek-Kerang-Camping-Area-1",
+        "location": "11.5 km east of Kerang",
+        "latitude": "-35.703518",
+        "longitude": "144.015532",
+        "co-ordinates": "-35.703518' 144.015532",
+        "river": "Barr Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.963122,
+          -38.221965
+        ]
+      },
+      "properties": {
+        "name": "Bear Creek - Warragul camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bear-creek-warragul-camping-area-2",
+        "location": "5 km east of Warragul South",
+        "latitude": "-38.221965",
+        "longitude": "145.963122",
+        "co-ordinates": "-38.221965' 145.963122",
+        "river": "Bear Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.960583,
+          -37.753528
+        ]
+      },
+      "properties": {
+        "name": "Bemm River - Bemm River camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bemm-river-bemm-river-camping-area-1",
+        "location": "1 km north of Bemm River",
+        "latitude": "-37.753528",
+        "longitude": "148.960583",
+        "co-ordinates": "-37.753528' 148.960583",
+        "river": "Bemm River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.541768,
+          -36.511818
+        ]
+      },
+      "properties": {
+        "name": "Bendigo Creek - Elmore camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bendigo-Creek-Elmore-Camping-Area-1",
+        "location": "7 km west of Elmore",
+        "latitude": "-36.511818",
+        "longitude": "144.541768",
+        "co-ordinates": "-36.511818' 144.541768",
+        "river": "Bendigo Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.50448,
+          -36.561283
+        ]
+      },
+      "properties": {
+        "name": "Bendigo Creek - Goornong camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bendigo-Creek-Goornong-Camping-Area-1",
+        "location": "18 km south of Elmore",
+        "latitude": "-36.561283",
+        "longitude": "144.50448",
+        "co-ordinates": "-36.561283' 144.50448",
+        "river": "Bendigo Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.392001,
+          -36.397084
+        ]
+      },
+      "properties": {
+        "name": "Bendigo Creek - Kamarooka camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bendigo-Creek-Kamarooka-Camping-Area-1",
+        "location": "10 km north of Kamarooka",
+        "latitude": "-36.397084",
+        "longitude": "144.392001",
+        "co-ordinates": "-36.397084' 144.392001",
+        "river": "Bendigo Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.278152,
+          -36.198342
+        ]
+      },
+      "properties": {
+        "name": "Bendigo Creek - Mitiamo camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bendigo-Creek-Mitiamo-Camping-Area-1",
+        "location": "5 km east of Mitiamo",
+        "latitude": "-36.198342",
+        "longitude": "144.278152",
+        "co-ordinates": "-36.198342' 144.278152",
+        "river": "Bendigo Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.91865,
+          -37.125877
+        ]
+      },
+      "properties": {
+        "name": "Bendoc River - Bendoc camping area 1a, 1b and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bendoc-river-bendoc-camping-area-1-and-2",
+        "location": "3.7 km north east of Bendoc",
+        "latitude": "-37.1258766",
+        "longitude": "148.9186499",
+        "co-ordinates": "-37.1258766' 148.9186499",
+        "river": "Bendoc River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.967056,
+          -37.112389
+        ]
+      },
+      "properties": {
+        "name": "Bendoc River - Bendoc camping area 3 and 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bendoc-river-bendoc-camping-area-3-and-4",
+        "location": "9 km east of Bendoc",
+        "latitude": "-37.112389",
+        "longitude": "148.967056",
+        "co-ordinates": "-37.112389' 148.967056",
+        "river": "Bendoc River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.738306,
+          -36.950694
+        ]
+      },
+      "properties": {
+        "name": "Bet Bet Creek - Bet Bet camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bet-bet-creek-bet-bet-camping-area-1",
+        "location": "3.6 km south-west of Bet Bet",
+        "latitude": "-36.950694",
+        "longitude": "143.738306",
+        "co-ordinates": "-36.950694' 143.738306",
+        "river": "Bet Bet Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.463559,
+          -36.89522
+        ]
+      },
+      "properties": {
+        "name": "Big River - Glen Valley camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Big-River-Glen-Valley-Camping-Area-1-and-2",
+        "location": "4 km north of Glen Valley",
+        "latitude": "-36.89522",
+        "longitude": "147.463559",
+        "co-ordinates": "-36.89522' 147.463559",
+        "river": "Big River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.208309,
+          -36.164619
+        ]
+      },
+      "properties": {
+        "name": "Billabong Creek - Peechelba camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Billabong-Creek-Peechelba-East-Camping-Area-1-and-2",
+        "location": "8 km north-west of Peechelba",
+        "latitude": "-36.164619",
+        "longitude": "146.208309",
+        "co-ordinates": "-36.164619' 146.208309",
+        "river": "Billabong Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.382747,
+          -38.324841
+        ]
+      },
+      "properties": {
+        "name": "Billys Creek - Churchill camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Billys-Creek-Churchill-Camping-Area-1",
+        "location": "6 km south west of Churchill",
+        "latitude": "-38.324841",
+        "longitude": "146.382747",
+        "co-ordinates": "-38.324841' 146.382747",
+        "river": "Billys Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.382747,
+          -38.324841
+        ]
+      },
+      "properties": {
+        "name": "Bridge Creek - Benambra camping area 1 &2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bridge-Creek-Benambra-Camping-Area-1-and-2",
+        "location": "16 km north of Benambra",
+        "latitude": "-38.324841",
+        "longitude": "146.382747",
+        "co-ordinates": "-38.324841' 146.382747",
+        "river": "Bridge Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.967056,
+          -37.112389
+        ]
+      },
+      "properties": {
+        "name": "Bridge Creek - Dalyston camping area 1 &2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bridge-Creek-Dalyston-Camping-Area-1-and-2",
+        "location": "1 km south of Dalyston",
+        "latitude": "-37.112389",
+        "longitude": "148.967056",
+        "co-ordinates": "-37.112389' 148.967056",
+        "river": "Bridge Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.409872,
+          -36.110251
+        ]
+      },
+      "properties": {
+        "name": "Broken Creek - Numurkah camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Broken-Creek-Numurkah-Camping-Area-1",
+        "location": "6.5 km south west of Numurkah",
+        "latitude": "-36.110251",
+        "longitude": "145.409872",
+        "co-ordinates": "-36.110251' 145.409872",
+        "river": "Broken Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.649676,
+          -37.598621
+        ]
+      },
+      "properties": {
+        "name": "Bryan Creek - Coleraine camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bryan-Creek-Coleraine-Camping-Area-1",
+        "location": "645 km west of Coleraine",
+        "latitude": "-37.598621",
+        "longitude": "141.649676",
+        "co-ordinates": "-37.598621' 141.649676",
+        "river": "Bryan Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.739557,
+          -36.602955
+        ]
+      },
+      "properties": {
+        "name": "Buffalo Creek - Myrtleford camping area 1, 2 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Buffalo-Creek-Myrtleford-Camping-Area-1,-2-and-3",
+        "location": "8.5 km south of \u00a0Myrtleford",
+        "latitude": "-36.602955",
+        "longitude": "146.739557",
+        "co-ordinates": "-36.602955' 146.739557",
+        "river": "Buffalo Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.86475,
+          -36.6755
+        ]
+      },
+      "properties": {
+        "name": "Bullabul Creek -Arnold camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bullabul-creek-arnold-camping-area-1",
+        "location": "1.8 km north of Arnold",
+        "latitude": "-36.6755",
+        "longitude": "143.86475",
+        "co-ordinates": "-36.6755' 143.86475",
+        "river": "Bullabul Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.86475,
+          -36.6755
+        ]
+      },
+      "properties": {
+        "name": "Bullock Creek -Leichardt camping area 1 &2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/bullock-creek-leichardt-camping-area-1-and-2",
+        "location": "10 km north of Marong",
+        "latitude": "-36.6755",
+        "longitude": "143.86475",
+        "co-ordinates": "-36.6755' 143.86475",
+        "river": "Bullock Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.199102,
+          -36.79105
+        ]
+      },
+      "properties": {
+        "name": "Bungalally Creek -Horsham camping area 1 &2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Bungalally-Creek-Horsham-camping-area-1-and-2",
+        "location": "8 km south of Horsham",
+        "latitude": "-36.79105",
+        "longitude": "142.199102",
+        "co-ordinates": "-36.79105' 142.199102",
+        "river": "Bungalally Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.585492,
+          -36.592458
+        ]
+      },
+      "properties": {
+        "name": "Campaspe River \u00a0- Creek View camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Campaspe-River-Creek-View-camping-area-1",
+        "location": "9 km north east of Goornong",
+        "latitude": "-36.5924578",
+        "longitude": "144.5854924",
+        "co-ordinates": "-36.5924578' 144.5854924",
+        "river": "Campaspe River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.419194,
+          -36.582333
+        ]
+      },
+      "properties": {
+        "name": "Campbell Creek - St Arnaud camping area 2 and 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/campbell-creek-st-arnaud-camping-area-2-and-3",
+        "location": "20 km north-east of St Arnaud",
+        "latitude": "-36.5823333",
+        "longitude": "143.4191944",
+        "co-ordinates": "-36.5823333' 143.4191944",
+        "river": "Campbell Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          149.146102,
+          -37.502062
+        ]
+      },
+      "properties": {
+        "name": "Cann River - Noorinbee camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Cann-River-Noorinbee-Camping-Area-1",
+        "location": "9 km north of Cann River",
+        "latitude": "-37.5020621",
+        "longitude": "149.1461016",
+        "co-ordinates": "-37.5020621' 149.1461016",
+        "river": "Cann River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.234579,
+          -37.5184
+        ]
+      },
+      "properties": {
+        "name": "Castleburn Creek - Dargo camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Castleburn-Creek-Dargo-Camping-Area-1",
+        "location": "15 km south of Dargo",
+        "latitude": "-37.5183997",
+        "longitude": "147.2345792",
+        "co-ordinates": "-37.5183997' 147.2345792",
+        "river": "Castleburn Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.200448,
+          -36.231157
+        ]
+      },
+      "properties": {
+        "name": "Chinaman Creek - Peechelba camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Chinaman-Creek-Peechelba-camping-area-1",
+        "location": "6 km south Peechelba",
+        "latitude": "-36.231157",
+        "longitude": "146.200448",
+        "co-ordinates": "-36.231157' 146.200448",
+        "river": "Chinaman Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.935599,
+          -36.830925
+        ]
+      },
+      "properties": {
+        "name": "Compton Creek - Nagambie camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Compton-Creek-Nagambie-Camping-Area-1",
+        "location": "24 km west of Nagambie",
+        "latitude": "-36.830925",
+        "longitude": "144.935599",
+        "co-ordinates": "-36.830925' 144.935599",
+        "river": "Compton Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.82292,
+          -37.015013
+        ]
+      },
+      "properties": {
+        "name": "Concongella Creek - Stawell camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Concongella-Creek-Stawell-camping-area-1",
+        "location": "7 km north-east of Stawell",
+        "latitude": "-37.015013",
+        "longitude": "142.82292",
+        "co-ordinates": "-37.015013' 142.82292",
+        "river": "Concongella Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.820961,
+          -36.316841
+        ]
+      },
+      "properties": {
+        "name": "Corryong Creek - Nariel camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Corryong-Creek-Nariel-Creek-Camping-Area-1-and-2",
+        "location": "18 km south Colac Colac",
+        "latitude": "-36.3168412",
+        "longitude": "147.8209614",
+        "co-ordinates": "-36.3168412' 147.8209614",
+        "river": "Corryong Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.318716,
+          -36.085455
+        ]
+      },
+      "properties": {
+        "name": "Cottontree Creek - Tallangatta camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Cottontree-Creek-Tallangatta-Camping-Area-1",
+        "location": "33 km north-east of Tallangatta",
+        "latitude": "-36.085455",
+        "longitude": "147.318716",
+        "co-ordinates": "-36.085455' 147.318716",
+        "river": "Cottontree Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.473222,
+          -37.978556
+        ]
+      },
+      "properties": {
+        "name": "Crawford River - Lyons camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/crawford-river-lyons-camping-area-1",
+        "location": "9 km south of Hotspur",
+        "latitude": "-37.978556",
+        "longitude": "141.473222",
+        "co-ordinates": "-37.978556' 141.473222",
+        "river": "Crawford River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.345466,
+          -36.713572
+        ]
+      },
+      "properties": {
+        "name": "Creightons Creek - Molka camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Creightons-Creek-Molka-Camping-Area-1",
+        "location": "12 km south-west of Molka",
+        "latitude": "-36.713572",
+        "longitude": "145.345466",
+        "co-ordinates": "-36.713572' 145.345466",
+        "river": "Creightons Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.064,
+          -37.336609
+        ]
+      },
+      "properties": {
+        "name": "Crooked River - Howittville camping area 1, 2, 3 &4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Crooked-River-Howittville-1,-2,-3-and-4",
+        "location": "44 km north-west of Dargp",
+        "latitude": "-37.336609",
+        "longitude": "147.064",
+        "co-ordinates": "-37.336609' 147.064",
+        "river": "Crooked River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.645736,
+          -36.247214
+        ]
+      },
+      "properties": {
+        "name": "Cudgewa Creek - Beetoomba camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Cudgewa-Creek-Beetoomba-Camping-Area-1",
+        "location": "4 km north of Lucyvale",
+        "latitude": "-36.247214",
+        "longitude": "147.645736",
+        "co-ordinates": "-36.247214' 147.645736",
+        "river": "Cudgewa Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.645736,
+          -36.247214
+        ]
+      },
+      "properties": {
+        "name": "Daisy Hill Creek - Amherst camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Daisy-Hill-Creek-Amherst-Camping-Area-1",
+        "location": "500 m south of Amherst",
+        "latitude": "-36.247214",
+        "longitude": "147.645736",
+        "co-ordinates": "-36.247214' 147.645736",
+        "river": "Daisy Hill Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.630533,
+          -36.805399
+        ]
+      },
+      "properties": {
+        "name": "Dandongadale River - Dandongadale camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Dandongadale-River-Dandongadale-Camping-Area-1",
+        "location": "13 km north west of Dandongadale",
+        "latitude": "-36.805399",
+        "longitude": "146.630533",
+        "co-ordinates": "-36.805399' 146.630533",
+        "river": "Dandongadale River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.276028,
+          -37.500917
+        ]
+      },
+      "properties": {
+        "name": "Dargo River - Dargo camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/dargo-river-dargo-camping-area-1-and-2",
+        "location": "8 km south of Dargo",
+        "latitude": "-37.500917",
+        "longitude": "147.276028",
+        "co-ordinates": "-37.500917' 147.276028",
+        "river": "Dargo River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.400528,
+          -35.400801
+        ]
+      },
+      "properties": {
+        "name": "Dering Channel - Patchwollock camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/dering-channel-camping-area-1",
+        "location": "3 km west of Speed",
+        "latitude": "-35.400801",
+        "longitude": "142.400528",
+        "co-ordinates": "-35.400801' 142.400528",
+        "river": "Dering Channel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.719275,
+          -36.467428
+        ]
+      },
+      "properties": {
+        "name": "Dunkmunkle Creek - Dunkmunkle East camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Dunmunkle-Creek-Dunmunkle-East-Camping-Area-1",
+        "location": "12 km east of Minyip",
+        "latitude": "-36.467428",
+        "longitude": "142.719275",
+        "co-ordinates": "-36.467428' 142.719275",
+        "river": "Dunkmunkle Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.230405,
+          -36.544527
+        ]
+      },
+      "properties": {
+        "name": "Elysian Flat Creek \u00a0and Neilborough Creek - Raywood camping areas 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Elysian-Flat-Creekand-Neilborough-Creek-Raywood-camping-areas-1",
+        "location": "3 km south-east of Raywood",
+        "latitude": "-36.544527",
+        "longitude": "144.230405",
+        "co-ordinates": "-36.544527' 144.230405",
+        "river": "Elysian Flat Creek \u00a0and Neilborough Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.577788,
+          -36.763609
+        ]
+      },
+      "properties": {
+        "name": "Forest Creek - Axedale camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Forest-Creek-Axedale-Camping-Area-1",
+        "location": "8 km north east of Axedale",
+        "latitude": "-36.763609",
+        "longitude": "144.577788",
+        "co-ordinates": "-36.763609' 144.577788",
+        "river": "Forest Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.840915,
+          -37.251726
+        ]
+      },
+      "properties": {
+        "name": "Glenelg River - Balmoral camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Glenelg-River-Balmoral-Camping-Area-1",
+        "location": "600 m south of Balmoral",
+        "latitude": "-37.251726",
+        "longitude": "141.840915",
+        "co-ordinates": "-37.251726' 141.840915",
+        "river": "Glenelg River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.671222,
+          -37.190528
+        ]
+      },
+      "properties": {
+        "name": "Goulburn River - Alexandra camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/goulburn-river-alexandra-camping-area-1",
+        "location": "5 km west from township of Alexandra",
+        "latitude": "-37.190528",
+        "longitude": "145.671222",
+        "co-ordinates": "-37.190528' 145.671222",
+        "river": "Goulburn River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.83275,
+          -37.708889
+        ]
+      },
+      "properties": {
+        "name": "Grange Burn - Wannon camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/grange-burn-wannon-camping-area-1",
+        "location": "4.5 km south of Wannon",
+        "latitude": "-37.708889",
+        "longitude": "141.83275",
+        "co-ordinates": "-37.708889' 141.83275",
+        "river": "Grange Burn"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.466223,
+          -37.192474
+        ]
+      },
+      "properties": {
+        "name": "Greenhill Creek - Lexton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Greenhill-Creek-Lexton-Camping-Area-1",
+        "location": "13 km north of Lexton",
+        "latitude": "-37.192474",
+        "longitude": "143.466223",
+        "co-ordinates": "-37.192474' 143.466223",
+        "river": "Greenhill Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.693666,
+          -38.455922
+        ]
+      },
+      "properties": {
+        "name": "Greig Creek Streamside Reserve camping area",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Greig-Creek-Streamside-Reserve-Camping-Area",
+        "location": "3 km north west of Won Wron",
+        "latitude": "-38.455922",
+        "longitude": "146.693666",
+        "co-ordinates": "-38.455922' 146.693666",
+        "river": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.313862,
+          -35.863746
+        ]
+      },
+      "properties": {
+        "name": "Gunbower Creek - Cohuna camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Gunbower-Creek-Cohuna-Camping-Area-1",
+        "location": "15 km north of Gunbower",
+        "latitude": "-35.863746",
+        "longitude": "144.313862",
+        "co-ordinates": "-35.863746' 144.313862",
+        "river": "Gunbower Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.888354,
+          -36.583263
+        ]
+      },
+      "properties": {
+        "name": "Happy Valley Creek - Ovens camping area 3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Happy-Valley-Creek-Ovens-Camping-Area-3",
+        "location": "16 km north east of Ovens",
+        "latitude": "-36.583263",
+        "longitude": "146.888354",
+        "co-ordinates": "-36.583263' 146.888354",
+        "river": "Happy Valley Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.046572,
+          -36.426573
+        ]
+      },
+      "properties": {
+        "name": "Kiewa River - Boyds Bridge camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/kiewa-river-boyds-bridge-camping-area-1",
+        "location": "2 km west of Gundowring",
+        "latitude": "-36.426573",
+        "longitude": "147.046572",
+        "co-ordinates": "-36.426573' 147.046572",
+        "river": "Kiewa River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.382333,
+          -36.859139
+        ]
+      },
+      "properties": {
+        "name": "King River - Cheshunt camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/king-river-cheshunt-camping-area-1",
+        "location": "6 km north of Cheshunt South",
+        "latitude": "-36.859139",
+        "longitude": "146.382333",
+        "co-ordinates": "-36.859139' 146.382333",
+        "river": "King River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.865556,
+          -36.243626
+        ]
+      },
+      "properties": {
+        "name": "Kinypanial Creek - Boort camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Kinypanial-Creek-Boort-Camping-Area-1",
+        "location": "23 km south-east of Boort",
+        "latitude": "-36.243626",
+        "longitude": "143.865556",
+        "co-ordinates": "-36.243626' 143.865556",
+        "river": "Kinypanial Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.791748,
+          -38.141269
+        ]
+      },
+      "properties": {
+        "name": "La Trobe River - Rosedale camping area 1, 2, 3 and 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/La-Trobe-River-Rosedale-Camping-Area-1,-2,-3-and-4",
+        "location": "1.2 km north of Rosedale",
+        "latitude": "-38.141269",
+        "longitude": "146.791748",
+        "co-ordinates": "-38.141269' 146.791748",
+        "river": "La Trobe River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.716048,
+          -35.395804
+        ]
+      },
+      "properties": {
+        "name": "Little Murray River - Pental Island camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Little-Murray-River-Pental-Island-Camping-Area-1-and-2",
+        "location": "21 km south east of Swan Hill",
+        "latitude": "-35.395804",
+        "longitude": "143.716048",
+        "co-ordinates": "-35.395804' 143.716048",
+        "river": "Little Murray River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.855244,
+          -37.275694
+        ]
+      },
+      "properties": {
+        "name": "Little River East Branch - Ensay camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Little-River-East-Branch-Ensay-Camping-Area-1",
+        "location": "14 km north of Ensay",
+        "latitude": "-37.275694",
+        "longitude": "147.855244",
+        "co-ordinates": "-37.275694' 147.855244",
+        "river": "Little River East Branch"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.416785,
+          -35.850987
+        ]
+      },
+      "properties": {
+        "name": "Little Yarriambiack Creek - Rosebery camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Little-Yarriambiack-Creek-Rosebery-Camping-Area-1",
+        "location": "3 km south of Rosebery",
+        "latitude": "-35.850987",
+        "longitude": "142.416785",
+        "co-ordinates": "-35.850987' 142.416785",
+        "river": "Little Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.475071,
+          -37.264246
+        ]
+      },
+      "properties": {
+        "name": "Livingstone Creek - Omeo camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Livingstone-Creek-Omeo-Camping-Area-1",
+        "location": "25 km south-west of Omeo",
+        "latitude": "-37.264246",
+        "longitude": "147.475071",
+        "co-ordinates": "-37.264246' 147.475071",
+        "river": "Livingstone Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.901,
+          -36.939056
+        ]
+      },
+      "properties": {
+        "name": "Loddon River - Baringhup camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/loddon-river-baringhup-camping-area-1",
+        "location": "8 km north-west of Baringhup",
+        "latitude": "-36.939056",
+        "longitude": "143.901",
+        "co-ordinates": "-36.939056' 143.901",
+        "river": "Loddon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.683057,
+          -37.789973
+        ]
+      },
+      "properties": {
+        "name": "Macalister River - Heyfield camping area 1, 2 &3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Macalister-River-Heyfield-Camping-Area-1,-2-and-3",
+        "location": "28 km north of Heyfield",
+        "latitude": "-37.789973",
+        "longitude": "146.683057",
+        "co-ordinates": "-37.789973' 146.683057",
+        "river": "Macalister River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.329841,
+          -37.036898
+        ]
+      },
+      "properties": {
+        "name": "Mackenzie River - Horsham camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Mackenzie-River-Horsham-Camping-Area-1",
+        "location": "40 km south of Horsham",
+        "latitude": "-37.036898",
+        "longitude": "142.329841",
+        "co-ordinates": "-37.036898' 142.329841",
+        "river": "Mackenzie River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.339143,
+          -37.033249
+        ]
+      },
+      "properties": {
+        "name": "Mackenzie River - Wartook camping area 1, 2, 3 and 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mackenzie-river-wartook-camping-area-1-2-3-and-4",
+        "location": "40 km south of Horsham",
+        "latitude": "-37.033249",
+        "longitude": "142.339143",
+        "co-ordinates": "-37.033249' 142.339143",
+        "river": "Mackenzie River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.963615,
+          -37.880993
+        ]
+      },
+      "properties": {
+        "name": "Main Northern Channel - Maffra camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Main-Northern-Channel-Maffra-Camping-Area-1",
+        "location": "12 km north of Maffra",
+        "latitude": "-37.880993",
+        "longitude": "146.963615",
+        "co-ordinates": "-37.880993' 146.963615",
+        "river": "Main Northern Channel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.464224,
+          -36.628125
+        ]
+      },
+      "properties": {
+        "name": "Marma Lake Channel - Murtoa camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Marma-Lake-Channel-Murtoa-Camping-Area-1",
+        "location": "2 km south of Murtoa",
+        "latitude": "-36.628125",
+        "longitude": "142.464224",
+        "co-ordinates": "-36.628125' 142.464224",
+        "river": "Marma Lake Channel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.484603,
+          -36.646724
+        ]
+      },
+      "properties": {
+        "name": "Meadow Creek - Moyhu camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Meadow-Creek-Moyhu-Camping-Area-1",
+        "location": "15 km south east of Moyhu",
+        "latitude": "-36.646724",
+        "longitude": "146.484603",
+        "co-ordinates": "-36.646724' 146.484603",
+        "river": "Meadow Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.338697,
+          -37.024745
+        ]
+      },
+      "properties": {
+        "name": "Middle Creek - Moonambel camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Middle-Creek-Moonambel-Camping-Area-1",
+        "location": "11 km south-east of Moonambel",
+        "latitude": "-37.024745",
+        "longitude": "143.338697",
+        "co-ordinates": "-37.024745' 143.338697",
+        "river": "Middle Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.504,
+          -37.803762
+        ]
+      },
+      "properties": {
+        "name": "Mitchell River - Lindenow camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Mitchell-River-Lindenow-Camping-Area-1",
+        "location": "5 km east of Lindenow",
+        "latitude": "-37.803762",
+        "longitude": "147.504",
+        "co-ordinates": "-37.803762' 147.504",
+        "river": "Mitchell River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.266111,
+          -36.453667
+        ]
+      },
+      "properties": {
+        "name": "Mitta Mitta River - Eskdale camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mitta-mitta-river-eskdale-camping-area-2",
+        "location": "1.5 km north of Eskdale",
+        "latitude": "-36.453667",
+        "longitude": "147.266111",
+        "co-ordinates": "-36.453667' 147.266111",
+        "river": "Mitta Mitta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.994792,
+          -36.724373
+        ]
+      },
+      "properties": {
+        "name": "Moonee Creek - Benalla camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Moonee-Creek-Benalla-Camping-Area-1",
+        "location": "22 km south of Benalla",
+        "latitude": "-36.724373",
+        "longitude": "145.994792",
+        "co-ordinates": "-36.724373' 145.994792",
+        "river": "Moonee Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.304861,
+          -38.334278
+        ]
+      },
+      "properties": {
+        "name": "Morwell River -\u00a0Yinnar camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/morwell-river-yinnar-camping-area-1",
+        "location": "2.5 km west of Yinnar",
+        "latitude": "-38.334278",
+        "longitude": "146.304861",
+        "co-ordinates": "-38.334278' 146.304861",
+        "river": "Morwell River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.208046,
+          -37.112822
+        ]
+      },
+      "properties": {
+        "name": "Mosquito Creek -\u00a0 Durong camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Mosquito-Creek-Durong-Camping-Area-1",
+        "location": "17 km south-west of Edenhope",
+        "latitude": "-37.112822",
+        "longitude": "141.208046",
+        "co-ordinates": "-37.112822' 141.208046",
+        "river": "Mosquito Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.308093,
+          -36.030674
+        ]
+      },
+      "properties": {
+        "name": "Mount Hope Creek -\u00a0Gunbower camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Mount-Hope-Creek-Gunbower-Camping-Area-1",
+        "location": "27 km south-west of Gunbower",
+        "latitude": "-36.030674",
+        "longitude": "144.308093",
+        "co-ordinates": "-36.030674' 144.308093",
+        "river": "Mount Hope Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.458583,
+          -36.811583
+        ]
+      },
+      "properties": {
+        "name": "Mount William Creek -\u00a0Glenorchy camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/mount-william-creek-glenorchy-camping-area-1-and-2",
+        "location": "22.5 km north west of Glenorchy",
+        "latitude": "-36.811583",
+        "longitude": "142.458583",
+        "co-ordinates": "-36.811583' 142.458583",
+        "river": "Mount William Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.532992,
+          -35.233657
+        ]
+      },
+      "properties": {
+        "name": "Murray River Anna Branch -\u00a0Tyntynder camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Murray-River-Anna-Branch-Tyntynder-Camping-Area-1",
+        "location": "2 km north of Tyntynder",
+        "latitude": "-35.233657",
+        "longitude": "143.532992",
+        "co-ordinates": "-35.233657' 143.532992",
+        "river": "Murray River Anna Branch"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.8335,
+          -36.389828
+        ]
+      },
+      "properties": {
+        "name": "Nariel Creek -\u00a0Nariel Creek camping area 1, 2, 3 and 4",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Nariel-Creek-Nariel-Creek-Camping-Area-1,-2,-3-and-4",
+        "location": "28 km south of Colac Colac",
+        "latitude": "-36.389828",
+        "longitude": "147.8335",
+        "co-ordinates": "-36.389828' 147.8335",
+        "river": "Nariel Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.230405,
+          -36.544527
+        ]
+      },
+      "properties": {
+        "name": "Neilborough Creek and Elysian Flat Creek-\u00a0Raywood camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Elysian-Flat-Creekand-Neilborough-Creek-Raywood-camping-areas-1",
+        "location": "3 km south-east of Raywood",
+        "latitude": "-36.544527",
+        "longitude": "144.230405",
+        "co-ordinates": "-36.544527' 144.230405",
+        "river": "Neilborough Creek and Elysian Flat Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.132211,
+          -36.811468
+        ]
+      },
+      "properties": {
+        "name": "Norton Creek - Lower Norton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Norton-Creek-Lower-Norton-camping-area-1",
+        "location": "12 km south of Horsham",
+        "latitude": "-36.811468",
+        "longitude": "142.132211",
+        "co-ordinates": "-36.811468' 142.132211",
+        "river": "Norton Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.522278,
+          -36.440639
+        ]
+      },
+      "properties": {
+        "name": "Ovens River - Everton camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/ovens-river-everton-camping-area-1",
+        "location": "2 km south of Everton",
+        "latitude": "-36.440639",
+        "longitude": "146.522278",
+        "co-ordinates": "-36.440639' 146.522278",
+        "river": "Ovens River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.264564,
+          -37.838026
+        ]
+      },
+      "properties": {
+        "name": "Perry River - Fernbank camping area 1, 2 &3",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Perry-River-Fernbank-camping-Area-1,-2-and-3",
+        "location": "6 km north west of Fernbank",
+        "latitude": "-37.838026",
+        "longitude": "147.264564",
+        "co-ordinates": "-37.838026' 147.264564",
+        "river": "Perry River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.722446,
+          -36.288019
+        ]
+      },
+      "properties": {
+        "name": "Reedy Creek - Eldorado camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Reedy-Creek-Eldorado-Camping-Area-1",
+        "location": "25 km east of Eldorado",
+        "latitude": "-36.288019",
+        "longitude": "146.722446",
+        "co-ordinates": "-36.288019' 146.722446",
+        "river": "Reedy Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.825,
+          -36.570611
+        ]
+      },
+      "properties": {
+        "name": "Richardson River - Banyena camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/richardson-river-banyena-camping-area-1",
+        "location": "Within the Banyena township",
+        "latitude": "-36.570611",
+        "longitude": "142.825",
+        "co-ordinates": "-36.570611' 142.825",
+        "river": "Richardson River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.602832,
+          -36.600848
+        ]
+      },
+      "properties": {
+        "name": "Riggs Creek - Violet Town camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Riggs-Creek-Violet-Town-camping-area-1",
+        "location": "11 km west of Violet Town",
+        "latitude": "-36.600848",
+        "longitude": "145.602832",
+        "co-ordinates": "-36.600848' 145.602832",
+        "river": "Riggs Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.239755,
+          -36.877754
+        ]
+      },
+      "properties": {
+        "name": "Rocklands Channel - Wonwondah East camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Rocklands-Channel-Wonwondah-East-Camping-Area-1",
+        "location": "At the Wonwondah Recreation Reserve",
+        "latitude": "-36.877754",
+        "longitude": "142.239755",
+        "co-ordinates": "-36.877754' 142.239755",
+        "river": "Rocklands Channel"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.514034,
+          -36.172824
+        ]
+      },
+      "properties": {
+        "name": "Rocky Waterholes Creek - Chiltern camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Rocky-Waterholes-Creek-Chiltern-Camping-Area-1",
+        "location": "11 km west of Chiltern",
+        "latitude": "-36.172824",
+        "longitude": "146.514034",
+        "co-ordinates": "-36.172824' 146.514034",
+        "river": "Rocky Waterholes Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.797889,
+          -37.266972
+        ]
+      },
+      "properties": {
+        "name": "Rubicon River \u00a0\u00a0- Thornton camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/rubicon-river-thornton-camping-area-1",
+        "location": "2 km south of Thornton",
+        "latitude": "-37.266972",
+        "longitude": "145.797889",
+        "co-ordinates": "-37.266972' 145.797889",
+        "river": "Rubicon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.915978,
+          -37.136079
+        ]
+      },
+      "properties": {
+        "name": "Salt Creek - Great Western Camping Area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/salt-creek-great-western-camping-area-1",
+        "location": "6 km north-east of Great Western",
+        "latitude": "-37.136079",
+        "longitude": "142.915978",
+        "co-ordinates": "-37.136079' 142.915978",
+        "river": "Salt Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.223657,
+          -36.873022
+        ]
+      },
+      "properties": {
+        "name": "Sandy Creek -Navarre camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Sandy-Creek-Navarre-Camping-Area-1",
+        "location": "18 km north-east of Navarre",
+        "latitude": "-36.873022",
+        "longitude": "143.223657",
+        "co-ordinates": "-36.873022' 143.223657",
+        "river": "Sandy Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.914778,
+          -36.124333
+        ]
+      },
+      "properties": {
+        "name": "Serpentine Creek -Durham Ox camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/serpentine-creek-durham-ox-camping-area-1",
+        "location": "Within Durham Ox",
+        "latitude": "-36.124333",
+        "longitude": "143.914778",
+        "co-ordinates": "-36.124333' 143.914778",
+        "river": "Serpentine Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.474871,
+          -36.627273
+        ]
+      },
+      "properties": {
+        "name": "Seven Creeks - Euroa camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Seven-Creeks-Euroa-Camping-Area-1",
+        "location": "17 km north of Euroa",
+        "latitude": "-36.627273",
+        "longitude": "145.474871",
+        "co-ordinates": "-36.627273' 145.474871",
+        "river": "Seven Creeks"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.882201,
+          -36.96153
+        ]
+      },
+      "properties": {
+        "name": "Seven Mile Creek - Stawell camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Seven-Mile-Creek-Stawell-Camping-Area-1",
+        "location": "16 km north-east of Stawell",
+        "latitude": "-36.96153",
+        "longitude": "142.882201",
+        "co-ordinates": "-36.96153' 142.882201",
+        "river": "Seven Mile Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.102434,
+          -37.051632
+        ]
+      },
+      "properties": {
+        "name": "Shays Creek - Landsborough camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Shays-Creek-Landsborough-Camping-Area-1",
+        "location": "7 km south of Landsborough",
+        "latitude": "-37.051632",
+        "longitude": "143.102434",
+        "co-ordinates": "-37.051632' 143.102434",
+        "river": "Shays Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.164468,
+          -36.089534
+        ]
+      },
+      "properties": {
+        "name": "Sheepwash Creek - Nathalia camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Sheepwash-Creek-Nathalia-Camping-Area-1-and-2",
+        "location": "9 km south-west of Nathalia",
+        "latitude": "-36.089534",
+        "longitude": "145.164468",
+        "co-ordinates": "-36.089534' 145.164468",
+        "river": "Sheepwash Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.212713,
+          -36.123729
+        ]
+      },
+      "properties": {
+        "name": "Skeleton Creek - Kotupna camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Skeleton-Creek-Kotupna-Camping-Area-1",
+        "location": "9 km east of Kotupna",
+        "latitude": "-36.123729",
+        "longitude": "145.212713",
+        "co-ordinates": "-36.123729' 145.212713",
+        "river": "Skeleton Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.171629,
+          -36.109768
+        ]
+      },
+      "properties": {
+        "name": "Skeleton Creek - Nathalia camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Skeleton-Creek-Nathalia-Camping-Area-1",
+        "location": "10 km south-west of Nathalia",
+        "latitude": "-36.109768",
+        "longitude": "145.171629",
+        "co-ordinates": "-36.109768' 145.171629",
+        "river": "Skeleton Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.392035,
+          -37.687045
+        ]
+      },
+      "properties": {
+        "name": "Snowy River - Orbost camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Snowy-River-Orbost-Camping-Area-1",
+        "location": "8 km west of Orbost",
+        "latitude": "-37.687045",
+        "longitude": "148.392035",
+        "co-ordinates": "-37.687045' 148.392035",
+        "river": "Snowy River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.701297,
+          -36.567125
+        ]
+      },
+      "properties": {
+        "name": "Stony Creek - Violet Town camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Stony-Creek-Violet-Town-Camping-Area-1",
+        "location": "9 km north of Violet Town",
+        "latitude": "-36.567125",
+        "longitude": "145.701297",
+        "co-ordinates": "-36.567125' 145.701297",
+        "river": "Stony Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.53381,
+          -37.001063
+        ]
+      },
+      "properties": {
+        "name": "Stony Creek &Emu Waterholes Creek - Ruffy camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Stony-Creek-and-Emu-Waterhole-Creek-Ruffy-Camping-Area-2",
+        "location": "9 km south-east of Ruffy",
+        "latitude": "-37.001063",
+        "longitude": "145.53381",
+        "co-ordinates": "-37.001063' 145.53381",
+        "river": "Stony Creek &Emu Waterholes Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.646192,
+          -37.248563
+        ]
+      },
+      "properties": {
+        "name": "Swifts Creek - Swifts Creek camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Swifts-Creek-Swifts-Creek-Camping-Area-1",
+        "location": "8 km west of Swifts Creek",
+        "latitude": "-37.248563",
+        "longitude": "147.646192",
+        "co-ordinates": "-37.248563' 147.646192",
+        "river": "Swifts Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          148.316465,
+          -37.519638
+        ]
+      },
+      "properties": {
+        "name": "Tambo River - Ensay camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Tambo-River-Ensay-Camping-Area-1-and-2",
+        "location": "5 km south of Ensay",
+        "latitude": "-37.5196375",
+        "longitude": "148.3164653",
+        "co-ordinates": "-37.5196375' 148.3164653",
+        "river": "Tambo River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.995417,
+          -38.579582
+        ]
+      },
+      "properties": {
+        "name": "Tarwin River - Meeniyan camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Tarwin-River-Meeniyan-Camping-Area-1-and-2",
+        "location": "2 km west of Meeniyan",
+        "latitude": "-38.579582",
+        "longitude": "145.995417",
+        "co-ordinates": "-38.579582' 145.995417",
+        "river": "Tarwin River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.049503,
+          -38.111057
+        ]
+      },
+      "properties": {
+        "name": "Thomson River - Sale camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Thomson-River-Sale-Camping-Area-1",
+        "location": "2 km west of Sale",
+        "latitude": "-38.111057",
+        "longitude": "147.049503",
+        "co-ordinates": "-38.111057' 147.049503",
+        "river": "Thomson River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.542333,
+          -38.269639
+        ]
+      },
+      "properties": {
+        "name": "Traralgon Creek -Traralgon camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/traralgon-creek-traralgon-creek-camping-area-2",
+        "location": "6 km south of Traralgon",
+        "latitude": "-38.269639",
+        "longitude": "146.542333",
+        "co-ordinates": "-38.269639' 146.542333",
+        "river": "Traralgon Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.421528,
+          -37.602306
+        ]
+      },
+      "properties": {
+        "name": "Wannon River - Casterton camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wannon-river-casterton-camping-area-1-and-2",
+        "location": "3 km southeast of Casterton",
+        "latitude": "-37.602306",
+        "longitude": "141.421528",
+        "co-ordinates": "-37.602306' 141.421528",
+        "river": "Wannon River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.480124,
+          -36.70978
+        ]
+      },
+      "properties": {
+        "name": "Watchbox Creek - Molyullah camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Watchbox-Creek-Molyullah-Camping-Area-1",
+        "location": "4 km south of Molyullah",
+        "latitude": "-36.7097795",
+        "longitude": "146.4801244",
+        "co-ordinates": "-36.7097795' 146.4801244",
+        "river": "Watchbox Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.418021,
+          -36.506106
+        ]
+      },
+      "properties": {
+        "name": "Watchingorra Creek - Mitta Mitta camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Watchingorra-Creek-Mitta-Mitta-Camping-Area-1",
+        "location": "9 km north-east of Mitta Mitta",
+        "latitude": "-36.506106",
+        "longitude": "147.418021",
+        "co-ordinates": "-36.506106' 147.418021",
+        "river": "Watchingorra Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.15381,
+          -36.569619
+        ]
+      },
+      "properties": {
+        "name": "Wattle Creek - Lurg camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wattle-Creek-Lurg-Camping-Area-1",
+        "location": "3 km north-east of Lurg",
+        "latitude": "-36.569619",
+        "longitude": "146.15381",
+        "co-ordinates": "-36.569619' 146.15381",
+        "river": "Wattle Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.026333,
+          -37.952
+        ]
+      },
+      "properties": {
+        "name": "Weerangourt Creek- Byaduk camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/weerangourt-creek-byaduk-camping-area-1",
+        "location": "6 km east of Byaduk",
+        "latitude": "-37.952",
+        "longitude": "142.026333",
+        "co-ordinates": "-37.952' 142.026333",
+        "river": "Weerangourt Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          146.325365,
+          -38.266716
+        ]
+      },
+      "properties": {
+        "name": "Wilderness Creek - Morwell camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wilderness-Creek-Morwell-Camping-Area-1",
+        "location": "12 km south-west of Morwell",
+        "latitude": "-38.266716",
+        "longitude": "146.325365",
+        "co-ordinates": "-38.266716' 146.325365",
+        "river": "Wilderness Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.136186,
+          -36.402939
+        ]
+      },
+      "properties": {
+        "name": "Wildhorse Creek- Tallangatta camping area 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Wildhorse-Creek-Tallangatta-Camping-Area-2",
+        "location": "27 km south of Tallangatta",
+        "latitude": "-36.402939",
+        "longitude": "147.136186",
+        "co-ordinates": "-36.402939' 147.136186",
+        "river": "Wildhorse Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.867778,
+          -36.941028
+        ]
+      },
+      "properties": {
+        "name": "Wimmera River - Campbells Bridge camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wimmera-river-campbells-bridge-camping-area-1-and-2",
+        "location": "8 km east of Campbells Bridge",
+        "latitude": "-36.941028",
+        "longitude": "142.867778",
+        "co-ordinates": "-36.941028' 142.867778",
+        "river": "Wimmera River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          147.233083,
+          -37.516222
+        ]
+      },
+      "properties": {
+        "name": "Wonnangatta River - Dargo camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/wonnangatta-river-dargo-camping-area-1-and-2",
+        "location": "13 km south of Dargo",
+        "latitude": "-37.516222",
+        "longitude": "147.233083",
+        "co-ordinates": "-37.516222' 147.233083",
+        "river": "Wonnangatta River"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.372524,
+          -35.758514
+        ]
+      },
+      "properties": {
+        "name": "Yarriambiack Creek \u00a0- Hopetoun camping area 1 and 2",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yarriambiack-Creek-Hopetoun-Camping-Area-1-and-2",
+        "location": "5 km south of Hopetoun",
+        "latitude": "-35.758514",
+        "longitude": "142.372524",
+        "co-ordinates": "-35.758514' 142.372524",
+        "river": "Yarriambiack Creek"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.472983,
+          -37.310482
+        ]
+      },
+      "properties": {
+        "name": "Yea River - Yea camping area 1",
+        "url": "https://www.forestsandreserves.vic.gov.au/land-management/managing-crown-land/camping-on-licensed-crown-water-frontages/Yea-River-Yea-Camping-Area-1",
+        "location": "13 km south of Yea",
+        "latitude": "-37.310482",
+        "longitude": "145.472983",
+        "co-ordinates": "-37.310482' 145.472983",
+        "river": "Yea River"
+      }
+    }
+  ]
+}
