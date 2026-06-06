@@ -9,7 +9,8 @@ import BottomTabBar from './components/BottomTabBar'
 import WaypointControls from './components/WaypointControls'
 import NavigateOverlay from './components/NavigateOverlay'
 import SavedTripsPanel from './components/SavedTripsPanel'
-import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, Trail, UserLocation, WaterFrontage } from './types'
+import SharedTripView from './components/SharedTripView'
+import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, SharedTripPayload, Trail, UserLocation, WaterFrontage } from './types'
 import { useProfile, useSavedTrips } from './hooks/useProfile'
 import { routeLengthKm } from './lib/geo'
 import { naismithMinutes } from './lib/naismith'
@@ -38,9 +39,56 @@ export default function App() {
   const [activeTrip, setActiveTrip] = useState<SavedTrip | null>(null)
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null)
   const [saveToast, setSaveToast] = useState(false)
+  const [sharedTrip, setSharedTrip] = useState<SharedTripPayload | null>(null)
 
   const { profile, saveProfile } = useProfile()
   const { trips, saveTrip, removeTrip } = useSavedTrips()
+
+  // Decode shared trip from URL and auto-save it once
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const shared = params.get('shared')
+    if (!shared) return
+    try {
+      const payload = JSON.parse(decodeURIComponent(shared)) as SharedTripPayload
+      setSharedTrip(payload)
+      const alreadySaved = trips.some(
+        t => t.campsiteId === payload.campsiteId &&
+             t.date === payload.date &&
+             t.trailheadStopId === payload.meetupStopId
+      )
+      if (!alreadySaved) {
+        const campsite: Campsite = {
+          id: payload.campsiteId,
+          name: payload.campsiteName,
+          asset_desc: payload.campsiteName,
+          park_name: payload.campsiteParkName ?? '',
+          park_id: 0,
+          lat: payload.campsiteLat,
+          lng: payload.campsiteLng,
+        }
+        saveTrip({
+          campsiteId: payload.campsiteId,
+          trailId: null,
+          date: payload.date,
+          trailheadStopName: payload.meetupStopName,
+          trailheadStopId: payload.meetupStopId,
+          chosenArrivalTime: payload.meetupTime,
+          campsite,
+          trail: null,
+        })
+      }
+    } catch {
+      // malformed payload — ignore
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const dismissSharedTrip = () => {
+    setSharedTrip(null)
+    const url = new URL(window.location.href)
+    url.searchParams.delete('shared')
+    window.history.replaceState({}, '', url.toString())
+  }
 
   useEffect(() => {
     fetch('/data/campsites.geojson')
@@ -367,6 +415,11 @@ export default function App() {
           <span>✅</span>
           <span>Trip saved! Tap Navigate to go.</span>
         </div>
+      )}
+
+      {/* Shared trip view — shown when opening a friend's share link */}
+      {sharedTrip && (
+        <SharedTripView payload={sharedTrip} onClose={dismissSharedTrip} />
       )}
 
       {/* Bottom tab bar */}

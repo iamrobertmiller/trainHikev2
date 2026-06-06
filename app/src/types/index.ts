@@ -80,9 +80,24 @@ export interface SavedTrip {
   savedAt: string
   customWaypoints?: CustomWaypoint[]
   chosenDepartureTime?: string
+  chosenArrivalTime?: string    // HH:MM at trailhead stop
   trailheadStopName?: string
+  trailheadStopId?: string      // GTFS stop ID of trailhead
   campsite?: Campsite
   trail?: Trail | null
+}
+
+export interface SharedTripPayload {
+  campsiteId: number
+  campsiteName: string
+  campsiteLat: number
+  campsiteLng: number
+  campsiteParkName?: string
+  trailName?: string
+  date: string             // YYYY-MM-DD
+  meetupStopName: string   // Trailhead V/Line station
+  meetupStopId: string     // GTFS stop ID
+  meetupTime: string       // HH:MM — when original hiker arrives
 }
 
 export interface TrailPOI {

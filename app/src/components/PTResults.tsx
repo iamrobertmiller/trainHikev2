@@ -5,7 +5,8 @@ interface Props {
   loading: boolean
   error: string | null
   deadlineTime: string
-  sunsetTime: string
+  deadlineLabel?: string   // default 'Arrive by'
+  sunsetTime?: string      // omit to hide sunset cell
   trailheadStopName: string
   selectedDeparture?: Departure | null
   onSelectDeparture?: (dep: Departure) => void
@@ -17,7 +18,7 @@ const STATUS_CONFIG = {
   risky: { color: 'bg-red-50 border-red-200',       badge: 'bg-red-100 text-red-800',       label: 'Too late', icon: '🌑' },
 }
 
-export default function PTResults({ departures, loading, error, deadlineTime, sunsetTime, trailheadStopName, selectedDeparture, onSelectDeparture }: Props) {
+export default function PTResults({ departures, loading, error, deadlineTime, deadlineLabel = 'Arrive by', sunsetTime, trailheadStopName, selectedDeparture, onSelectDeparture }: Props) {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-8 gap-3 text-gray-500">
@@ -55,13 +56,15 @@ export default function PTResults({ departures, loading, error, deadlineTime, su
         </div>
         <div className="flex gap-4">
           <div>
-            <span className="text-xs text-gray-500">Arrive by</span>
+            <span className="text-xs text-gray-500">{deadlineLabel}</span>
             <p className="font-bold text-emerald-800">{deadlineTime}</p>
           </div>
-          <div>
-            <span className="text-xs text-gray-500">Sunset</span>
-            <p className="font-bold text-amber-700">{sunsetTime}</p>
-          </div>
+          {sunsetTime && (
+            <div>
+              <span className="text-xs text-gray-500">Sunset</span>
+              <p className="font-bold text-amber-700">{sunsetTime}</p>
+            </div>
+          )}
           {latest && (
             <div className="ml-auto text-right">
               <span className="text-xs text-gray-500">Latest safe dep.</span>
