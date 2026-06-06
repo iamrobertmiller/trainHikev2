@@ -1,5 +1,7 @@
 // GTFS static query engine — works offline, no API credentials needed
 
+import { haversineKm } from './geo'
+
 export interface GTFSStop {
   id: string
   name: string
@@ -66,14 +68,6 @@ export function searchStops(gtfs: GTFSData, query: string): GTFSStop[] {
   return results.slice(0, 10)
 }
 
-function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
-  const R = 6371
-  const dLat = (lat2 - lat1) * Math.PI / 180
-  const dLon = (lon2 - lon1) * Math.PI / 180
-  const a = Math.sin(dLat / 2) ** 2 +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-}
 
 export function nearestStop(gtfs: GTFSData, lat: number, lng: number, maxKm = 30): GTFSStop | null {
   let best: GTFSStop | null = null

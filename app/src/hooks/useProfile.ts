@@ -55,5 +55,11 @@ export function useSavedTrips() {
     setTrips(updated)
   }
 
-  return { trips, saveTrip, removeTrip }
+  const updateTrip = (id: string, updates: Partial<SavedTrip>) => {
+    const updated = trips.map(t => t.id === id ? { ...t, ...updates } : t)
+    localStorage.setItem(TRIPS_KEY, JSON.stringify(updated))
+    setTrips(updated)
+  }
+
+  return { trips, saveTrip, removeTrip, updateTrip }
 }

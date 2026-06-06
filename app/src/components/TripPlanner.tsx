@@ -1,16 +1,21 @@
 import { useState, useEffect } from 'react'
-import type { Campsite, Trail, Profile } from '../types'
+import type { Campsite, Trail, Profile, CustomWaypoint, SavedTrip } from '../types'
 import { getSunset, formatTime } from '../hooks/useSunset'
 import { naismithMinutes, arrivalDeadline } from '../lib/naismith'
 import { useGTFSDepartures, useNearestStop } from '../hooks/useGTFS'
+import type { Departure } from '../lib/gtfs'
 import PTResults from './PTResults'
 
 interface Props {
   campsite: Campsite
   trail: Trail | null
   profile: Profile | null
+  customWaypoints: CustomWaypoint[]
+  customRouteKm: number
   onClose: () => void
   onSetHomeStop: () => void
+  onStartDrawing: () => void
+  onSaveTrip: (base: Omit<SavedTrip, 'id' | 'savedAt'>) => void
 }
 
 function dateToGTFS(dateStr: string): string {
@@ -21,20 +26,38 @@ function deadlineToHHMM(deadline: Date): string {
   return `${String(deadline.getHours()).padStart(2, '0')}:${String(deadline.getMinutes()).padStart(2, '0')}`
 }
 
-export default function TripPlanner({ campsite, trail, profile, onClose, onSetHomeStop }: Props) {
+export default function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm, onClose, onSetHomeStop, onStartDrawing, onSaveTrip }: Props) {
   const today = new Date().toISOString().split('T')[0]
   const [date, setDate] = useState(today)
+  const [selectedDeparture, setSelectedDeparture] = useState<Departure | null>(null)
   const { departures, loading, error, fetchDepartures } = useGTFSDepartures()
+
+  const effectiveKm = trail ? trail.length_km : (customWaypoints.length > 1 ? customRouteKm : 0)
+  const effectiveElevation = trail?.elevation_gain_m
 
   const selectedDate = new Date(date + 'T12:00:00')
   const sunset = getSunset(campsite.lat, campsite.lng, selectedDate)
-  const hikingMins = trail ? naismithMinutes(trail.length_km, trail.elevation_gain_m) : 0
-  const deadline = trail ? arrivalDeadline(sunset.getTime(), trail.length_km, trail.elevation_gain_m) : sunset
+  const hikingMins = effectiveKm > 0 ? naismithMinutes(effectiveKm, effectiveElevation) : 0
+  const deadline = effectiveKm > 0 ? arrivalDeadline(sunset.getTime(), effectiveKm, effectiveElevation) : sunset
 
   const sunsetStr = formatTime(sunset)
   const deadlineStr = formatTime(deadline)
   const hikingHrs = Math.floor(hikingMins / 60)
   const hikingMinsRem = Math.round(hikingMins % 60)
+
+  const handleSaveTrip = () => {
+    if (!selectedDeparture) return
+    onSaveTrip({
+      campsiteId: campsite.id,
+      trailId: trail?.id ?? null,
+      date,
+      customWaypoints,
+      chosenDepartureTime: selectedDeparture.departureTime,
+      trailheadStopName: nearestResult?.stop.name,
+      campsite,
+      trail,
+    })
+  }
 
   // Auto-detect nearest V/Line stop to campsite
   const nearestResult = useNearestStop(campsite.lat, campsite.lng)
@@ -90,7 +113,7 @@ export default function TripPlanner({ campsite, trail, profile, onClose, onSetHo
             <div className="bg-white rounded-lg p-2.5 shadow-sm">
               <p className="text-xs text-gray-400 mb-1">Hike time</p>
               <p className="font-bold text-gray-700">
-                {trail ? `${hikingHrs}h ${hikingMinsRem}m` : '—'}
+                {effectiveKm > 0 ? `${hikingHrs}h ${hikingMinsRem}m` : '—'}
               </p>
             </div>
             <div className="bg-white rounded-lg p-2.5 shadow-sm border-2 border-emerald-200">
@@ -102,10 +125,29 @@ export default function TripPlanner({ campsite, trail, profile, onClose, onSetHo
             <p className="text-xs text-gray-400 text-center">
               Based on {trail.length_km}km trail · Naismith's Rule · 30min safety buffer
             </p>
+          ) : customWaypoints.length > 1 ? (
+            <p className="text-xs text-indigo-600 text-center">
+              Custom route · {customRouteKm.toFixed(1)}km · Naismith's Rule · 30min safety buffer
+            </p>
           ) : (
             <p className="text-xs text-amber-600 text-center">
-              Select a trail on the map for accurate hiking time estimates
+              Select a trail on the map or draw a custom route for hiking time estimates
             </p>
+          )}
+
+          {/* Draw route button */}
+          {!trail && (
+            <button
+              onClick={onStartDrawing}
+              className="w-full flex items-center justify-center gap-2 text-sm font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl py-2.5 transition-colors"
+            >
+              <span>📍</span>
+              <span>
+                {customWaypoints.length > 1
+                  ? `Edit custom route (${customRouteKm.toFixed(1)} km)`
+                  : 'Draw custom route on map'}
+              </span>
+            </button>
           )}
         </div>
 
@@ -154,6 +196,8 @@ export default function TripPlanner({ campsite, trail, profile, onClose, onSetHo
                 deadlineTime={deadlineStr}
                 sunsetTime={sunsetStr}
                 trailheadStopName={nearestResult.stop.name}
+                selectedDeparture={selectedDeparture}
+                onSelectDeparture={setSelectedDeparture}
               />
             </>
           )}
@@ -161,7 +205,15 @@ export default function TripPlanner({ campsite, trail, profile, onClose, onSetHo
       </div>
 
       {/* Footer */}
-      <div className="border-t border-gray-100 p-4">
+      <div className="border-t border-gray-100 p-4 space-y-2 pb-20 md:pb-4">
+        <button
+          onClick={handleSaveTrip}
+          disabled={!selectedDeparture}
+          className="w-full bg-emerald-700 hover:bg-emerald-800 disabled:bg-gray-200 disabled:text-gray-400 text-white font-semibold py-3 rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
+        >
+          <span>💾</span>
+          <span>{selectedDeparture ? 'Save trip' : 'Select a departure above to save'}</span>
+        </button>
         <a
           href="https://www.ptv.vic.gov.au/journey"
           target="_blank"

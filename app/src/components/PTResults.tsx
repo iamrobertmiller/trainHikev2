@@ -7,6 +7,8 @@ interface Props {
   deadlineTime: string
   sunsetTime: string
   trailheadStopName: string
+  selectedDeparture?: Departure | null
+  onSelectDeparture?: (dep: Departure) => void
 }
 
 const STATUS_CONFIG = {
@@ -15,7 +17,7 @@ const STATUS_CONFIG = {
   risky: { color: 'bg-red-50 border-red-200',       badge: 'bg-red-100 text-red-800',       label: 'Too late', icon: '🌑' },
 }
 
-export default function PTResults({ departures, loading, error, deadlineTime, sunsetTime, trailheadStopName }: Props) {
+export default function PTResults({ departures, loading, error, deadlineTime, sunsetTime, trailheadStopName, selectedDeparture, onSelectDeparture }: Props) {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-8 gap-3 text-gray-500">
@@ -72,8 +74,9 @@ export default function PTResults({ departures, loading, error, deadlineTime, su
       {/* Departure cards */}
       {departures.map((dep, i) => {
         const cfg = STATUS_CONFIG[dep.safetyStatus]
+        const isSelected = selectedDeparture?.tripId === dep.tripId && selectedDeparture?.departureTime === dep.departureTime
         return (
-          <div key={`${dep.tripId}-${i}`} className={`rounded-xl border p-3 ${cfg.color}`}>
+          <div key={`${dep.tripId}-${i}`} className={`rounded-xl border p-3 ${cfg.color} ${isSelected ? 'ring-2 ring-emerald-500' : ''}`}>
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
@@ -102,14 +105,26 @@ export default function PTResults({ departures, loading, error, deadlineTime, su
                 )}
               </div>
 
-              <div className="text-right flex-none">
+              <div className="text-right flex-none flex flex-col items-end gap-1">
                 <span className={`text-xs font-semibold px-2 py-1 rounded-full ${cfg.badge}`}>
                   {cfg.icon} {cfg.label}
                 </span>
                 {dep.minutesBuffer !== undefined && (
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-gray-400">
                     {dep.minutesBuffer > 0 ? `+${dep.minutesBuffer}m` : `${dep.minutesBuffer}m`}
                   </p>
+                )}
+                {onSelectDeparture && (
+                  <button
+                    onClick={() => onSelectDeparture(isSelected ? dep : dep)}
+                    className={`text-xs font-medium px-2 py-1 rounded-lg transition-colors ${
+                      isSelected
+                        ? 'bg-emerald-600 text-white'
+                        : 'bg-white border border-gray-200 text-gray-600 hover:border-emerald-400 hover:text-emerald-700'
+                    }`}
+                  >
+                    {isSelected ? 'Selected' : 'Use this'}
+                  </button>
                 )}
               </div>
             </div>
