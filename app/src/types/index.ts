@@ -58,12 +58,31 @@ export interface Profile {
   homeSuburb?: string
 }
 
+export type AppMode = 'plan' | 'navigate'
+
+export interface CustomWaypoint {
+  id: string
+  lat: number
+  lng: number
+}
+
+export interface UserLocation {
+  lat: number
+  lng: number
+  accuracy: number
+}
+
 export interface SavedTrip {
   id: string
   campsiteId: number
-  trailId: number
+  trailId: number | null
   date: string
   savedAt: string
+  customWaypoints?: CustomWaypoint[]
+  chosenDepartureTime?: string
+  trailheadStopName?: string
+  campsite?: Campsite
+  trail?: Trail | null
 }
 
 export interface TrailPOI {

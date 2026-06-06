@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import type { Campsite, Hut, Trail, WaterFrontage } from '../types'
+import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, Trail, UserLocation, WaterFrontage } from '../types'
 
 interface MapProps {
   campsites: Campsite[]
@@ -14,17 +14,43 @@ interface MapProps {
   onSelectTrail: (t: Trail | null) => void
   onSelectHut: (h: Hut) => void
   onSelectWaterFrontage: (w: WaterFrontage) => void
+  // Plan mode — route drawing
+  isDrawingRoute: boolean
+  customWaypoints: CustomWaypoint[]
+  onAddWaypoint: (wp: CustomWaypoint) => void
+  // Navigate mode
+  appMode: AppMode
+  activeTrip: SavedTrip | null
+  onLocationUpdate: (loc: UserLocation) => void
 }
 
 const VICTORIA_CENTER: [number, number] = [144.9, -37.0]
 const VICTORIA_BOUNDS: [[number, number], [number, number]] = [[140.9, -39.2], [149.9, -34.0]]
 
-export default function Map({ campsites, trails, huts, waterFrontage, selectedCampsite, onSelectCampsite, selectedTrail, onSelectTrail, onSelectHut, onSelectWaterFrontage }: MapProps) {
+export default function Map({
+  campsites, trails, huts, waterFrontage,
+  selectedCampsite, onSelectCampsite,
+  selectedTrail, onSelectTrail,
+  onSelectHut, onSelectWaterFrontage,
+  isDrawingRoute, customWaypoints, onAddWaypoint,
+  appMode, activeTrip, onLocationUpdate,
+}: MapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
   const markersRef = useRef<maplibregl.Marker[]>([])
   const hutMarkersRef = useRef<maplibregl.Marker[]>([])
   const waterFrontageMarkersRef = useRef<maplibregl.Marker[]>([])
+  const waypointMarkersRef = useRef<maplibregl.Marker[]>([])
+  const geoWatchRef = useRef<number | null>(null)
+
+  // Refs to avoid stale closures in map event handlers
+  const isDrawingRef = useRef(isDrawingRoute)
+  const onAddWaypointRef = useRef(onAddWaypoint)
+  const onLocationUpdateRef = useRef(onLocationUpdate)
+
+  useEffect(() => { isDrawingRef.current = isDrawingRoute }, [isDrawingRoute])
+  useEffect(() => { onAddWaypointRef.current = onAddWaypoint }, [onAddWaypoint])
+  useEffect(() => { onLocationUpdateRef.current = onLocationUpdate }, [onLocationUpdate])
 
   const flyToCampsite = useCallback((c: Campsite) => {
     mapRef.current?.flyTo({ center: [c.lng, c.lat], zoom: 13, duration: 800 })
@@ -80,6 +106,7 @@ export default function Map({ campsites, trails, huts, waterFrontage, selectedCa
       })
 
       map.on('click', 'trails-line', (e) => {
+        if (isDrawingRef.current) return
         const feat = e.features?.[0]
         if (feat?.properties) {
           onSelectTrail(feat.properties as Trail)
@@ -87,10 +114,32 @@ export default function Map({ campsites, trails, huts, waterFrontage, selectedCa
       })
 
       map.on('mouseenter', 'trails-line', () => {
-        map.getCanvas().style.cursor = 'pointer'
+        if (!isDrawingRef.current) map.getCanvas().style.cursor = 'pointer'
       })
       map.on('mouseleave', 'trails-line', () => {
-        map.getCanvas().style.cursor = ''
+        if (!isDrawingRef.current) map.getCanvas().style.cursor = ''
+      })
+
+      // Custom route source + layer
+      map.addSource('custom-route', {
+        type: 'geojson',
+        data: { type: 'Feature', geometry: { type: 'LineString', coordinates: [] }, properties: {} },
+      })
+      map.addLayer({
+        id: 'custom-route-line',
+        type: 'line',
+        source: 'custom-route',
+        paint: { 'line-color': '#6366f1', 'line-width': 3, 'line-dasharray': [2, 2], 'line-opacity': 0.9 },
+      })
+
+      // Map click — add waypoint when drawing
+      map.on('click', (e) => {
+        if (!isDrawingRef.current) return
+        onAddWaypointRef.current({
+          id: crypto.randomUUID(),
+          lat: e.lngLat.lat,
+          lng: e.lngLat.lng,
+        })
       })
     })
 
@@ -100,20 +149,103 @@ export default function Map({ campsites, trails, huts, waterFrontage, selectedCa
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Update cursor when drawing mode changes
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+    map.getCanvas().style.cursor = isDrawingRoute ? 'crosshair' : ''
+  }, [isDrawingRoute])
+
   // Update selected trail highlight
   useEffect(() => {
     const map = mapRef.current
     if (!map || !map.isStyleLoaded()) return
-    map.setFilter('trails-selected', ['==', ['get', 'id'], selectedTrail?.id ?? -1])
-  }, [selectedTrail])
+    const trailId = appMode === 'navigate' && activeTrip
+      ? (activeTrip.trailId ?? selectedTrail?.id ?? -1)
+      : (selectedTrail?.id ?? -1)
+    map.setFilter('trails-selected', ['==', ['get', 'id'], trailId])
+  }, [selectedTrail, appMode, activeTrip])
 
-  // Render campsite markers
+  // Update custom route line + waypoint markers
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !map.isStyleLoaded()) return
+
+    const source = map.getSource('custom-route') as maplibregl.GeoJSONSource | undefined
+    source?.setData({
+      type: 'Feature',
+      geometry: {
+        type: 'LineString',
+        coordinates: customWaypoints.map(wp => [wp.lng, wp.lat]),
+      },
+      properties: {},
+    })
+
+    waypointMarkersRef.current.forEach(m => m.remove())
+    waypointMarkersRef.current = []
+
+    customWaypoints.forEach((wp, i) => {
+      const el = document.createElement('div')
+      el.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-indigo-500 border-2 border-white shadow-md flex items-center justify-center text-white text-xs font-bold cursor-default select-none">
+          ${i + 1}
+        </div>
+      `
+      const marker = new maplibregl.Marker({ element: el, anchor: 'center' })
+        .setLngLat([wp.lng, wp.lat])
+        .addTo(map)
+      waypointMarkersRef.current.push(marker)
+    })
+  }, [customWaypoints])
+
+  // Navigate mode — GPS watchPosition
+  useEffect(() => {
+    if (appMode !== 'navigate') {
+      if (geoWatchRef.current !== null) {
+        navigator.geolocation.clearWatch(geoWatchRef.current)
+        geoWatchRef.current = null
+      }
+      return
+    }
+
+    geoWatchRef.current = navigator.geolocation.watchPosition(
+      (pos) => {
+        const loc: UserLocation = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+          accuracy: pos.coords.accuracy,
+        }
+        onLocationUpdateRef.current(loc)
+        const map = mapRef.current
+        if (map) {
+          map.easeTo({
+            center: [loc.lng, loc.lat],
+            zoom: Math.max(map.getZoom(), 14),
+            duration: 500,
+          })
+        }
+      },
+      (err) => console.warn('GPS error', err),
+      { enableHighAccuracy: true, maximumAge: 3000, timeout: 10000 }
+    )
+
+    return () => {
+      if (geoWatchRef.current !== null) {
+        navigator.geolocation.clearWatch(geoWatchRef.current)
+        geoWatchRef.current = null
+      }
+    }
+  }, [appMode])
+
+  // Render campsite markers (hidden in navigate mode)
   useEffect(() => {
     const map = mapRef.current
     if (!map) return
 
     markersRef.current.forEach(m => m.remove())
     markersRef.current = []
+
+    if (appMode === 'navigate') return
 
     campsites.forEach(site => {
       const el = document.createElement('div')
@@ -142,15 +274,17 @@ export default function Map({ campsites, trails, huts, waterFrontage, selectedCa
 
       markersRef.current.push(marker)
     })
-  }, [campsites, selectedCampsite, onSelectCampsite, flyToCampsite])
+  }, [campsites, selectedCampsite, onSelectCampsite, flyToCampsite, appMode])
 
-  // Render hut markers
+  // Render hut markers (hidden in navigate mode)
   useEffect(() => {
     const map = mapRef.current
     if (!map) return
 
     hutMarkersRef.current.forEach(m => m.remove())
     hutMarkersRef.current = []
+
+    if (appMode === 'navigate') return
 
     huts.forEach(hut => {
       const el = document.createElement('div')
@@ -174,15 +308,17 @@ export default function Map({ campsites, trails, huts, waterFrontage, selectedCa
 
       hutMarkersRef.current.push(marker)
     })
-  }, [huts])
+  }, [huts, appMode])
 
-  // Render water frontage markers
+  // Render water frontage markers (hidden in navigate mode)
   useEffect(() => {
     const map = mapRef.current
     if (!map) return
 
     waterFrontageMarkersRef.current.forEach(m => m.remove())
     waterFrontageMarkersRef.current = []
+
+    if (appMode === 'navigate') return
 
     waterFrontage.forEach(site => {
       const el = document.createElement('div')
@@ -206,7 +342,14 @@ export default function Map({ campsites, trails, huts, waterFrontage, selectedCa
 
       waterFrontageMarkersRef.current.push(marker)
     })
-  }, [waterFrontage])
+  }, [waterFrontage, appMode])
 
-  return <div ref={containerRef} className="w-full h-full" />
+  return (
+    <div
+      ref={containerRef}
+      className="w-full h-full"
+      // Hide MapLibre controls in navigate mode (they obscure the overlay)
+      style={appMode === 'navigate' ? { '--nav-display': 'none' } as React.CSSProperties : undefined}
+    />
+  )
 }

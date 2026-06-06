@@ -5,10 +5,16 @@ import HutPanel from './components/HutPanel'
 import WaterFrontagePanel from './components/WaterFrontagePanel'
 import TripPlanner from './components/TripPlanner'
 import HomeSetup from './components/HomeSetup'
-import type { Campsite, Hut, Trail, WaterFrontage } from './types'
-import { useProfile } from './hooks/useProfile'
+import BottomTabBar from './components/BottomTabBar'
+import WaypointControls from './components/WaypointControls'
+import NavigateOverlay from './components/NavigateOverlay'
+import SavedTripsPanel from './components/SavedTripsPanel'
+import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, Trail, UserLocation, WaterFrontage } from './types'
+import { useProfile, useSavedTrips } from './hooks/useProfile'
+import { routeLengthKm } from './lib/geo'
+import { naismithMinutes } from './lib/naismith'
 
-type Panel = 'none' | 'campsite' | 'trip' | 'homeSetup' | 'hut' | 'waterFrontage'
+type Panel = 'none' | 'campsite' | 'trip' | 'homeSetup' | 'hut' | 'waterFrontage' | 'savedTrips'
 
 export default function App() {
   const [campsites, setCampsites] = useState<Campsite[]>([])
@@ -24,7 +30,17 @@ export default function App() {
   const [panel, setPanel] = useState<Panel>('none')
   const [showSearch, setShowSearch] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+
+  // Mode & navigation state
+  const [appMode, setAppMode] = useState<AppMode>('plan')
+  const [customWaypoints, setCustomWaypoints] = useState<CustomWaypoint[]>([])
+  const [isDrawingRoute, setIsDrawingRoute] = useState(false)
+  const [activeTrip, setActiveTrip] = useState<SavedTrip | null>(null)
+  const [userLocation, setUserLocation] = useState<UserLocation | null>(null)
+  const [saveToast, setSaveToast] = useState(false)
+
   const { profile, saveProfile } = useProfile()
+  const { trips, saveTrip, removeTrip } = useSavedTrips()
 
   useEffect(() => {
     fetch('/data/campsites.geojson')
@@ -91,6 +107,11 @@ export default function App() {
     }, null)
   }, [selectedCampsite, trails])
 
+  const customRouteKm = useMemo(() =>
+    customWaypoints.length > 1 ? routeLengthKm(customWaypoints) : 0,
+    [customWaypoints]
+  )
+
   const handleSelectCampsite = (c: Campsite | null) => {
     setSelectedCampsite(c)
     setPanel(c ? 'campsite' : 'none')
@@ -106,6 +127,28 @@ export default function App() {
     )
   }, [campsites, searchQuery])
 
+  const handleSaveTrip = (base: Omit<SavedTrip, 'id' | 'savedAt'>) => {
+    const saved = saveTrip({ ...base, customWaypoints })
+    setActiveTrip(saved)
+    setSaveToast(true)
+    setTimeout(() => setSaveToast(false), 3000)
+  }
+
+  const handleSwitchMode = (m: AppMode) => {
+    if (m === 'navigate' && !activeTrip) {
+      setPanel('savedTrips')
+      return
+    }
+    setAppMode(m)
+    setIsDrawingRoute(false)
+    if (m === 'plan') setUserLocation(null)
+  }
+
+  const handleStartDrawing = () => {
+    setIsDrawingRoute(true)
+    setPanel('none')
+  }
+
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-gray-100">
       {trailsGeoJSON && (
@@ -120,48 +163,85 @@ export default function App() {
           onSelectTrail={t => { setSelectedTrail(t); setPanel('none') }}
           onSelectHut={h => { setSelectedHut(h); setPanel('hut') }}
           onSelectWaterFrontage={w => { setSelectedWaterFrontage(w); setPanel('waterFrontage') }}
+          isDrawingRoute={isDrawingRoute}
+          customWaypoints={customWaypoints}
+          onAddWaypoint={wp => setCustomWaypoints(prev => [...prev, wp])}
+          appMode={appMode}
+          activeTrip={activeTrip}
+          onLocationUpdate={setUserLocation}
         />
       )}
 
-      {/* Top bar */}
-      <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-2 p-3 pointer-events-none">
-        <div className="pointer-events-auto flex items-center gap-2 bg-white rounded-2xl shadow-md px-3 py-2 flex-1 max-w-sm">
-          <span className="text-emerald-700 text-lg">🏕️</span>
-          <span className="font-bold text-gray-800 text-sm">TrainHike</span>
-          <span className="text-gray-300 mx-1">|</span>
-          <span className="text-xs text-gray-500">Victoria</span>
+      {/* Navigate mode overlay */}
+      {appMode === 'navigate' && activeTrip && (
+        <NavigateOverlay
+          activeTrip={activeTrip}
+          userLocation={userLocation}
+          onExit={() => setAppMode('plan')}
+        />
+      )}
+
+      {/* Waypoint drawing controls (Plan mode) */}
+      {appMode === 'plan' && (
+        <WaypointControls
+          waypoints={customWaypoints}
+          isDrawing={isDrawingRoute}
+          estimatedKm={customRouteKm}
+          estimatedMinutes={customRouteKm > 0 ? naismithMinutes(customRouteKm, 0) : 0}
+          onToggleDrawing={() => setIsDrawingRoute(d => !d)}
+          onDeleteLast={() => setCustomWaypoints(prev => prev.slice(0, -1))}
+          onClearAll={() => { setCustomWaypoints([]); setIsDrawingRoute(false) }}
+        />
+      )}
+
+      {/* Top bar — hidden in navigate mode */}
+      {appMode === 'plan' && (
+        <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-2 p-3 pointer-events-none">
+          <div className="pointer-events-auto flex items-center gap-2 bg-white rounded-2xl shadow-md px-3 py-2 flex-1 max-w-sm">
+            <span className="text-emerald-700 text-lg">🏕️</span>
+            <span className="font-bold text-gray-800 text-sm">TrainHike</span>
+            <span className="text-gray-300 mx-1">|</span>
+            <span className="text-xs text-gray-500">Victoria</span>
+          </div>
+          <button
+            onClick={() => setShowSearch(s => !s)}
+            className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
+          >
+            🔍
+          </button>
+          <button
+            onClick={() => setShowWaterFrontage(s => !s)}
+            className={`pointer-events-auto w-10 h-10 rounded-xl shadow-md flex items-center justify-center text-base transition-colors ${showWaterFrontage ? 'bg-blue-100 text-blue-700' : 'bg-white text-gray-400'}`}
+            title={showWaterFrontage ? 'Hide water frontage camping' : 'Show water frontage camping'}
+          >
+            🏕️💧
+          </button>
+          <button
+            onClick={() => setShowHuts(s => !s)}
+            className={`pointer-events-auto w-10 h-10 rounded-xl shadow-md flex items-center justify-center text-base transition-colors ${showHuts ? 'bg-amber-100 text-amber-700' : 'bg-white text-gray-400'}`}
+            title={showHuts ? 'Hide huts' : 'Show huts'}
+          >
+            🏚️
+          </button>
+          <button
+            onClick={() => setPanel('savedTrips')}
+            className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
+            title="Saved trips"
+          >
+            📋
+          </button>
+          <button
+            onClick={() => setPanel('homeSetup')}
+            className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
+            title={profile ? `Home: ${profile.homeStopName}` : 'Set home station'}
+          >
+            {profile ? '🏠' : '📍'}
+          </button>
         </div>
-        <button
-          onClick={() => setShowSearch(s => !s)}
-          className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
-        >
-          🔍
-        </button>
-        <button
-          onClick={() => setShowWaterFrontage(s => !s)}
-          className={`pointer-events-auto w-10 h-10 rounded-xl shadow-md flex items-center justify-center text-base transition-colors ${showWaterFrontage ? 'bg-blue-100 text-blue-700' : 'bg-white text-gray-400'}`}
-          title={showWaterFrontage ? 'Hide water frontage camping' : 'Show water frontage camping'}
-        >
-          🏕️💧
-        </button>
-        <button
-          onClick={() => setShowHuts(s => !s)}
-          className={`pointer-events-auto w-10 h-10 rounded-xl shadow-md flex items-center justify-center text-base transition-colors ${showHuts ? 'bg-amber-100 text-amber-700' : 'bg-white text-gray-400'}`}
-          title={showHuts ? 'Hide huts' : 'Show huts'}
-        >
-          🏚️
-        </button>
-        <button
-          onClick={() => setPanel('homeSetup')}
-          className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
-          title={profile ? `Home: ${profile.homeStopName}` : 'Set home station'}
-        >
-          {profile ? '🏠' : '📍'}
-        </button>
-      </div>
+      )}
 
       {/* Search */}
-      {showSearch && (
+      {appMode === 'plan' && showSearch && (
         <div className="absolute top-16 left-3 right-3 z-10 max-w-sm">
           <input
             type="text"
@@ -193,9 +273,9 @@ export default function App() {
         </div>
       )}
 
-      {/* Selected trail banner */}
-      {selectedTrail && panel === 'none' && (
-        <div className="absolute bottom-4 left-4 right-16 md:left-auto md:right-4 md:w-80 z-10 bg-white rounded-2xl shadow-lg p-4">
+      {/* Selected trail banner — Plan mode only */}
+      {appMode === 'plan' && selectedTrail && panel === 'none' && (
+        <div className="absolute bottom-20 left-4 right-16 md:left-auto md:right-4 md:w-80 z-10 bg-white rounded-2xl shadow-lg p-4">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <p className="font-semibold text-gray-900 text-sm truncate">{selectedTrail.name}</p>
@@ -238,8 +318,12 @@ export default function App() {
           campsite={selectedCampsite}
           trail={selectedTrail ?? nearbyTrail}
           profile={profile}
+          customWaypoints={customWaypoints}
+          customRouteKm={customRouteKm}
           onClose={() => setPanel('campsite')}
           onSetHomeStop={() => setPanel('homeSetup')}
+          onStartDrawing={handleStartDrawing}
+          onSaveTrip={handleSaveTrip}
         />
       )}
 
@@ -254,14 +338,39 @@ export default function App() {
         />
       )}
 
-      {/* Stats */}
-      {panel === 'none' && !showSearch && (
-        <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
+      {/* Saved trips panel */}
+      {panel === 'savedTrips' && (
+        <SavedTripsPanel
+          trips={trips}
+          onLoad={trip => {
+            setActiveTrip(trip)
+            setAppMode('navigate')
+            setPanel('none')
+          }}
+          onDelete={removeTrip}
+          onClose={() => setPanel('none')}
+        />
+      )}
+
+      {/* Stats — Plan mode only */}
+      {appMode === 'plan' && panel === 'none' && !showSearch && (
+        <div className="absolute bottom-20 left-4 z-10 pointer-events-none">
           <div className="bg-white/90 backdrop-blur rounded-xl px-3 py-1.5 shadow text-xs text-gray-500">
             {campsites.length} campsites · {trails.length} trails · {huts.length} huts · {waterFrontage.length} water frontage
           </div>
         </div>
       )}
+
+      {/* Save toast */}
+      {saveToast && (
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 z-40 bg-emerald-700 text-white text-sm font-medium px-4 py-2.5 rounded-2xl shadow-lg flex items-center gap-2">
+          <span>✅</span>
+          <span>Trip saved! Tap Navigate to go.</span>
+        </div>
+      )}
+
+      {/* Bottom tab bar */}
+      <BottomTabBar mode={appMode} onSwitchMode={handleSwitchMode} />
     </div>
   )
 }
