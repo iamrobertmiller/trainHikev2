@@ -32,8 +32,15 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
   const [selectedDeparture, setSelectedDeparture] = useState<Departure | null>(null)
   const { departures, loading, error, fetchDepartures } = useGTFSDepartures()
 
-  const effectiveKm = trail ? trail.length_km : (customWaypoints.length > 1 ? customRouteKm : 0)
-  const effectiveElevation = trail?.elevation_gain_m
+  // Auto-detect nearest V/Line stop to campsite (must be before effectiveKm)
+  const nearestResult = useNearestStop(campsite.lat, campsite.lng)
+
+  // Priority: custom drawn route → nearest station walk → 0
+  // Deliberately ignore trail.length_km — it's the full trail length, not the walk from the station
+  const effectiveKm = customWaypoints.length > 1
+    ? customRouteKm
+    : (nearestResult?.distanceKm ?? 0)
+  const effectiveElevation = customWaypoints.length > 1 ? trail?.elevation_gain_m : undefined
 
   const selectedDate = new Date(date + 'T12:00:00')
   const sunset = getSunset(campsite.lat, campsite.lng, selectedDate)
@@ -61,8 +68,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
     })
   }
 
-  // Auto-detect nearest V/Line stop to campsite
-  const nearestResult = useNearestStop(campsite.lat, campsite.lng)
+  const deadlineHHMM = deadlineToHHMM(deadline)
 
   useEffect(() => {
     if (!profile || !nearestResult) return
@@ -70,9 +76,9 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
       profile.homeStopId,
       nearestResult.stop.id,
       dateToGTFS(date),
-      deadlineToHHMM(deadline)
+      deadlineHHMM
     )
-  }, [date, profile, nearestResult, deadline]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [date, profile, nearestResult, deadlineHHMM]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="absolute inset-0 md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 bg-white rounded-none md:rounded-2xl shadow-2xl flex flex-col overflow-hidden">
@@ -123,34 +129,32 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
               <p className="font-bold text-emerald-700">{deadlineStr}</p>
             </div>
           </div>
-          {trail ? (
-            <p className="text-xs text-gray-400 text-center">
-              Based on {trail.length_km}km trail · Naismith's Rule · 30min safety buffer
-            </p>
-          ) : customWaypoints.length > 1 ? (
+          {customWaypoints.length > 1 ? (
             <p className="text-xs text-indigo-600 text-center">
               Custom route · {customRouteKm.toFixed(1)}km · Naismith's Rule · 30min safety buffer
             </p>
+          ) : nearestResult ? (
+            <p className="text-xs text-gray-400 text-center">
+              {nearestResult.distanceKm}km walk from {nearestResult.stop.name} · Naismith's Rule · 30min safety buffer
+            </p>
           ) : (
-            <p className="text-xs text-amber-600 text-center">
-              Select a trail on the map or draw a custom route for hiking time estimates
+            <p className="text-xs text-gray-400 text-center">
+              Finding nearest station…
             </p>
           )}
 
           {/* Draw route button */}
-          {!trail && (
-            <button
-              onClick={onStartDrawing}
-              className="w-full flex items-center justify-center gap-2 text-sm font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl py-2.5 transition-colors"
-            >
-              <span>📍</span>
-              <span>
-                {customWaypoints.length > 1
-                  ? `Edit custom route (${customRouteKm.toFixed(1)} km)`
-                  : 'Draw custom route on map'}
-              </span>
-            </button>
-          )}
+          <button
+            onClick={onStartDrawing}
+            className="w-full flex items-center justify-center gap-2 text-sm font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl py-2.5 transition-colors"
+          >
+            <span>📍</span>
+            <span>
+              {customWaypoints.length > 1
+                ? `Edit custom route (${customRouteKm.toFixed(1)} km)`
+                : 'Draw a more accurate route on map'}
+            </span>
+          </button>
         </div>
 
         {/* Nearest stop info */}

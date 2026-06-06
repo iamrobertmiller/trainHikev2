@@ -3,9 +3,10 @@ import type { Hut } from '../types'
 interface Props {
   hut: Hut
   onClose: () => void
+  onPlanTrip: () => void
 }
 
-export default function HutPanel({ hut, onClose }: Props) {
+export default function HutPanel({ hut, onClose, onPlanTrip }: Props) {
   return (
     <div className="absolute bottom-16 left-0 right-0 z-10 bg-white rounded-t-2xl shadow-2xl max-h-[70vh] overflow-y-auto md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl md:max-h-[80vh]">
       {/* Header */}
@@ -51,6 +52,17 @@ export default function HutPanel({ hut, onClose }: Props) {
         >
           View on Parks Victoria website ↗
         </a>
+      </div>
+
+      {/* CTA */}
+      <div className="sticky bottom-0 bg-white border-t border-gray-100 p-4">
+        <button
+          onClick={onPlanTrip}
+          className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2"
+        >
+          <span>🚆</span>
+          <span>Plan a trip here</span>
+        </button>
       </div>
     </div>
   )

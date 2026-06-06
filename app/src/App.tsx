@@ -12,7 +12,7 @@ import SavedTripsPanel from './components/SavedTripsPanel'
 import SharedTripView from './components/SharedTripView'
 import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, SharedTripPayload, Trail, UserLocation, WaterFrontage } from './types'
 import { useProfile, useSavedTrips } from './hooks/useProfile'
-import { routeLengthKm } from './lib/geo'
+import { useNearestStop } from './hooks/useGTFS'
 import { naismithMinutes } from './lib/naismith'
 
 type Panel = 'none' | 'campsite' | 'trip' | 'homeSetup' | 'hut' | 'waterFrontage' | 'savedTrips'
@@ -40,6 +40,7 @@ export default function App() {
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null)
   const [saveToast, setSaveToast] = useState(false)
   const [sharedTrip, setSharedTrip] = useState<SharedTripPayload | null>(null)
+  const [showCampsiteHint, setShowCampsiteHint] = useState(false)
 
   const { profile, saveProfile } = useProfile()
   const { trips, saveTrip, removeTrip } = useSavedTrips()
@@ -138,31 +139,63 @@ export default function App() {
     [trailsGeoJSON]
   )
 
-  const nearbyTrail = useMemo(() => {
-    if (!selectedCampsite || !trails.length) return null
-    const site = selectedCampsite
-    return trails.reduce<Trail | null>((closest, trail) => {
-      const dist = Math.sqrt(
-        Math.pow(trail.trailhead_lat - site.lat, 2) +
-        Math.pow(trail.trailhead_lng - site.lng, 2)
-      )
-      if (!closest) return trail
-      const closestDist = Math.sqrt(
-        Math.pow(closest.trailhead_lat - site.lat, 2) +
-        Math.pow(closest.trailhead_lng - site.lng, 2)
-      )
-      return dist < closestDist ? trail : closest
-    }, null)
-  }, [selectedCampsite, trails])
 
-  const customRouteKm = useMemo(() =>
-    customWaypoints.length > 1 ? routeLengthKm(customWaypoints) : 0,
-    [customWaypoints]
-  )
+  const [customRouteKm, setCustomRouteKm] = useState(0)
+  const [tripRouteCoords, setTripRouteCoords] = useState<[number, number][]>([])
+
+  // The relevant destination: trip planner selection or the active navigate-mode trip
+  const routeCampsite = selectedCampsite ?? (appMode === 'navigate' ? (activeTrip?.campsite ?? null) : null)
+  const nearestStop = useNearestStop(routeCampsite?.lat ?? null, routeCampsite?.lng ?? null)
+
+  // Draw walking route on map when trip planner is open or navigate mode is active
+  useEffect(() => {
+    const wantRoute = (panel === 'trip' && !!selectedCampsite) || (appMode === 'navigate' && !!activeTrip)
+    const campsite = selectedCampsite ?? activeTrip?.campsite
+
+    if (!wantRoute || !nearestStop || !campsite) {
+      setTripRouteCoords([])
+      return
+    }
+    const controller = new AbortController()
+    const orsKey = import.meta.env.VITE_ORS_API_KEY as string | undefined
+    const origin: [number, number] = [nearestStop.stop.lng, nearestStop.stop.lat]
+    const dest: [number, number] = [campsite.lng, campsite.lat]
+
+    if (orsKey) {
+      fetch('https://api.openrouteservice.org/v2/directions/foot-hiking/geojson', {
+        method: 'POST',
+        signal: controller.signal,
+        headers: { 'Authorization': orsKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ coordinates: [origin, dest] }),
+      })
+        .then(r => r.json())
+        .then(data => {
+          const coords = data?.features?.[0]?.geometry?.coordinates
+          if (coords?.length) setTripRouteCoords(coords)
+          else setTripRouteCoords([origin, dest])
+        })
+        .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
+    } else {
+      fetch(`https://router.project-osrm.org/route/v1/foot/${origin[0]},${origin[1]};${dest[0]},${dest[1]}?overview=full&geometries=geojson`, {
+        signal: controller.signal,
+      })
+        .then(r => r.json())
+        .then(data => {
+          if (data.code === 'Ok' && data.routes?.[0])
+            setTripRouteCoords(data.routes[0].geometry.coordinates)
+          else
+            setTripRouteCoords([origin, dest])
+        })
+        .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
+    }
+
+    return () => { controller.abort(); setTripRouteCoords([]) }
+  }, [panel, appMode, nearestStop, selectedCampsite, activeTrip]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSelectCampsite = (c: Campsite | null) => {
     setSelectedCampsite(c)
     setPanel(c ? 'campsite' : 'none')
+    if (c) setShowCampsiteHint(false)
   }
 
   const filteredCampsites = useMemo(() => {
@@ -197,6 +230,12 @@ export default function App() {
     setPanel('none')
   }
 
+  const handlePlanTrip = () => {
+    setIsDrawingRoute(false)
+    setShowCampsiteHint(true)
+    setTimeout(() => setShowCampsiteHint(false), 5000)
+  }
+
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-gray-100">
       {trailsGeoJSON && (
@@ -213,7 +252,9 @@ export default function App() {
           onSelectWaterFrontage={w => { setSelectedWaterFrontage(w); setPanel('waterFrontage') }}
           isDrawingRoute={isDrawingRoute}
           customWaypoints={customWaypoints}
+          onRouteUpdated={setCustomRouteKm}
           onAddWaypoint={wp => setCustomWaypoints(prev => [...prev, wp])}
+          tripRouteCoords={tripRouteCoords}
           appMode={appMode}
           activeTrip={activeTrip}
           onLocationUpdate={setUserLocation}
@@ -239,6 +280,7 @@ export default function App() {
           onToggleDrawing={() => setIsDrawingRoute(d => !d)}
           onDeleteLast={() => setCustomWaypoints(prev => prev.slice(0, -1))}
           onClearAll={() => { setCustomWaypoints([]); setIsDrawingRoute(false) }}
+          onPlanTrip={handlePlanTrip}
         />
       )}
 
@@ -338,7 +380,6 @@ export default function App() {
       {panel === 'campsite' && selectedCampsite && (
         <CampsitePanel
           campsite={selectedCampsite}
-          nearbyTrail={nearbyTrail}
           onClose={() => setPanel('none')}
           onPlanTrip={() => setPanel('trip')}
         />
@@ -349,6 +390,10 @@ export default function App() {
         <HutPanel
           hut={selectedHut}
           onClose={() => setPanel('none')}
+          onPlanTrip={() => {
+            setSelectedCampsite({ id: -1, name: selectedHut.name, asset_desc: selectedHut.name, park_name: selectedHut.park, park_id: 0, lat: selectedHut.lat, lng: selectedHut.lng })
+            setPanel('trip')
+          }}
         />
       )}
 
@@ -357,6 +402,10 @@ export default function App() {
         <WaterFrontagePanel
           site={selectedWaterFrontage}
           onClose={() => setPanel('none')}
+          onPlanTrip={() => {
+            setSelectedCampsite({ id: -1, name: selectedWaterFrontage.name, asset_desc: selectedWaterFrontage.name, park_name: selectedWaterFrontage.river, park_id: 0, lat: selectedWaterFrontage.lat, lng: selectedWaterFrontage.lng })
+            setPanel('trip')
+          }}
         />
       )}
 
@@ -364,7 +413,7 @@ export default function App() {
       {panel === 'trip' && selectedCampsite && (
         <TripPlanner
           campsite={selectedCampsite}
-          trail={selectedTrail ?? nearbyTrail}
+          trail={selectedTrail}
           profile={profile}
           customWaypoints={customWaypoints}
           customRouteKm={customRouteKm}
@@ -406,6 +455,14 @@ export default function App() {
           <div className="bg-white/90 backdrop-blur rounded-xl px-3 py-1.5 shadow text-xs text-gray-500">
             {campsites.length} campsites · {trails.length} trails · {huts.length} huts · {waterFrontage.length} water frontage
           </div>
+        </div>
+      )}
+
+      {/* Campsite hint banner */}
+      {showCampsiteHint && (
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-40 bg-gray-900 text-white text-sm font-medium px-4 py-3 rounded-2xl shadow-lg flex items-center gap-2 whitespace-nowrap">
+          <span>🏕️</span>
+          <span>Now tap a campsite on the map to plan your trip</span>
         </div>
       )}
 

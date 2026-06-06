@@ -1,8 +1,7 @@
-import type { Campsite, Trail } from '../types'
+import type { Campsite } from '../types'
 
 interface Props {
   campsite: Campsite
-  nearbyTrail: Trail | null
   onClose: () => void
   onPlanTrip: () => void
 }
@@ -18,7 +17,7 @@ function FacilityBadge({ available, label, icon }: { available?: boolean; label:
   )
 }
 
-export default function CampsitePanel({ campsite, nearbyTrail, onClose, onPlanTrip }: Props) {
+export default function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
   return (
     <div className="absolute bottom-16 left-0 right-0 z-10 bg-white rounded-t-2xl shadow-2xl max-h-[70vh] overflow-y-auto md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl md:max-h-[80vh]">
       {/* Header */}
@@ -102,15 +101,6 @@ export default function CampsitePanel({ campsite, nearbyTrail, onClose, onPlanTr
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-500">Capacity:</span>
             <span className="text-sm font-medium text-gray-700">{campsite.capacity} sites</span>
-          </div>
-        )}
-
-        {/* Nearest trail */}
-        {nearbyTrail && (
-          <div className="bg-emerald-50 rounded-xl p-3">
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Nearest trail</h3>
-            <p className="font-medium text-gray-800 text-sm">{nearbyTrail.name}</p>
-            <p className="text-xs text-gray-500 mt-0.5">{nearbyTrail.length_km} km total</p>
           </div>
         )}
 

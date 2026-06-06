@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, Trail, UserLocation, WaterFrontage } from '../types'
+import { routeLengthKm } from '../lib/geo'
 
 interface MapProps {
   campsites: Campsite[]
@@ -17,7 +18,10 @@ interface MapProps {
   // Plan mode — route drawing
   isDrawingRoute: boolean
   customWaypoints: CustomWaypoint[]
+  onRouteUpdated: (km: number) => void
   onAddWaypoint: (wp: CustomWaypoint) => void
+  // Trip planner — station-to-campsite walking route
+  tripRouteCoords: [number, number][]
   // Navigate mode
   appMode: AppMode
   activeTrip: SavedTrip | null
@@ -32,7 +36,8 @@ export default function Map({
   selectedCampsite, onSelectCampsite,
   selectedTrail, onSelectTrail,
   onSelectHut, onSelectWaterFrontage,
-  isDrawingRoute, customWaypoints, onAddWaypoint,
+  isDrawingRoute, customWaypoints, onRouteUpdated, onAddWaypoint,
+  tripRouteCoords,
   appMode, activeTrip, onLocationUpdate,
 }: MapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -132,6 +137,18 @@ export default function Map({
         paint: { 'line-color': '#6366f1', 'line-width': 3, 'line-dasharray': [2, 2], 'line-opacity': 0.9 },
       })
 
+      // Trip planner walking route — station to campsite (emerald green, solid)
+      map.addSource('trip-route', {
+        type: 'geojson',
+        data: { type: 'Feature', geometry: { type: 'LineString', coordinates: [] }, properties: {} },
+      })
+      map.addLayer({
+        id: 'trip-route-line',
+        type: 'line',
+        source: 'trip-route',
+        paint: { 'line-color': '#059669', 'line-width': 4, 'line-opacity': 0.85 },
+      })
+
       // Map click — add waypoint when drawing
       map.on('click', (e) => {
         if (!isDrawingRef.current) return
@@ -156,6 +173,19 @@ export default function Map({
     map.getCanvas().style.cursor = isDrawingRoute ? 'crosshair' : ''
   }, [isDrawingRoute])
 
+  // In navigate mode, hide all trails except the active one
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+    const apply = () => {
+      const visibility = appMode === 'navigate' ? 'none' : 'visible'
+      map.setLayoutProperty('trails-line', 'visibility', visibility)
+      map.setLayoutProperty('trails-outline', 'visibility', visibility)
+    }
+    if (map.isStyleLoaded()) apply()
+    else map.once('load', apply)
+  }, [appMode])
+
   // Update selected trail highlight
   useEffect(() => {
     const map = mapRef.current
@@ -166,24 +196,47 @@ export default function Map({
     map.setFilter('trails-selected', ['==', ['get', 'id'], trailId])
   }, [selectedTrail, appMode, activeTrip])
 
-  // Update custom route line + waypoint markers
+  // Keep stable refs so the async route callback can read current values
+  const onRouteUpdatedRef = useRef(onRouteUpdated)
+  useEffect(() => { onRouteUpdatedRef.current = onRouteUpdated }, [onRouteUpdated])
+
+  // Draw station-to-campsite walking route when trip planner is open
   useEffect(() => {
     const map = mapRef.current
     if (!map || !map.isStyleLoaded()) return
-
-    const source = map.getSource('custom-route') as maplibregl.GeoJSONSource | undefined
+    const source = map.getSource('trip-route') as maplibregl.GeoJSONSource | undefined
     source?.setData({
       type: 'Feature',
-      geometry: {
-        type: 'LineString',
-        coordinates: customWaypoints.map(wp => [wp.lng, wp.lat]),
-      },
+      geometry: { type: 'LineString', coordinates: tripRouteCoords },
       properties: {},
     })
+    if (tripRouteCoords.length >= 2) {
+      const lngs = tripRouteCoords.map(c => c[0])
+      const lats = tripRouteCoords.map(c => c[1])
+      map.fitBounds(
+        [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
+        { padding: 80, duration: 800, maxZoom: 14 }
+      )
+    }
+  }, [tripRouteCoords])
 
+  // Update waypoint markers + fetch routed path whenever waypoints change
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+
+    const updateSource = (coords: [number, number][]) => {
+      const source = map.getSource('custom-route') as maplibregl.GeoJSONSource | undefined
+      source?.setData({
+        type: 'Feature',
+        geometry: { type: 'LineString', coordinates: coords },
+        properties: {},
+      })
+    }
+
+    // Redraw numbered markers
     waypointMarkersRef.current.forEach(m => m.remove())
     waypointMarkersRef.current = []
-
     customWaypoints.forEach((wp, i) => {
       const el = document.createElement('div')
       el.innerHTML = `
@@ -196,7 +249,60 @@ export default function Map({
         .addTo(map)
       waypointMarkersRef.current.push(marker)
     })
-  }, [customWaypoints])
+
+    if (customWaypoints.length < 2) {
+      updateSource([])
+      onRouteUpdatedRef.current(0)
+      return
+    }
+
+    const controller = new AbortController()
+    const orsKey = import.meta.env.VITE_ORS_API_KEY as string | undefined
+    const fallback = () => {
+      updateSource(customWaypoints.map(wp => [wp.lng, wp.lat]))
+      onRouteUpdatedRef.current(routeLengthKm(customWaypoints))
+    }
+
+    if (orsKey) {
+      // OpenRouteService foot-hiking: prefers tracks, footpaths, and trails over roads
+      fetch('https://api.openrouteservice.org/v2/directions/foot-hiking/geojson', {
+        method: 'POST',
+        signal: controller.signal,
+        headers: { 'Authorization': orsKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ coordinates: customWaypoints.map(wp => [wp.lng, wp.lat]) }),
+      })
+        .then(r => r.json())
+        .then(data => {
+          const coords = data?.features?.[0]?.geometry?.coordinates
+          const dist = data?.features?.[0]?.properties?.summary?.distance
+          if (coords?.length && dist != null) {
+            updateSource(coords)
+            onRouteUpdatedRef.current(dist / 1000)
+          } else {
+            fallback()
+          }
+        })
+        .catch(() => { if (!controller.signal.aborted) fallback() })
+    } else {
+      // Fall back to OSRM foot profile (still prefers footways/paths over roads)
+      const coordStr = customWaypoints.map(wp => `${wp.lng},${wp.lat}`).join(';')
+      fetch(`https://router.project-osrm.org/route/v1/foot/${coordStr}?overview=full&geometries=geojson`, {
+        signal: controller.signal,
+      })
+        .then(r => r.json())
+        .then(data => {
+          if (data.code === 'Ok' && data.routes?.[0]) {
+            updateSource(data.routes[0].geometry.coordinates)
+            onRouteUpdatedRef.current(data.routes[0].distance / 1000)
+          } else {
+            fallback()
+          }
+        })
+        .catch(() => { if (!controller.signal.aborted) fallback() })
+    }
+
+    return () => controller.abort()
+  }, [customWaypoints]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Navigate mode — GPS watchPosition
   useEffect(() => {

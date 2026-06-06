@@ -8,6 +8,7 @@ interface Props {
   onToggleDrawing: () => void
   onDeleteLast: () => void
   onClearAll: () => void
+  onPlanTrip: () => void
 }
 
 export default function WaypointControls({
@@ -18,12 +19,25 @@ export default function WaypointControls({
   onToggleDrawing,
   onDeleteLast,
   onClearAll,
+  onPlanTrip,
 }: Props) {
-  if (!isDrawing && waypoints.length === 0) return null
-
   const hrs = Math.floor(estimatedMinutes / 60)
   const mins = Math.round(estimatedMinutes % 60)
   const timeStr = hrs > 0 ? `${hrs}h ${mins}m` : `${mins}m`
+
+  if (!isDrawing && waypoints.length === 0) {
+    return (
+      <div className="absolute top-16 left-3 z-10 pointer-events-auto">
+        <button
+          onClick={onToggleDrawing}
+          className="flex items-center gap-2 bg-white rounded-2xl shadow-lg border border-indigo-100 px-3 py-2.5 text-xs font-semibold text-indigo-700 hover:bg-indigo-50 transition-colors"
+        >
+          <span>📍</span>
+          <span>Draw a route</span>
+        </button>
+      </div>
+    )
+  }
 
   return (
     <div className="absolute top-16 left-3 z-10 pointer-events-auto">
@@ -55,6 +69,17 @@ export default function WaypointControls({
             <span><strong className="text-indigo-700">{estimatedKm.toFixed(1)}</strong> km</span>
             <span><strong className="text-gray-800">{timeStr}</strong> est.</span>
           </div>
+        )}
+
+        {/* Plan trip CTA — shown when route is ready and not actively drawing */}
+        {!isDrawing && waypoints.length >= 2 && (
+          <button
+            onClick={onPlanTrip}
+            className="w-full flex items-center justify-center gap-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold py-2 rounded-xl transition-colors mb-2"
+          >
+            <span>🚆</span>
+            <span>Plan this trip →</span>
+          </button>
         )}
 
         {/* Actions */}
