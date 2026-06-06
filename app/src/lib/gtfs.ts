@@ -267,3 +267,129 @@ export function findDepartures(
   results.sort((a, b) => timeStrToMinutes(a.departureTime) - timeStrToMinutes(b.departureTime))
   return results.slice(0, 12)
 }
+
+function makeDepartureArrivingBy(
+  gtfs: GTFSData,
+  dep: string, tripId: string, arrMins: number, arrivingByMins: number,
+  transfer?: Transfer
+): Departure {
+  const trip = gtfs.trips[tripId]
+  const route = gtfs.routes[trip?.r ?? '']
+  const bufferMins = arrivingByMins - arrMins
+  return {
+    departureTime: dep,
+    arrivalTime: minutesToTimeStr(arrMins),
+    headsign: trip?.h ?? '',
+    routeName: route?.ln || route?.sn || trip?.h || '',
+    safetyStatus: bufferMins > 30 ? 'safe' : bufferMins >= 0 ? 'tight' : 'risky',
+    minutesBuffer: bufferMins,
+    tripId,
+    transfer,
+  }
+}
+
+// Find trains that arrive at toStopId BY arrivingByHHMM, departing from fromStopId.
+// Used for friend's journey planning: arrive at meetup point before a given time.
+export function findDeparturesArrivingBy(
+  gtfs: GTFSData,
+  fromStopId: string,
+  toStopId: string,
+  dateStr: string,
+  arrivingByHHMM: string
+): Departure[] {
+  const arrivingByMins = timeStrToMinutes(arrivingByHHMM)
+  const toTrips = gtfs.stopTrips[toStopId]
+  if (!toTrips) return []
+
+  const serviceCache = new Map<string, boolean>()
+  const runsOn = (sv: string) => {
+    if (!serviceCache.has(sv)) serviceCache.set(sv, serviceRunsOn(gtfs, sv, dateStr))
+    return serviceCache.get(sv)!
+  }
+
+  const results: Departure[] = []
+  const seen = new Set<string>()
+
+  for (const [, tripId, toSeq] of toTrips) {
+    const trip = gtfs.trips[tripId]
+    if (!trip || !runsOn(trip.sv)) continue
+
+    const tripStops = gtfs.tripStops[tripId]
+    if (!tripStops) continue
+
+    // Arrival time at toStop for this trip
+    const toEntry = tripStops.find(([seq, sid]) => sid === toStopId && seq === toSeq)
+    if (!toEntry) continue
+    const arrMins = timeStrToMinutes(toEntry[3])
+    if (arrMins > arrivingByMins) continue
+
+    // --- Direct service ---
+    const fromEntry = tripStops.find(([seq, sid]) => sid === fromStopId && seq < toSeq)
+    if (fromEntry) {
+      const dep = fromEntry[2]
+      const key = `${dep}-${toEntry[3]}`
+      if (!seen.has(key)) {
+        seen.add(key)
+        results.push(makeDepartureArrivingBy(gtfs, dep, tripId, arrMins, arrivingByMins))
+      }
+      continue
+    }
+
+    // --- One-transfer via hub stations ---
+    for (const hubId of TRANSFER_STOPS) {
+      if (hubId === fromStopId || hubId === toStopId) continue
+
+      // Does leg 2 (this trip) call the hub before toStop?
+      const hubEntry = tripStops.find(([seq, sid]) => sid === hubId && seq < toSeq)
+      if (!hubEntry) continue
+
+      const hubDepMins = timeStrToMinutes(hubEntry[2])
+      const latestLeg1ArrivalAtHub = hubDepMins - MIN_TRANSFER_MINS
+
+      // Find the latest leg 1 trip from fromStop that arrives at hub in time
+      const fromTrips = gtfs.stopTrips[fromStopId]
+      if (!fromTrips) continue
+
+      let bestLeg1: { dep: string; tripId2: string; arriveHubMins: number } | null = null
+
+      for (const [dep2, tripId2, fromSeq2] of fromTrips) {
+        if (tripId2 === tripId) continue
+        const trip2 = gtfs.trips[tripId2]
+        if (!trip2 || !runsOn(trip2.sv)) continue
+
+        const trip2Stops = gtfs.tripStops[tripId2]
+        if (!trip2Stops) continue
+
+        const hubEntry2 = trip2Stops.find(([seq, sid]) => sid === hubId && seq > fromSeq2)
+        if (!hubEntry2) continue
+
+        const arriveHubMins = timeStrToMinutes(hubEntry2[3])
+        if (arriveHubMins > latestLeg1ArrivalAtHub) continue
+
+        if (!bestLeg1 || timeStrToMinutes(dep2) > timeStrToMinutes(bestLeg1.dep)) {
+          bestLeg1 = { dep: dep2, tripId2, arriveHubMins }
+        }
+      }
+
+      if (!bestLeg1) continue
+
+      const key = `${bestLeg1.dep}-${hubEntry[2]}-${toEntry[3]}`
+      if (seen.has(key)) continue
+      seen.add(key)
+
+      const hubStop = gtfs.stops[hubId]
+      results.push(makeDepartureArrivingBy(
+        gtfs, bestLeg1.dep, bestLeg1.tripId2, arrMins, arrivingByMins, {
+          stopName: hubStop?.n ?? 'Transfer',
+          arriveTime: minutesToTimeStr(bestLeg1.arriveHubMins),
+          departTime: minutesToTimeStr(hubDepMins),
+          headsign: trip.h,
+          tripId,
+        }
+      ))
+    }
+  }
+
+  results.sort((a, b) => timeStrToMinutes(a.departureTime) - timeStrToMinutes(b.departureTime))
+  return results.slice(0, 12)
+}
