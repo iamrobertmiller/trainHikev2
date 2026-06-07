@@ -27,7 +27,7 @@ export default function WaypointControls({
 
   if (!isDrawing && waypoints.length === 0) {
     return (
-      <div className="absolute right-3 z-10 pointer-events-auto" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
+      <div className="absolute right-3 z-10 pointer-events-auto" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
         <button
           onClick={onToggleDrawing}
           className="flex items-center gap-2 rounded-xl shadow-lg px-3 py-2.5 transition-colors"
@@ -45,7 +45,7 @@ export default function WaypointControls({
   }
 
   return (
-    <div className="absolute right-3 z-10 pointer-events-auto" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
+    <div className="absolute right-3 z-10 pointer-events-auto" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
       <div
         className="rounded-xl shadow-lg p-3 min-w-[210px]"
         style={{ background: 'var(--forest)', border: '1px solid var(--forest-2)' }}
