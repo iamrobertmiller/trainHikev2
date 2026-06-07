@@ -31,8 +31,8 @@ function FacilityBadge({ available, label, icon }: { available?: boolean; label:
 export default function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
   return (
     <div
-      className="absolute bottom-16 left-0 right-0 z-10 rounded-t-2xl shadow-2xl max-h-[72vh] overflow-y-auto md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl md:max-h-[80vh]"
-      style={{ background: 'var(--paper)', color: 'var(--ink)' }}
+      className="absolute left-0 right-0 z-10 rounded-t-2xl shadow-2xl max-h-[72vh] overflow-y-auto md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl md:max-h-[80vh]"
+      style={{ background: 'var(--paper)', color: 'var(--ink)', bottom: 'calc(4rem + env(safe-area-inset-bottom, 0px))' }}
     >
       {/* Header */}
       <div className="sticky top-0 px-4 pt-5 pb-4 z-10" style={{ background: 'var(--forest)', borderBottom: '3px solid var(--ochre)' }}>
