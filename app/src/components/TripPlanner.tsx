@@ -75,7 +75,10 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
       nearestResult.stop.id,
       dateToGTFS(date),
       deadlineHHMM,
-      profile.homeNetwork ?? 'vline'
+      profile.homeNetwork ?? 'vline',
+      nearestResult.network,
+      nearestResult.stop.name,
+      nearestResult.metroLine ?? ''
     )
   }, [date, profile, nearestResult, deadlineHHMM]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -175,7 +178,9 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
             </p>
           ) : nearestResult ? (
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--sand)', textAlign: 'center' }}>
-              {nearestResult.distanceKm}km from {nearestResult.stop.name} · Naismith + 30min buffer
+              {nearestResult.distanceKm}km from {nearestResult.stop.name}
+              {nearestResult.network === 'metro' && nearestResult.metroLine ? ` · Metro ${nearestResult.metroLine}` : ''}
+              {' '}· Naismith + 30min buffer
             </p>
           ) : (
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--sand)', textAlign: 'center' }}>
@@ -218,8 +223,20 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 13h16M8 18l-2 3M16 18l2 3M12 16v5"/>
             </svg>
-            <span style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--sand)' }}>
+            <span style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--sand)', flex: 1 }}>
               Nearest: <strong style={{ color: 'var(--ink)' }}>{nearestResult.stop.name}</strong> · {nearestResult.distanceKm} km
+            </span>
+            <span
+              className="flex-none text-xs px-2 py-0.5 rounded"
+              style={{
+                fontFamily: 'Oswald, sans-serif',
+                letterSpacing: '0.08em',
+                fontSize: '0.65rem',
+                background: nearestResult.network === 'metro' ? '#005C8B' : '#6B2D8B',
+                color: '#fff',
+              }}
+            >
+              {nearestResult.network === 'metro' ? 'METRO' : 'V/LINE'}
             </span>
           </div>
         )}
@@ -232,7 +249,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
         {/* PT section */}
         <div>
           <p className="mb-3" style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}>
-            V/Line services from your station
+            Transit services from your station
           </p>
 
           {!profile ? (

@@ -108,7 +108,7 @@ export default function HomeSetup({ onSave, onSkip }: Props) {
                         style={{
                           fontFamily: 'Oswald, sans-serif',
                           letterSpacing: '0.08em',
-                          background: isMetro ? '#005C8B' : 'var(--forest)',
+                          background: isMetro ? '#005C8B' : '#6B2D8B',
                           color: '#fff',
                         }}
                       >
