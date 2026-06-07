@@ -5,7 +5,6 @@ import HutPanel from './components/HutPanel'
 import WaterFrontagePanel from './components/WaterFrontagePanel'
 import TripPlanner from './components/TripPlanner'
 import HomeSetup from './components/HomeSetup'
-import BottomTabBar from './components/BottomTabBar'
 import WaypointControls from './components/WaypointControls'
 import NavigateOverlay from './components/NavigateOverlay'
 import SavedTripsPanel from './components/SavedTripsPanel'
@@ -339,7 +338,7 @@ export default function App() {
 
       {/* Layer toggles — bottom left, above tab bar */}
       {appMode === 'plan' && panel === 'none' && (
-        <div className="absolute left-3 z-10 pointer-events-auto flex flex-col gap-1.5" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
+        <div className="absolute left-3 z-10 pointer-events-auto flex flex-col gap-1.5" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
           <button
             onClick={() => setShowWaterFrontage(s => !s)}
             className="flex items-center gap-2 rounded-lg shadow-lg px-2.5 py-1.5 transition-colors"
@@ -412,7 +411,7 @@ export default function App() {
 
       {/* Selected trail banner — Plan mode only */}
       {appMode === 'plan' && selectedTrail && panel === 'none' && (
-        <div className="absolute left-4 right-16 md:left-auto md:right-4 md:w-80 z-10 bg-white rounded-2xl shadow-lg p-4" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
+        <div className="absolute left-4 right-16 md:left-auto md:right-4 md:w-80 z-10 bg-white rounded-2xl shadow-lg p-4" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <p className="font-semibold text-gray-900 text-sm truncate">{selectedTrail.name}</p>
@@ -499,7 +498,7 @@ export default function App() {
 
       {/* Campsite hint banner */}
       {showCampsiteHint && (
-        <div className="absolute left-1/2 -translate-x-1/2 z-40 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 whitespace-nowrap" style={{ bottom: 'calc(6rem + env(safe-area-inset-bottom, 0px))', background: 'var(--forest)', border: '1px solid var(--ochre)' }}>
+        <div className="absolute left-1/2 -translate-x-1/2 z-40 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 whitespace-nowrap" style={{ bottom: 'calc(4rem + env(safe-area-inset-bottom, 0px))', background: 'var(--forest)', border: '1px solid var(--ochre)' }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
             <path d="M12 3L2 21h20L12 3z" fill="var(--moss)"/>
             <path d="M12 7l6 11H6L12 7z" fill="var(--paper)" opacity="0.9"/>
@@ -521,8 +520,48 @@ export default function App() {
         <SharedTripView payload={sharedTrip} onClose={dismissSharedTrip} />
       )}
 
-      {/* Bottom tab bar */}
-      <BottomTabBar mode={appMode} onSwitchMode={handleSwitchMode} />
+      {/* Floating mode switcher — hidden while a panel or the navigate overlay is active */}
+      {panel === 'none' && !(appMode === 'navigate' && activeTrip) && (
+        <div
+          className="absolute left-1/2 -translate-x-1/2 z-20 pointer-events-auto"
+          style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
+        >
+          <div
+            className="flex rounded-full shadow-xl overflow-hidden"
+            style={{ background: 'var(--forest)', border: '1px solid var(--forest-2)' }}
+          >
+            <button
+              onClick={() => handleSwitchMode('plan')}
+              className="flex items-center gap-2 px-5 py-2.5 transition-colors"
+              style={{
+                background: appMode === 'plan' ? 'var(--forest-2)' : 'transparent',
+                color: appMode === 'plan' ? 'var(--ochre)' : 'var(--sand)',
+                borderRight: '1px solid var(--forest-2)',
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+                <path d="M9 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5"/>
+                <path d="M16 3v4M8 3v4M3 11h18"/>
+                <path d="M19 16l-4 4-2-2"/>
+              </svg>
+              <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.7rem', letterSpacing: '0.12em', fontWeight: 600 }}>PLAN</span>
+            </button>
+            <button
+              onClick={() => handleSwitchMode('navigate')}
+              className="flex items-center gap-2 px-5 py-2.5 transition-colors"
+              style={{
+                background: appMode === 'navigate' ? 'var(--forest-2)' : 'transparent',
+                color: appMode === 'navigate' ? 'var(--ochre)' : 'var(--sand)',
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+              </svg>
+              <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.7rem', letterSpacing: '0.12em', fontWeight: 600 }}>NAVIGATE</span>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

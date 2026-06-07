@@ -59,7 +59,7 @@ body {
 
 /* Panels: clear the tab bar + safe area on mobile; fixed offset on desktop */
 .panel-bottom {
-  bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  bottom: 0;
 }
 @media (min-width: 768px) {
   .panel-bottom {
