@@ -160,6 +160,8 @@ export interface MetroTrailheadLeg {
   estimatedMins: number   // approximate travel time SSX → Metro trailhead
   lineName: string        // e.g. "Hurstbridge"
   trailheadName: string   // e.g. "Eltham"
+  departureSSX?: string   // HH:MM actual/derived SSX departure
+  arrivalTime?: string    // HH:MM actual/derived trailhead arrival
 }
 
 export interface Departure {

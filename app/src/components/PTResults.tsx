@@ -167,16 +167,18 @@ export default function PTResults({
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 py-0.5 mt-1">
-                    <div className="flex-none w-4 flex items-center justify-center">
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 13h16M8 18l-2 3M16 18l2 3M12 16v5"/>
-                      </svg>
+                  {!dep.metroTrailheadLeg && (
+                    <div className="flex items-center gap-2 py-0.5 mt-1">
+                      <div className="flex-none w-4 flex items-center justify-center">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 13h16M8 18l-2 3M16 18l2 3M12 16v5"/>
+                        </svg>
+                      </div>
+                      <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--moss)' }}>
+                        BOARD V/LINE
+                      </span>
                     </div>
-                    <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--moss)' }}>
-                      BOARD V/LINE
-                    </span>
-                  </div>
+                  )}
                 </div>
               )}
               {dep.transfer ? (
@@ -259,7 +261,8 @@ export default function PTResults({
 
             {/* Metro trailhead leg: SSX → Metro station */}
             {dep.metroTrailheadLeg && (
-              <div className="mt-2 pt-2" style={{ borderTop: '1px dashed var(--fog)' }}>
+              <div className="mt-2 pt-2 px-3 pb-2.5" style={{ borderTop: '1px dashed var(--fog)' }}>
+                {/* SSX departure row */}
                 <div className="flex items-center gap-2 py-0.5">
                   <div className="flex-none w-4 flex flex-col items-center gap-0.5">
                     <div className="w-px h-2" style={{ background: 'var(--fog)' }} />
@@ -271,17 +274,27 @@ export default function PTResults({
                       Metro · {dep.metroTrailheadLeg.lineName || 'Metro train'}
                     </span>
                     <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--sand)', flexShrink: 0 }}>
-                      ~{dep.metroTrailheadLeg.estimatedMins}m
+                      {dep.metroTrailheadLeg.departureSSX
+                        ? `dep ${dep.metroTrailheadLeg.departureSSX}`
+                        : `~${dep.metroTrailheadLeg.estimatedMins}m`}
                     </span>
                   </div>
                 </div>
+                {/* Trailhead arrival row */}
                 <div className="flex items-center gap-2 py-0.5">
                   <div className="flex-none w-4 flex items-center justify-center">
                     <div className="w-2 h-2 rounded-full border-2" style={{ borderColor: '#005C8B', background: 'var(--paper-2)' }} />
                   </div>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--sand)', fontWeight: 500 }}>
-                    {dep.metroTrailheadLeg.trailheadName || 'Trailhead'}
-                  </span>
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-2">
+                    <span style={{ fontSize: '0.85rem', color: 'var(--sand)', fontWeight: 500 }}>
+                      {dep.metroTrailheadLeg.trailheadName || 'Trailhead'}
+                    </span>
+                    {dep.metroTrailheadLeg.arrivalTime && (
+                      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--sand)', flexShrink: 0 }}>
+                        arr {dep.metroTrailheadLeg.arrivalTime}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 py-0.5 mt-0.5">
                   <div className="flex-none w-4 flex items-center justify-center">

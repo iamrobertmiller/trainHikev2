@@ -154,3 +154,54 @@ export function latestMetroForVLine(
   }
   return best
 }
+
+// ---- Outbound Metro (Southern Cross → trailhead station) --------------------
+
+export interface MetroDepartureFromSSX {
+  departureSSX: string    // HH:MM depart Southern Cross
+  arrivalTime: string     // HH:MM arrive at trailhead Metro station
+  lineName: string
+}
+
+const SSX_TURNAROUND_MINS = 10  // typical SSX platform turnaround
+
+// Derive approximate outbound (SSX → station) timetable from existing inbound data.
+// Metro trains arriving at SSX inbound turn around after ~10 minutes and run outbound
+// on the same line, taking approximately the same journey time in reverse.
+function deriveOutboundPairs(pairs: DayBucket): DayBucket {
+  if (pairs.length === 0) return []
+  const avgJourneyMins = Math.round(
+    pairs.reduce((s, [dep, arr]) => s + (arr - dep), 0) / pairs.length
+  )
+  return pairs.map(([, arrSSX]) => {
+    const ssxDep = arrSSX + SSX_TURNAROUND_MINS
+    return [ssxDep, ssxDep + avgJourneyMins] as [number, number]
+  }).sort((a, b) => a[0] - b[0])
+}
+
+export function findMetroDeparturesFromSSX(
+  data: MetroData,
+  trailheadStopId: string,
+  dateStr: string,
+  deadlineHHMM: string
+): MetroDepartureFromSSX[] {
+  const dt = dayType(dateStr)
+  const deadlineMins = hhmmToMins(deadlineHHMM)
+  const stopInfo = data.stops[trailheadStopId]
+  const lineName = stopInfo?.li ?? ''
+
+  // Use pre-built fromSSX if available (requires rebuild of metro_gtfs.json),
+  // otherwise derive approximate outbound times from inbound toSSX data.
+  const bucket = data.fromSSX?.[trailheadStopId] ?? null
+  const pairs: DayBucket = bucket
+    ? (bucket[dt] ?? [])
+    : deriveOutboundPairs(data.toSSX[trailheadStopId]?.[dt] ?? data.toSSX[trailheadStopId]?.wd ?? [])
+
+  return pairs
+    .filter(([, arrMins]) => arrMins <= deadlineMins)
+    .map(([depMins, arrMins]) => ({
+      departureSSX: minsToHHMM(depMins),
+      arrivalTime: minsToHHMM(arrMins),
+      lineName,
+    }))
+}
