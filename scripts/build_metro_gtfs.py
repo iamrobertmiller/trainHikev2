@@ -143,10 +143,12 @@ def build_metro_gtfs(zip_path):
             ))
         print(f"    Loaded stop times for {len(trip_stops)} trips")
 
-    # --- Build toSSX ---
+    # --- Build toSSX and fromSSX ---
     print("  Building departure tables...")
     # parent_station → day_type → [(dep_mins, arr_at_ssx_mins)]
     toSSX = collections.defaultdict(lambda: {"weekday": [], "saturday": [], "sunday": []})
+    # parent_station → day_type → [(ssx_dep_mins, arr_at_station_mins)]
+    fromSSX = collections.defaultdict(lambda: {"weekday": [], "saturday": [], "sunday": []})
     # parent_station → line names seen
     parent_lines = collections.defaultdict(set)
     # parent_station → canonical info (name, lat, lng)
@@ -160,34 +162,47 @@ def build_metro_gtfs(zip_path):
         ssx_entry = None
         for seq, sid, dep, arr in stops_sorted:
             if sid in ssx_stop_ids:
-                ssx_entry = (seq, time_to_mins(arr))
+                ssx_entry = (seq, time_to_mins(arr), time_to_mins(dep))
                 break
         if not ssx_entry:
             continue  # trip doesn't visit SSX
 
-        ssx_seq, ssx_arr_mins = ssx_entry
+        ssx_seq, ssx_arr_mins, ssx_dep_mins = ssx_entry
 
         for seq, sid, dep, arr in stops_sorted:
-            if seq >= ssx_seq:
-                continue  # at or after SSX
-            dep_mins = time_to_mins(dep)
-            if dep_mins < MIN_DEPARTURE_MINS or dep_mins > MAX_DEPARTURE_MINS:
-                continue
             parent = stop_info.get(sid, {}).get("parent", sid)
             if parent == SSX_PARENT:
                 continue
 
-            toSSX[parent][info["day_type"]].append((dep_mins, ssx_arr_mins))
-            parent_lines[parent].add(info["line"])
+            if seq < ssx_seq:
+                # Before SSX — contributes to toSSX
+                dep_mins = time_to_mins(dep)
+                if dep_mins < MIN_DEPARTURE_MINS or dep_mins > MAX_DEPARTURE_MINS:
+                    continue
+                toSSX[parent][info["day_type"]].append((dep_mins, ssx_arr_mins))
+                parent_lines[parent].add(info["line"])
+                if parent not in parent_canonical:
+                    si = stop_info.get(sid, {})
+                    parent_canonical[parent] = {
+                        "n": si["name"].replace(" Station", "").replace(" Railway Station", ""),
+                        "la": si["lat"],
+                        "lo": si["lng"],
+                    }
 
-            # Set canonical stop info
-            if parent not in parent_canonical:
-                si = stop_info.get(sid, {})
-                parent_canonical[parent] = {
-                    "n": si["name"].replace(" Station", "").replace(" Railway Station", ""),
-                    "la": si["lat"],
-                    "lo": si["lng"],
-                }
+            elif seq > ssx_seq:
+                # After SSX — contributes to fromSSX
+                if ssx_dep_mins < MIN_DEPARTURE_MINS or ssx_dep_mins > MAX_DEPARTURE_MINS:
+                    continue
+                arr_mins = time_to_mins(arr)
+                fromSSX[parent][info["day_type"]].append((ssx_dep_mins, arr_mins))
+                parent_lines[parent].add(info["line"])
+                if parent not in parent_canonical:
+                    si = stop_info.get(sid, {})
+                    parent_canonical[parent] = {
+                        "n": si["name"].replace(" Station", "").replace(" Railway Station", ""),
+                        "la": si["lat"],
+                        "lo": si["lng"],
+                    }
 
     # Deduplicate and sort each list
     print("  Deduplicating and sorting...")
@@ -196,10 +211,18 @@ def build_metro_gtfs(zip_path):
             entries = list(set(toSSX[parent][day_type]))
             entries.sort(key=lambda x: x[0])
             toSSX[parent][day_type] = entries
+    for parent in fromSSX:
+        for day_type in ("weekday", "saturday", "sunday"):
+            entries = list(set(fromSSX[parent][day_type]))
+            entries.sort(key=lambda x: x[0])
+            fromSSX[parent][day_type] = entries
 
-    # Filter stops that have no services on any day
-    active_parents = {p for p, d in toSSX.items() if any(d[k] for k in d)}
-    print(f"  Active Metro stations with SSX services: {len(active_parents)}")
+    # Active parents: union of toSSX and fromSSX stations
+    active_toSSX = {p for p, d in toSSX.items() if any(d[k] for k in d)}
+    active_fromSSX = {p for p, d in fromSSX.items() if any(d[k] for k in d)}
+    active_parents = active_toSSX | active_fromSSX
+    print(f"  Active Metro stations (toSSX): {len(active_toSSX)}")
+    print(f"  Active Metro stations (fromSSX): {len(active_fromSSX)}")
 
     # Build stops dict
     stops_out = {}
@@ -213,13 +236,22 @@ def build_metro_gtfs(zip_path):
             "li": "/".join(lines),
         }
 
-    # Build toSSX dict (convert to lists of [dep, arr] pairs)
+    # Build toSSX dict
     toSSX_out = {}
-    for parent in active_parents:
+    for parent in active_toSSX:
         toSSX_out[parent] = {
             "wd": toSSX[parent]["weekday"],
             "sa": toSSX[parent]["saturday"],
             "su": toSSX[parent]["sunday"],
+        }
+
+    # Build fromSSX dict
+    fromSSX_out = {}
+    for parent in active_fromSSX:
+        fromSSX_out[parent] = {
+            "wd": fromSSX[parent]["weekday"],
+            "sa": fromSSX[parent]["saturday"],
+            "su": fromSSX[parent]["sunday"],
         }
 
     from datetime import date
@@ -228,6 +260,7 @@ def build_metro_gtfs(zip_path):
         "generated": date.today().isoformat(),
         "stops": stops_out,
         "toSSX": toSSX_out,
+        "fromSSX": fromSSX_out,
     }
 
     out_path = Path("app/public/data/metro_gtfs.json")
@@ -238,13 +271,16 @@ def build_metro_gtfs(zip_path):
     print(f"Stations: {len(stops_out)}")
 
     # Show coverage summary
-    print("\nSample stations:")
-    for parent in list(active_parents)[:10]:
+    print("\nSample stations (toSSX):")
+    for parent in list(active_toSSX)[:5]:
         s = stops_out[parent]
         wd = len(toSSX_out[parent]["wd"])
-        sa = len(toSSX_out[parent]["sa"])
-        su = len(toSSX_out[parent]["su"])
-        print(f"  {s['n']} ({s['li']}): wd={wd} sa={sa} su={su}")
+        print(f"  {s['n']} ({s['li']}): wd={wd}")
+    print("\nSample stations (fromSSX):")
+    for parent in list(active_fromSSX)[:5]:
+        s = stops_out[parent]
+        wd = len(fromSSX_out[parent]["wd"])
+        print(f"  {s['n']} ({s['li']}): wd={wd}")
 
 if __name__ == "__main__":
     zip_path = download_ptv_gtfs()

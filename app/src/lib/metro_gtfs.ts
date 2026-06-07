@@ -1,5 +1,8 @@
 // Metro GTFS query engine — precomputed departures toward Southern Cross
 
+import { haversineKm } from './geo'
+import type { NearestStopResult } from './gtfs'
+
 export interface MetroStop {
   id: string      // parent_station ID e.g. "vic:rail:BOX"
   name: string
@@ -8,15 +11,14 @@ export interface MetroStop {
   line: string    // e.g. "Belgrave/Lilydale"
 }
 
+type DayBucket = [number, number][]  // [dep_mins, arr_mins]
+
 interface MetroData {
   feed: string
   generated: string
   stops: Record<string, { n: string; la: number; lo: number; li: string }>
-  toSSX: Record<string, {
-    wd: [number, number][]  // [dep_mins, arr_ssx_mins] weekday
-    sa: [number, number][]  // saturday
-    su: [number, number][]  // sunday
-  }>
+  toSSX: Record<string, { wd: DayBucket; sa: DayBucket; su: DayBucket }>
+  fromSSX?: Record<string, { wd: DayBucket; sa: DayBucket; su: DayBucket }>
 }
 
 let cached: MetroData | null = null
@@ -96,6 +98,41 @@ export function findMetroDeparturesToSSX(
     arrivalSSX: minsToHHMM(arrMins),
     lineName,
   }))
+}
+
+// Estimate travel time (mins) from a Metro station to SSX using toSSX data.
+// Used as a proxy for outbound SSX→station journey time (symmetric approximation).
+export function estimateMetroTravelMins(data: MetroData, stopId: string, dateStr: string): number {
+  const dt = dayType(dateStr)
+  const pairs = data.toSSX[stopId]?.[dt] ?? data.toSSX[stopId]?.wd ?? []
+  if (pairs.length === 0) return 45  // conservative default
+  const avg = pairs.reduce((s, [d, a]) => s + (a - d), 0) / pairs.length
+  return Math.max(5, Math.round(avg))
+}
+
+// Find the nearest Metro station to a lat/lng within maxKm.
+// Returns a NearestStopResult with network='metro' and metroLine set.
+export function nearestMetroStop(data: MetroData, lat: number, lng: number, maxKm = 30): NearestStopResult | null {
+  let bestId: string | null = null
+  let bestDist = Infinity
+  for (const [id, s] of Object.entries(data.stops)) {
+    // Station must have toSSX services (proxy for being an active station)
+    const bucket = data.toSSX[id]
+    if (!bucket || (!bucket.wd.length && !bucket.sa.length && !bucket.su.length)) continue
+    const d = haversineKm(lat, lng, s.la, s.lo)
+    if (d < bestDist && d <= maxKm) {
+      bestDist = d
+      bestId = id
+    }
+  }
+  if (!bestId) return null
+  const s = data.stops[bestId]
+  return {
+    stop: { id: bestId, name: s.n, lat: s.la, lng: s.lo },
+    distanceKm: Math.round(bestDist * 10) / 10,
+    network: 'metro',
+    metroLine: s.li,
+  }
 }
 
 // Find the latest Metro departure that still arrives at SSX before vlDepartMins - bufferMins

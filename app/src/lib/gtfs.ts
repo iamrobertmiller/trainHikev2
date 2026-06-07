@@ -86,6 +86,8 @@ export function nearestStop(gtfs: GTFSData, lat: number, lng: number, maxKm = 30
 export interface NearestStopResult {
   stop: GTFSStop
   distanceKm: number
+  network: 'vline' | 'metro'
+  metroLine?: string  // e.g. "Hurstbridge" — only set when network === 'metro'
 }
 
 export function nearestStopWithDistance(gtfs: GTFSData, lat: number, lng: number, maxKm = 30): NearestStopResult | null {
@@ -99,7 +101,7 @@ export function nearestStopWithDistance(gtfs: GTFSData, lat: number, lng: number
       best = { id, name: s.n, lat: s.la, lng: s.lo }
     }
   }
-  return best ? { stop: best, distanceKm: Math.round(bestDist * 10) / 10 } : null
+  return best ? { stop: best, distanceKm: Math.round(bestDist * 10) / 10, network: 'vline' } : null
 }
 
 function serviceRunsOn(gtfs: GTFSData, serviceId: string, dateStr: string): boolean {
@@ -154,16 +156,23 @@ export interface MetroLeg {
   lineName: string
 }
 
+export interface MetroTrailheadLeg {
+  estimatedMins: number   // approximate travel time SSX → Metro trailhead
+  lineName: string        // e.g. "Hurstbridge"
+  trailheadName: string   // e.g. "Eltham"
+}
+
 export interface Departure {
   departureTime: string     // HH:MM at home stop (Metro or V/Line)
-  arrivalTime: string       // HH:MM at destination stop
+  arrivalTime: string       // HH:MM at destination stop (or estimated trailhead if Metro)
   headsign: string
   routeName: string
   safetyStatus: 'safe' | 'tight' | 'risky'
   minutesBuffer: number
   tripId: string
-  transfer?: Transfer       // present when V/Line journey requires a change
-  metroLeg?: MetroLeg      // present when journey starts with a Metro train
+  transfer?: Transfer           // present when V/Line journey requires a change
+  metroLeg?: MetroLeg          // present when journey starts with a Metro train
+  metroTrailheadLeg?: MetroTrailheadLeg  // present when trailhead is a Metro station
 }
 
 function makeDeparture(
