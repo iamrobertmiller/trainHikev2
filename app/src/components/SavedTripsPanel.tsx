@@ -39,25 +39,41 @@ export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Pr
       // user cancelled share or clipboard failed
     }
   }
+
   return (
-    <div className="absolute bottom-16 left-0 right-0 z-20 bg-white rounded-t-2xl shadow-2xl max-h-[70vh] flex flex-col md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl">
+    <div
+      className="absolute bottom-16 left-0 right-0 z-20 rounded-t-2xl shadow-2xl max-h-[72vh] flex flex-col md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl"
+      style={{ background: 'var(--paper)', color: 'var(--ink)' }}
+    >
       {/* Header */}
-      <div className="sticky top-0 bg-white px-4 pt-4 pb-3 border-b border-gray-100 flex items-center justify-between rounded-t-2xl">
-        <h2 className="font-bold text-gray-900 text-base">Saved trips</h2>
+      <div
+        className="sticky top-0 px-4 pt-5 pb-4 flex items-center justify-between rounded-t-2xl flex-none"
+        style={{ background: 'var(--forest)', borderBottom: '3px solid var(--ochre)' }}
+      >
+        <h2 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '1rem', color: 'var(--paper)', letterSpacing: '0.06em' }}>
+          SAVED TRIPS
+        </h2>
         <button
           onClick={onClose}
-          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400"
+          className="w-8 h-8 flex items-center justify-center rounded-lg"
+          style={{ background: 'var(--forest-2)', color: 'var(--sand)' }}
         >
-          ✕
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
 
       <div className="overflow-y-auto flex-1 p-3 space-y-2">
         {trips.length === 0 ? (
-          <div className="text-center py-10 px-4">
-            <p className="text-3xl mb-3">🗺️</p>
-            <p className="font-medium text-gray-700 mb-1">No saved trips yet</p>
-            <p className="text-sm text-gray-400">Plan a trip, select a departure, and tap Save to save it here.</p>
+          <div className="text-center py-12 px-4">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-4">
+              <path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <p className="font-medium mb-1" style={{ fontFamily: 'Oswald, sans-serif', color: 'var(--sand)', letterSpacing: '0.06em' }}>
+              NO SAVED TRIPS YET
+            </p>
+            <p className="text-sm" style={{ color: 'var(--sand)', fontStyle: 'italic' }}>
+              Plan a trip, select a departure, and save it here.
+            </p>
           </div>
         ) : (
           trips.slice().reverse().map(trip => {
@@ -66,24 +82,39 @@ export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Pr
               weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
             })
             return (
-              <div key={trip.id} className="bg-gray-50 rounded-2xl p-3 flex items-start gap-3">
+              <div
+                key={trip.id}
+                className="rounded-xl p-3 flex items-start gap-3"
+                style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}
+              >
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-gray-900 text-sm truncate">{name}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{date}</p>
-                  <div className="flex flex-wrap gap-2 mt-1.5">
+                  <p
+                    className="font-semibold truncate"
+                    style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.9rem', color: 'var(--ink)', letterSpacing: '0.02em' }}
+                  >
+                    {name}
+                  </p>
+                  <p
+                    className="mt-0.5"
+                    style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--sand)' }}
+                  >
+                    {date}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
                     {trip.chosenDepartureTime && (
-                      <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">
-                        🚆 {trip.chosenDepartureTime}
+                      <span
+                        className="text-xs px-2 py-0.5 rounded"
+                        style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.06em', background: 'var(--forest)', color: 'var(--paper)' }}
+                      >
+                        DEPARTS {trip.chosenDepartureTime}
                       </span>
                     )}
                     {trip.trailheadStopName && (
-                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full truncate max-w-[150px]">
+                      <span
+                        className="text-xs px-2 py-0.5 rounded truncate max-w-[150px]"
+                        style={{ fontFamily: 'JetBrains Mono, monospace', background: 'var(--paper)', color: 'var(--sand)', border: '1px solid var(--fog)' }}
+                      >
                         → {trip.trailheadStopName}
-                      </span>
-                    )}
-                    {(trip.customWaypoints?.length ?? 0) > 0 && (
-                      <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full">
-                        📍 {trip.customWaypoints!.length} waypoints
                       </span>
                     )}
                   </div>
@@ -91,23 +122,32 @@ export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Pr
                 <div className="flex flex-col gap-1.5 flex-none">
                   <button
                     onClick={() => onLoad(trip)}
-                    className="text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-xl transition-colors"
+                    className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+                    style={{ background: 'var(--ochre)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.08em' }}
+                    onMouseEnter={e => (e.currentTarget.style.background = 'var(--ochre-lt)')}
+                    onMouseLeave={e => (e.currentTarget.style.background = 'var(--ochre)')}
                   >
-                    Navigate
+                    GO
                   </button>
                   {trip.trailheadStopId && trip.chosenArrivalTime && trip.campsite && (
                     <button
                       onClick={() => handleShare(trip)}
-                      className="text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-xl transition-colors"
+                      className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+                      style={{ background: 'var(--forest)', color: 'var(--paper)', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.06em' }}
+                      onMouseEnter={e => (e.currentTarget.style.background = 'var(--forest-2)')}
+                      onMouseLeave={e => (e.currentTarget.style.background = 'var(--forest)')}
                     >
-                      {copiedId === trip.id ? '✓ Copied!' : '🔗 Share'}
+                      {copiedId === trip.id ? '✓' : 'SHARE'}
                     </button>
                   )}
                   <button
                     onClick={() => onDelete(trip.id)}
-                    className="text-xs text-gray-400 hover:text-red-500 text-center transition-colors"
+                    className="text-xs text-center transition-colors"
+                    style={{ color: 'var(--sand)', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.06em' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#8b2020')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--sand)')}
                   >
-                    Delete
+                    DEL
                   </button>
                 </div>
               </div>

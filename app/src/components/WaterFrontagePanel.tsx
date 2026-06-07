@@ -6,72 +6,87 @@ interface Props {
   onPlanTrip: () => void
 }
 
+const LABEL = { fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '0.65rem', letterSpacing: '0.14em', color: '#5c4830', textTransform: 'uppercase' as const }
+
 export default function WaterFrontagePanel({ site, onClose, onPlanTrip }: Props) {
   return (
-    <div className="absolute bottom-16 left-0 right-0 z-10 bg-white rounded-t-2xl shadow-2xl max-h-[70vh] overflow-y-auto md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl md:max-h-[80vh]">
-      {/* Header */}
-      <div className="sticky top-0 bg-white px-4 pt-4 pb-3 border-b border-gray-100">
+    <div
+      className="absolute bottom-16 left-0 right-0 z-10 rounded-t-2xl shadow-2xl max-h-[70vh] overflow-y-auto md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl md:max-h-[80vh]"
+      style={{ background: 'var(--paper)', color: 'var(--ink)' }}
+    >
+      {/* Header — river blue */}
+      <div className="sticky top-0 px-4 pt-5 pb-4 z-10" style={{ background: 'var(--river)', borderBottom: '3px solid var(--ochre)' }}>
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
-            <h2 className="font-bold text-gray-900 text-base leading-tight">{site.name}</h2>
-            <p className="text-sm text-blue-700 font-medium mt-0.5 truncate">{site.river}</p>
+            <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: '#90c8e8', textTransform: 'uppercase', marginBottom: '0.2rem' }}>
+              {site.river}
+            </p>
+            <h2 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '1.2rem', color: '#fff', letterSpacing: '0.02em', lineHeight: 1.2 }}>
+              {site.name}
+            </h2>
+            <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.7rem', color: '#a8c4d8' }}>
+              {Math.abs(site.lat).toFixed(4)}°S &nbsp;{site.lng.toFixed(4)}°E
+            </span>
           </div>
           <button
             onClick={onClose}
-            className="flex-none w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400"
+            className="flex-none w-8 h-8 flex items-center justify-center rounded-lg"
+            style={{ background: 'rgba(255,255,255,0.12)', color: '#a8c4d8' }}
           >
-            ✕
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
           </button>
-        </div>
-        <div className="mt-2">
-          <span className="text-xs text-gray-500 font-mono">
-            {Math.abs(site.lat).toFixed(4)}°S, {site.lng.toFixed(4)}°E
-          </span>
         </div>
       </div>
 
-      <div className="px-4 py-3 space-y-4">
-        {/* Type badge */}
-        <div className="flex items-center gap-2">
-          <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-            💧 Crown water frontage
+      <div className="px-4 py-4 space-y-4">
+        <div>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: '6px',
+            fontFamily: 'Oswald, sans-serif', fontWeight: 500, letterSpacing: '0.08em', fontSize: '0.72rem',
+            background: 'var(--river)', color: '#fff', padding: '4px 10px', borderRadius: '4px',
+          }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 12Q6 8 10 12Q14 16 18 12Q20 10 22 12"/>
+            </svg>
+            CROWN WATER FRONTAGE
           </span>
         </div>
 
-        {/* Location */}
         {site.location && (
           <div>
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Location</h3>
-            <p className="text-sm text-gray-700">{site.location}</p>
+            <p style={LABEL} className="mb-1.5">Location</p>
+            <p style={{ fontSize: '0.875rem', color: 'var(--ink)' }}>{site.location}</p>
           </div>
         )}
 
-        {/* Info */}
-        <div className="bg-blue-50 rounded-xl p-3 text-sm text-gray-600">
-          Camping on licensed crown water frontages is free and managed by the Department of Energy, Environment and Climate Action. No booking required.
+        <div style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)', borderRadius: '12px', padding: '14px 16px' }}>
+          <p style={{ fontSize: '0.875rem', lineHeight: 1.65, color: 'var(--ink)', fontStyle: 'italic' }}>
+            Camping on licensed crown water frontages is free and managed by DEECA. No booking required.
+          </p>
         </div>
 
-        {/* External link */}
         {site.url && (
-          <a
-            href={site.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-xs text-center text-gray-400 hover:text-blue-700"
-          >
+          <a href={site.url} target="_blank" rel="noopener noreferrer"
+            className="block text-xs text-center"
+            style={{ color: 'var(--earth)', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.06em', textDecoration: 'none' }}>
             View site details ↗
           </a>
         )}
       </div>
 
       {/* CTA */}
-      <div className="sticky bottom-0 bg-white border-t border-gray-100 p-4">
+      <div className="sticky bottom-0 p-4" style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)' }}>
         <button
           onClick={onPlanTrip}
-          className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2"
+          className="w-full py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
+          style={{ background: 'var(--forest)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem', fontWeight: 600 }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'var(--forest-2)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'var(--forest)')}
         >
-          <span>🚆</span>
-          <span>Plan a trip here</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+          PLAN A TRIP HERE
         </button>
       </div>
     </div>

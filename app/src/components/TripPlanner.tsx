@@ -32,11 +32,8 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
   const [selectedDeparture, setSelectedDeparture] = useState<Departure | null>(null)
   const { departures, loading, error, fetchDepartures } = useGTFSDepartures()
 
-  // Auto-detect nearest V/Line stop to campsite (must be before effectiveKm)
   const nearestResult = useNearestStop(campsite.lat, campsite.lng)
 
-  // Priority: custom drawn route → nearest station walk → 0
-  // Deliberately ignore trail.length_km — it's the full trail length, not the walk from the station
   const effectiveKm = customWaypoints.length > 1
     ? customRouteKm
     : (nearestResult?.distanceKm ?? 0)
@@ -76,27 +73,57 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
       profile.homeStopId,
       nearestResult.stop.id,
       dateToGTFS(date),
-      deadlineHHMM
+      deadlineHHMM,
+      profile.homeNetwork ?? 'vline'
     )
   }, [date, profile, nearestResult, deadlineHHMM]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="absolute inset-0 md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 bg-white rounded-none md:rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+    <div
+      className="absolute top-0 left-0 right-0 md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 flex flex-col overflow-hidden md:rounded-2xl shadow-2xl"
+      style={{
+        bottom: 'calc(env(safe-area-inset-bottom, 0px) + 4rem)',
+        background: 'var(--paper)',
+        color: 'var(--ink)',
+      }}
+    >
       {/* Header */}
-      <div className="px-4 py-4 border-b border-gray-100 flex items-center gap-3">
-        <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 flex-none">
-          ←
+      <div
+        className="px-4 py-4 flex items-center gap-3 flex-none"
+        style={{ background: 'var(--forest)', borderBottom: '3px solid var(--ochre)' }}
+      >
+        <button
+          onClick={onClose}
+          className="w-8 h-8 flex items-center justify-center rounded-lg flex-none transition-colors"
+          style={{ background: 'var(--forest-2)', color: 'var(--sand)' }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'var(--paper)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'var(--sand)')}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
         </button>
         <div className="flex-1 min-w-0">
-          <h2 className="font-bold text-gray-900 text-base truncate">Plan trip to {campsite.asset_desc || campsite.name}</h2>
-          <p className="text-xs text-emerald-700">{campsite.park_name}</p>
+          <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.16em', color: 'var(--moss)', textTransform: 'uppercase' }}>
+            Planning trip to
+          </p>
+          <h2
+            className="leading-tight truncate"
+            style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '1rem', color: 'var(--paper)' }}
+          >
+            {campsite.asset_desc || campsite.name}
+          </h2>
+          <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--ochre)' }}>
+            {campsite.park_name}
+          </p>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-5">
         {/* Date picker */}
         <div>
-          <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-2">
+          <label
+            className="block mb-2"
+            style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}
+          >
             Departure date
           </label>
           <input
@@ -104,96 +131,137 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
             value={date}
             min={today}
             onChange={e => setDate(e.target.value)}
-            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full px-4 py-3 text-sm focus:outline-none rounded-xl"
+            style={{
+              background: 'var(--paper-2)',
+              border: '1.5px solid var(--fog)',
+              color: 'var(--ink)',
+              fontFamily: 'JetBrains Mono, monospace',
+            }}
           />
         </div>
 
-        {/* Sunset + timing */}
-        <div className="bg-gray-50 rounded-xl p-4 space-y-3">
-          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-            Timing for {new Date(date + 'T12:00:00').toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' })}
-          </h3>
-          <div className="grid grid-cols-3 gap-3 text-center">
-            <div className="bg-white rounded-lg p-2.5 shadow-sm">
-              <p className="text-xs text-gray-400 mb-1">Sunset</p>
-              <p className="font-bold text-amber-600">{sunsetStr}</p>
+        {/* Sunset + timing card */}
+        <div
+          className="rounded-xl p-4 space-y-3"
+          style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}
+        >
+          <p
+            style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}
+          >
+            Timing · {new Date(date + 'T12:00:00').toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' })}
+          </p>
+          <div className="grid grid-cols-3 gap-2.5 text-center">
+            <div className="rounded-lg p-2.5" style={{ background: 'var(--paper)', border: '1px solid var(--fog)' }}>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--sand)' }}>SUNSET</p>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--ochre)' }}>{sunsetStr}</p>
             </div>
-            <div className="bg-white rounded-lg p-2.5 shadow-sm">
-              <p className="text-xs text-gray-400 mb-1">Hike time</p>
-              <p className="font-bold text-gray-700">
+            <div className="rounded-lg p-2.5" style={{ background: 'var(--paper)', border: '1px solid var(--fog)' }}>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--sand)' }}>HIKE</p>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--ink)' }}>
                 {effectiveKm > 0 ? `${hikingHrs}h ${hikingMinsRem}m` : '—'}
               </p>
             </div>
-            <div className="bg-white rounded-lg p-2.5 shadow-sm border-2 border-emerald-200">
-              <p className="text-xs text-gray-400 mb-1">Arrive by</p>
-              <p className="font-bold text-emerald-700">{deadlineStr}</p>
+            <div className="rounded-lg p-2.5" style={{ background: 'var(--paper)', border: '2px solid var(--moss)' }}>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--sand)' }}>ARRIVE BY</p>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--forest)' }}>{deadlineStr}</p>
             </div>
           </div>
+
           {customWaypoints.length > 1 ? (
-            <p className="text-xs text-indigo-600 text-center">
-              Custom route · {customRouteKm.toFixed(1)}km · Naismith's Rule · 30min safety buffer
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--moss)', textAlign: 'center' }}>
+              Custom route · {customRouteKm.toFixed(1)}km · Naismith + 30min buffer
             </p>
           ) : nearestResult ? (
-            <p className="text-xs text-gray-400 text-center">
-              {nearestResult.distanceKm}km walk from {nearestResult.stop.name} · Naismith's Rule · 30min safety buffer
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--sand)', textAlign: 'center' }}>
+              {nearestResult.distanceKm}km from {nearestResult.stop.name} · Naismith + 30min buffer
             </p>
           ) : (
-            <p className="text-xs text-gray-400 text-center">
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--sand)', textAlign: 'center' }}>
               Finding nearest station…
             </p>
           )}
 
-          {/* Draw route button */}
           <button
             onClick={onStartDrawing}
-            className="w-full flex items-center justify-center gap-2 text-sm font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl py-2.5 transition-colors"
+            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl transition-colors"
+            style={{
+              background: 'var(--paper)',
+              border: '1.5px solid var(--fog)',
+              color: 'var(--forest)',
+              fontFamily: 'Oswald, sans-serif',
+              fontSize: '0.75rem',
+              letterSpacing: '0.1em',
+              fontWeight: 600,
+            }}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--moss)')}
+            onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--fog)')}
           >
-            <span>📍</span>
-            <span>
-              {customWaypoints.length > 1
-                ? `Edit custom route (${customRouteKm.toFixed(1)} km)`
-                : 'Draw a more accurate route on map'}
-            </span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            {customWaypoints.length > 1
+              ? `EDIT ROUTE (${customRouteKm.toFixed(1)} KM)`
+              : 'DRAW A CUSTOM ROUTE'}
           </button>
         </div>
 
-        {/* Nearest stop info */}
+        {/* Nearest stop */}
         {nearestResult === undefined && (
-          <div className="text-xs text-gray-400 bg-gray-50 rounded-lg px-3 py-2">Finding nearest V/Line stop…</div>
+          <div className="text-xs rounded-lg px-3 py-2" style={{ background: 'var(--paper-2)', color: 'var(--sand)', fontFamily: 'JetBrains Mono, monospace' }}>
+            Finding nearest V/Line stop…
+          </div>
         )}
         {nearestResult && (
-          <div className="flex items-center gap-2 text-xs text-gray-500 bg-gray-50 rounded-lg px-3 py-2">
-            <span>🚉</span>
-            <span>Nearest V/Line stop: <strong className="text-gray-700">{nearestResult.stop.name}</strong> ({nearestResult.distanceKm} km away)</span>
+          <div className="flex items-center gap-2 text-xs rounded-lg px-3 py-2.5" style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 13h16M8 18l-2 3M16 18l2 3M12 16v5"/>
+            </svg>
+            <span style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--sand)' }}>
+              Nearest: <strong style={{ color: 'var(--ink)' }}>{nearestResult.stop.name}</strong> · {nearestResult.distanceKm} km
+            </span>
           </div>
         )}
         {nearestResult === null && (
-          <div className="text-xs text-amber-600 bg-amber-50 rounded-lg px-3 py-2">
+          <div className="text-xs rounded-lg px-3 py-2" style={{ background: 'rgba(139,32,32,0.1)', border: '1px solid rgba(139,32,32,0.3)', color: '#8b2020', fontFamily: 'JetBrains Mono, monospace' }}>
             No V/Line stop within 30 km of this campsite.
           </div>
         )}
 
         {/* PT section */}
         <div>
-          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">V/Line services from your station</h3>
+          <p className="mb-3" style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}>
+            V/Line services from your station
+          </p>
 
           {!profile ? (
-            <div className="rounded-xl border border-dashed border-gray-300 p-4 text-center">
-              <p className="text-sm text-gray-500 mb-3">Set your home V/Line station to see timetables</p>
+            <div
+              className="rounded-xl p-4 text-center"
+              style={{ border: '1.5px dashed var(--fog)', background: 'var(--paper-2)' }}
+            >
+              <p className="text-sm mb-3" style={{ color: 'var(--sand)', fontStyle: 'italic' }}>Set your home V/Line station to see timetables</p>
               <button
                 onClick={onSetHomeStop}
-                className="bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg hover:bg-emerald-800"
+                className="text-sm px-4 py-2 rounded-lg transition-colors"
+                style={{ background: 'var(--forest)', color: 'var(--paper)', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em' }}
+                onMouseEnter={e => (e.currentTarget.style.background = 'var(--forest-2)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'var(--forest)')}
               >
-                Set home station
+                SET HOME STATION
               </button>
             </div>
           ) : nearestResult == null ? null : (
             <>
               <div className="flex items-center justify-between mb-3">
-                <p className="text-xs text-gray-500">
-                  From: <span className="font-medium text-gray-700">{profile.homeStopName}</span>
+                <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.7rem', color: 'var(--sand)' }}>
+                  From: <span style={{ color: 'var(--ink)' }}>{profile.homeStopName}</span>
                 </p>
-                <button onClick={onSetHomeStop} className="text-xs text-emerald-700 underline">Change</button>
+                <button
+                  onClick={onSetHomeStop}
+                  style={{ fontSize: '0.7rem', color: 'var(--moss)', textDecoration: 'underline', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.08em' }}
+                >
+                  CHANGE
+                </button>
               </div>
               <PTResults
                 departures={departures}
@@ -207,27 +275,46 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
               />
             </>
           )}
+
+          {/* PTV link — in scroll body so it's never clipped */}
+          <a
+            href="https://www.ptv.vic.gov.au/journey"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center py-3 rounded-xl text-sm"
+            style={{
+              background: 'var(--paper-2)',
+              color: 'var(--earth)',
+              fontFamily: 'Oswald, sans-serif',
+              letterSpacing: '0.08em',
+              border: '1px solid var(--fog)',
+            }}
+          >
+            PLAN FULL JOURNEY ON PTV ↗
+          </a>
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="border-t border-gray-100 p-4 space-y-2 pb-20 md:pb-4">
+      {/* Footer — single primary action only */}
+      <div
+        className="p-4 flex-none"
+        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)' }}
+      >
         <button
           onClick={handleSaveTrip}
           disabled={!selectedDeparture}
-          className="w-full bg-emerald-700 hover:bg-emerald-800 disabled:bg-gray-200 disabled:text-gray-400 text-white font-semibold py-3 rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
+          className="w-full py-3 rounded-xl text-sm flex items-center justify-center gap-2 transition-colors"
+          style={{
+            background: selectedDeparture ? 'var(--forest)' : 'var(--paper-2)',
+            color: selectedDeparture ? 'var(--paper)' : 'var(--sand)',
+            fontFamily: 'Oswald, sans-serif',
+            letterSpacing: '0.1em',
+            fontWeight: 600,
+            border: selectedDeparture ? 'none' : '1px solid var(--fog)',
+          }}
         >
-          <span>💾</span>
-          <span>{selectedDeparture ? 'Save trip' : 'Select a departure above to save'}</span>
+          {selectedDeparture ? 'SAVE TRIP' : 'SELECT A DEPARTURE TO SAVE'}
         </button>
-        <a
-          href="https://www.ptv.vic.gov.au/journey"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full text-center bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 rounded-xl text-sm transition-colors"
-        >
-          Plan full journey on PTV ↗
-        </a>
       </div>
     </div>
   )

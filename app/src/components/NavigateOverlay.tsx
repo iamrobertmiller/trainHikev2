@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react'
 import type { SavedTrip, UserLocation } from '../types'
 import { haversineKm, bearingDeg, routeLengthKm } from '../lib/geo'
 import { naismithMinutes } from '../lib/naismith'
+import { useNearestStop } from '../hooks/useGTFS'
 
 interface Props {
   activeTrip: SavedTrip
@@ -19,10 +20,35 @@ function formatCountdown(ms: number): string {
 
 function StatTile({ label, value, sub, accent }: { label: string; value: string; sub?: string; accent?: boolean }) {
   return (
-    <div className={`rounded-2xl p-3 ${accent ? 'bg-indigo-600 text-white' : 'bg-white/90 text-gray-800'}`}>
-      <p className={`text-xs mb-1 ${accent ? 'text-indigo-200' : 'text-gray-400'}`}>{label}</p>
-      <p className={`text-xl font-bold leading-tight ${accent ? 'text-white' : 'text-gray-900'}`}>{value}</p>
-      {sub && <p className={`text-xs mt-0.5 ${accent ? 'text-indigo-200' : 'text-gray-400'}`}>{sub}</p>}
+    <div
+      className="rounded-xl p-3.5"
+      style={{
+        background: accent ? 'var(--ochre)' : 'rgba(253,249,240,0.97)',
+        color: accent ? '#fff' : 'var(--ink)',
+        border: accent ? 'none' : '1.5px solid rgba(0,0,0,0.12)',
+        boxShadow: '0 2px 12px rgba(0,0,0,0.18)',
+      }}
+    >
+      <p
+        className="mb-1"
+        style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.12em', color: accent ? 'rgba(255,255,255,0.8)' : 'var(--earth)' }}
+      >
+        {label.toUpperCase()}
+      </p>
+      <p
+        className="font-bold leading-tight"
+        style={{ fontFamily: 'Oswald, sans-serif', fontSize: '1.4rem', color: accent ? '#fff' : 'var(--ink)' }}
+      >
+        {value}
+      </p>
+      {sub && (
+        <p
+          className="mt-1"
+          style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: accent ? 'rgba(255,255,255,0.75)' : 'var(--sand)' }}
+        >
+          {sub}
+        </p>
+      )}
     </div>
   )
 }
@@ -37,12 +63,18 @@ export default function NavigateOverlay({ activeTrip, userLocation, onExit }: Pr
 
   const tripName = activeTrip.campsite?.asset_desc ?? activeTrip.campsite?.name ?? `Trip #${activeTrip.campsiteId}`
 
+  const nearestStop = useNearestStop(
+    activeTrip.campsite?.lat ?? null,
+    activeTrip.campsite?.lng ?? null
+  )
+
   const totalRouteKm = useMemo(() => {
     if (activeTrip.customWaypoints && activeTrip.customWaypoints.length > 1) {
       return routeLengthKm(activeTrip.customWaypoints)
     }
-    return activeTrip.trail?.length_km ?? null
-  }, [activeTrip])
+    if (activeTrip.trail?.length_km) return activeTrip.trail.length_km
+    return nearestStop?.distanceKm ?? null
+  }, [activeTrip, nearestStop])
 
   const distToTrailhead = useMemo(() => {
     if (!userLocation) return null
@@ -63,68 +95,95 @@ export default function NavigateOverlay({ activeTrip, userLocation, onExit }: Pr
     return naismithMinutes(totalRouteKm, 0)
   }, [totalRouteKm])
 
-  const trainCountdown = useMemo(() => {
+  const trainTile = useMemo(() => {
     if (!activeTrip.chosenDepartureTime) return null
     const [h, m] = activeTrip.chosenDepartureTime.split(':').map(Number)
-    const dep = new Date()
+    const dep = new Date(activeTrip.date + 'T00:00:00')
     dep.setHours(h, m, 0, 0)
     const ms = dep.getTime() - now
-    if (ms < -60000) return 'Departed'
-    return formatCountdown(ms)
-  }, [activeTrip.chosenDepartureTime, now])
+    if (ms < -60000) return { value: 'Departed', label: 'Train', accent: false }
+    if (ms > 6 * 60 * 60 * 1000) {
+      return {
+        value: dep.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' }),
+        label: 'Departure date',
+        accent: true,
+      }
+    }
+    return { value: formatCountdown(ms), label: 'Departing in', accent: true }
+  }, [activeTrip.chosenDepartureTime, activeTrip.date, now])
 
   return (
     <>
-      {/* Top strip */}
-      <div className="absolute top-0 left-0 right-0 z-20 bg-indigo-600 text-white px-4 py-3 flex items-center justify-between shadow-lg">
-        <div className="flex items-center gap-2">
+      {/* Top navigation strip */}
+      <div
+        className="absolute top-0 left-0 right-0 z-20 px-4 py-3 flex items-center justify-between shadow-xl"
+        style={{ background: 'var(--forest)', borderBottom: '3px solid var(--ochre)' }}
+      >
+        <div className="flex items-center gap-3">
           {bearing !== null && (
             <div
               className="w-8 h-8 flex items-center justify-center"
               style={{ transform: `rotate(${bearing}deg)` }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">
-                <path d="M12 2l-4 18 4-3 4 3z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--ochre)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
               </svg>
             </div>
           )}
           <div>
-            <p className="text-xs text-indigo-200">Navigating to</p>
-            <p className="font-bold text-sm leading-tight truncate max-w-[200px]">{tripName}</p>
+            <p
+              className="text-xs"
+              style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.14em', color: 'var(--moss)' }}
+            >
+              NAVIGATING TO
+            </p>
+            <p
+              className="font-bold leading-tight truncate max-w-[200px]"
+              style={{ fontFamily: 'Oswald, sans-serif', fontSize: '1rem', color: 'var(--paper)' }}
+            >
+              {tripName}
+            </p>
           </div>
         </div>
         <button
           onClick={onExit}
-          className="text-xs font-semibold bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-lg transition-colors"
+          className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+          style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', background: 'var(--forest-2)', color: 'var(--paper)' }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'var(--ochre)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'var(--forest-2)')}
         >
-          Exit
+          EXIT
         </button>
       </div>
 
       {/* Stats card */}
       <div className="absolute bottom-20 left-3 right-3 z-20 pointer-events-auto">
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2.5">
           <StatTile
             label="To trailhead"
             value={distToTrailhead != null ? `${distToTrailhead.toFixed(1)} km` : '—'}
-            sub={userLocation ? `±${Math.round(userLocation.accuracy)}m accuracy` : 'Waiting for GPS…'}
+            sub={userLocation ? `±${Math.round(userLocation.accuracy)}m` : 'Waiting for GPS'}
           />
           <StatTile
-            label="Route length"
-            value={totalRouteKm != null ? `${totalRouteKm.toFixed(1)} km` : '—'}
-            sub={activeTrip.customWaypoints?.length ? `${activeTrip.customWaypoints.length} waypoints` : undefined}
+            label="Route"
+            value={totalRouteKm != null ? `${totalRouteKm.toFixed(1)} km` : nearestStop === undefined ? 'Loading…' : '—'}
+            sub={
+              activeTrip.customWaypoints?.length ? `${activeTrip.customWaypoints.length} waypoints` :
+              activeTrip.trail?.length_km ? activeTrip.trail.name ?? 'trail' :
+              nearestStop ? `from ${nearestStop.stop.name}` : undefined
+            }
           />
           <StatTile
-            label="Est. hike time"
+            label="Est. hike"
             value={etaMinutes != null ? `${Math.floor(etaMinutes / 60)}h ${Math.round(etaMinutes % 60)}m` : '—'}
             sub="Naismith's rule"
           />
-          {trainCountdown ? (
+          {trainTile ? (
             <StatTile
-              label="Train departs"
-              value={trainCountdown}
+              label={trainTile.label}
+              value={trainTile.value}
               sub={activeTrip.chosenDepartureTime}
-              accent={trainCountdown !== 'Departed'}
+              accent={trainTile.accent}
             />
           ) : (
             <StatTile

@@ -46,6 +46,7 @@ export default function Map({
   const hutMarkersRef = useRef<maplibregl.Marker[]>([])
   const waterFrontageMarkersRef = useRef<maplibregl.Marker[]>([])
   const waypointMarkersRef = useRef<maplibregl.Marker[]>([])
+  const destMarkerRef = useRef<maplibregl.Marker | null>(null)
   const geoWatchRef = useRef<number | null>(null)
 
   // Refs to avoid stale closures in map event handlers
@@ -356,16 +357,13 @@ export default function Map({
     campsites.forEach(site => {
       const el = document.createElement('div')
       el.className = 'campsite-marker'
+      const selected = selectedCampsite?.id === site.id
       el.innerHTML = `
-        <div class="w-7 h-7 rounded-full flex items-center justify-center shadow-md border-2 cursor-pointer transition-transform hover:scale-110 ${
-          selectedCampsite?.id === site.id
-            ? 'bg-orange-500 border-orange-200 scale-125'
-            : 'bg-emerald-700 border-emerald-300'
-        }">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-4 h-4">
-            <path d="M12 2L2 20h20L12 2zm0 4l6.5 12h-13L12 6z"/>
-          </svg>
-        </div>
+        <svg width="${selected ? 30 : 26}" height="${selected ? 39 : 34}" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.35));transition:transform 0.15s" class="hover:scale-110">
+          <path d="M13 1C6.37 1 1 6.37 1 13C1 19.63 13 34 13 34S25 19.63 25 13C25 6.37 19.63 1 13 1Z" fill="${selected ? '#ea580c' : '#059669'}"/>
+          <path d="M13 5L5 19H21L13 5Z" fill="white" opacity="0.95"/>
+          <path d="M11 19V15H15V19Z" fill="${selected ? '#ea580c' : '#059669'}"/>
+        </svg>
       `
 
       const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
@@ -395,11 +393,12 @@ export default function Map({
     huts.forEach(hut => {
       const el = document.createElement('div')
       el.innerHTML = `
-        <div class="w-6 h-6 rounded-full flex items-center justify-center shadow-md border-2 cursor-pointer transition-transform hover:scale-110 bg-amber-700 border-amber-300">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-3.5 h-3.5">
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-          </svg>
-        </div>
+        <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.35));transition:transform 0.15s" class="hover:scale-110">
+          <path d="M13 1C6.37 1 1 6.37 1 13C1 19.63 13 34 13 34S25 19.63 25 13C25 6.37 19.63 1 13 1Z" fill="#b45309"/>
+          <path d="M4 13L13 5L22 13" stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/>
+          <rect x="6" y="13" width="14" height="9" fill="white" opacity="0.95" rx="0.5"/>
+          <rect x="11" y="17" width="4" height="5" fill="#b45309"/>
+        </svg>
       `
 
       const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
@@ -429,11 +428,11 @@ export default function Map({
     waterFrontage.forEach(site => {
       const el = document.createElement('div')
       el.innerHTML = `
-        <div class="w-6 h-6 rounded-full flex items-center justify-center shadow-md border-2 cursor-pointer transition-transform hover:scale-110 bg-blue-600 border-blue-200">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-3.5 h-3.5">
-            <path d="M12 2c0 0-4 5.5-4 9a4 4 0 0 0 8 0c0-3.5-4-9-4-9z"/>
-          </svg>
-        </div>
+        <svg width="26" height="34" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.35));transition:transform 0.15s" class="hover:scale-110">
+          <path d="M13 1C6.37 1 1 6.37 1 13C1 19.63 13 34 13 34S25 19.63 25 13C25 6.37 19.63 1 13 1Z" fill="#1d4ed8"/>
+          <path d="M4 13Q7 9 10 13Q13 17 16 13Q19 9 22 13" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 18Q7 14 10 18Q13 22 16 18Q19 14 22 18" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        </svg>
       `
 
       const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
@@ -449,6 +448,38 @@ export default function Map({
       waterFrontageMarkersRef.current.push(marker)
     })
   }, [waterFrontage, appMode])
+
+  // Render destination marker in navigate mode
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+
+    destMarkerRef.current?.remove()
+    destMarkerRef.current = null
+
+    if (appMode !== 'navigate' || !activeTrip?.campsite) return
+
+    const campsite = activeTrip.campsite
+    const el = document.createElement('div')
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:3px;pointer-events:none;">
+        <div style="background:#1a3328;color:#f0ebe0;font-family:'Oswald',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.1em;padding:2px 7px;border-radius:4px;white-space:nowrap;max-width:140px;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 5px rgba(0,0,0,0.4);border:1px solid #c07c28;">
+          ${campsite.asset_desc || campsite.name}
+        </div>
+        <svg width="32" height="42" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 3px 5px rgba(0,0,0,0.45));">
+          <path d="M13 1C6.37 1 1 6.37 1 13C1 19.63 13 34 13 34S25 19.63 25 13C25 6.37 19.63 1 13 1Z" fill="#c07c28"/>
+          <path d="M13 5L5 19H21L13 5Z" fill="white" opacity="0.95"/>
+          <path d="M11 19V15H15V19Z" fill="#c07c28"/>
+        </svg>
+      </div>
+    `
+
+    const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
+      .setLngLat([campsite.lng, campsite.lat])
+      .addTo(map)
+
+    destMarkerRef.current = marker
+  }, [appMode, activeTrip])
 
   return (
     <div

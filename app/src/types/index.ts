@@ -55,6 +55,7 @@ export interface Profile {
   homeStopName: string
   homeStopId: string
   homeStopRouteType: number
+  homeNetwork?: 'metro' | 'vline'
   homeSuburb?: string
 }
 

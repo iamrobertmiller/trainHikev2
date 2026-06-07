@@ -5,43 +5,64 @@ interface Props {
   loading: boolean
   error: string | null
   deadlineTime: string
-  deadlineLabel?: string   // default 'Arrive by'
-  sunsetTime?: string      // omit to hide sunset cell
+  deadlineLabel?: string
+  sunsetTime?: string
   trailheadStopName: string
   selectedDeparture?: Departure | null
   onSelectDeparture?: (dep: Departure) => void
 }
 
 const STATUS_CONFIG = {
-  safe:  { color: 'bg-emerald-50 border-emerald-200', badge: 'bg-emerald-100 text-emerald-800', label: 'Safe',     icon: '✅' },
-  tight: { color: 'bg-amber-50 border-amber-200',   badge: 'bg-amber-100 text-amber-800',   label: 'Tight',    icon: '⚠️' },
-  risky: { color: 'bg-red-50 border-red-200',       badge: 'bg-red-100 text-red-800',       label: 'Too late', icon: '🌑' },
+  safe:  { border: 'var(--moss)',  badge: { bg: 'var(--forest)', color: 'var(--paper)' }, label: 'SAFE',     dot: 'var(--moss)' },
+  tight: { border: 'var(--ochre)', badge: { bg: 'var(--ochre)',  color: '#fff'          }, label: 'TIGHT',    dot: 'var(--ochre)' },
+  risky: { border: '#8b2020',      badge: { bg: '#8b2020',       color: '#fff'          }, label: 'TOO LATE', dot: '#8b2020' },
 }
 
-export default function PTResults({ departures, loading, error, deadlineTime, deadlineLabel = 'Arrive by', sunsetTime, trailheadStopName, selectedDeparture, onSelectDeparture }: Props) {
+function parseMinutes(t: string): number {
+  const [h, m] = t.split(':').map(Number)
+  return h * 60 + m
+}
+
+function layoverLabel(arrive: string, depart: string): string {
+  const diff = parseMinutes(depart) - parseMinutes(arrive)
+  if (diff <= 0) return ''
+  if (diff < 60) return `${diff}m wait`
+  const h = Math.floor(diff / 60)
+  const m = diff % 60
+  return m > 0 ? `${h}h ${m}m wait` : `${h}h wait`
+}
+
+export default function PTResults({
+  departures, loading, error, deadlineTime, deadlineLabel = 'Arrive by',
+  sunsetTime, trailheadStopName, selectedDeparture, onSelectDeparture,
+}: Props) {
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-8 gap-3 text-gray-500">
-        <div className="w-5 h-5 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />
-        <span className="text-sm">Checking timetables…</span>
+      <div className="flex items-center justify-center py-8 gap-3" style={{ color: 'var(--sand)' }}>
+        <div className="w-5 h-5 border-2 rounded-full animate-spin" style={{ borderColor: 'var(--moss)', borderTopColor: 'transparent' }} />
+        <span className="text-sm" style={{ fontStyle: 'italic' }}>Checking timetables…</span>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="rounded-xl bg-amber-50 border border-amber-200 p-4">
-        <p className="text-sm text-amber-800 font-medium">{error}</p>
-        <p className="text-xs text-amber-600 mt-1">
-          Try setting your home stop to Southern Cross or Flinders Street, or check{' '}
-          <a href="https://ptv.vic.gov.au" target="_blank" rel="noopener noreferrer" className="underline">ptv.vic.gov.au</a>.
+      <div className="rounded-xl p-4" style={{ background: 'rgba(192,124,40,0.1)', border: '1px solid var(--ochre)' }}>
+        <p className="text-sm font-medium" style={{ color: 'var(--earth)' }}>{error}</p>
+        <p className="text-xs mt-1" style={{ color: 'var(--sand)' }}>
+          Try Southern Cross or Flinders Street, or check{' '}
+          <a href="https://ptv.vic.gov.au" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--moss)', textDecoration: 'underline' }}>ptv.vic.gov.au</a>.
         </p>
       </div>
     )
   }
 
   if (departures.length === 0) {
-    return <div className="text-center py-6 text-gray-400 text-sm">No upcoming departures found for this date.</div>
+    return (
+      <div className="text-center py-6 text-sm" style={{ color: 'var(--sand)', fontStyle: 'italic' }}>
+        No upcoming departures found for this date.
+      </div>
+    )
   }
 
   const safeOnes = departures.filter(d => d.safetyStatus === 'safe')
@@ -50,25 +71,29 @@ export default function PTResults({ departures, loading, error, deadlineTime, de
   return (
     <div className="space-y-3">
       {/* Summary bar */}
-      <div className="bg-emerald-50 rounded-xl p-3 text-sm">
-        <div className="text-xs text-gray-500 mb-1">
-          Trailhead stop: <strong className="text-gray-800">{trailheadStopName}</strong>
+      <div className="rounded-xl p-3" style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}>
+        <div className="text-xs mb-2" style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--sand)' }}>
+          Stop: <strong style={{ color: 'var(--ink)' }}>{trailheadStopName}</strong>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-5 flex-wrap">
           <div>
-            <span className="text-xs text-gray-500">{deadlineLabel}</span>
-            <p className="font-bold text-emerald-800">{deadlineTime}</p>
+            <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.12em', color: 'var(--sand)' }}>
+              {deadlineLabel.toUpperCase()}
+            </p>
+            <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--forest)' }}>
+              {deadlineTime}
+            </p>
           </div>
           {sunsetTime && (
             <div>
-              <span className="text-xs text-gray-500">Sunset</span>
-              <p className="font-bold text-amber-700">{sunsetTime}</p>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.12em', color: 'var(--sand)' }}>SUNSET</p>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--ochre)' }}>{sunsetTime}</p>
             </div>
           )}
           {latest && (
             <div className="ml-auto text-right">
-              <span className="text-xs text-gray-500">Latest safe dep.</span>
-              <p className="font-bold text-emerald-800">{latest.departureTime}</p>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.12em', color: 'var(--sand)' }}>LATEST SAFE</p>
+              <p style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--forest)' }}>{latest.departureTime}</p>
             </div>
           )}
         </div>
@@ -78,67 +103,212 @@ export default function PTResults({ departures, loading, error, deadlineTime, de
       {departures.map((dep, i) => {
         const cfg = STATUS_CONFIG[dep.safetyStatus]
         const isSelected = selectedDeparture?.tripId === dep.tripId && selectedDeparture?.departureTime === dep.departureTime
+        const bufferAbs = dep.minutesBuffer !== undefined ? Math.abs(dep.minutesBuffer) : undefined
+
         return (
-          <div key={`${dep.tripId}-${i}`} className={`rounded-xl border p-3 ${cfg.color} ${isSelected ? 'ring-2 ring-emerald-500' : ''}`}>
-            <div className="flex items-start justify-between gap-2">
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-bold text-gray-900">{dep.departureTime}</span>
-                  <span className="text-xs text-gray-500">V/Line</span>
-                </div>
-
-                {dep.transfer ? (
-                  // Transfer journey
-                  <div className="mt-1 space-y-0.5">
-                    <p className="text-sm text-gray-700">→ {dep.headsign}</p>
-                    <div className="flex items-center gap-1.5 text-xs text-gray-500 bg-white/60 rounded px-2 py-1 w-fit">
-                      <span>Change at</span>
-                      <strong className="text-gray-700">{dep.transfer.stopName}</strong>
-                      <span>· arr {dep.transfer.arriveTime} dep {dep.transfer.departTime}</span>
-                    </div>
-                    <p className="text-sm text-gray-700">→ {dep.transfer.headsign}</p>
-                    <p className="text-xs text-gray-500">Arrive {dep.arrivalTime}</p>
-                  </div>
-                ) : (
-                  // Direct service
-                  <div className="mt-0.5">
-                    <p className="text-sm text-gray-700 truncate">→ {dep.headsign}</p>
-                    <p className="text-xs text-gray-500">Arrive {dep.arrivalTime}</p>
-                  </div>
-                )}
-              </div>
-
-              <div className="text-right flex-none flex flex-col items-end gap-1">
-                <span className={`text-xs font-semibold px-2 py-1 rounded-full ${cfg.badge}`}>
-                  {cfg.icon} {cfg.label}
+          <div
+            key={`${dep.tripId}-${i}`}
+            className="rounded-xl overflow-hidden"
+            style={{
+              border: `1.5px solid ${isSelected ? cfg.border : 'var(--fog)'}`,
+              outline: isSelected ? `2px solid ${cfg.border}` : 'none',
+              outlineOffset: isSelected ? '1px' : '0',
+              background: 'var(--paper-2)',
+            }}
+          >
+            {/* Card header: departure time + status */}
+            <div className="flex items-center justify-between px-3 pt-3 pb-2.5" style={{ borderBottom: '1px solid var(--fog)' }}>
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: cfg.dot }} />
+                <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1.3rem', color: 'var(--ink)', letterSpacing: '0.02em' }}>
+                  {dep.departureTime}
                 </span>
-                {dep.minutesBuffer !== undefined && (
-                  <p className="text-xs text-gray-400">
-                    {dep.minutesBuffer > 0 ? `+${dep.minutesBuffer}m` : `${dep.minutesBuffer}m`}
-                  </p>
-                )}
-                {onSelectDeparture && (
-                  <button
-                    onClick={() => onSelectDeparture(isSelected ? dep : dep)}
-                    className={`text-xs font-medium px-2 py-1 rounded-lg transition-colors ${
-                      isSelected
-                        ? 'bg-emerald-600 text-white'
-                        : 'bg-white border border-gray-200 text-gray-600 hover:border-emerald-400 hover:text-emerald-700'
-                    }`}
+                <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.7rem', color: 'var(--sand)', marginTop: '2px' }}>
+                  {dep.metroLeg ? 'METRO' : 'V/LINE'}
+                </span>
+              </div>
+              <span
+                className="text-xs px-2.5 py-1 rounded"
+                style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontWeight: 700, background: cfg.badge.bg, color: cfg.badge.color }}
+              >
+                {cfg.label}
+              </span>
+            </div>
+
+            {/* Journey legs */}
+            <div className="px-3 py-2.5 space-y-0">
+              {/* Metro prefix leg */}
+              {dep.metroLeg && (
+                <div className="mb-2 pb-2" style={{ borderBottom: '1px dashed var(--fog)' }}>
+                  <div className="flex items-center gap-2 py-0.5">
+                    <div className="flex-none w-4 flex flex-col items-center gap-0.5">
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#005C8B' }} />
+                      <div className="w-px flex-1 min-h-[10px]" style={{ background: 'var(--fog)' }} />
+                    </div>
+                    <div className="flex-1 min-w-0 flex items-center justify-between gap-2">
+                      <span style={{ fontSize: '0.9rem', color: 'var(--ink)', fontWeight: 500 }}>
+                        Metro · {dep.metroLeg.lineName}
+                      </span>
+                      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--sand)', flexShrink: 0 }}>
+                        {dep.metroLeg.departureTime}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 py-0.5">
+                    <div className="flex-none w-4 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full border-2" style={{ borderColor: '#005C8B', background: 'var(--paper-2)' }} />
+                    </div>
+                    <div className="flex-1 min-w-0 flex items-center justify-between gap-2">
+                      <span style={{ fontSize: '0.85rem', color: 'var(--sand)', fontWeight: 500 }}>
+                        Southern Cross
+                      </span>
+                      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--sand)', flexShrink: 0 }}>
+                        arr {dep.metroLeg.arrivalSSX}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 py-0.5 mt-1">
+                    <div className="flex-none w-4 flex items-center justify-center">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 13h16M8 18l-2 3M16 18l2 3M12 16v5"/>
+                      </svg>
+                    </div>
+                    <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--moss)' }}>
+                      BOARD V/LINE
+                    </span>
+                  </div>
+                </div>
+              )}
+              {dep.transfer ? (
+                <>
+                  {/* Leg 1 */}
+                  <div className="flex items-center gap-2 py-1">
+                    <div className="flex-none w-4 flex flex-col items-center gap-0.5">
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--moss)' }} />
+                      <div className="w-px flex-1 min-h-[10px]" style={{ background: 'var(--fog)' }} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span style={{ fontSize: '0.95rem', color: 'var(--ink)', fontWeight: 500 }}>
+                        To {dep.headsign}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Transfer box */}
+                  <div className="flex gap-2 py-1">
+                    <div className="flex-none w-4 flex flex-col items-center">
+                      <div className="w-px h-2" style={{ background: 'var(--fog)' }} />
+                      <div className="w-3 h-3 rounded-full border-2 flex-none" style={{ borderColor: 'var(--ochre)', background: 'var(--paper-2)' }} />
+                      <div className="w-px h-2" style={{ background: 'var(--fog)' }} />
+                    </div>
+                    <div
+                      className="flex-1 rounded-lg px-2.5 py-2 my-0.5"
+                      style={{ background: 'var(--paper)', border: '1px solid var(--fog)' }}
+                    >
+                      <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.72rem', letterSpacing: '0.1em', color: 'var(--sand)', marginBottom: '4px' }}>
+                        CHANGE TRAINS
+                      </p>
+                      <p style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--ink)', marginBottom: '6px' }}>
+                        {dep.transfer.stopName}
+                      </p>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <div className="rounded px-2.5 py-1" style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}>
+                          <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--sand)' }}>ARR </span>
+                          <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.875rem', fontWeight: 700, color: 'var(--ink)' }}>
+                            {dep.transfer.arriveTime}
+                          </span>
+                        </div>
+                        <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--sand)' }}>
+                          {layoverLabel(dep.transfer.arriveTime, dep.transfer.departTime)}
+                        </div>
+                        <div className="rounded px-2.5 py-1" style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}>
+                          <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.72rem', color: 'var(--sand)' }}>DEP </span>
+                          <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.875rem', fontWeight: 700, color: 'var(--ink)' }}>
+                            {dep.transfer.departTime}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Leg 2 */}
+                  <div className="flex items-center gap-2 py-1">
+                    <div className="flex-none w-4 flex flex-col items-center gap-0.5">
+                      <div className="w-px h-2" style={{ background: 'var(--fog)' }} />
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--forest)' }} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span style={{ fontSize: '0.95rem', color: 'var(--ink)', fontWeight: 500 }}>
+                        To {dep.transfer.headsign}
+                      </span>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                /* No transfer */
+                <div className="flex items-center gap-2 py-1">
+                  <div className="flex-none w-4 flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--forest)' }} />
+                  </div>
+                  <span style={{ fontSize: '0.95rem', color: 'var(--ink)', fontWeight: 500 }}>
+                    To {dep.headsign}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Card footer: arrival + buffer + action */}
+            <div
+              className="flex items-center justify-between px-3 py-2.5"
+              style={{ borderTop: '1px solid var(--fog)', background: 'var(--paper)' }}
+            >
+              <div>
+                <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.7rem', letterSpacing: '0.1em', color: 'var(--sand)' }}>
+                  ARRIVE&nbsp;
+                </span>
+                <span style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1.1rem', color: 'var(--ink)' }}>
+                  {dep.arrivalTime}
+                </span>
+                {bufferAbs !== undefined && (
+                  <span
+                    className="ml-2"
+                    style={{
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.75rem',
+                      color: dep.minutesBuffer! > 0 ? 'var(--moss)' : '#8b2020',
+                    }}
                   >
-                    {isSelected ? 'Selected' : 'Use this'}
-                  </button>
+                    {dep.minutesBuffer! > 0 ? `+${bufferAbs}m margin` : `-${bufferAbs}m late`}
+                  </span>
                 )}
               </div>
+
+              {onSelectDeparture && (
+                <button
+                  onClick={() => onSelectDeparture(dep)}
+                  className="px-3 py-1.5 rounded-lg transition-colors"
+                  style={{
+                    fontFamily: 'Oswald, sans-serif',
+                    letterSpacing: '0.08em',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    background: isSelected ? 'var(--forest)' : 'var(--paper-2)',
+                    color: isSelected ? 'var(--paper)' : 'var(--earth)',
+                    border: isSelected ? 'none' : '1px solid var(--fog)',
+                  }}
+                >
+                  {isSelected ? '✓ SELECTED' : 'USE'}
+                </button>
+              )}
             </div>
           </div>
         )
       })}
 
-      <p className="text-xs text-center text-gray-400 pt-1">
-        V/Line timetable data · check{' '}
-        <a href="https://ptv.vic.gov.au" target="_blank" rel="noopener noreferrer" className="underline">ptv.vic.gov.au</a>
-        {' '}for live disruptions
+      <p className="text-xs text-center pt-1" style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--sand)' }}>
+        V/Line timetable · check{' '}
+        <a href="https://ptv.vic.gov.au" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--moss)', textDecoration: 'underline' }}>ptv.vic.gov.au</a>
+        {' '}for disruptions
       </p>
     </div>
   )

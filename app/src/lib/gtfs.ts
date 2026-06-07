@@ -148,15 +148,22 @@ export interface Transfer {
   tripId: string        // leg 2 trip
 }
 
+export interface MetroLeg {
+  departureTime: string  // HH:MM at home Metro stop
+  arrivalSSX: string     // HH:MM arrive at Southern Cross
+  lineName: string
+}
+
 export interface Departure {
-  departureTime: string     // HH:MM at home stop
+  departureTime: string     // HH:MM at home stop (Metro or V/Line)
   arrivalTime: string       // HH:MM at destination stop
   headsign: string
   routeName: string
   safetyStatus: 'safe' | 'tight' | 'risky'
   minutesBuffer: number
   tripId: string
-  transfer?: Transfer       // present when journey requires a change
+  transfer?: Transfer       // present when V/Line journey requires a change
+  metroLeg?: MetroLeg      // present when journey starts with a Metro train
 }
 
 function makeDeparture(

@@ -222,6 +222,7 @@ export default function App() {
     }
     setAppMode(m)
     setIsDrawingRoute(false)
+    setPanel('none')
     if (m === 'plan') setUserLocation(null)
   }
 
@@ -286,75 +287,125 @@ export default function App() {
 
       {/* Top bar — hidden in navigate mode */}
       {appMode === 'plan' && (
-        <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-2 p-3 pointer-events-none">
-          <div className="pointer-events-auto flex items-center gap-2 bg-white rounded-2xl shadow-md px-3 py-2 flex-1 max-w-sm">
-            <span className="text-emerald-700 text-lg">🏕️</span>
-            <span className="font-bold text-gray-800 text-sm">TrainHike</span>
-            <span className="text-gray-300 mx-1">|</span>
-            <span className="text-xs text-gray-500">Victoria</span>
+        <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-1.5 p-2.5 pointer-events-none">
+          {/* Brand */}
+          <div className="pointer-events-auto flex items-center gap-2.5 rounded-xl shadow-lg px-3 py-2 flex-1 max-w-[160px]" style={{ background: 'var(--forest)' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3L2 21h20L12 3z" fill="#4a7a58"/>
+              <path d="M12 7l6.5 12h-13L12 7z" fill="#f0ebe0" opacity="0.9"/>
+              <path d="M10 21v-4h4v4" fill="var(--forest)"/>
+            </svg>
+            <div>
+              <div style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.12em', color: '#f0ebe0', lineHeight: 1.1 }}>TRAINHIKE</div>
+              <div style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.14em', color: 'var(--sand)', lineHeight: 1 }}>VICTORIA</div>
+            </div>
           </div>
+
+          {/* Search */}
           <button
             onClick={() => setShowSearch(s => !s)}
-            className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
+            className="pointer-events-auto w-10 h-10 rounded-xl shadow-lg flex items-center justify-center transition-colors"
+            style={{ background: showSearch ? 'var(--ink)' : 'var(--paper)', color: showSearch ? '#fff' : 'var(--forest)' }}
+            title="Search campsites"
           >
-            🔍
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L22 22"/>
+            </svg>
           </button>
+
+          {/* Saved trips */}
+          <button
+            onClick={() => setPanel('savedTrips')}
+            className="pointer-events-auto w-10 h-10 rounded-xl shadow-lg flex items-center justify-center transition-colors"
+            style={{ background: 'var(--paper)', color: 'var(--forest)' }}
+            title="Saved trips"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+          </button>
+
+          {/* Home station */}
+          <button
+            onClick={() => setPanel('homeSetup')}
+            className="pointer-events-auto w-10 h-10 rounded-xl shadow-lg flex items-center justify-center transition-colors"
+            style={{ background: profile ? 'var(--paper)' : 'var(--ochre)', color: profile ? 'var(--forest)' : '#fff' }}
+            title={profile ? `Home: ${profile.homeStopName}` : 'Set home station'}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="4" y="11" width="16" height="10" rx="1"/>
+              <path d="M2 11l10-8 10 8"/>
+              <path d="M9 21v-6h6v6"/>
+            </svg>
+          </button>
+        </div>
+      )}
+
+      {/* Layer toggles — bottom left, above tab bar */}
+      {appMode === 'plan' && panel === 'none' && (
+        <div className="absolute bottom-20 left-3 z-10 pointer-events-auto flex flex-col gap-1.5">
           <button
             onClick={() => setShowWaterFrontage(s => !s)}
-            className={`pointer-events-auto w-10 h-10 rounded-xl shadow-md flex items-center justify-center text-base transition-colors ${showWaterFrontage ? 'bg-blue-100 text-blue-700' : 'bg-white text-gray-400'}`}
-            title={showWaterFrontage ? 'Hide water frontage camping' : 'Show water frontage camping'}
+            className="flex items-center gap-2 rounded-lg shadow-lg px-2.5 py-1.5 transition-colors"
+            style={{
+              background: showWaterFrontage ? '#1a3d5c' : 'var(--forest)',
+              border: showWaterFrontage ? '1px solid #2a6090' : '1px solid var(--forest-2)',
+            }}
           >
-            🏕️💧
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={showWaterFrontage ? '#90c8e8' : 'var(--sand)'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 12Q6 8 10 12Q14 16 18 12Q20 10 22 12"/><path d="M2 18Q6 14 10 18Q14 22 18 18Q20 16 22 18"/>
+            </svg>
+            <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', color: showWaterFrontage ? '#90c8e8' : 'var(--sand)' }}>
+              WATERWAYS
+            </span>
           </button>
           <button
             onClick={() => setShowHuts(s => !s)}
-            className={`pointer-events-auto w-10 h-10 rounded-xl shadow-md flex items-center justify-center text-base transition-colors ${showHuts ? 'bg-amber-100 text-amber-700' : 'bg-white text-gray-400'}`}
-            title={showHuts ? 'Hide huts' : 'Show huts'}
+            className="flex items-center gap-2 rounded-lg shadow-lg px-2.5 py-1.5 transition-colors"
+            style={{
+              background: showHuts ? '#5a3510' : 'var(--forest)',
+              border: showHuts ? '1px solid var(--earth)' : '1px solid var(--forest-2)',
+            }}
           >
-            🏚️
-          </button>
-          <button
-            onClick={() => setPanel('savedTrips')}
-            className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
-            title="Saved trips"
-          >
-            📋
-          </button>
-          <button
-            onClick={() => setPanel('homeSetup')}
-            className="pointer-events-auto w-10 h-10 bg-white rounded-xl shadow-md flex items-center justify-center text-gray-600 hover:bg-gray-50 text-base"
-            title={profile ? `Home: ${profile.homeStopName}` : 'Set home station'}
-          >
-            {profile ? '🏠' : '📍'}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={showHuts ? 'var(--ochre)' : 'var(--sand)'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 11l9-8 9 8"/><path d="M5 11v9h14v-9"/><path d="M10 20v-5h4v5"/>
+            </svg>
+            <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.1em', color: showHuts ? 'var(--ochre)' : 'var(--sand)' }}>
+              HUTS
+            </span>
           </button>
         </div>
       )}
 
       {/* Search */}
       {appMode === 'plan' && showSearch && (
-        <div className="absolute top-16 left-3 right-3 z-10 max-w-sm">
+        <div className="absolute top-14 left-2.5 right-2.5 z-10 max-w-sm">
           <input
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search campsites & parks…"
-            className="w-full bg-white shadow-md rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            className="w-full shadow-lg rounded-xl px-4 py-3 text-sm focus:outline-none"
+            style={{ background: 'var(--paper)', color: 'var(--ink)', border: '1.5px solid var(--fog)', fontFamily: 'Lora, Georgia, serif', outline: 'none' }}
             autoFocus
           />
           {searchQuery && filteredCampsites.length > 0 && (
-            <ul className="mt-1 bg-white rounded-xl shadow-lg border border-gray-100 max-h-64 overflow-y-auto divide-y divide-gray-50">
+            <ul className="mt-1 rounded-xl shadow-lg overflow-hidden max-h-64 overflow-y-auto" style={{ background: 'var(--paper)', border: '1.5px solid var(--fog)' }}>
               {filteredCampsites.slice(0, 8).map(c => (
-                <li key={c.id}>
+                <li key={c.id} style={{ borderBottom: '1px solid var(--fog)' }}>
                   <button
                     onClick={() => {
                       handleSelectCampsite(c)
                       setShowSearch(false)
                       setSearchQuery('')
                     }}
-                    className="w-full text-left px-4 py-3 hover:bg-emerald-50"
+                    className="w-full text-left px-4 py-3 transition-colors"
+                    style={{ fontFamily: 'Lora, Georgia, serif' }}
+                    onMouseEnter={e => (e.currentTarget.style.background = 'var(--paper-2)')}
+                    onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                   >
-                    <p className="text-sm font-medium text-gray-900">{c.asset_desc || c.name}</p>
-                    <p className="text-xs text-gray-400">{c.park_name}</p>
+                    <p className="text-sm font-medium" style={{ color: 'var(--ink)' }}>{c.asset_desc || c.name}</p>
+                    <p className="text-xs mt-0.5" style={{ color: 'var(--sand)' }}>{c.park_name}</p>
                   </button>
                 </li>
               ))}
@@ -449,28 +500,23 @@ export default function App() {
         />
       )}
 
-      {/* Stats — Plan mode only */}
-      {appMode === 'plan' && panel === 'none' && !showSearch && (
-        <div className="absolute bottom-20 left-4 z-10 pointer-events-none">
-          <div className="bg-white/90 backdrop-blur rounded-xl px-3 py-1.5 shadow text-xs text-gray-500">
-            {campsites.length} campsites · {trails.length} trails · {huts.length} huts · {waterFrontage.length} water frontage
-          </div>
-        </div>
-      )}
 
       {/* Campsite hint banner */}
       {showCampsiteHint && (
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-40 bg-gray-900 text-white text-sm font-medium px-4 py-3 rounded-2xl shadow-lg flex items-center gap-2 whitespace-nowrap">
-          <span>🏕️</span>
-          <span>Now tap a campsite on the map to plan your trip</span>
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-40 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 whitespace-nowrap" style={{ background: 'var(--forest)', border: '1px solid var(--ochre)' }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+            <path d="M12 3L2 21h20L12 3z" fill="var(--moss)"/>
+            <path d="M12 7l6 11H6L12 7z" fill="var(--paper)" opacity="0.9"/>
+          </svg>
+          <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.8rem', letterSpacing: '0.06em', color: 'var(--paper)' }}>Tap a campsite on the map to plan</span>
         </div>
       )}
 
       {/* Save toast */}
       {saveToast && (
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 z-40 bg-emerald-700 text-white text-sm font-medium px-4 py-2.5 rounded-2xl shadow-lg flex items-center gap-2">
-          <span>✅</span>
-          <span>Trip saved! Tap Navigate to go.</span>
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2.5" style={{ background: 'var(--ochre)' }}>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2.5" strokeLinecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.8rem', letterSpacing: '0.06em', color: '#fff' }}>TRIP SAVED — tap Navigate to go</span>
         </div>
       )}
 

@@ -36,61 +36,101 @@ export default function SharedTripView({ payload, onClose }: Props) {
   }, [friendStop, payload.meetupStopId, payload.date, payload.meetupTime, fetchDepartures])
 
   return (
-    <div className="absolute inset-0 z-30 bg-white flex flex-col overflow-hidden md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 md:rounded-2xl md:shadow-2xl">
+    <div
+      className="absolute inset-0 z-30 flex flex-col overflow-hidden md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 md:rounded-2xl md:shadow-2xl"
+      style={{ background: 'var(--paper)', color: 'var(--ink)' }}
+    >
       {/* Header */}
-      <div className="px-4 py-4 border-b border-emerald-600 flex items-center gap-3 bg-emerald-700 text-white flex-none">
+      <div
+        className="px-4 py-4 flex items-center gap-3 flex-none"
+        style={{ background: 'var(--forest)', borderBottom: '3px solid var(--ochre)' }}
+      >
         <div className="flex-1 min-w-0">
-          <p className="text-xs text-emerald-200">You've been invited to hike!</p>
-          <h2 className="font-bold text-base truncate">{payload.campsiteName}</h2>
+          <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.16em', color: 'var(--ochre)', textTransform: 'uppercase' }}>
+            You've been invited to hike!
+          </p>
+          <h2
+            className="font-bold truncate"
+            style={{ fontFamily: 'Oswald, sans-serif', fontSize: '1rem', color: 'var(--paper)' }}
+          >
+            {payload.campsiteName}
+          </h2>
           {payload.trailName && (
-            <p className="text-xs text-emerald-200 truncate">{payload.trailName}</p>
+            <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.08em', color: 'var(--moss)', textTransform: 'uppercase' }}>
+              {payload.trailName}
+            </p>
           )}
         </div>
         <button
           onClick={onClose}
-          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-emerald-600 text-emerald-200 flex-none"
+          className="w-8 h-8 flex items-center justify-center rounded-lg flex-none"
+          style={{ background: 'var(--forest-2)', color: 'var(--sand)' }}
         >
-          ✕
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4 pb-8">
         {/* Date */}
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <span>📅</span>
-          <span>{dateDisplay}</span>
+        <div className="flex items-center gap-2" style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.75rem', color: 'var(--sand)' }}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          {dateDisplay}
         </div>
 
         {/* Meetup callout */}
-        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4">
-          <p className="text-xs font-semibold text-emerald-700 uppercase tracking-wider mb-1">Suggested meetup point</p>
-          <p className="font-bold text-gray-900 text-lg">{payload.meetupStopName}</p>
-          <p className="text-sm text-gray-600 mt-1">
-            Be at the station by <strong className="text-emerald-700">{payload.meetupTime}</strong>
+        <div
+          className="rounded-2xl p-4"
+          style={{ background: 'var(--paper-2)', border: '2px solid var(--moss)' }}
+        >
+          <p
+            className="text-xs mb-1"
+            style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.14em', color: 'var(--moss)', textTransform: 'uppercase' }}
+          >
+            Suggested meetup point
           </p>
-          <p className="text-xs text-gray-400 mt-1">You'll both start hiking together from here</p>
+          <p
+            style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, fontSize: '1.2rem', color: 'var(--ink)' }}
+          >
+            {payload.meetupStopName}
+          </p>
+          <p className="text-sm mt-1" style={{ color: 'var(--earth)' }}>
+            Be at the station by{' '}
+            <strong style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700, color: 'var(--forest)', fontSize: '1rem' }}>
+              {payload.meetupTime}
+            </strong>
+          </p>
+          <p className="text-xs mt-1" style={{ color: 'var(--sand)', fontStyle: 'italic' }}>You'll start hiking together from here</p>
         </div>
 
-        {/* Auto-saved banner */}
-        <div className="bg-blue-50 border border-blue-100 rounded-xl px-3 py-2 text-xs text-blue-700 flex items-center gap-2">
-          <span>💾</span>
-          <span>This trip has been added to your saved trips.</span>
+        {/* Auto-saved */}
+        <div
+          className="rounded-xl px-3 py-2 text-xs flex items-center gap-2"
+          style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)', color: 'var(--sand)', fontFamily: 'JetBrains Mono, monospace' }}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          Trip saved to your saved trips
         </div>
 
-        {/* Friend's home station */}
+        {/* Your home station */}
         <div>
-          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+          <p
+            className="mb-2"
+            style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}
+          >
             Your home station
-          </h3>
+          </p>
 
           {friendStop ? (
-            <div className="flex items-center justify-between bg-gray-50 rounded-xl px-3 py-2.5">
-              <span className="text-sm font-medium text-gray-800">🏠 {friendStop.name}</span>
+            <div
+              className="flex items-center justify-between rounded-xl px-3 py-2.5"
+              style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}
+            >
+              <span className="text-sm font-medium" style={{ color: 'var(--ink)' }}>{friendStop.name}</span>
               <button
                 onClick={() => { setFriendStop(null); setStopQuery(''); clear() }}
-                className="text-xs text-emerald-700 underline"
+                style={{ fontSize: '0.7rem', color: 'var(--moss)', textDecoration: 'underline', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.08em' }}
               >
-                Change
+                CHANGE
               </button>
             </div>
           ) : (
@@ -101,19 +141,33 @@ export default function SharedTripView({ payload, onClose }: Props) {
                 onChange={e => setStopQuery(e.target.value)}
                 placeholder={ready ? 'e.g. Flinders Street, Ballarat…' : 'Loading timetable data…'}
                 disabled={!ready}
-                className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:bg-gray-50 disabled:text-gray-400"
+                className="w-full px-4 py-3 text-sm focus:outline-none rounded-xl"
+                style={{
+                  background: 'var(--paper-2)',
+                  border: '1.5px solid var(--fog)',
+                  color: 'var(--ink)',
+                  fontFamily: 'Lora, Georgia, serif',
+                }}
                 autoFocus
               />
               {results.length > 0 && (
-                <ul className="mt-1 border border-gray-200 rounded-xl overflow-hidden divide-y divide-gray-100 max-h-44 overflow-y-auto">
+                <ul className="mt-1 rounded-xl overflow-hidden max-h-44 overflow-y-auto" style={{ border: '1.5px solid var(--fog)' }}>
                   {results.map(stop => (
-                    <li key={stop.id}>
+                    <li key={stop.id} style={{ borderBottom: '1px solid var(--fog)' }}>
                       <button
                         onClick={() => { setFriendStop(stop); setStopQuery(''); clear() }}
-                        className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-emerald-50 text-left"
+                        className="w-full flex items-center justify-between px-4 py-2.5 text-left"
+                        style={{ background: 'var(--paper-2)' }}
+                        onMouseEnter={e => (e.currentTarget.style.background = 'var(--paper)')}
+                        onMouseLeave={e => (e.currentTarget.style.background = 'var(--paper-2)')}
                       >
-                        <span className="text-sm font-medium text-gray-900">{stop.name}</span>
-                        <span className="text-xs text-gray-400">V/Line</span>
+                        <span className="text-sm font-medium" style={{ color: 'var(--ink)', fontFamily: 'Lora, Georgia, serif' }}>{stop.name}</span>
+                        <span
+                          className="text-xs ml-2 px-1.5 py-0.5 rounded"
+                          style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.08em', background: 'var(--forest)', color: 'var(--paper)' }}
+                        >
+                          V/LINE
+                        </span>
                       </button>
                     </li>
                   ))}
@@ -123,12 +177,15 @@ export default function SharedTripView({ payload, onClose }: Props) {
           )}
         </div>
 
-        {/* Friend's departures */}
+        {/* Departures */}
         {friendStop && (
           <div>
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            <p
+              className="mb-3"
+              style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}
+            >
               Your trains to {payload.meetupStopName}
-            </h3>
+            </p>
             <PTResults
               departures={departures}
               loading={loading}

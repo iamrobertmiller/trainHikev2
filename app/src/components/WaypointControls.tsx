@@ -27,58 +27,77 @@ export default function WaypointControls({
 
   if (!isDrawing && waypoints.length === 0) {
     return (
-      <div className="absolute top-16 left-3 z-10 pointer-events-auto">
+      <div className="absolute bottom-20 right-3 z-10 pointer-events-auto">
         <button
           onClick={onToggleDrawing}
-          className="flex items-center gap-2 bg-white rounded-2xl shadow-lg border border-indigo-100 px-3 py-2.5 text-xs font-semibold text-indigo-700 hover:bg-indigo-50 transition-colors"
+          className="flex items-center gap-2 rounded-xl shadow-lg px-3 py-2.5 transition-colors"
+          style={{ background: 'var(--forest)', border: '1px solid var(--forest-2)', color: 'var(--paper)' }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'var(--forest-2)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'var(--forest)')}
         >
-          <span>📍</span>
-          <span>Draw a route</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.75rem', letterSpacing: '0.1em', fontWeight: 600 }}>DRAW A ROUTE</span>
         </button>
       </div>
     )
   }
 
   return (
-    <div className="absolute top-16 left-3 z-10 pointer-events-auto">
-      <div className="bg-white rounded-2xl shadow-lg border border-indigo-100 p-3 min-w-[200px]">
-        {/* Status */}
-        <div className="flex items-center justify-between mb-2">
+    <div className="absolute bottom-20 right-3 z-10 pointer-events-auto">
+      <div
+        className="rounded-xl shadow-lg p-3 min-w-[210px]"
+        style={{ background: 'var(--forest)', border: '1px solid var(--forest-2)' }}
+      >
+        {/* Status row */}
+        <div className="flex items-center justify-between mb-2.5">
           <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full ${isDrawing ? 'bg-indigo-500 animate-pulse' : 'bg-gray-300'}`} />
-            <span className="text-xs font-semibold text-gray-700">
-              {isDrawing ? 'Tap map to add points' : 'Custom route'}
+            <div
+              className="w-2 h-2 rounded-full"
+              style={{ background: isDrawing ? 'var(--ochre)' : 'var(--sand)', boxShadow: isDrawing ? '0 0 6px var(--ochre)' : 'none' }}
+            />
+            <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.7rem', letterSpacing: '0.1em', color: 'var(--paper)' }}>
+              {isDrawing ? 'TAP MAP TO ADD POINTS' : 'CUSTOM ROUTE'}
             </span>
           </div>
           <button
             onClick={onToggleDrawing}
-            className={`text-xs font-medium px-2 py-1 rounded-lg transition-colors ${
-              isDrawing
-                ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
+            className="text-xs px-2 py-1 rounded-lg transition-colors"
+            style={{
+              fontFamily: 'Oswald, sans-serif',
+              letterSpacing: '0.08em',
+              fontWeight: 600,
+              background: isDrawing ? 'var(--ochre)' : 'var(--forest-2)',
+              color: 'var(--paper)',
+            }}
           >
-            {isDrawing ? 'Done' : 'Add points'}
+            {isDrawing ? 'DONE' : 'ADD'}
           </button>
         </div>
 
         {/* Stats */}
         {waypoints.length > 0 && (
-          <div className="flex items-center gap-3 text-xs text-gray-500 mb-2 bg-gray-50 rounded-xl px-2 py-1.5">
-            <span><strong className="text-gray-800">{waypoints.length}</strong> pts</span>
-            <span><strong className="text-indigo-700">{estimatedKm.toFixed(1)}</strong> km</span>
-            <span><strong className="text-gray-800">{timeStr}</strong> est.</span>
+          <div
+            className="flex items-center gap-3 rounded-lg px-2.5 py-2 mb-2.5"
+            style={{ background: 'var(--forest-2)', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.7rem', color: 'var(--sand)' }}
+          >
+            <span><strong style={{ color: 'var(--paper)' }}>{waypoints.length}</strong> pts</span>
+            <span><strong style={{ color: 'var(--ochre)' }}>{estimatedKm.toFixed(1)}</strong> km</span>
+            <span><strong style={{ color: 'var(--paper)' }}>{timeStr}</strong></span>
           </div>
         )}
 
-        {/* Plan trip CTA — shown when route is ready and not actively drawing */}
+        {/* Plan trip CTA */}
         {!isDrawing && waypoints.length >= 2 && (
           <button
             onClick={onPlanTrip}
-            className="w-full flex items-center justify-center gap-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold py-2 rounded-xl transition-colors mb-2"
+            className="w-full flex items-center justify-center gap-1.5 py-2 rounded-xl mb-2 transition-colors"
+            style={{ background: 'var(--ochre)', color: '#fff', fontFamily: 'Oswald, sans-serif', fontSize: '0.75rem', letterSpacing: '0.1em', fontWeight: 600 }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'var(--ochre-lt)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'var(--ochre)')}
           >
-            <span>🚆</span>
-            <span>Plan this trip →</span>
+            PLAN THIS TRIP →
           </button>
         )}
 
@@ -87,16 +106,22 @@ export default function WaypointControls({
           <div className="flex gap-2">
             <button
               onClick={onDeleteLast}
-              className="flex-1 text-xs text-gray-500 hover:text-red-600 bg-gray-50 hover:bg-red-50 rounded-lg py-1.5 transition-colors"
+              className="flex-1 text-xs py-1.5 rounded-lg transition-colors"
+              style={{ background: 'var(--forest-2)', color: 'var(--sand)', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.06em' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--paper)' }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--sand)' }}
             >
-              ← Undo last
+              ← UNDO
             </button>
             {waypoints.length > 1 && (
               <button
                 onClick={onClearAll}
-                className="text-xs text-red-400 hover:text-red-600 px-2 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
+                className="text-xs px-2 py-1.5 rounded-lg transition-colors"
+                style={{ color: '#c07c28', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.06em' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(192,124,40,0.15)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
               >
-                Clear all
+                CLEAR
               </button>
             )}
           </div>
