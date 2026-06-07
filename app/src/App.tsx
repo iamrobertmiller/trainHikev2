@@ -337,8 +337,8 @@ export default function App() {
       )}
 
       {/* Layer toggles — bottom left, above tab bar */}
-      {appMode === 'plan' && panel === 'none' && (
-        <div className="absolute left-3 z-10 pointer-events-auto flex flex-col gap-1.5" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
+      {appMode === 'plan' && panel === 'none' && !selectedTrail && (
+        <div className="absolute left-3 z-10 pointer-events-auto flex flex-col gap-1.5" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
           <button
             onClick={() => setShowWaterFrontage(s => !s)}
             className="flex items-center gap-2 rounded-lg shadow-lg px-2.5 py-1.5 transition-colors"
@@ -411,7 +411,7 @@ export default function App() {
 
       {/* Selected trail banner — Plan mode only */}
       {appMode === 'plan' && selectedTrail && panel === 'none' && (
-        <div className="absolute left-4 right-16 md:left-auto md:right-4 md:w-80 z-10 bg-white rounded-2xl shadow-lg p-4" style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
+        <div className="absolute left-4 right-16 md:left-auto md:right-4 md:w-80 z-10 bg-white rounded-2xl shadow-lg p-4" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <p className="font-semibold text-gray-900 text-sm truncate">{selectedTrail.name}</p>
@@ -498,7 +498,7 @@ export default function App() {
 
       {/* Campsite hint banner */}
       {showCampsiteHint && (
-        <div className="absolute left-1/2 -translate-x-1/2 z-40 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 whitespace-nowrap" style={{ bottom: 'calc(4rem + env(safe-area-inset-bottom, 0px))', background: 'var(--forest)', border: '1px solid var(--ochre)' }}>
+        <div className="absolute left-1/2 -translate-x-1/2 z-40 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 whitespace-nowrap" style={{ bottom: 'calc(6.5rem + env(safe-area-inset-bottom, 0px))', background: 'var(--forest)', border: '1px solid var(--ochre)' }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
             <path d="M12 3L2 21h20L12 3z" fill="var(--moss)"/>
             <path d="M12 7l6 11H6L12 7z" fill="var(--paper)" opacity="0.9"/>
