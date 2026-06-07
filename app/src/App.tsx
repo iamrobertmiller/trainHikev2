@@ -134,10 +134,6 @@ export default function App() {
       })
   }, [])
 
-  const trails: Trail[] = useMemo(() =>
-    trailsGeoJSON?.features.map(f => f.properties as Trail) ?? [],
-    [trailsGeoJSON]
-  )
 
 
   const [customRouteKm, setCustomRouteKm] = useState(0)
