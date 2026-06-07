@@ -157,7 +157,7 @@ export default function NavigateOverlay({ activeTrip, userLocation, onExit }: Pr
       </div>
 
       {/* Stats card */}
-      <div className="absolute bottom-20 left-3 right-3 z-20 pointer-events-auto">
+      <div className="absolute left-3 right-3 z-20 pointer-events-auto" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
         <div className="grid grid-cols-2 gap-2.5">
           <StatTile
             label="To trailhead"

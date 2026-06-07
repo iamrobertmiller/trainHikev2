@@ -42,8 +42,8 @@ export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Pr
 
   return (
     <div
-      className="absolute left-0 right-0 z-20 rounded-t-2xl shadow-2xl max-h-[72vh] flex flex-col md:left-auto md:right-4 md:bottom-20 md:w-96 md:rounded-2xl"
-      style={{ background: 'var(--paper)', color: 'var(--ink)', bottom: 'calc(4rem + env(safe-area-inset-bottom, 0px))' }}
+      className="panel-bottom absolute left-0 right-0 z-20 rounded-t-2xl shadow-2xl max-h-[72vh] flex flex-col md:left-auto md:right-4 md:w-96 md:rounded-2xl"
+      style={{ background: 'var(--paper)', color: 'var(--ink)' }}
     >
       {/* Header */}
       <div
