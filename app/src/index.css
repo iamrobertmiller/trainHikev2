@@ -57,6 +57,16 @@ body {
   color: var(--ink);
 }
 
+/* Panels: clear the tab bar + safe area on mobile; fixed offset on desktop */
+.panel-bottom {
+  bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 768px) {
+  .panel-bottom {
+    bottom: 5rem;
+  }
+}
+
 /* MapLibre GL overrides */
 .maplibregl-map {
   font-family: 'Lora', Georgia, serif;
