@@ -164,7 +164,7 @@ export default function SharedTripView({ payload, onClose }: Props) {
                         <span className="text-sm font-medium" style={{ color: 'var(--ink)', fontFamily: 'Lora, Georgia, serif' }}>{stop.name}</span>
                         <span
                           className="text-xs ml-2 px-1.5 py-0.5 rounded"
-                          style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.08em', background: 'var(--forest)', color: 'var(--paper)' }}
+                          style={{ fontFamily: 'Oswald, sans-serif', letterSpacing: '0.08em', background: '#6B2D8B', color: 'var(--paper)' }}
                         >
                           V/LINE
                         </span>

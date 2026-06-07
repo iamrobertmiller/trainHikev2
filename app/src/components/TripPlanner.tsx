@@ -232,7 +232,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
                 fontFamily: 'Oswald, sans-serif',
                 letterSpacing: '0.08em',
                 fontSize: '0.65rem',
-                background: nearestResult.network === 'metro' ? '#005C8B' : 'var(--forest)',
+                background: nearestResult.network === 'metro' ? '#005C8B' : '#6B2D8B',
                 color: '#fff',
               }}
             >
