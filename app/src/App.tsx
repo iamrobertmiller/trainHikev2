@@ -233,7 +233,7 @@ export default function App() {
   }
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-gray-100">
+    <div className="fixed inset-0 overflow-hidden bg-gray-100">
       {trailsGeoJSON && (
         <Map
           campsites={filteredCampsites}
