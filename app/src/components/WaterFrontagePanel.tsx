@@ -75,7 +75,7 @@ export default function WaterFrontagePanel({ site, onClose, onPlanTrip }: Props)
       </div>
 
       {/* CTA */}
-      <div className="sticky bottom-0 p-4" style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)' }}>
+      <div className="sticky bottom-0 p-4" style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))' }}>
         <button
           onClick={onPlanTrip}
           className="w-full py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"

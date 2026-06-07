@@ -82,7 +82,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
     <div
       className="absolute top-0 left-0 right-0 md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 flex flex-col overflow-hidden md:rounded-2xl shadow-2xl"
       style={{
-        bottom: 'calc(env(safe-area-inset-bottom, 0px) + 5rem)',
+        bottom: 'env(safe-area-inset-bottom, 0px)',
         background: 'var(--paper)',
         color: 'var(--ink)',
       }}
