@@ -23,6 +23,7 @@ input, select, textarea {
 }
 
 :root {
+  --vv-bottom-inset: 0px;
   --forest:    #1a3328;
   --forest-2:  #274d3c;
   --moss:      #4a7a58;
