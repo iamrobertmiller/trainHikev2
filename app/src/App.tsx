@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import Map from './components/Map'
 import CampsitePanel from './components/CampsitePanel'
 import HutPanel from './components/HutPanel'
@@ -9,7 +9,8 @@ import WaypointControls from './components/WaypointControls'
 import NavigateOverlay from './components/NavigateOverlay'
 import SavedTripsPanel from './components/SavedTripsPanel'
 import SharedTripView from './components/SharedTripView'
-import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, SharedTripPayload, Trail, UserLocation, WaterFrontage } from './types'
+import type { AppMode, Campsite, CustomWaypoint, Hut, Profile, SavedTrip, SharedTripPayload, Trail, UserLocation, WaterFrontage } from './types'
+import { useDebounce } from './hooks/useDebounce'
 import { useProfile, useSavedTrips } from './hooks/useProfile'
 import { useNearestStop } from './hooks/useGTFS'
 import { naismithMinutes } from './lib/naismith'
@@ -43,6 +44,11 @@ export default function App() {
 
   const { profile, saveProfile } = useProfile()
   const { trips, saveTrip, removeTrip } = useSavedTrips()
+  const debouncedSearchQuery = useDebounce(searchQuery, 300)
+
+  // Updated each render so useCallback closures can read current panel without adding it to deps
+  const panelRef = useRef(panel)
+  panelRef.current = panel
 
   // Decode shared trip from URL and auto-save it once
   useEffect(() => {
@@ -83,12 +89,12 @@ export default function App() {
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const dismissSharedTrip = () => {
+  const dismissSharedTrip = useCallback(() => {
     setSharedTrip(null)
     const url = new URL(window.location.href)
     url.searchParams.delete('shared')
     window.history.replaceState({}, '', url.toString())
-  }
+  }, [])
 
   useEffect(() => {
     fetch('/data/campsites.geojson')
@@ -152,6 +158,7 @@ export default function App() {
       return
     }
     const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 10_000)
     const orsKey = import.meta.env.VITE_ORS_API_KEY as string | undefined
     const origin: [number, number] = [nearestStop.stop.lng, nearestStop.stop.lat]
     const dest: [number, number] = [campsite.lng, campsite.lat]
@@ -184,10 +191,10 @@ export default function App() {
         .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
     }
 
-    return () => { controller.abort(); setTripRouteCoords([]) }
+    return () => { clearTimeout(timeoutId); controller.abort(); setTripRouteCoords([]) }
   }, [panel, appMode, nearestStop, selectedCampsite, activeTrip]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleSelectCampsite = (c: Campsite | null) => {
+  const handleSelectCampsite = useCallback((c: Campsite | null) => {
     if (c && selectedCampsite?.id === c.id && panel === 'campsite') {
       setSelectedCampsite(null)
       setPanel('none')
@@ -196,26 +203,26 @@ export default function App() {
     setSelectedCampsite(c)
     setPanel(c ? 'campsite' : 'none')
     if (c) setShowCampsiteHint(false)
-  }
+  }, [selectedCampsite, panel])
 
   const filteredCampsites = useMemo(() => {
-    if (!searchQuery) return campsites
-    const q = searchQuery.toLowerCase()
+    if (!debouncedSearchQuery) return campsites
+    const q = debouncedSearchQuery.toLowerCase()
     return campsites.filter(c =>
       c.name?.toLowerCase().includes(q) ||
       c.asset_desc?.toLowerCase().includes(q) ||
       c.park_name?.toLowerCase().includes(q)
     )
-  }, [campsites, searchQuery])
+  }, [campsites, debouncedSearchQuery])
 
-  const handleSaveTrip = (base: Omit<SavedTrip, 'id' | 'savedAt'>) => {
+  const handleSaveTrip = useCallback((base: Omit<SavedTrip, 'id' | 'savedAt'>) => {
     const saved = saveTrip({ ...base, customWaypoints })
     setActiveTrip(saved)
     setSaveToast(true)
     setTimeout(() => setSaveToast(false), 3000)
-  }
+  }, [saveTrip, customWaypoints])
 
-  const handleSwitchMode = (m: AppMode) => {
+  const handleSwitchMode = useCallback((m: AppMode) => {
     if (m === 'navigate' && !activeTrip) {
       setPanel('savedTrips')
       return
@@ -224,18 +231,109 @@ export default function App() {
     setIsDrawingRoute(false)
     setPanel('none')
     if (m === 'plan') setUserLocation(null)
-  }
+  }, [activeTrip])
 
-  const handleStartDrawing = () => {
+  const handleStartDrawing = useCallback(() => {
     setIsDrawingRoute(true)
     setPanel('none')
-  }
+  }, [])
 
-  const handlePlanTrip = () => {
+  const handlePlanTrip = useCallback(() => {
     setIsDrawingRoute(false)
     setShowCampsiteHint(true)
     setTimeout(() => setShowCampsiteHint(false), 5000)
-  }
+  }, [])
+
+  // Stable handlers for Map and child components
+  const handleSelectTrail = useCallback((t: Trail | null) => {
+    setSelectedTrail(t)
+    setPanel('none')
+  }, [])
+
+  const handleSelectHut = useCallback((h: Hut) => {
+    setSelectedHut(prev => {
+      if (prev?.name === h.name && prev?.lat === h.lat && panelRef.current === 'hut') {
+        setPanel('none')
+        return null
+      }
+      setPanel('hut')
+      return h
+    })
+  }, [])
+
+  const handleSelectWaterFrontage = useCallback((w: WaterFrontage) => {
+    setSelectedWaterFrontage(prev => {
+      if (prev?.name === w.name && prev?.lat === w.lat && panelRef.current === 'waterFrontage') {
+        setPanel('none')
+        return null
+      }
+      setPanel('waterFrontage')
+      return w
+    })
+  }, [])
+
+  const handleAddWaypoint = useCallback((wp: CustomWaypoint) => {
+    setCustomWaypoints(prev => [...prev, wp])
+  }, [])
+
+  const handleToggleDrawing = useCallback(() => setIsDrawingRoute(d => !d), [])
+  const handleDeleteLastWaypoint = useCallback(() => setCustomWaypoints(prev => prev.slice(0, -1)), [])
+  const handleClearAllWaypoints = useCallback(() => { setCustomWaypoints([]); setIsDrawingRoute(false) }, [])
+  const handleClosePanel = useCallback(() => setPanel('none'), [])
+  const handleCloseTripPanel = useCallback(() => setPanel('campsite'), [])
+  const handleOpenTripPanel = useCallback(() => setPanel('trip'), [])
+  const handleToggleWaterFrontage = useCallback(() => setShowWaterFrontage(s => !s), [])
+  const handleToggleHuts = useCallback(() => setShowHuts(s => !s), [])
+  const handleOpenSavedTrips = useCallback(() => setPanel('savedTrips'), [])
+  const handleOpenHomeSetup = useCallback(() => setPanel('homeSetup'), [])
+  const handleToggleSearch = useCallback(() => setShowSearch(s => !s), [])
+  const handleCloseSelectedTrail = useCallback(() => setSelectedTrail(null), [])
+
+  const handleHutPlanTrip = useCallback(() => {
+    setSelectedHut(prev => {
+      if (prev) {
+        setSelectedCampsite({ id: -1, name: prev.name, asset_desc: prev.name, park_name: prev.park, park_id: 0, lat: prev.lat, lng: prev.lng })
+        setPanel('trip')
+      }
+      return prev
+    })
+  }, [])
+
+  const handleWaterFrontagePlanTrip = useCallback(() => {
+    setSelectedWaterFrontage(prev => {
+      if (prev) {
+        setSelectedCampsite({ id: -1, name: prev.name, asset_desc: prev.name, park_name: prev.river, park_id: 0, lat: prev.lat, lng: prev.lng })
+        setPanel('trip')
+      }
+      return prev
+    })
+  }, [])
+
+  const handleHomeSave = useCallback((p: Profile) => {
+    saveProfile(p)
+    setPanel(selectedCampsite ? 'campsite' : 'none')
+  }, [saveProfile, selectedCampsite])
+
+  const handleHomeSkip = useCallback(() => {
+    setPanel(selectedCampsite ? 'campsite' : 'none')
+  }, [selectedCampsite])
+
+  const handleLoadTrip = useCallback((trip: SavedTrip) => {
+    setActiveTrip(trip)
+    setAppMode('navigate')
+    setPanel('none')
+  }, [])
+
+  const handleNavigateExit = useCallback(() => setAppMode('plan'), [])
+
+  const handleSearchSelect = useCallback((c: Campsite) => {
+    handleSelectCampsite(c)
+    setShowSearch(false)
+    setSearchQuery('')
+  }, [handleSelectCampsite])
+
+  const handlePlanModeSwitch = useCallback(() => handleSwitchMode('plan'), [handleSwitchMode])
+  const handleNavigateModeSwitch = useCallback(() => handleSwitchMode('navigate'), [handleSwitchMode])
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-gray-100">
@@ -248,25 +346,13 @@ export default function App() {
           selectedCampsite={selectedCampsite}
           onSelectCampsite={handleSelectCampsite}
           selectedTrail={selectedTrail}
-          onSelectTrail={t => { setSelectedTrail(t); setPanel('none') }}
-          onSelectHut={h => {
-            if (selectedHut?.name === h.name && selectedHut?.lat === h.lat && panel === 'hut') {
-              setSelectedHut(null); setPanel('none')
-            } else {
-              setSelectedHut(h); setPanel('hut')
-            }
-          }}
-          onSelectWaterFrontage={w => {
-            if (selectedWaterFrontage?.name === w.name && selectedWaterFrontage?.lat === w.lat && panel === 'waterFrontage') {
-              setSelectedWaterFrontage(null); setPanel('none')
-            } else {
-              setSelectedWaterFrontage(w); setPanel('waterFrontage')
-            }
-          }}
+          onSelectTrail={handleSelectTrail}
+          onSelectHut={handleSelectHut}
+          onSelectWaterFrontage={handleSelectWaterFrontage}
           isDrawingRoute={isDrawingRoute}
           customWaypoints={customWaypoints}
           onRouteUpdated={setCustomRouteKm}
-          onAddWaypoint={wp => setCustomWaypoints(prev => [...prev, wp])}
+          onAddWaypoint={handleAddWaypoint}
           tripRouteCoords={tripRouteCoords}
           appMode={appMode}
           activeTrip={activeTrip}
@@ -279,7 +365,7 @@ export default function App() {
         <NavigateOverlay
           activeTrip={activeTrip}
           userLocation={userLocation}
-          onExit={() => setAppMode('plan')}
+          onExit={handleNavigateExit}
         />
       )}
 
@@ -290,9 +376,9 @@ export default function App() {
           isDrawing={isDrawingRoute}
           estimatedKm={customRouteKm}
           estimatedMinutes={customRouteKm > 0 ? naismithMinutes(customRouteKm, 0) : 0}
-          onToggleDrawing={() => setIsDrawingRoute(d => !d)}
-          onDeleteLast={() => setCustomWaypoints(prev => prev.slice(0, -1))}
-          onClearAll={() => { setCustomWaypoints([]); setIsDrawingRoute(false) }}
+          onToggleDrawing={handleToggleDrawing}
+          onDeleteLast={handleDeleteLastWaypoint}
+          onClearAll={handleClearAllWaypoints}
           onPlanTrip={handlePlanTrip}
         />
       )}
@@ -315,7 +401,7 @@ export default function App() {
 
           {/* Search */}
           <button
-            onClick={() => setShowSearch(s => !s)}
+            onClick={handleToggleSearch}
             className="pointer-events-auto w-10 h-10 rounded-xl shadow-lg flex items-center justify-center transition-colors"
             style={{ background: showSearch ? 'var(--ink)' : 'var(--paper)', color: showSearch ? '#fff' : 'var(--forest)' }}
             title="Search campsites"
@@ -327,7 +413,7 @@ export default function App() {
 
           {/* Saved trips */}
           <button
-            onClick={() => setPanel('savedTrips')}
+            onClick={handleOpenSavedTrips}
             className="pointer-events-auto w-10 h-10 rounded-xl shadow-lg flex items-center justify-center transition-colors"
             style={{ background: 'var(--paper)', color: 'var(--forest)' }}
             title="Saved trips"
@@ -339,7 +425,7 @@ export default function App() {
 
           {/* Home station */}
           <button
-            onClick={() => setPanel('homeSetup')}
+            onClick={handleOpenHomeSetup}
             className="pointer-events-auto w-10 h-10 rounded-xl shadow-lg flex items-center justify-center transition-colors"
             style={{ background: profile ? 'var(--paper)' : 'var(--ochre)', color: profile ? 'var(--forest)' : '#fff' }}
             title={profile ? `Home: ${profile.homeStopName}` : 'Set home station'}
@@ -357,7 +443,7 @@ export default function App() {
       {appMode === 'plan' && panel === 'none' && !selectedTrail && (
         <div className="absolute left-3 z-10 pointer-events-auto flex flex-col gap-1.5" style={{ bottom: 'calc(5rem + env(safe-area-inset-bottom, 0px))' }}>
           <button
-            onClick={() => setShowWaterFrontage(s => !s)}
+            onClick={handleToggleWaterFrontage}
             className="flex items-center gap-2 rounded-lg shadow-lg px-2.5 py-1.5 transition-colors"
             style={{
               background: showWaterFrontage ? '#1a3d5c' : 'var(--forest)',
@@ -372,7 +458,7 @@ export default function App() {
             </span>
           </button>
           <button
-            onClick={() => setShowHuts(s => !s)}
+            onClick={handleToggleHuts}
             className="flex items-center gap-2 rounded-lg shadow-lg px-2.5 py-1.5 transition-colors"
             style={{
               background: showHuts ? '#5a3510' : 'var(--forest)',
@@ -406,11 +492,7 @@ export default function App() {
               {filteredCampsites.slice(0, 8).map(c => (
                 <li key={c.id} style={{ borderBottom: '1px solid var(--fog)' }}>
                   <button
-                    onClick={() => {
-                      handleSelectCampsite(c)
-                      setShowSearch(false)
-                      setSearchQuery('')
-                    }}
+                    onClick={() => handleSearchSelect(c)}
                     className="w-full text-left px-4 py-3 transition-colors"
                     style={{ fontFamily: 'Lora, Georgia, serif' }}
                     onMouseEnter={e => (e.currentTarget.style.background = 'var(--paper-2)')}
@@ -434,7 +516,7 @@ export default function App() {
               <p className="font-semibold text-gray-900 text-sm truncate">{selectedTrail.name}</p>
               <p className="text-xs text-gray-500 mt-0.5">{selectedTrail.length_km} km</p>
             </div>
-            <button onClick={() => setSelectedTrail(null)} className="text-gray-400 hover:text-gray-600 flex-none w-6 h-6 flex items-center justify-center">✕</button>
+            <button onClick={handleCloseSelectedTrail} className="text-gray-400 hover:text-gray-600 flex-none w-6 h-6 flex items-center justify-center">✕</button>
           </div>
         </div>
       )}
@@ -443,8 +525,8 @@ export default function App() {
       {panel === 'campsite' && selectedCampsite && (
         <CampsitePanel
           campsite={selectedCampsite}
-          onClose={() => setPanel('none')}
-          onPlanTrip={() => setPanel('trip')}
+          onClose={handleClosePanel}
+          onPlanTrip={handleOpenTripPanel}
         />
       )}
 
@@ -452,11 +534,8 @@ export default function App() {
       {panel === 'hut' && selectedHut && (
         <HutPanel
           hut={selectedHut}
-          onClose={() => setPanel('none')}
-          onPlanTrip={() => {
-            setSelectedCampsite({ id: -1, name: selectedHut.name, asset_desc: selectedHut.name, park_name: selectedHut.park, park_id: 0, lat: selectedHut.lat, lng: selectedHut.lng })
-            setPanel('trip')
-          }}
+          onClose={handleClosePanel}
+          onPlanTrip={handleHutPlanTrip}
         />
       )}
 
@@ -464,11 +543,8 @@ export default function App() {
       {panel === 'waterFrontage' && selectedWaterFrontage && (
         <WaterFrontagePanel
           site={selectedWaterFrontage}
-          onClose={() => setPanel('none')}
-          onPlanTrip={() => {
-            setSelectedCampsite({ id: -1, name: selectedWaterFrontage.name, asset_desc: selectedWaterFrontage.name, park_name: selectedWaterFrontage.river, park_id: 0, lat: selectedWaterFrontage.lat, lng: selectedWaterFrontage.lng })
-            setPanel('trip')
-          }}
+          onClose={handleClosePanel}
+          onPlanTrip={handleWaterFrontagePlanTrip}
         />
       )}
 
@@ -480,8 +556,8 @@ export default function App() {
           profile={profile}
           customWaypoints={customWaypoints}
           customRouteKm={customRouteKm}
-          onClose={() => setPanel('campsite')}
-          onSetHomeStop={() => setPanel('homeSetup')}
+          onClose={handleCloseTripPanel}
+          onSetHomeStop={handleOpenHomeSetup}
           onStartDrawing={handleStartDrawing}
           onSaveTrip={handleSaveTrip}
         />
@@ -490,11 +566,8 @@ export default function App() {
       {/* Home setup */}
       {panel === 'homeSetup' && (
         <HomeSetup
-          onSave={p => {
-            saveProfile(p)
-            setPanel(selectedCampsite ? 'campsite' : 'none')
-          }}
-          onSkip={() => setPanel(selectedCampsite ? 'campsite' : 'none')}
+          onSave={handleHomeSave}
+          onSkip={handleHomeSkip}
         />
       )}
 
@@ -502,13 +575,9 @@ export default function App() {
       {panel === 'savedTrips' && (
         <SavedTripsPanel
           trips={trips}
-          onLoad={trip => {
-            setActiveTrip(trip)
-            setAppMode('navigate')
-            setPanel('none')
-          }}
+          onLoad={handleLoadTrip}
           onDelete={removeTrip}
-          onClose={() => setPanel('none')}
+          onClose={handleClosePanel}
         />
       )}
 
@@ -548,7 +617,7 @@ export default function App() {
             style={{ background: 'var(--forest)', border: '1px solid var(--forest-2)' }}
           >
             <button
-              onClick={() => handleSwitchMode('plan')}
+              onClick={handlePlanModeSwitch}
               className="flex items-center gap-2 px-5 py-2.5 transition-colors"
               style={{
                 background: appMode === 'plan' ? 'var(--forest-2)' : 'transparent',
@@ -564,7 +633,7 @@ export default function App() {
               <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.7rem', letterSpacing: '0.12em', fontWeight: 600 }}>PLAN</span>
             </button>
             <button
-              onClick={() => handleSwitchMode('navigate')}
+              onClick={handleNavigateModeSwitch}
               className="flex items-center gap-2 px-5 py-2.5 transition-colors"
               style={{
                 background: appMode === 'navigate' ? 'var(--forest-2)' : 'transparent',

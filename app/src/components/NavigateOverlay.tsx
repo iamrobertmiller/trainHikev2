@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react'
+import { memo, useEffect, useState, useMemo } from 'react'
 import type { SavedTrip, UserLocation } from '../types'
 import { haversineKm, bearingDeg, routeLengthKm } from '../lib/geo'
 import { naismithMinutes } from '../lib/naismith'
@@ -53,7 +53,7 @@ function StatTile({ label, value, sub, accent }: { label: string; value: string;
   )
 }
 
-export default function NavigateOverlay({ activeTrip, userLocation, onExit }: Props) {
+function NavigateOverlay({ activeTrip, userLocation, onExit }: Props) {
   const [now, setNow] = useState(Date.now())
 
   useEffect(() => {
@@ -197,3 +197,5 @@ export default function NavigateOverlay({ activeTrip, userLocation, onExit }: Pr
     </>
   )
 }
+
+export default memo(NavigateOverlay)

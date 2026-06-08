@@ -165,18 +165,25 @@ export interface MetroDepartureFromSSX {
 
 const SSX_TURNAROUND_MINS = 10  // typical SSX platform turnaround
 
+const outboundPairsCache = new Map<string, DayBucket>()
+
 // Derive approximate outbound (SSX → station) timetable from existing inbound data.
 // Metro trains arriving at SSX inbound turn around after ~10 minutes and run outbound
 // on the same line, taking approximately the same journey time in reverse.
-function deriveOutboundPairs(pairs: DayBucket): DayBucket {
+// Result is cached per unique pairs reference since input comes from static loaded data.
+function deriveOutboundPairs(pairs: DayBucket, cacheKey: string): DayBucket {
+  const cached = outboundPairsCache.get(cacheKey)
+  if (cached) return cached
   if (pairs.length === 0) return []
   const avgJourneyMins = Math.round(
     pairs.reduce((s, [dep, arr]) => s + (arr - dep), 0) / pairs.length
   )
-  return pairs.map(([, arrSSX]) => {
+  const result = pairs.map(([, arrSSX]) => {
     const ssxDep = arrSSX + SSX_TURNAROUND_MINS
     return [ssxDep, ssxDep + avgJourneyMins] as [number, number]
   }).sort((a, b) => a[0] - b[0])
+  outboundPairsCache.set(cacheKey, result)
+  return result
 }
 
 export function findMetroDeparturesFromSSX(
@@ -193,9 +200,10 @@ export function findMetroDeparturesFromSSX(
   // Use pre-built fromSSX if available (requires rebuild of metro_gtfs.json),
   // otherwise derive approximate outbound times from inbound toSSX data.
   const bucket = data.fromSSX?.[trailheadStopId] ?? null
+  const rawPairs = data.toSSX[trailheadStopId]?.[dt] ?? data.toSSX[trailheadStopId]?.wd ?? []
   const pairs: DayBucket = bucket
     ? (bucket[dt] ?? [])
-    : deriveOutboundPairs(data.toSSX[trailheadStopId]?.[dt] ?? data.toSSX[trailheadStopId]?.wd ?? [])
+    : deriveOutboundPairs(rawPairs, `${trailheadStopId}|${dt}`)
 
   return pairs
     .filter(([, arrMins]) => arrMins <= deadlineMins)

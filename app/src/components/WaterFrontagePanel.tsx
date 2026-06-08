@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { WaterFrontage } from '../types'
 import { BottomSheet, useSheet } from './BottomSheet'
 
@@ -98,7 +99,7 @@ function Content({ site, onPlanTrip }: { site: WaterFrontage; onPlanTrip: () => 
   )
 }
 
-export default function WaterFrontagePanel({ site, onClose, onPlanTrip }: Props) {
+function WaterFrontagePanel({ site, onClose, onPlanTrip }: Props) {
   return (
     <>
       <BottomSheet
@@ -126,3 +127,5 @@ export default function WaterFrontagePanel({ site, onClose, onPlanTrip }: Props)
     </>
   )
 }
+
+export default memo(WaterFrontagePanel)

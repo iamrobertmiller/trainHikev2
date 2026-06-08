@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { memo, useState, useEffect } from 'react'
 import { useStopSearch } from '../hooks/useGTFS'
 import type { Profile } from '../types'
 
@@ -7,7 +7,7 @@ interface Props {
   onSkip: () => void
 }
 
-export default function HomeSetup({ onSave, onSkip }: Props) {
+function HomeSetup({ onSave, onSkip }: Props) {
   const [query, setQuery] = useState('')
   const { results, loading, search, clear, ready } = useStopSearch()
 
@@ -141,3 +141,5 @@ export default function HomeSetup({ onSave, onSkip }: Props) {
     </div>
   )
 }
+
+export default memo(HomeSetup)

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { memo, useState, useEffect } from 'react'
 import type { Campsite, Trail, Profile, CustomWaypoint, SavedTrip } from '../types'
 import { getSunset, formatTime } from '../hooks/useSunset'
 import { naismithMinutes, arrivalDeadline } from '../lib/naismith'
@@ -27,7 +27,7 @@ function deadlineToHHMM(deadline: Date): string {
   return `${String(deadline.getHours()).padStart(2, '0')}:${String(deadline.getMinutes()).padStart(2, '0')}`
 }
 
-export default function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm, onClose, onSetHomeStop, onStartDrawing, onSaveTrip }: Props) {
+function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm, onClose, onSetHomeStop, onStartDrawing, onSaveTrip }: Props) {
   const _d = new Date()
   const today = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, '0')}-${String(_d.getDate()).padStart(2, '0')}`
   const [date, setDate] = useState(today)
@@ -365,3 +365,5 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
     </>
   )
 }
+
+export default memo(TripPlanner)
