@@ -541,7 +541,7 @@ export default function App() {
       {panel === 'none' && !(appMode === 'navigate' && activeTrip) && (
         <div
           className="absolute left-1/2 -translate-x-1/2 z-20 pointer-events-auto"
-          style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
+          style={{ bottom: 'calc(3.5rem + env(safe-area-inset-bottom, 0px))' }}
         >
           <div
             className="flex rounded-full shadow-xl overflow-hidden"
