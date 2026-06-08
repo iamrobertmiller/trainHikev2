@@ -1,4 +1,5 @@
 import { memo, useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import type { Campsite, Trail, Profile, CustomWaypoint, SavedTrip } from '../types'
 import { getSunset, formatTime } from '../hooks/useSunset'
 import { naismithMinutes, arrivalDeadline } from '../lib/naismith'
@@ -340,28 +341,31 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
         </button>
       </div>
     </BottomSheet>
-    {/* Mobile-only: fixed outside the transformed drawer so it stays above Safari chrome */}
-    <div
-      className="md:hidden absolute left-0 right-0 z-30 px-4"
-      style={{ top: '3.75rem' }}
-    >
-      <button
-        onClick={handleSaveTrip}
-        disabled={!selectedDeparture}
-        className="w-full py-3 rounded-xl text-sm flex items-center justify-center gap-2"
-        style={{
-          background: selectedDeparture ? 'var(--forest)' : 'var(--paper-2)',
-          color: selectedDeparture ? 'var(--paper)' : 'var(--sand)',
-          fontFamily: 'Oswald, sans-serif',
-          letterSpacing: '0.1em',
-          fontWeight: 600,
-          border: selectedDeparture ? 'none' : '1px solid var(--fog)',
-          boxShadow: selectedDeparture ? '0 4px 16px rgba(0,0,0,0.35)' : 'none',
-        }}
+    {/* Mobile-only: portalled to body so it sits above the vaul Drawer.Portal stacking context */}
+    {createPortal(
+      <div
+        className="md:hidden fixed left-0 right-0 z-50 px-4"
+        style={{ top: '3.75rem' }}
       >
-        {selectedDeparture ? 'SAVE TRIP' : 'SELECT A DEPARTURE TO SAVE'}
-      </button>
-    </div>
+        <button
+          onClick={handleSaveTrip}
+          disabled={!selectedDeparture}
+          className="w-full py-3 rounded-xl text-sm flex items-center justify-center gap-2"
+          style={{
+            background: selectedDeparture ? 'var(--forest)' : 'var(--paper-2)',
+            color: selectedDeparture ? 'var(--paper)' : 'var(--sand)',
+            fontFamily: 'Oswald, sans-serif',
+            letterSpacing: '0.1em',
+            fontWeight: 600,
+            border: selectedDeparture ? 'none' : '1px solid var(--fog)',
+            boxShadow: selectedDeparture ? '0 4px 16px rgba(0,0,0,0.35)' : 'none',
+          }}
+        >
+          {selectedDeparture ? 'SAVE TRIP' : 'SELECT A DEPARTURE TO SAVE'}
+        </button>
+      </div>,
+      document.body
+    )}
     </>
   )
 }

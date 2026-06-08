@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { createPortal } from 'react-dom'
 import type { Campsite } from '../types'
 import { BottomSheet, useSheet } from './BottomSheet'
 
@@ -187,11 +188,12 @@ function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
       >
         <Content campsite={campsite} onPlanTrip={onPlanTrip} />
       </BottomSheet>
-      {/* Mobile-only: fixed outside the transformed drawer so it stays above Safari chrome */}
-      <div
-        className="md:hidden absolute left-0 right-0 z-30 px-4"
-        style={{ top: '3.75rem' }}
-      >
+      {/* Mobile-only: portalled to body so it sits above the vaul Drawer.Portal stacking context */}
+      {createPortal(
+        <div
+          className="md:hidden fixed left-0 right-0 z-50 px-4"
+          style={{ top: '3.75rem' }}
+        >
         <button
           onClick={onPlanTrip}
           className="w-full font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
@@ -202,7 +204,9 @@ function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
           </svg>
           PLAN A TRIP HERE
         </button>
-      </div>
+        </div>,
+        document.body
+      )}
     </>
   )
 }
