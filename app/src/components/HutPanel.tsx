@@ -98,12 +98,11 @@ export default function HutPanel({ hut, onClose, onPlanTrip }: Props) {
       </BottomSheet>
       {/* Mobile-only: fixed outside the transformed drawer so it stays above Safari chrome */}
       <div
-        className="md:hidden fixed left-0 right-0 z-30 px-4"
+        className="md:hidden absolute left-0 right-0 z-30 px-4"
         style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + var(--vv-bottom-inset, 0px) + 3.5rem)' }}
       >
         <button
-          onPointerDown={e => e.stopPropagation()}
-          onClick={e => { e.stopPropagation(); setTimeout(onPlanTrip, 50) }}
+          onClick={onPlanTrip}
           className="w-full py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
           style={{ background: 'var(--forest)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem', fontWeight: 600, boxShadow: '0 4px 16px rgba(0,0,0,0.35)' }}
         >
