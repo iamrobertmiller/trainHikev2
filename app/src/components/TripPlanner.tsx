@@ -84,6 +84,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
   }, [date, profile, nearestResult, deadlineHHMM]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
+    <>
     <BottomSheet
       onClose={onClose}
       snapPoints={[0.15, 0.88]}
@@ -317,10 +318,10 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
         </div>
       </div>
 
-      {/* Footer — single primary action only */}
+      {/* Desktop-only footer */}
       <div
-        className="p-4 flex-none"
-        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))' }}
+        className="hidden md:block p-4 flex-none"
+        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: '1rem' }}
       >
         <button
           onClick={handleSaveTrip}
@@ -339,5 +340,29 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
         </button>
       </div>
     </BottomSheet>
+    {/* Mobile-only: fixed outside the transformed drawer so it stays above Safari chrome */}
+    <div
+      className="md:hidden fixed left-0 right-0 z-30 px-4"
+      style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + var(--vv-bottom-inset, 0px) + 1rem)' }}
+    >
+      <button
+        onPointerDown={e => e.stopPropagation()}
+        onClick={e => { e.stopPropagation(); setTimeout(handleSaveTrip, 50) }}
+        disabled={!selectedDeparture}
+        className="w-full py-3 rounded-xl text-sm flex items-center justify-center gap-2"
+        style={{
+          background: selectedDeparture ? 'var(--forest)' : 'var(--paper-2)',
+          color: selectedDeparture ? 'var(--paper)' : 'var(--sand)',
+          fontFamily: 'Oswald, sans-serif',
+          letterSpacing: '0.1em',
+          fontWeight: 600,
+          border: selectedDeparture ? 'none' : '1px solid var(--fog)',
+          boxShadow: selectedDeparture ? '0 4px 16px rgba(0,0,0,0.35)' : 'none',
+        }}
+      >
+        {selectedDeparture ? 'SAVE TRIP' : 'SELECT A DEPARTURE TO SAVE'}
+      </button>
+    </div>
+    </>
   )
 }
