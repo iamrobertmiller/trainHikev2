@@ -343,7 +343,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
     {/* Mobile-only: fixed outside the transformed drawer so it stays above Safari chrome */}
     <div
       className="md:hidden fixed left-0 right-0 z-30 px-4"
-      style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + var(--vv-bottom-inset, 0px) + 1rem)' }}
+      style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + var(--vv-bottom-inset, 0px) + 3.5rem)' }}
     >
       <button
         onPointerDown={e => e.stopPropagation()}
