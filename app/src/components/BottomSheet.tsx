@@ -35,6 +35,18 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
     }
   }, [isMobile, onClose])
 
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+    const update = () => {
+      const inset = Math.max(0, window.innerHeight - vv.offsetTop - vv.height)
+      document.documentElement.style.setProperty('--vv-bottom-inset', `${inset}px`)
+    }
+    vv.addEventListener('resize', update)
+    update()
+    return () => vv.removeEventListener('resize', update)
+  }, [])
+
   if (!isMobile) {
     return (
       <SheetContext.Provider value={{ closeSheet }}>

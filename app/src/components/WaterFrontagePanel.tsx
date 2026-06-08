@@ -80,7 +80,7 @@ function Content({ site, onPlanTrip }: { site: WaterFrontage; onPlanTrip: () => 
       </div>
 
       {/* Sticky footer — always visible above Safari chrome */}
-      <div className="flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))', background: 'var(--paper)' }}>
+      <div className="flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px) + var(--vv-bottom-inset, 0px))', background: 'var(--paper)' }}>
         <button
           onClick={onPlanTrip}
           className="w-full py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
