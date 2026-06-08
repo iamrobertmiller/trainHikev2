@@ -188,6 +188,11 @@ export default function App() {
   }, [panel, appMode, nearestStop, selectedCampsite, activeTrip]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSelectCampsite = (c: Campsite | null) => {
+    if (c && selectedCampsite?.id === c.id && panel === 'campsite') {
+      setSelectedCampsite(null)
+      setPanel('none')
+      return
+    }
     setSelectedCampsite(c)
     setPanel(c ? 'campsite' : 'none')
     if (c) setShowCampsiteHint(false)
@@ -244,8 +249,20 @@ export default function App() {
           onSelectCampsite={handleSelectCampsite}
           selectedTrail={selectedTrail}
           onSelectTrail={t => { setSelectedTrail(t); setPanel('none') }}
-          onSelectHut={h => { setSelectedHut(h); setPanel('hut') }}
-          onSelectWaterFrontage={w => { setSelectedWaterFrontage(w); setPanel('waterFrontage') }}
+          onSelectHut={h => {
+            if (selectedHut?.name === h.name && selectedHut?.lat === h.lat && panel === 'hut') {
+              setSelectedHut(null); setPanel('none')
+            } else {
+              setSelectedHut(h); setPanel('hut')
+            }
+          }}
+          onSelectWaterFrontage={w => {
+            if (selectedWaterFrontage?.name === w.name && selectedWaterFrontage?.lat === w.lat && panel === 'waterFrontage') {
+              setSelectedWaterFrontage(null); setPanel('none')
+            } else {
+              setSelectedWaterFrontage(w); setPanel('waterFrontage')
+            }
+          }}
           isDrawingRoute={isDrawingRoute}
           customWaypoints={customWaypoints}
           onRouteUpdated={setCustomRouteKm}
