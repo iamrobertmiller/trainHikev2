@@ -5,6 +5,7 @@ import { naismithMinutes, arrivalDeadline } from '../lib/naismith'
 import { useGTFSDepartures, useNearestStop } from '../hooks/useGTFS'
 import type { Departure } from '../lib/gtfs'
 import PTResults from './PTResults'
+import { BottomSheet } from './BottomSheet'
 
 interface Props {
   campsite: Campsite
@@ -83,19 +84,21 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
   }, [date, profile, nearestResult, deadlineHHMM]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div
-      className="absolute top-0 left-0 right-0 md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 flex flex-col overflow-hidden md:rounded-2xl shadow-2xl"
-      style={{
-        bottom: 'env(safe-area-inset-bottom, 0px)',
-        background: 'var(--paper)',
-        color: 'var(--ink)',
-      }}
+    <BottomSheet
+      onClose={onClose}
+      snapPoints={[0.15, 0.88]}
+      desktopClassName="absolute md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 flex flex-col overflow-hidden md:rounded-2xl shadow-2xl"
     >
       {/* Header */}
       <div
-        className="px-4 py-4 flex items-center gap-3 flex-none"
+        className="flex-none"
         style={{ background: 'var(--forest)', borderBottom: '3px solid var(--ochre)' }}
       >
+        {/* drag handle pip — mobile only */}
+        <div className="md:hidden flex justify-center pt-2.5 pb-1">
+          <div className="w-10 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.3)' }} />
+        </div>
+        <div className="px-4 py-3 flex items-center gap-3">
         <button
           onClick={onClose}
           className="w-8 h-8 flex items-center justify-center rounded-lg flex-none transition-colors"
@@ -119,9 +122,10 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
             {campsite.park_name}
           </p>
         </div>
+        </div>
       </div>
 
-      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 space-y-5">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 space-y-5" data-vaul-no-drag>
         {/* Date picker */}
         <div>
           <label
@@ -316,7 +320,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
       {/* Footer — single primary action only */}
       <div
         className="p-4 flex-none"
-        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)' }}
+        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))' }}
       >
         <button
           onClick={handleSaveTrip}
@@ -334,6 +338,6 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
           {selectedDeparture ? 'SAVE TRIP' : 'SELECT A DEPARTURE TO SAVE'}
         </button>
       </div>
-    </div>
+    </BottomSheet>
   )
 }
