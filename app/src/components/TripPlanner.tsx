@@ -121,7 +121,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-5">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 space-y-5">
         {/* Date picker */}
         <div>
           <label
