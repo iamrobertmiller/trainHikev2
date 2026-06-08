@@ -155,21 +155,23 @@ function Content({ campsite, onPlanTrip }: { campsite: Campsite; onPlanTrip: () 
           >
             View on Parks Victoria ↗
           </a>
-          <div className="pt-4" style={{ borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))' }}>
-            <button
-              onClick={onPlanTrip}
-              className="w-full font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
-              style={{ background: 'var(--forest)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem' }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'var(--forest-2)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'var(--forest)')}
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <path d="M3 12h18M3 6h18M3 18h18"/>
-              </svg>
-              PLAN A TRIP HERE
-            </button>
-          </div>
         </div>
+      </div>
+
+      {/* Sticky footer — always visible above Safari chrome */}
+      <div className="flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px))', background: 'var(--paper)' }}>
+        <button
+          onClick={onPlanTrip}
+          className="w-full font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
+          style={{ background: 'var(--forest)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem' }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'var(--forest-2)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'var(--forest)')}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+          PLAN A TRIP HERE
+        </button>
       </div>
     </>
   )
