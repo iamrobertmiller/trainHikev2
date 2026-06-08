@@ -79,8 +79,8 @@ function Content({ site, onPlanTrip }: { site: WaterFrontage; onPlanTrip: () => 
         </div>
       </div>
 
-      {/* Sticky footer — always visible above Safari chrome */}
-      <div className="flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom, 0px) + var(--vv-bottom-inset, 0px))', background: 'var(--paper)' }}>
+      {/* Desktop-only footer inside the sheet */}
+      <div className="hidden md:block flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: '1rem', background: 'var(--paper)' }}>
         <button
           onClick={onPlanTrip}
           className="w-full py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
@@ -100,11 +100,29 @@ function Content({ site, onPlanTrip }: { site: WaterFrontage; onPlanTrip: () => 
 
 export default function WaterFrontagePanel({ site, onClose, onPlanTrip }: Props) {
   return (
-    <BottomSheet
-      onClose={onClose}
-      desktopClassName="panel-bottom absolute left-0 right-0 z-10 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden md:left-auto md:right-4 md:w-96 md:rounded-2xl md:max-h-[80vh]"
-    >
-      <Content site={site} onPlanTrip={onPlanTrip} />
-    </BottomSheet>
+    <>
+      <BottomSheet
+        onClose={onClose}
+        desktopClassName="panel-bottom absolute left-0 right-0 z-10 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden md:left-auto md:right-4 md:w-96 md:rounded-2xl md:max-h-[80vh]"
+      >
+        <Content site={site} onPlanTrip={onPlanTrip} />
+      </BottomSheet>
+      {/* Mobile-only: fixed outside the transformed drawer so it stays above Safari chrome */}
+      <div
+        className="md:hidden fixed left-0 right-0 z-30 px-4"
+        style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + var(--vv-bottom-inset, 0px) + 1rem)' }}
+      >
+        <button
+          onClick={onPlanTrip}
+          className="w-full py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
+          style={{ background: 'var(--forest)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem', fontWeight: 600, boxShadow: '0 4px 16px rgba(0,0,0,0.35)' }}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+          PLAN A TRIP HERE
+        </button>
+      </div>
+    </>
   )
 }
