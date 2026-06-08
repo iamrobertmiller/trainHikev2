@@ -537,11 +537,11 @@ export default function App() {
         <SharedTripView payload={sharedTrip} onClose={dismissSharedTrip} />
       )}
 
-      {/* Floating mode switcher — hidden while a panel or the navigate overlay is active */}
+      {/* Mode switcher — top of screen, below the top bar */}
       {panel === 'none' && !(appMode === 'navigate' && activeTrip) && (
         <div
           className="absolute left-1/2 -translate-x-1/2 z-20 pointer-events-auto"
-          style={{ bottom: 'calc(3.5rem + env(safe-area-inset-bottom, 0px))' }}
+          style={{ top: '3.75rem' }}
         >
           <div
             className="flex rounded-full shadow-xl overflow-hidden"
