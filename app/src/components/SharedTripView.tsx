@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { memo, useState, useEffect } from 'react'
 import type { SharedTripPayload } from '../types'
 import { useGTFSStopSearch, useFriendDepartures } from '../hooks/useGTFS'
 import PTResults from './PTResults'
@@ -12,7 +12,7 @@ function dateToGTFS(dateStr: string): string {
   return dateStr.replace(/-/g, '')
 }
 
-export default function SharedTripView({ payload, onClose }: Props) {
+function SharedTripView({ payload, onClose }: Props) {
   const [friendStop, setFriendStop] = useState<{ id: string; name: string } | null>(null)
   const [stopQuery, setStopQuery] = useState('')
   const { results, search, clear, ready } = useGTFSStopSearch()
@@ -200,3 +200,5 @@ export default function SharedTripView({ payload, onClose }: Props) {
     </div>
   )
 }
+
+export default memo(SharedTripView)

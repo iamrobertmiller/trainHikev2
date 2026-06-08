@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { CustomWaypoint } from '../types'
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
   onPlanTrip: () => void
 }
 
-export default function WaypointControls({
+function WaypointControls({
   waypoints,
   isDrawing,
   estimatedKm,
@@ -130,3 +131,5 @@ export default function WaypointControls({
     </div>
   )
 }
+
+export default memo(WaypointControls)

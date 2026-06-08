@@ -31,6 +31,13 @@ interface MapProps {
 const VICTORIA_CENTER: [number, number] = [144.9, -37.0]
 const VICTORIA_BOUNDS: [[number, number], [number, number]] = [[140.9, -39.2], [149.9, -34.0]]
 
+function makeCampsiteSVG(selected: boolean): string {
+  const w = selected ? 30 : 26
+  const h = selected ? 39 : 34
+  const fill = selected ? '#ea580c' : '#059669'
+  return `<svg width="${w}" height="${h}" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.35));transition:transform 0.15s" class="hover:scale-110"><path d="M13 1C6.37 1 1 6.37 1 13C1 19.63 13 34 13 34S25 19.63 25 13C25 6.37 19.63 1 13 1Z" fill="${fill}"/><path d="M13 5L5 19H21L13 5Z" fill="white" opacity="0.95"/><path d="M11 19V15H15V19Z" fill="${fill}"/></svg>`
+}
+
 export default function Map({
   campsites, trails, huts, waterFrontage,
   selectedCampsite, onSelectCampsite,
@@ -42,7 +49,8 @@ export default function Map({
 }: MapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
-  const markersRef = useRef<maplibregl.Marker[]>([])
+  const markersMapRef = useRef<Record<number, { marker: maplibregl.Marker; el: HTMLDivElement }>>({})
+  const markersRemovedRef = useRef(false)
   const hutMarkersRef = useRef<maplibregl.Marker[]>([])
   const waterFrontageMarkersRef = useRef<maplibregl.Marker[]>([])
   const waypointMarkersRef = useRef<maplibregl.Marker[]>([])
@@ -53,10 +61,20 @@ export default function Map({
   const isDrawingRef = useRef(isDrawingRoute)
   const onAddWaypointRef = useRef(onAddWaypoint)
   const onLocationUpdateRef = useRef(onLocationUpdate)
+  const onSelectCampsiteRef = useRef(onSelectCampsite)
+
+  // Tracks the currently-selected campsite id — updated each render (not in an effect)
+  // so effects can read the latest value without adding selectedCampsite to their deps.
+  const selectedCampsiteIdRef = useRef<number | undefined>(selectedCampsite?.id)
+  selectedCampsiteIdRef.current = selectedCampsite?.id
+
+  // Tracks previous selected id for the incremental marker update effect
+  const prevSelectedIdRef = useRef<number | undefined>(selectedCampsite?.id)
 
   useEffect(() => { isDrawingRef.current = isDrawingRoute }, [isDrawingRoute])
   useEffect(() => { onAddWaypointRef.current = onAddWaypoint }, [onAddWaypoint])
   useEffect(() => { onLocationUpdateRef.current = onLocationUpdate }, [onLocationUpdate])
+  useEffect(() => { onSelectCampsiteRef.current = onSelectCampsite }, [onSelectCampsite])
 
   const flyToCampsite = useCallback((c: Campsite) => {
     mapRef.current?.flyTo({ center: [c.lng, c.lat], zoom: 13, duration: 800 })
@@ -258,6 +276,7 @@ export default function Map({
     }
 
     const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 10_000)
     const orsKey = import.meta.env.VITE_ORS_API_KEY as string | undefined
     const fallback = () => {
       updateSource(customWaypoints.map(wp => [wp.lng, wp.lat]))
@@ -302,7 +321,7 @@ export default function Map({
         .catch(() => { if (!controller.signal.aborted) fallback() })
     }
 
-    return () => controller.abort()
+    return () => { clearTimeout(timeoutId); controller.abort() }
   }, [customWaypoints]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Navigate mode — GPS watchPosition
@@ -344,41 +363,72 @@ export default function Map({
     }
   }, [appMode])
 
-  // Render campsite markers (hidden in navigate mode)
+  // Effect A: sync marker set with the filtered campsites array and appMode changes.
+  // Does NOT depend on selectedCampsite — selection appearance is handled by Effect B.
   useEffect(() => {
     const map = mapRef.current
     if (!map) return
 
-    markersRef.current.forEach(m => m.remove())
-    markersRef.current = []
+    if (appMode === 'navigate') {
+      markersRemovedRef.current = true
+      Object.values(markersMapRef.current).forEach(({ marker }) => marker.remove())
+      return
+    }
 
-    if (appMode === 'navigate') return
+    const existingIds = Object.keys(markersMapRef.current).map(Number)
+    const newCampsiteIds = new Set(campsites.map(c => c.id))
 
-    campsites.forEach(site => {
-      const el = document.createElement('div')
-      el.className = 'campsite-marker'
-      const selected = selectedCampsite?.id === site.id
-      el.innerHTML = `
-        <svg width="${selected ? 30 : 26}" height="${selected ? 39 : 34}" viewBox="0 0 26 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;filter:drop-shadow(0 2px 3px rgba(0,0,0,0.35));transition:transform 0.15s" class="hover:scale-110">
-          <path d="M13 1C6.37 1 1 6.37 1 13C1 19.63 13 34 13 34S25 19.63 25 13C25 6.37 19.63 1 13 1Z" fill="${selected ? '#ea580c' : '#059669'}"/>
-          <path d="M13 5L5 19H21L13 5Z" fill="white" opacity="0.95"/>
-          <path d="M11 19V15H15V19Z" fill="${selected ? '#ea580c' : '#059669'}"/>
-        </svg>
-      `
+    // Remove markers for campsites no longer in the filtered list
+    for (const id of existingIds) {
+      if (!newCampsiteIds.has(id)) {
+        markersMapRef.current[id].marker.remove()
+        delete markersMapRef.current[id]
+      }
+    }
 
-      const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
-        .setLngLat([site.lng, site.lat])
-        .addTo(map)
+    // Add new markers; restore markers removed when entering navigate mode
+    for (const site of campsites) {
+      const existing = markersMapRef.current[site.id]
+      if (existing) {
+        if (markersRemovedRef.current) {
+          existing.marker.addTo(map)
+          existing.el.innerHTML = makeCampsiteSVG(selectedCampsiteIdRef.current === site.id)
+        }
+      } else {
+        const el = document.createElement('div')
+        el.className = 'campsite-marker'
+        el.innerHTML = makeCampsiteSVG(selectedCampsiteIdRef.current === site.id)
+        const marker = new maplibregl.Marker({ element: el, anchor: 'bottom' })
+          .setLngLat([site.lng, site.lat])
+          .addTo(map)
+        el.addEventListener('click', (e) => {
+          e.stopPropagation()
+          onSelectCampsiteRef.current(site)
+          flyToCampsite(site)
+        })
+        markersMapRef.current[site.id] = { marker, el }
+      }
+    }
 
-      el.addEventListener('click', (e) => {
-        e.stopPropagation()
-        onSelectCampsite(site)
-        flyToCampsite(site)
-      })
+    markersRemovedRef.current = false
+  }, [campsites, appMode, flyToCampsite]) // eslint-disable-line react-hooks/exhaustive-deps
 
-      markersRef.current.push(marker)
-    })
-  }, [campsites, selectedCampsite, onSelectCampsite, flyToCampsite, appMode])
+  // Effect B: update only the two affected markers when selection changes.
+  // Avoids touching the full marker set on every campsite click.
+  useEffect(() => {
+    const prevId = prevSelectedIdRef.current
+    const newId = selectedCampsite?.id
+    prevSelectedIdRef.current = newId
+
+    if (prevId !== undefined && prevId !== newId) {
+      const entry = markersMapRef.current[prevId]
+      if (entry) entry.el.innerHTML = makeCampsiteSVG(false)
+    }
+    if (newId !== undefined) {
+      const entry = markersMapRef.current[newId]
+      if (entry) entry.el.innerHTML = makeCampsiteSVG(true)
+    }
+  }, [selectedCampsite])
 
   // Render hut markers (hidden in navigate mode)
   useEffect(() => {

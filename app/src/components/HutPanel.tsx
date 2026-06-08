@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { Hut } from '../types'
 import { BottomSheet, useSheet } from './BottomSheet'
 
@@ -87,7 +88,7 @@ function Content({ hut, onPlanTrip }: { hut: Hut; onPlanTrip: () => void }) {
   )
 }
 
-export default function HutPanel({ hut, onClose, onPlanTrip }: Props) {
+function HutPanel({ hut, onClose, onPlanTrip }: Props) {
   return (
     <>
       <BottomSheet
@@ -115,3 +116,5 @@ export default function HutPanel({ hut, onClose, onPlanTrip }: Props) {
     </>
   )
 }
+
+export default memo(HutPanel)

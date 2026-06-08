@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { Campsite } from '../types'
 import { BottomSheet, useSheet } from './BottomSheet'
 
@@ -177,7 +178,7 @@ function Content({ campsite, onPlanTrip }: { campsite: Campsite; onPlanTrip: () 
   )
 }
 
-export default function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
+function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
   return (
     <>
       <BottomSheet
@@ -205,3 +206,5 @@ export default function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) 
     </>
   )
 }
+
+export default memo(CampsitePanel)

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import type { SavedTrip, SharedTripPayload } from '../types'
 import { BottomSheet, useSheet } from './BottomSheet'
 
@@ -164,7 +164,7 @@ function Content({ trips, onLoad, onDelete }: Omit<Props, 'onClose'>) {
   )
 }
 
-export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Props) {
+function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Props) {
   return (
     <BottomSheet
       onClose={onClose}
@@ -174,3 +174,5 @@ export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Pr
     </BottomSheet>
   )
 }
+
+export default memo(SavedTripsPanel)
