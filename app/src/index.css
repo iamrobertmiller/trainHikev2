@@ -10,6 +10,16 @@ html, body, #root {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  overflow-x: hidden;
+}
+
+html, body {
+  overscroll-behavior: none;
+}
+
+/* Prevent iOS Safari from auto-zooming when inputs are focused */
+input, select, textarea {
+  font-size: max(1rem, 16px);
 }
 
 :root {

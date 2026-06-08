@@ -498,7 +498,7 @@ export default function App() {
 
       {/* Campsite hint banner */}
       {showCampsiteHint && (
-        <div className="absolute left-1/2 -translate-x-1/2 z-40 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 whitespace-nowrap" style={{ bottom: 'calc(6.5rem + env(safe-area-inset-bottom, 0px))', background: 'var(--forest)', border: '1px solid var(--ochre)' }}>
+        <div className="absolute left-1/2 -translate-x-1/2 z-40 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 max-w-[calc(100vw-2rem)] text-center" style={{ bottom: 'calc(6.5rem + env(safe-area-inset-bottom, 0px))', background: 'var(--forest)', border: '1px solid var(--ochre)' }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
             <path d="M12 3L2 21h20L12 3z" fill="var(--moss)"/>
             <path d="M12 7l6 11H6L12 7z" fill="var(--paper)" opacity="0.9"/>
@@ -509,7 +509,7 @@ export default function App() {
 
       {/* Save toast */}
       {saveToast && (
-        <div className="absolute top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2.5" style={{ background: 'var(--ochre)' }}>
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 z-40 px-4 py-2.5 rounded-xl shadow-xl flex items-center gap-2.5 max-w-[calc(100vw-2rem)]" style={{ background: 'var(--ochre)' }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2.5" strokeLinecap="round"><path d="M20 6L9 17l-5-5"/></svg>
           <span style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.8rem', letterSpacing: '0.06em', color: '#fff' }}>TRIP SAVED — tap Navigate to go</span>
         </div>
