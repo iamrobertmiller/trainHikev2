@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Drawer } from 'vaul'
 import { useIsMobile } from '../hooks/useIsMobile'
@@ -18,8 +18,14 @@ interface Props {
 
 export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassName, children }: Props) {
   const isMobile = useIsMobile()
-  const [open, setOpen] = useState(true)
+  // Start closed so the tap-event that triggered mounting doesn't land on vaul's drag handlers
+  const [open, setOpen] = useState(false)
   const [snap, setSnap] = useState<number | string | null>(snapPoints[snapPoints.length - 1])
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setOpen(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
 
   const closeSheet = useCallback(() => {
     if (isMobile) {
@@ -51,7 +57,7 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
       >
         <Drawer.Portal>
           <Drawer.Content
-            className="fixed bottom-0 left-0 right-0 z-20 flex flex-col rounded-t-2xl shadow-2xl outline-none"
+            className="fixed bottom-0 left-0 right-0 z-20 flex flex-col rounded-t-2xl shadow-2xl outline-none overflow-hidden h-full max-h-[97%]"
             style={{ background: 'var(--paper)', color: 'var(--ink)' }}
           >
             {children}
