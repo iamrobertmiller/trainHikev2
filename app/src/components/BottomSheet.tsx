@@ -61,7 +61,7 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
             style={{
               background: 'var(--paper)',
               color: 'var(--ink)',
-              height: `${Math.max(...snapPoints) * 100}vh`,
+              height: `${Math.max(...snapPoints) * 100}dvh`,
             }}
           >
             {children}
