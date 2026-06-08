@@ -318,10 +318,11 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
         </div>
       </div>
 
-      {/* Desktop-only footer */}
+      {/* CTA footer — inside Drawer.Content so touch events are not cancelled by vaul */}
       <div
-        className="hidden md:block p-4 flex-none"
-        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: '1rem' }}
+        data-vaul-no-drag
+        className="p-4 flex-none"
+        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1rem)' }}
       >
         <button
           onClick={handleSaveTrip}
@@ -340,28 +341,6 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
         </button>
       </div>
     </BottomSheet>
-    {/* Mobile-only: fixed outside the transformed drawer so it stays above Safari chrome */}
-    <div
-      className="md:hidden absolute left-0 right-0 z-30 px-4"
-      style={{ top: '3.75rem' }}
-    >
-      <button
-        onClick={handleSaveTrip}
-        disabled={!selectedDeparture}
-        className="w-full py-3 rounded-xl text-sm flex items-center justify-center gap-2"
-        style={{
-          background: selectedDeparture ? 'var(--forest)' : 'var(--paper-2)',
-          color: selectedDeparture ? 'var(--paper)' : 'var(--sand)',
-          fontFamily: 'Oswald, sans-serif',
-          letterSpacing: '0.1em',
-          fontWeight: 600,
-          border: selectedDeparture ? 'none' : '1px solid var(--fog)',
-          boxShadow: selectedDeparture ? '0 4px 16px rgba(0,0,0,0.35)' : 'none',
-        }}
-      >
-        {selectedDeparture ? 'SAVE TRIP' : 'SELECT A DEPARTURE TO SAVE'}
-      </button>
-    </div>
     </>
   )
 }
