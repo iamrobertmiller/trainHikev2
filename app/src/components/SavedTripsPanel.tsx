@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { SavedTrip, SharedTripPayload } from '../types'
+import { BottomSheet, useSheet } from './BottomSheet'
 
 interface Props {
   trips: SavedTrip[]
@@ -8,7 +9,8 @@ interface Props {
   onClose: () => void
 }
 
-export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Props) {
+function Content({ trips, onLoad, onDelete }: Omit<Props, 'onClose'>) {
+  const { closeSheet } = useSheet()
   const [copiedId, setCopiedId] = useState<string | null>(null)
 
   const handleShare = async (trip: SavedTrip) => {
@@ -41,28 +43,31 @@ export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Pr
   }
 
   return (
-    <div
-      className="panel-bottom absolute left-0 right-0 z-20 rounded-t-2xl shadow-2xl max-h-[72vh] flex flex-col md:left-auto md:right-4 md:w-96 md:rounded-2xl"
-      style={{ background: 'var(--paper)', color: 'var(--ink)' }}
-    >
+    <>
       {/* Header */}
       <div
-        className="sticky top-0 px-4 pt-5 pb-4 flex items-center justify-between rounded-t-2xl flex-none"
+        className="flex-none px-4 pt-3 pb-4 flex items-center justify-between rounded-t-2xl"
         style={{ background: 'var(--forest)', borderBottom: '3px solid var(--ochre)' }}
       >
-        <h2 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '1rem', color: 'var(--paper)', letterSpacing: '0.06em' }}>
-          SAVED TRIPS
-        </h2>
+        <div className="flex-1">
+          <div className="md:hidden flex justify-center mb-2.5">
+            <div className="w-10 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.3)' }} />
+          </div>
+          <h2 style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 600, fontSize: '1rem', color: 'var(--paper)', letterSpacing: '0.06em' }}>
+            SAVED TRIPS
+          </h2>
+        </div>
         <button
-          onClick={onClose}
-          className="w-8 h-8 flex items-center justify-center rounded-lg"
+          onClick={closeSheet}
+          className="w-8 h-8 flex items-center justify-center rounded-lg flex-none"
           style={{ background: 'var(--forest-2)', color: 'var(--sand)' }}
         >
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <div className="overflow-y-auto flex-1 p-3 space-y-2">
+      {/* Scrollable list */}
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-3 space-y-2" data-vaul-no-drag>
         {trips.length === 0 ? (
           <div className="text-center py-12 px-4">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--fog)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-4">
@@ -155,6 +160,17 @@ export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Pr
           })
         )}
       </div>
-    </div>
+    </>
+  )
+}
+
+export default function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Props) {
+  return (
+    <BottomSheet
+      onClose={onClose}
+      desktopClassName="panel-bottom absolute left-0 right-0 z-20 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden md:left-auto md:right-4 md:w-96 md:rounded-2xl md:max-h-[72vh]"
+    >
+      <Content trips={trips} onLoad={onLoad} onDelete={onDelete} />
+    </BottomSheet>
   )
 }
