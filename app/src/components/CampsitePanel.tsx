@@ -192,8 +192,7 @@ export default function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) 
         style={{ top: '3.75rem' }}
       >
         <button
-          onPointerDown={e => e.stopPropagation()}
-          onClick={e => { e.stopPropagation(); setTimeout(onPlanTrip, 50) }}
+          onClick={onPlanTrip}
           className="w-full font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
           style={{ background: 'var(--forest)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem', boxShadow: '0 4px 16px rgba(0,0,0,0.35)' }}
         >

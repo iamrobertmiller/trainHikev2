@@ -346,8 +346,7 @@ export default function TripPlanner({ campsite, trail, profile, customWaypoints,
       style={{ top: '3.75rem' }}
     >
       <button
-        onPointerDown={e => e.stopPropagation()}
-        onClick={e => { e.stopPropagation(); setTimeout(handleSaveTrip, 50) }}
+        onClick={handleSaveTrip}
         disabled={!selectedDeparture}
         className="w-full py-3 rounded-xl text-sm flex items-center justify-center gap-2"
         style={{
