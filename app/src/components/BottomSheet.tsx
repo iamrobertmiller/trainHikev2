@@ -57,8 +57,12 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
       >
         <Drawer.Portal>
           <Drawer.Content
-            className="fixed bottom-0 left-0 right-0 z-20 flex flex-col rounded-t-2xl shadow-2xl outline-none overflow-hidden h-full max-h-[97%]"
-            style={{ background: 'var(--paper)', color: 'var(--ink)' }}
+            className="fixed bottom-0 left-0 right-0 z-20 flex flex-col rounded-t-2xl shadow-2xl outline-none overflow-hidden"
+            style={{
+              background: 'var(--paper)',
+              color: 'var(--ink)',
+              height: `${Math.max(...snapPoints) * 100}vh`,
+            }}
           >
             {children}
           </Drawer.Content>
