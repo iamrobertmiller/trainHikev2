@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import { createPortal } from 'react-dom'
 import type { Campsite } from '../types'
 import { BottomSheet, useSheet } from './BottomSheet'
 
@@ -160,8 +159,8 @@ function Content({ campsite, onPlanTrip }: { campsite: Campsite; onPlanTrip: () 
         </div>
       </div>
 
-      {/* Desktop-only footer inside the sheet */}
-      <div className="hidden md:block flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: '1rem', background: 'var(--paper)' }}>
+      {/* CTA footer — inside Drawer.Content so touch events are not cancelled by vaul */}
+      <div data-vaul-no-drag className="flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1rem)', background: 'var(--paper)' }}>
         <button
           onClick={onPlanTrip}
           className="w-full font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
@@ -188,25 +187,6 @@ function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
       >
         <Content campsite={campsite} onPlanTrip={onPlanTrip} />
       </BottomSheet>
-      {/* Mobile-only: portalled to body so it sits above the vaul Drawer.Portal stacking context */}
-      {createPortal(
-        <div
-          className="md:hidden fixed left-0 right-0 z-50 px-4"
-          style={{ top: '3.75rem' }}
-        >
-        <button
-          onClick={onPlanTrip}
-          className="w-full font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
-          style={{ background: 'var(--forest)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem', boxShadow: '0 4px 16px rgba(0,0,0,0.35)' }}
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <path d="M3 12h18M3 6h18M3 18h18"/>
-          </svg>
-          PLAN A TRIP HERE
-        </button>
-        </div>,
-        document.body
-      )}
     </>
   )
 }
