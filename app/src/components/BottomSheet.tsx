@@ -66,17 +66,28 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
         activeSnapPoint={snap}
         setActiveSnapPoint={setSnap}
         modal={false}
+        noBodyStyles
       >
         <Drawer.Portal>
+          {/*
+           * pointer-events: none on the content element lets map touches pass through
+           * the invisible translated portion of the sheet. Events from the inner div
+           * (pointer-events: auto) still bubble up so vaul's drag handlers fire normally.
+           * noBodyStyles prevents vaul from setting position:fixed on body, which
+           * would freeze MapLibre's coordinate system on iOS Safari.
+           */}
           <Drawer.Content
-            className="fixed bottom-0 left-0 right-0 z-20 flex flex-col rounded-t-2xl shadow-2xl outline-none overflow-hidden"
+            className="fixed bottom-0 left-0 right-0 z-20 rounded-t-2xl shadow-2xl outline-none overflow-hidden"
             style={{
               background: 'var(--paper)',
               color: 'var(--ink)',
               height: `${Math.max(...snapPoints) * 100}dvh`,
+              pointerEvents: 'none',
             }}
           >
-            {children}
+            <div className="flex flex-col h-full" style={{ pointerEvents: 'auto' }}>
+              {children}
+            </div>
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>

@@ -141,7 +141,7 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
         </button>
       </div>
 
-      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 space-y-5" data-vaul-no-drag>
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 pt-4 pb-[60px] md:pb-4 space-y-5" data-vaul-no-drag>
         {/* Date picker */}
         <div>
           <label
