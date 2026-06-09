@@ -13,6 +13,7 @@
     "@supabase/supabase-js": "^2.106.2",
     "@types/suncalc": "^1.9.2",
     "maplibre-gl": "^5.24.0",
+    "posthog-js": "^1.383.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "suncalc": "^1.9.0",
