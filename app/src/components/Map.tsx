@@ -289,7 +289,14 @@ export default function Map({
         method: 'POST',
         signal: controller.signal,
         headers: { 'Authorization': orsKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ coordinates: customWaypoints.map(wp => [wp.lng, wp.lat]) }),
+        body: JSON.stringify({
+          coordinates: customWaypoints.map(wp => [wp.lng, wp.lat]),
+          preference: 'recommended',
+          options: {
+            avoid_features: ['highways'],
+            profile_params: { weightings: { green: { factor: 0.8 } } },
+          },
+        }),
       })
         .then(r => r.json())
         .then(data => {
