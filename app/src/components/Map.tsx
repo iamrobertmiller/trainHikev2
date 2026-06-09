@@ -68,6 +68,11 @@ export default function Map({
   const selectedCampsiteIdRef = useRef<number | undefined>(selectedCampsite?.id)
   selectedCampsiteIdRef.current = selectedCampsite?.id
 
+  // Always holds the latest tripRouteCoords so the map 'load' callback (which closes
+  // over a stale value) can apply whatever coords are current at the time load fires.
+  const tripRouteCoordsRef = useRef(tripRouteCoords)
+  tripRouteCoordsRef.current = tripRouteCoords
+
   // Tracks previous selected id for the incremental marker update effect
   const prevSelectedIdRef = useRef<number | undefined>(selectedCampsite?.id)
 
@@ -167,6 +172,15 @@ export default function Map({
         source: 'trip-route',
         paint: { 'line-color': '#059669', 'line-width': 4, 'line-opacity': 0.85 },
       })
+      // Apply any coords that arrived before the map finished loading
+      const pendingCoords = tripRouteCoordsRef.current
+      if (pendingCoords.length >= 2) {
+        const src = map.getSource('trip-route') as maplibregl.GeoJSONSource
+        src.setData({ type: 'Feature', geometry: { type: 'LineString', coordinates: pendingCoords }, properties: {} })
+        const lngs = pendingCoords.map(c => c[0])
+        const lats = pendingCoords.map(c => c[1])
+        map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]], { padding: 80, duration: 800, maxZoom: 14 })
+      }
 
       // Map click — add waypoint when drawing
       map.on('click', (e) => {
@@ -219,31 +233,27 @@ export default function Map({
   const onRouteUpdatedRef = useRef(onRouteUpdated)
   useEffect(() => { onRouteUpdatedRef.current = onRouteUpdated }, [onRouteUpdated])
 
-  // Draw station-to-campsite walking route when trip planner is open
+  // Draw station-to-campsite walking route when trip planner is open.
+  // The 'trip-route' source only exists after the map 'load' event fires; if it isn't
+  // ready yet the load callback (above) will apply tripRouteCoordsRef.current instead.
   useEffect(() => {
     const map = mapRef.current
     if (!map) return
-    let cancelled = false
-    const apply = () => {
-      if (cancelled) return
-      const source = map.getSource('trip-route') as maplibregl.GeoJSONSource | undefined
-      source?.setData({
-        type: 'Feature',
-        geometry: { type: 'LineString', coordinates: tripRouteCoords },
-        properties: {},
-      })
-      if (tripRouteCoords.length >= 2) {
-        const lngs = tripRouteCoords.map(c => c[0])
-        const lats = tripRouteCoords.map(c => c[1])
-        map.fitBounds(
-          [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-          { padding: 80, duration: 800, maxZoom: 14 }
-        )
-      }
+    const source = map.getSource('trip-route') as maplibregl.GeoJSONSource | undefined
+    if (!source) return
+    source.setData({
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: tripRouteCoords },
+      properties: {},
+    })
+    if (tripRouteCoords.length >= 2) {
+      const lngs = tripRouteCoords.map(c => c[0])
+      const lats = tripRouteCoords.map(c => c[1])
+      map.fitBounds(
+        [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
+        { padding: 80, duration: 800, maxZoom: 14 }
+      )
     }
-    if (map.isStyleLoaded()) apply()
-    else map.once('style.load', apply)
-    return () => { cancelled = true }
   }, [tripRouteCoords])
 
   // Update waypoint markers + fetch routed path whenever waypoints change
