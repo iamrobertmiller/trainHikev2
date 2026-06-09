@@ -13,6 +13,7 @@ interface Props {
   profile: Profile | null
   customWaypoints: CustomWaypoint[]
   customRouteKm: number
+  autoRouteKm: number
   onClose: () => void
   onSetHomeStop: () => void
   onStartDrawing: () => void
@@ -27,7 +28,7 @@ function deadlineToHHMM(deadline: Date): string {
   return `${String(deadline.getHours()).padStart(2, '0')}:${String(deadline.getMinutes()).padStart(2, '0')}`
 }
 
-function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm, onClose, onSetHomeStop, onStartDrawing, onSaveTrip }: Props) {
+function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm, autoRouteKm, onClose, onSetHomeStop, onStartDrawing, onSaveTrip }: Props) {
   const _d = new Date()
   const today = `${_d.getFullYear()}-${String(_d.getMonth() + 1).padStart(2, '0')}-${String(_d.getDate()).padStart(2, '0')}`
   const [date, setDate] = useState(today)
@@ -38,7 +39,7 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
 
   const effectiveKm = customWaypoints.length > 1
     ? customRouteKm
-    : (nearestResult?.distanceKm ?? 0)
+    : (autoRouteKm > 0 ? autoRouteKm : (nearestResult?.distanceKm ?? 0))
   const effectiveElevation = customWaypoints.length > 1 ? trail?.elevation_gain_m : undefined
 
   const selectedDate = new Date(date + 'T12:00:00')
@@ -196,11 +197,17 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--moss)', textAlign: 'center' }}>
               Custom route · {customRouteKm.toFixed(1)}km · Naismith + 30min buffer
             </p>
+          ) : autoRouteKm > 0 && nearestResult ? (
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--moss)', textAlign: 'center' }}>
+              {autoRouteKm.toFixed(1)}km trail route from {nearestResult.stop.name}
+              {nearestResult.network === 'metro' && nearestResult.metroLine ? ` · Metro ${nearestResult.metroLine}` : ''}
+              {' '}· Naismith + 30min buffer
+            </p>
           ) : nearestResult ? (
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--sand)', textAlign: 'center' }}>
               {nearestResult.distanceKm}km from {nearestResult.stop.name}
               {nearestResult.network === 'metro' && nearestResult.metroLine ? ` · Metro ${nearestResult.metroLine}` : ''}
-              {' '}· Naismith + 30min buffer
+              {' '}· calculating route…
             </p>
           ) : (
             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'var(--sand)', textAlign: 'center' }}>

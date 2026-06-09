@@ -143,6 +143,7 @@ export default function App() {
 
   const [customRouteKm, setCustomRouteKm] = useState(0)
   const [tripRouteCoords, setTripRouteCoords] = useState<[number, number][]>([])
+  const [tripRouteKm, setTripRouteKm] = useState(0)
 
   // The relevant destination: trip planner selection or the active navigate-mode trip
   const routeCampsite = selectedCampsite ?? (appMode === 'navigate' ? (activeTrip?.campsite ?? null) : null)
@@ -180,8 +181,11 @@ export default function App() {
         .then(r => r.json())
         .then(data => {
           const coords = data?.features?.[0]?.geometry?.coordinates
-          if (coords?.length) setTripRouteCoords(coords)
-          else setTripRouteCoords([origin, dest])
+          const dist = data?.features?.[0]?.properties?.summary?.distance
+          if (coords?.length) {
+            setTripRouteCoords(coords)
+            if (dist != null) setTripRouteKm(dist / 1000)
+          } else setTripRouteCoords([origin, dest])
         })
         .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
     } else {
@@ -192,13 +196,16 @@ export default function App() {
         .then(r => r.json())
         .then(data => {
           const coords = data?.features?.[0]?.geometry?.coordinates
-          if (coords?.length) setTripRouteCoords(coords)
-          else setTripRouteCoords([origin, dest])
+          const distKm = parseFloat(data?.features?.[0]?.properties?.['track-length'] ?? '0') / 1000
+          if (coords?.length) {
+            setTripRouteCoords(coords)
+            if (distKm > 0) setTripRouteKm(distKm)
+          } else setTripRouteCoords([origin, dest])
         })
         .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
     }
 
-    return () => { clearTimeout(timeoutId); controller.abort(); setTripRouteCoords([]) }
+    return () => { clearTimeout(timeoutId); controller.abort(); setTripRouteCoords([]); setTripRouteKm(0) }
   }, [panel, appMode, nearestStop, selectedCampsite, activeTrip]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSelectCampsite = useCallback((c: Campsite | null) => {
@@ -563,6 +570,7 @@ export default function App() {
           profile={profile}
           customWaypoints={customWaypoints}
           customRouteKm={customRouteKm}
+          autoRouteKm={tripRouteKm}
           onClose={handleCloseTripPanel}
           onSetHomeStop={handleOpenHomeSetup}
           onStartDrawing={handleStartDrawing}
