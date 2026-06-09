@@ -87,7 +87,7 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
     <>
     <BottomSheet
       onClose={onClose}
-      snapPoints={[0.15, 0.88]}
+      snapPoints={[0.25, 0.88]}
       desktopClassName="absolute md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 flex flex-col overflow-hidden md:rounded-2xl shadow-2xl"
     >
       {/* Header */}
@@ -124,6 +124,21 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
           </p>
         </div>
         </div>
+        {/* Mobile CTA — sits in header so it's visible at the peek snap position */}
+        <button
+          data-vaul-no-drag
+          onClick={handleSaveTrip}
+          disabled={!selectedDeparture}
+          className="md:hidden mx-4 mb-3 w-[calc(100%-2rem)] py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm"
+          style={{
+            background: selectedDeparture ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.08)',
+            border: selectedDeparture ? '1px solid rgba(255,255,255,0.35)' : '1px solid rgba(255,255,255,0.15)',
+            color: selectedDeparture ? '#fff' : 'rgba(255,255,255,0.5)',
+            fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontWeight: 600,
+          }}
+        >
+          {selectedDeparture ? 'SAVE TRIP' : 'SELECT A DEPARTURE TO SAVE'}
+        </button>
       </div>
 
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 space-y-5" data-vaul-no-drag>
@@ -318,11 +333,10 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
         </div>
       </div>
 
-      {/* CTA footer — inside Drawer.Content so touch events are not cancelled by vaul */}
+      {/* Desktop-only footer */}
       <div
-        data-vaul-no-drag
-        className="p-4 flex-none"
-        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1rem)' }}
+        className="hidden md:block p-4 flex-none"
+        style={{ background: 'var(--paper)', borderTop: '1px solid var(--fog)', paddingBottom: '1rem' }}
       >
         <button
           onClick={handleSaveTrip}
