@@ -3,6 +3,7 @@ import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, Trail, UserLocation, WaterFrontage } from '../types'
 import { routeLengthKm } from '../lib/geo'
+import { drawTripRoute } from '../lib/routeCanvas'
 
 interface MapProps {
   campsites: Campsite[]
@@ -242,46 +243,14 @@ export default function Map({
       const map = mapRef.current
       const canvas = routeCanvasRef.current
       if (!canvas) return
-
       const dpr = window.devicePixelRatio || 1
-      const w = canvas.offsetWidth
-      const h = canvas.offsetHeight
-      if (w === 0 || h === 0) return
-      // Resize pixel buffer to match CSS size × DPR
-      if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
-        canvas.width = Math.round(w * dpr)
-        canvas.height = Math.round(h * dpr)
-      }
-      const ctx = canvas.getContext('2d')
-      if (!ctx) return
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      ctx.clearRect(0, 0, w, h)
-
-      if (!map || tripRouteCoords.length < 2) return
-
-      // map.project() returns CSS-pixel coords from top-left of the map container.
-      // Our canvas is positioned at the same origin (both absolute inset-0 in the wrapper).
-      const pts = tripRouteCoords.map(([lng, lat]) => map.project([lng, lat] as [number, number]))
-
-      // White casing
-      ctx.beginPath()
-      ctx.moveTo(pts[0].x, pts[0].y)
-      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y)
-      ctx.strokeStyle = 'rgba(255,255,255,0.85)'
-      ctx.lineWidth = 9
-      ctx.lineCap = 'round'
-      ctx.lineJoin = 'round'
-      ctx.stroke()
-
-      // Green line
-      ctx.beginPath()
-      ctx.moveTo(pts[0].x, pts[0].y)
-      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y)
-      ctx.strokeStyle = '#10b981'
-      ctx.lineWidth = 5
-      ctx.lineCap = 'round'
-      ctx.lineJoin = 'round'
-      ctx.stroke()
+      // No map yet → clear the canvas by drawing an empty route.
+      // map.project() returns CSS-pixel coords from the map container's top-left,
+      // and the canvas shares that origin (both absolute inset-0 in the wrapper).
+      const project = map
+        ? (ll: [number, number]) => map.project(ll)
+        : () => ({ x: 0, y: 0 })
+      drawTripRoute(canvas, project, map ? tripRouteCoords : [], dpr)
     }
 
     drawRouteFnRef.current = drawRoute
