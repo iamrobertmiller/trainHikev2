@@ -116,7 +116,7 @@ function WaterFrontagePanel({ site, onClose, onPlanTrip }: Props) {
     <>
       <BottomSheet
         onClose={onClose}
-        snapPoints={[0.26, 0.65]}
+        snapPoints={[0.33, 0.72]}
         desktopClassName="panel-bottom absolute left-0 right-0 z-10 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden md:left-auto md:right-4 md:w-96 md:rounded-2xl md:max-h-[80vh]"
       >
         <Content site={site} onPlanTrip={onPlanTrip} />

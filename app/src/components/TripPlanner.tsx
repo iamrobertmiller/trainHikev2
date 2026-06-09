@@ -88,7 +88,7 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
     <>
     <BottomSheet
       onClose={onClose}
-      snapPoints={[0.25, 0.88]}
+      snapPoints={[0.32, 0.95]}
       desktopClassName="absolute md:inset-auto md:right-4 md:bottom-4 md:w-[420px] md:top-16 z-20 flex flex-col overflow-hidden md:rounded-2xl shadow-2xl"
     >
       {/* Header */}

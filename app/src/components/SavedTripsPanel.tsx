@@ -168,6 +168,7 @@ function SavedTripsPanel({ trips, onLoad, onDelete, onClose }: Props) {
   return (
     <BottomSheet
       onClose={onClose}
+      snapPoints={[0.19, 0.72]}
       desktopClassName="panel-bottom absolute left-0 right-0 z-20 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden md:left-auto md:right-4 md:w-96 md:rounded-2xl md:max-h-[72vh]"
     >
       <Content trips={trips} onLoad={onLoad} onDelete={onDelete} />
