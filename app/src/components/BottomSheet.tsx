@@ -84,6 +84,7 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
               height: `${Math.max(...snapPoints) * 100}dvh`,
               pointerEvents: 'none',
             }}
+            onPointerDownOutside={(e) => e.preventDefault()}
           >
             {/*
              * overflow-hidden is intentionally on the inner div rather than Drawer.Content.
