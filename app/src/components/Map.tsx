@@ -67,6 +67,8 @@ export default function Map({
   const waypointMarkersRef = useRef<maplibregl.Marker[]>([])
   const destMarkerRef = useRef<maplibregl.Marker | null>(null)
   const geoWatchRef = useRef<number | null>(null)
+  const routeCanvasRef = useRef<HTMLCanvasElement>(null)
+  const drawRouteFnRef = useRef<() => void>(() => {})
 
   // Refs to avoid stale closures in map event handlers
   const isDrawingRef = useRef(isDrawingRoute)
@@ -172,31 +174,14 @@ export default function Map({
         paint: { 'line-color': '#6366f1', 'line-width': 3, 'line-dasharray': [2, 2], 'line-opacity': 0.9 },
       })
 
-      // Trip planner walking route — station to campsite
-      map.addSource('trip-route', {
-        type: 'geojson',
-        data: { type: 'Feature', geometry: { type: 'LineString', coordinates: [] }, properties: {} },
-      })
-      // White casing below the coloured line so it's visible on any basemap
-      map.addLayer({
-        id: 'trip-route-casing',
-        type: 'line',
-        source: 'trip-route',
-        paint: { 'line-color': '#ffffff', 'line-width': 8, 'line-opacity': 0.7 },
-      })
-      map.addLayer({
-        id: 'trip-route-line',
-        type: 'line',
-        source: 'trip-route',
-        paint: { 'line-color': '#10b981', 'line-width': 5, 'line-opacity': 1.0 },
-      })
-      // Apply any coords that arrived before the map finished loading
+      // Trip planner route is drawn on a Canvas overlay (see routeCanvasRef).
+      // Register map event handlers so the canvas redraws whenever the view changes.
+      map.on('move', () => drawRouteFnRef.current())
+      map.on('resize', () => drawRouteFnRef.current())
+      // Draw any route that was set before the map finished loading
+      drawRouteFnRef.current()
       const pendingCoords = tripRouteCoordsRef.current
-      if (pendingCoords.length >= 2) {
-        const src = map.getSource('trip-route') as maplibregl.GeoJSONSource
-        src.setData({ type: 'Feature', geometry: { type: 'LineString', coordinates: pendingCoords }, properties: {} })
-        applyRouteBounds(map, pendingCoords)
-      }
+      if (pendingCoords.length >= 2) applyRouteBounds(map, pendingCoords)
 
       // Map click — add waypoint when drawing
       map.on('click', (e) => {
@@ -249,38 +234,61 @@ export default function Map({
   const onRouteUpdatedRef = useRef(onRouteUpdated)
   useEffect(() => { onRouteUpdatedRef.current = onRouteUpdated }, [onRouteUpdated])
 
-  // Draw station-to-campsite walking route when trip planner is open.
-  // Removes and recreates the source/layers on every update to sidestep any
-  // setData() caching issues in MapLibre. Bails out silently if the map hasn't
-  // loaded yet — the 'load' callback (above) handles that case via tripRouteCoordsRef.
+  // Draw station-to-campsite walking route on a Canvas overlay.
+  // Using a 2D canvas bypasses MapLibre's GL pipeline entirely, which can fail
+  // silently on some browsers (e.g. iOS Safari) for GeoJSON source/layer updates.
   useEffect(() => {
+    const drawRoute = () => {
+      const map = mapRef.current
+      const canvas = routeCanvasRef.current
+      if (!canvas) return
+
+      const dpr = window.devicePixelRatio || 1
+      const w = canvas.offsetWidth
+      const h = canvas.offsetHeight
+      if (w === 0 || h === 0) return
+      // Resize pixel buffer to match CSS size × DPR
+      if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+        canvas.width = Math.round(w * dpr)
+        canvas.height = Math.round(h * dpr)
+      }
+      const ctx = canvas.getContext('2d')
+      if (!ctx) return
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      ctx.clearRect(0, 0, w, h)
+
+      if (!map || tripRouteCoords.length < 2) return
+
+      // map.project() returns CSS-pixel coords from top-left of the map container.
+      // Our canvas is positioned at the same origin (both absolute inset-0 in the wrapper).
+      const pts = tripRouteCoords.map(([lng, lat]) => map.project([lng, lat] as [number, number]))
+
+      // White casing
+      ctx.beginPath()
+      ctx.moveTo(pts[0].x, pts[0].y)
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y)
+      ctx.strokeStyle = 'rgba(255,255,255,0.85)'
+      ctx.lineWidth = 9
+      ctx.lineCap = 'round'
+      ctx.lineJoin = 'round'
+      ctx.stroke()
+
+      // Green line
+      ctx.beginPath()
+      ctx.moveTo(pts[0].x, pts[0].y)
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y)
+      ctx.strokeStyle = '#10b981'
+      ctx.lineWidth = 5
+      ctx.lineCap = 'round'
+      ctx.lineJoin = 'round'
+      ctx.stroke()
+    }
+
+    drawRouteFnRef.current = drawRoute
+    drawRoute()
+
     const map = mapRef.current
-    if (!map?.getSource('trip-route')) return
-
-    // Remove existing layers then source (order matters in MapLibre)
-    if (map.getLayer('trip-route-line')) map.removeLayer('trip-route-line')
-    if (map.getLayer('trip-route-casing')) map.removeLayer('trip-route-casing')
-    map.removeSource('trip-route')
-
-    // Re-add source with current data
-    map.addSource('trip-route', {
-      type: 'geojson',
-      data: { type: 'Feature', geometry: { type: 'LineString', coordinates: tripRouteCoords }, properties: {} },
-    })
-    map.addLayer({
-      id: 'trip-route-casing',
-      type: 'line',
-      source: 'trip-route',
-      paint: { 'line-color': '#ffffff', 'line-width': 8, 'line-opacity': 0.7 },
-    })
-    map.addLayer({
-      id: 'trip-route-line',
-      type: 'line',
-      source: 'trip-route',
-      paint: { 'line-color': '#10b981', 'line-width': 5, 'line-opacity': 1.0 },
-    })
-
-    if (tripRouteCoords.length >= 2) applyRouteBounds(map, tripRouteCoords)
+    if (map && tripRouteCoords.length >= 2) applyRouteBounds(map, tripRouteCoords)
   }, [tripRouteCoords])
 
   // Update waypoint markers + fetch routed path whenever waypoints change
@@ -585,10 +593,17 @@ export default function Map({
 
   return (
     <div
-      ref={containerRef}
-      className="w-full h-full"
+      className="w-full h-full relative"
       // Hide MapLibre controls in navigate mode (they obscure the overlay)
       style={appMode === 'navigate' ? { '--nav-display': 'none' } as React.CSSProperties : undefined}
-    />
+    >
+      <div ref={containerRef} className="absolute inset-0" />
+      {/* Canvas overlay for trip-route polyline — drawn with map.project() so it's
+          always pixel-perfect regardless of MapLibre's GL pipeline state */}
+      <canvas
+        ref={routeCanvasRef}
+        style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 10 }}
+      />
+    </div>
   )
 }
