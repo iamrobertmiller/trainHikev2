@@ -143,39 +143,11 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
       </div>
 
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 pt-4 pb-[60px] md:pb-4 space-y-5" data-vaul-no-drag>
-        {/* Date picker */}
-        <div>
-          <label
-            className="block mb-2"
-            style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}
-          >
-            Departure date
-          </label>
-          <input
-            type="date"
-            value={date}
-            min={today}
-            onChange={e => setDate(e.target.value)}
-            className="w-full px-4 py-3 text-sm focus:outline-none rounded-xl"
-            style={{
-              background: 'var(--paper-2)',
-              border: '1.5px solid var(--fog)',
-              color: 'var(--ink)',
-              fontFamily: 'JetBrains Mono, monospace',
-            }}
-          />
-        </div>
-
         {/* Sunset + timing card */}
         <div
           className="rounded-xl p-4 space-y-3"
           style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}
         >
-          <p
-            style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}
-          >
-            Timing · {new Date(date + 'T12:00:00').toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' })}
-          </p>
           <div className="grid grid-cols-3 gap-2.5 text-center">
             <div className="rounded-lg p-2.5" style={{ background: 'var(--paper)', border: '1px solid var(--fog)' }}>
               <p style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--sand)' }}>SUNSET</p>
@@ -215,63 +187,62 @@ function TripPlanner({ campsite, trail, profile, customWaypoints, customRouteKm,
             </p>
           )}
 
-          <button
-            onClick={onStartDrawing}
-            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl transition-colors"
-            style={{
-              background: 'var(--paper)',
-              border: '1.5px solid var(--fog)',
-              color: 'var(--forest)',
-              fontFamily: 'Oswald, sans-serif',
-              fontSize: '0.75rem',
-              letterSpacing: '0.1em',
-              fontWeight: 600,
-            }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--moss)')}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--fog)')}
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-            {customWaypoints.length > 1
-              ? `EDIT ROUTE (${customRouteKm.toFixed(1)} KM)`
-              : 'DRAW A CUSTOM ROUTE'}
-          </button>
+          {nearestResult === undefined && (
+            <div className="text-xs rounded-lg px-3 py-2" style={{ background: 'var(--paper-2)', color: 'var(--sand)', fontFamily: 'JetBrains Mono, monospace' }}>
+              Finding nearest V/Line stop…
+            </div>
+          )}
+          {nearestResult && (
+            <div className="flex items-center gap-2 text-xs rounded-lg px-3 py-2.5" style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 13h16M8 18l-2 3M16 18l2 3M12 16v5"/>
+              </svg>
+              <span style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--sand)', flex: 1 }}>
+                Nearest: <strong style={{ color: 'var(--ink)' }}>{nearestResult.stop.name}</strong> · {nearestResult.distanceKm} km
+              </span>
+              <span
+                className="flex-none text-xs px-2 py-0.5 rounded"
+                style={{
+                  fontFamily: 'Oswald, sans-serif',
+                  letterSpacing: '0.08em',
+                  fontSize: '0.65rem',
+                  background: nearestResult.network === 'metro' ? '#005C8B' : '#6B2D8B',
+                  color: '#fff',
+                }}
+              >
+                {nearestResult.network === 'metro' ? 'METRO' : 'V/LINE'}
+              </span>
+            </div>
+          )}
+          {nearestResult === null && (
+            <div className="text-xs rounded-lg px-3 py-2" style={{ background: 'rgba(139,32,32,0.1)', border: '1px solid rgba(139,32,32,0.3)', color: '#8b2020', fontFamily: 'JetBrains Mono, monospace' }}>
+              No V/Line stop within 30 km of this campsite.
+            </div>
+          )}
         </div>
 
-        {/* Nearest stop */}
-        {nearestResult === undefined && (
-          <div className="text-xs rounded-lg px-3 py-2" style={{ background: 'var(--paper-2)', color: 'var(--sand)', fontFamily: 'JetBrains Mono, monospace' }}>
-            Finding nearest V/Line stop…
-          </div>
-        )}
-        {nearestResult && (
-          <div className="flex items-center gap-2 text-xs rounded-lg px-3 py-2.5" style={{ background: 'var(--paper-2)', border: '1px solid var(--fog)' }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--moss)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="4" y="3" width="16" height="13" rx="2"/><path d="M4 13h16M8 18l-2 3M16 18l2 3M12 16v5"/>
-            </svg>
-            <span style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--sand)', flex: 1 }}>
-              Nearest: <strong style={{ color: 'var(--ink)' }}>{nearestResult.stop.name}</strong> · {nearestResult.distanceKm} km
-            </span>
-            <span
-              className="flex-none text-xs px-2 py-0.5 rounded"
-              style={{
-                fontFamily: 'Oswald, sans-serif',
-                letterSpacing: '0.08em',
-                fontSize: '0.65rem',
-                background: nearestResult.network === 'metro' ? '#005C8B' : '#6B2D8B',
-                color: '#fff',
-              }}
-            >
-              {nearestResult.network === 'metro' ? 'METRO' : 'V/LINE'}
-            </span>
-          </div>
-        )}
-        {nearestResult === null && (
-          <div className="text-xs rounded-lg px-3 py-2" style={{ background: 'rgba(139,32,32,0.1)', border: '1px solid rgba(139,32,32,0.3)', color: '#8b2020', fontFamily: 'JetBrains Mono, monospace' }}>
-            No V/Line stop within 30 km of this campsite.
-          </div>
-        )}
+        {/* Date picker */}
+        <div>
+          <label
+            className="block mb-2"
+            style={{ fontFamily: 'Oswald, sans-serif', fontSize: '0.65rem', letterSpacing: '0.14em', color: 'var(--sand)', textTransform: 'uppercase' }}
+          >
+            Departure date
+          </label>
+          <input
+            type="date"
+            value={date}
+            min={today}
+            onChange={e => setDate(e.target.value)}
+            className="w-full px-4 py-3 text-sm focus:outline-none rounded-xl"
+            style={{
+              background: 'var(--paper-2)',
+              border: '1.5px solid var(--fog)',
+              color: 'var(--ink)',
+              fontFamily: 'JetBrains Mono, monospace',
+            }}
+          />
+        </div>
 
         {/* PT section */}
         <div>
