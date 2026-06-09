@@ -185,15 +185,15 @@ export default function App() {
         })
         .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
     } else {
-      fetch(`https://router.project-osrm.org/route/v1/foot/${origin[0]},${origin[1]};${dest[0]},${dest[1]}?overview=full&geometries=geojson`, {
+      const lonlats = `${origin[0]},${origin[1]}|${dest[0]},${dest[1]}`
+      fetch(`https://brouter.de/brouter?lonlats=${lonlats}&profile=hiking-mountain&alternativeidx=0&format=geojson`, {
         signal: controller.signal,
       })
         .then(r => r.json())
         .then(data => {
-          if (data.code === 'Ok' && data.routes?.[0])
-            setTripRouteCoords(data.routes[0].geometry.coordinates)
-          else
-            setTripRouteCoords([origin, dest])
+          const coords = data?.features?.[0]?.geometry?.coordinates
+          if (coords?.length) setTripRouteCoords(coords)
+          else setTripRouteCoords([origin, dest])
         })
         .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
     }
