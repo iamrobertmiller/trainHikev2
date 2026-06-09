@@ -209,9 +209,11 @@ export default function App() {
         .then(r => r.json())
         .then(data => {
           if (isCleanup) return
-          const coords = data?.features?.[0]?.geometry?.coordinates
+          const raw = data?.features?.[0]?.geometry?.coordinates
           const distKm = parseFloat(data?.features?.[0]?.properties?.['track-length'] ?? '0') / 1000
-          if (coords?.length) {
+          if (raw?.length) {
+            // BRouter returns [lng, lat, elevation] — strip elevation to keep coords 2D
+            const coords: [number, number][] = (raw as number[][]).map(c => [c[0], c[1]])
             setTripRouteCoords(coords)
             if (distKm > 0) setTripRouteKm(distKm)
           }

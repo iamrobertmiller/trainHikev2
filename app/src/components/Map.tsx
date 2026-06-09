@@ -31,6 +31,17 @@ interface MapProps {
 const VICTORIA_CENTER: [number, number] = [144.9, -37.0]
 const VICTORIA_BOUNDS: [[number, number], [number, number]] = [[140.9, -39.2], [149.9, -34.0]]
 
+function applyRouteBounds(map: maplibregl.Map, coords: [number, number][]) {
+  let minLng = Infinity, maxLng = -Infinity, minLat = Infinity, maxLat = -Infinity
+  for (const c of coords) {
+    if (c[0] < minLng) minLng = c[0]
+    if (c[0] > maxLng) maxLng = c[0]
+    if (c[1] < minLat) minLat = c[1]
+    if (c[1] > maxLat) maxLat = c[1]
+  }
+  map.fitBounds([[minLng, minLat], [maxLng, maxLat]], { padding: 80, duration: 800, maxZoom: 14 })
+}
+
 function makeCampsiteSVG(selected: boolean): string {
   const w = selected ? 30 : 26
   const h = selected ? 39 : 34
@@ -161,25 +172,30 @@ export default function Map({
         paint: { 'line-color': '#6366f1', 'line-width': 3, 'line-dasharray': [2, 2], 'line-opacity': 0.9 },
       })
 
-      // Trip planner walking route — station to campsite (emerald green, solid)
+      // Trip planner walking route — station to campsite
       map.addSource('trip-route', {
         type: 'geojson',
         data: { type: 'Feature', geometry: { type: 'LineString', coordinates: [] }, properties: {} },
+      })
+      // White casing below the coloured line so it's visible on any basemap
+      map.addLayer({
+        id: 'trip-route-casing',
+        type: 'line',
+        source: 'trip-route',
+        paint: { 'line-color': '#ffffff', 'line-width': 8, 'line-opacity': 0.7 },
       })
       map.addLayer({
         id: 'trip-route-line',
         type: 'line',
         source: 'trip-route',
-        paint: { 'line-color': '#059669', 'line-width': 4, 'line-opacity': 0.85 },
+        paint: { 'line-color': '#10b981', 'line-width': 5, 'line-opacity': 1.0 },
       })
       // Apply any coords that arrived before the map finished loading
       const pendingCoords = tripRouteCoordsRef.current
       if (pendingCoords.length >= 2) {
         const src = map.getSource('trip-route') as maplibregl.GeoJSONSource
         src.setData({ type: 'Feature', geometry: { type: 'LineString', coordinates: pendingCoords }, properties: {} })
-        const lngs = pendingCoords.map(c => c[0])
-        const lats = pendingCoords.map(c => c[1])
-        map.fitBounds([[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]], { padding: 80, duration: 800, maxZoom: 14 })
+        applyRouteBounds(map, pendingCoords)
       }
 
       // Map click — add waypoint when drawing
@@ -234,26 +250,37 @@ export default function Map({
   useEffect(() => { onRouteUpdatedRef.current = onRouteUpdated }, [onRouteUpdated])
 
   // Draw station-to-campsite walking route when trip planner is open.
-  // The 'trip-route' source only exists after the map 'load' event fires; if it isn't
-  // ready yet the load callback (above) will apply tripRouteCoordsRef.current instead.
+  // Removes and recreates the source/layers on every update to sidestep any
+  // setData() caching issues in MapLibre. Bails out silently if the map hasn't
+  // loaded yet — the 'load' callback (above) handles that case via tripRouteCoordsRef.
   useEffect(() => {
     const map = mapRef.current
-    if (!map) return
-    const source = map.getSource('trip-route') as maplibregl.GeoJSONSource | undefined
-    if (!source) return
-    source.setData({
-      type: 'Feature',
-      geometry: { type: 'LineString', coordinates: tripRouteCoords },
-      properties: {},
+    if (!map?.getSource('trip-route')) return
+
+    // Remove existing layers then source (order matters in MapLibre)
+    if (map.getLayer('trip-route-line')) map.removeLayer('trip-route-line')
+    if (map.getLayer('trip-route-casing')) map.removeLayer('trip-route-casing')
+    map.removeSource('trip-route')
+
+    // Re-add source with current data
+    map.addSource('trip-route', {
+      type: 'geojson',
+      data: { type: 'Feature', geometry: { type: 'LineString', coordinates: tripRouteCoords }, properties: {} },
     })
-    if (tripRouteCoords.length >= 2) {
-      const lngs = tripRouteCoords.map(c => c[0])
-      const lats = tripRouteCoords.map(c => c[1])
-      map.fitBounds(
-        [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-        { padding: 80, duration: 800, maxZoom: 14 }
-      )
-    }
+    map.addLayer({
+      id: 'trip-route-casing',
+      type: 'line',
+      source: 'trip-route',
+      paint: { 'line-color': '#ffffff', 'line-width': 8, 'line-opacity': 0.7 },
+    })
+    map.addLayer({
+      id: 'trip-route-line',
+      type: 'line',
+      source: 'trip-route',
+      paint: { 'line-color': '#10b981', 'line-width': 5, 'line-opacity': 1.0 },
+    })
+
+    if (tripRouteCoords.length >= 2) applyRouteBounds(map, tripRouteCoords)
   }, [tripRouteCoords])
 
   // Update waypoint markers + fetch routed path whenever waypoints change
