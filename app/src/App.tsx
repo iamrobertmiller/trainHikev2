@@ -147,7 +147,11 @@ export default function App() {
 
   // The relevant destination: trip planner selection or the active navigate-mode trip
   const routeCampsite = selectedCampsite ?? (appMode === 'navigate' ? (activeTrip?.campsite ?? null) : null)
-  const nearestStop = useNearestStop(routeCampsite?.lat ?? null, routeCampsite?.lng ?? null)
+  // Pre-compute nearestStop as soon as any destination is selected (campsite, water frontage, or hut)
+  // so it's ready when the route effect fires after "Plan a trip here" is tapped.
+  const nearestStopLat = routeCampsite?.lat ?? selectedWaterFrontage?.lat ?? selectedHut?.lat ?? null
+  const nearestStopLng = routeCampsite?.lng ?? selectedWaterFrontage?.lng ?? selectedHut?.lng ?? null
+  const nearestStop = useNearestStop(nearestStopLat, nearestStopLng)
 
   // Draw walking route on map when trip planner is open or navigate mode is active
   useEffect(() => {
@@ -158,6 +162,10 @@ export default function App() {
       setTripRouteCoords([])
       return
     }
+
+    // isCleanup distinguishes a React cleanup-abort (effect re-running) from a timeout/network
+    // abort, so the straight-line fallback is only suppressed on cleanup, not on API failure.
+    let isCleanup = false
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 10_000)
     const orsKey = import.meta.env.VITE_ORS_API_KEY as string | undefined
@@ -187,7 +195,7 @@ export default function App() {
             if (dist != null) setTripRouteKm(dist / 1000)
           } else setTripRouteCoords([origin, dest])
         })
-        .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
+        .catch(() => { if (!isCleanup) setTripRouteCoords([origin, dest]) })
     } else {
       const lonlats = `${origin[0]},${origin[1]}|${dest[0]},${dest[1]}`
       fetch(`https://brouter.de/brouter?lonlats=${lonlats}&profile=hiking-mountain&alternativeidx=0&format=geojson`, {
@@ -202,10 +210,10 @@ export default function App() {
             if (distKm > 0) setTripRouteKm(distKm)
           } else setTripRouteCoords([origin, dest])
         })
-        .catch(() => { if (!controller.signal.aborted) setTripRouteCoords([origin, dest]) })
+        .catch(() => { if (!isCleanup) setTripRouteCoords([origin, dest]) })
     }
 
-    return () => { clearTimeout(timeoutId); controller.abort(); setTripRouteCoords([]); setTripRouteKm(0) }
+    return () => { isCleanup = true; clearTimeout(timeoutId); controller.abort(); setTripRouteCoords([]); setTripRouteKm(0) }
   }, [panel, appMode, nearestStop, selectedCampsite, activeTrip]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSelectCampsite = useCallback((c: Campsite | null) => {
@@ -304,24 +312,16 @@ export default function App() {
   const handleCloseSelectedTrail = useCallback(() => setSelectedTrail(null), [])
 
   const handleHutPlanTrip = useCallback(() => {
-    setSelectedHut(prev => {
-      if (prev) {
-        setSelectedCampsite({ id: -1, name: prev.name, asset_desc: prev.name, park_name: prev.park, park_id: 0, lat: prev.lat, lng: prev.lng })
-        setPanel('trip')
-      }
-      return prev
-    })
-  }, [])
+    if (!selectedHut) return
+    setSelectedCampsite({ id: -1, name: selectedHut.name, asset_desc: selectedHut.name, park_name: selectedHut.park, park_id: 0, lat: selectedHut.lat, lng: selectedHut.lng })
+    setPanel('trip')
+  }, [selectedHut])
 
   const handleWaterFrontagePlanTrip = useCallback(() => {
-    setSelectedWaterFrontage(prev => {
-      if (prev) {
-        setSelectedCampsite({ id: -1, name: prev.name, asset_desc: prev.name, park_name: prev.river, park_id: 0, lat: prev.lat, lng: prev.lng })
-        setPanel('trip')
-      }
-      return prev
-    })
-  }, [])
+    if (!selectedWaterFrontage) return
+    setSelectedCampsite({ id: -1, name: selectedWaterFrontage.name, asset_desc: selectedWaterFrontage.name, park_name: selectedWaterFrontage.river, park_id: 0, lat: selectedWaterFrontage.lat, lng: selectedWaterFrontage.lng })
+    setPanel('trip')
+  }, [selectedWaterFrontage])
 
   const handleHomeSave = useCallback((p: Profile) => {
     saveProfile(p)
