@@ -311,16 +311,17 @@ export default function Map({
         })
         .catch(() => { if (!controller.signal.aborted) fallback() })
     } else {
-      // Fall back to OSRM foot profile (still prefers footways/paths over roads)
-      const coordStr = customWaypoints.map(wp => `${wp.lng},${wp.lat}`).join(';')
-      fetch(`https://router.project-osrm.org/route/v1/foot/${coordStr}?overview=full&geometries=geojson`, {
+      const lonlats = customWaypoints.map(wp => `${wp.lng},${wp.lat}`).join('|')
+      fetch(`https://brouter.de/brouter?lonlats=${lonlats}&profile=hiking-mountain&alternativeidx=0&format=geojson`, {
         signal: controller.signal,
       })
         .then(r => r.json())
         .then(data => {
-          if (data.code === 'Ok' && data.routes?.[0]) {
-            updateSource(data.routes[0].geometry.coordinates)
-            onRouteUpdatedRef.current(data.routes[0].distance / 1000)
+          const coords = data?.features?.[0]?.geometry?.coordinates
+          const distKm = parseFloat(data?.features?.[0]?.properties?.['track-length'] ?? '0') / 1000
+          if (coords?.length) {
+            updateSource(coords)
+            onRouteUpdatedRef.current(distKm)
           } else {
             fallback()
           }
