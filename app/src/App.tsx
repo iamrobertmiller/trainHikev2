@@ -160,17 +160,21 @@ export default function App() {
 
     if (!wantRoute || !nearestStop || !campsite) {
       setTripRouteCoords([])
+      setTripRouteKm(0)
       return
     }
 
-    // isCleanup distinguishes a React cleanup-abort (effect re-running) from a timeout/network
-    // abort, so the straight-line fallback is only suppressed on cleanup, not on API failure.
+    const origin: [number, number] = [nearestStop.stop.lng, nearestStop.stop.lat]
+    const dest: [number, number] = [campsite.lng, campsite.lat]
+
+    // Show straight-line immediately so the map always has something visible
+    // while the routing API fetches. The API result overwrites this if successful.
+    setTripRouteCoords([origin, dest])
+
     let isCleanup = false
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 10_000)
     const orsKey = import.meta.env.VITE_ORS_API_KEY as string | undefined
-    const origin: [number, number] = [nearestStop.stop.lng, nearestStop.stop.lat]
-    const dest: [number, number] = [campsite.lng, campsite.lat]
 
     if (orsKey) {
       fetch('https://api.openrouteservice.org/v2/directions/foot-hiking/geojson', {
@@ -188,14 +192,15 @@ export default function App() {
       })
         .then(r => r.json())
         .then(data => {
+          if (isCleanup) return
           const coords = data?.features?.[0]?.geometry?.coordinates
           const dist = data?.features?.[0]?.properties?.summary?.distance
           if (coords?.length) {
             setTripRouteCoords(coords)
             if (dist != null) setTripRouteKm(dist / 1000)
-          } else setTripRouteCoords([origin, dest])
+          }
         })
-        .catch(() => { if (!isCleanup) setTripRouteCoords([origin, dest]) })
+        .catch(() => { /* straight-line already shown */ })
     } else {
       const lonlats = `${origin[0]},${origin[1]}|${dest[0]},${dest[1]}`
       fetch(`https://brouter.de/brouter?lonlats=${lonlats}&profile=hiking-mountain&alternativeidx=0&format=geojson`, {
@@ -203,17 +208,20 @@ export default function App() {
       })
         .then(r => r.json())
         .then(data => {
+          if (isCleanup) return
           const coords = data?.features?.[0]?.geometry?.coordinates
           const distKm = parseFloat(data?.features?.[0]?.properties?.['track-length'] ?? '0') / 1000
           if (coords?.length) {
             setTripRouteCoords(coords)
             if (distKm > 0) setTripRouteKm(distKm)
-          } else setTripRouteCoords([origin, dest])
+          }
         })
-        .catch(() => { if (!isCleanup) setTripRouteCoords([origin, dest]) })
+        .catch(() => { /* straight-line already shown */ })
     }
 
-    return () => { isCleanup = true; clearTimeout(timeoutId); controller.abort(); setTripRouteCoords([]); setTripRouteKm(0) }
+    // Do NOT clear tripRouteCoords here — the next effect run (when wantRoute becomes false)
+    // handles clearing via the early-return path above.
+    return () => { isCleanup = true; clearTimeout(timeoutId); controller.abort() }
   }, [panel, appMode, nearestStop, selectedCampsite, activeTrip]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSelectCampsite = useCallback((c: Campsite | null) => {

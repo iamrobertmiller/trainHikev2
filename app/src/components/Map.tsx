@@ -222,21 +222,28 @@ export default function Map({
   // Draw station-to-campsite walking route when trip planner is open
   useEffect(() => {
     const map = mapRef.current
-    if (!map || !map.isStyleLoaded()) return
-    const source = map.getSource('trip-route') as maplibregl.GeoJSONSource | undefined
-    source?.setData({
-      type: 'Feature',
-      geometry: { type: 'LineString', coordinates: tripRouteCoords },
-      properties: {},
-    })
-    if (tripRouteCoords.length >= 2) {
-      const lngs = tripRouteCoords.map(c => c[0])
-      const lats = tripRouteCoords.map(c => c[1])
-      map.fitBounds(
-        [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-        { padding: 80, duration: 800, maxZoom: 14 }
-      )
+    if (!map) return
+    let cancelled = false
+    const apply = () => {
+      if (cancelled) return
+      const source = map.getSource('trip-route') as maplibregl.GeoJSONSource | undefined
+      source?.setData({
+        type: 'Feature',
+        geometry: { type: 'LineString', coordinates: tripRouteCoords },
+        properties: {},
+      })
+      if (tripRouteCoords.length >= 2) {
+        const lngs = tripRouteCoords.map(c => c[0])
+        const lats = tripRouteCoords.map(c => c[1])
+        map.fitBounds(
+          [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
+          { padding: 80, duration: 800, maxZoom: 14 }
+        )
+      }
     }
+    if (map.isStyleLoaded()) apply()
+    else map.once('style.load', apply)
+    return () => { cancelled = true }
   }, [tripRouteCoords])
 
   // Update waypoint markers + fetch routed path whenever waypoints change
