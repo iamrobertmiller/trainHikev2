@@ -71,6 +71,18 @@ function Content({ campsite, onPlanTrip }: { campsite: Campsite; onPlanTrip: () 
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
           </button>
         </div>
+        {/* Mobile CTA — sits in header so it's visible at the peek snap position */}
+        <button
+          data-vaul-no-drag
+          onClick={onPlanTrip}
+          className="md:hidden mt-3 w-full py-2.5 px-4 rounded-xl flex items-center justify-center gap-2.5"
+          style={{ background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', fontFamily: 'Oswald, sans-serif', letterSpacing: '0.1em', fontSize: '0.875rem', fontWeight: 600 }}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+          PLAN A TRIP HERE
+        </button>
       </div>
 
       {/* Scrollable body */}
@@ -159,8 +171,8 @@ function Content({ campsite, onPlanTrip }: { campsite: Campsite; onPlanTrip: () 
         </div>
       </div>
 
-      {/* CTA footer — inside Drawer.Content so touch events are not cancelled by vaul */}
-      <div data-vaul-no-drag className="flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1rem)', background: 'var(--paper)' }}>
+      {/* Desktop-only footer */}
+      <div className="hidden md:block flex-none px-4 pt-3" style={{ borderTop: '1px solid var(--fog)', paddingBottom: '1rem', background: 'var(--paper)' }}>
         <button
           onClick={onPlanTrip}
           className="w-full font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2.5"
@@ -183,6 +195,7 @@ function CampsitePanel({ campsite, onClose, onPlanTrip }: Props) {
     <>
       <BottomSheet
         onClose={onClose}
+        snapPoints={[0.28, 0.65]}
         desktopClassName="panel-bottom absolute left-0 right-0 z-10 rounded-t-2xl shadow-2xl flex flex-col overflow-hidden md:left-auto md:right-4 md:w-96 md:rounded-2xl md:max-h-[80vh]"
       >
         <Content campsite={campsite} onPlanTrip={onPlanTrip} />
