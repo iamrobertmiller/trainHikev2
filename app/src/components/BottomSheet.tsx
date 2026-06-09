@@ -77,7 +77,7 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
            * would freeze MapLibre's coordinate system on iOS Safari.
            */}
           <Drawer.Content
-            className="fixed bottom-0 left-0 right-0 z-20 rounded-t-2xl shadow-2xl outline-none overflow-hidden"
+            className="fixed bottom-0 left-0 right-0 z-20 rounded-t-2xl shadow-2xl outline-none"
             style={{
               background: 'var(--paper)',
               color: 'var(--ink)',
@@ -85,7 +85,15 @@ export function BottomSheet({ onClose, snapPoints = [0.12, 0.65], desktopClassNa
               pointerEvents: 'none',
             }}
           >
-            <div className="flex flex-col h-full" style={{ pointerEvents: 'auto' }}>
+            {/*
+             * overflow-hidden is intentionally on the inner div rather than Drawer.Content.
+             * On WebKit/iOS Safari, overflow:hidden on a CSS-transformed parent clips child
+             * hit-test areas to the *untransformed* layout box, not the visual position —
+             * so at any non-maximum snap point the hit area would extend upward into the
+             * visible map area and swallow taps. Placing overflow-hidden on the child (which
+             * moves with the transform) gives the correct clipped hit region.
+             */}
+            <div className="flex flex-col h-full overflow-hidden rounded-t-2xl" style={{ pointerEvents: 'auto' }}>
               {children}
             </div>
           </Drawer.Content>
