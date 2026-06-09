@@ -7,6 +7,7 @@ import { useNearestStop } from '../hooks/useGTFS'
 interface Props {
   activeTrip: SavedTrip
   userLocation: UserLocation | null
+  autoRouteKm: number
   onExit: () => void
 }
 
@@ -53,7 +54,7 @@ function StatTile({ label, value, sub, accent }: { label: string; value: string;
   )
 }
 
-function NavigateOverlay({ activeTrip, userLocation, onExit }: Props) {
+function NavigateOverlay({ activeTrip, userLocation, autoRouteKm, onExit }: Props) {
   const [now, setNow] = useState(Date.now())
 
   useEffect(() => {
@@ -73,8 +74,9 @@ function NavigateOverlay({ activeTrip, userLocation, onExit }: Props) {
       return routeLengthKm(activeTrip.customWaypoints)
     }
     if (activeTrip.trail?.length_km) return activeTrip.trail.length_km
+    if (autoRouteKm > 0) return autoRouteKm
     return nearestStop?.distanceKm ?? null
-  }, [activeTrip, nearestStop])
+  }, [activeTrip, nearestStop, autoRouteKm])
 
   const distToTrailhead = useMemo(() => {
     if (!userLocation) return null

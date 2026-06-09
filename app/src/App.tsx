@@ -379,6 +379,7 @@ export default function App() {
         <NavigateOverlay
           activeTrip={activeTrip}
           userLocation={userLocation}
+          autoRouteKm={tripRouteKm}
           onExit={handleNavigateExit}
         />
       )}
