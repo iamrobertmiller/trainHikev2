@@ -55,7 +55,7 @@ function Content({ site, onPlanTrip }: { site: WaterFrontage; onPlanTrip: () => 
 
       {/* Scrollable body */}
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden" data-vaul-no-drag>
-        <div className="px-4 py-4 space-y-4">
+        <div className="px-4 pt-4 pb-[60px] md:pb-4 space-y-4">
           <div>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',

@@ -87,7 +87,7 @@ function Content({ campsite, onPlanTrip }: { campsite: Campsite; onPlanTrip: () 
 
       {/* Scrollable body */}
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden" data-vaul-no-drag>
-        <div className="px-4 py-4 space-y-5">
+        <div className="px-4 pt-4 pb-[60px] md:pb-4 space-y-5">
           {/* Facilities */}
           <div>
             <p style={LABEL} className="mb-3">Facilities</p>
