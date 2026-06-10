@@ -112,6 +112,13 @@ export default function Map({
 
     mapRef.current = map
 
+    // Append the overlay canvas inside the MapLibre container so it sits in the
+    // same coordinate space (MapLibre sets position:relative on the container).
+    const overlayCanvas = document.createElement('canvas')
+    overlayCanvas.style.cssText = 'position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10'
+    containerRef.current.appendChild(overlayCanvas)
+    routeCanvasRef.current = overlayCanvas
+
     map.addControl(new maplibregl.NavigationControl(), 'top-right')
     map.addControl(new maplibregl.GeolocateControl({
       positionOptions: { enableHighAccuracy: true },
@@ -562,17 +569,10 @@ export default function Map({
 
   return (
     <div
-      className="w-full h-full relative"
+      ref={containerRef}
+      className="w-full h-full"
       // Hide MapLibre controls in navigate mode (they obscure the overlay)
       style={appMode === 'navigate' ? { '--nav-display': 'none' } as React.CSSProperties : undefined}
-    >
-      <div ref={containerRef} className="absolute inset-0" />
-      {/* Canvas overlay for trip-route polyline — drawn with map.project() so it's
-          always pixel-perfect regardless of MapLibre's GL pipeline state */}
-      <canvas
-        ref={routeCanvasRef}
-        style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 10 }}
-      />
-    </div>
+    />
   )
 }
