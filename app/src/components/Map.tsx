@@ -3,6 +3,7 @@ import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import type { AppMode, Campsite, CustomWaypoint, Hut, SavedTrip, Trail, UserLocation, WaterFrontage } from '../types'
 import { routeLengthKm } from '../lib/geo'
+import { drawTripRoute } from '../lib/routeCanvas'
 
 interface MapProps {
   campsites: Campsite[]
@@ -67,6 +68,8 @@ export default function Map({
   const waypointMarkersRef = useRef<maplibregl.Marker[]>([])
   const destMarkerRef = useRef<maplibregl.Marker | null>(null)
   const geoWatchRef = useRef<number | null>(null)
+  const routeCanvasRef = useRef<HTMLCanvasElement>(null)
+  const drawRouteFnRef = useRef<() => void>(() => {})
 
   // Refs to avoid stale closures in map event handlers
   const isDrawingRef = useRef(isDrawingRoute)
@@ -172,31 +175,14 @@ export default function Map({
         paint: { 'line-color': '#6366f1', 'line-width': 3, 'line-dasharray': [2, 2], 'line-opacity': 0.9 },
       })
 
-      // Trip planner walking route — station to campsite
-      map.addSource('trip-route', {
-        type: 'geojson',
-        data: { type: 'Feature', geometry: { type: 'LineString', coordinates: [] }, properties: {} },
-      })
-      // White casing below the coloured line so it's visible on any basemap
-      map.addLayer({
-        id: 'trip-route-casing',
-        type: 'line',
-        source: 'trip-route',
-        paint: { 'line-color': '#ffffff', 'line-width': 8, 'line-opacity': 0.7 },
-      })
-      map.addLayer({
-        id: 'trip-route-line',
-        type: 'line',
-        source: 'trip-route',
-        paint: { 'line-color': '#10b981', 'line-width': 5, 'line-opacity': 1.0 },
-      })
-      // Apply any coords that arrived before the map finished loading
+      // Trip planner route is drawn on a Canvas overlay (see routeCanvasRef).
+      // Register map event handlers so the canvas redraws whenever the view changes.
+      map.on('move', () => drawRouteFnRef.current())
+      map.on('resize', () => drawRouteFnRef.current())
+      // Draw any route that was set before the map finished loading
+      drawRouteFnRef.current()
       const pendingCoords = tripRouteCoordsRef.current
-      if (pendingCoords.length >= 2) {
-        const src = map.getSource('trip-route') as maplibregl.GeoJSONSource
-        src.setData({ type: 'Feature', geometry: { type: 'LineString', coordinates: pendingCoords }, properties: {} })
-        applyRouteBounds(map, pendingCoords)
-      }
+      if (pendingCoords.length >= 2) applyRouteBounds(map, pendingCoords)
 
       // Map click — add waypoint when drawing
       map.on('click', (e) => {
@@ -249,38 +235,29 @@ export default function Map({
   const onRouteUpdatedRef = useRef(onRouteUpdated)
   useEffect(() => { onRouteUpdatedRef.current = onRouteUpdated }, [onRouteUpdated])
 
-  // Draw station-to-campsite walking route when trip planner is open.
-  // Removes and recreates the source/layers on every update to sidestep any
-  // setData() caching issues in MapLibre. Bails out silently if the map hasn't
-  // loaded yet — the 'load' callback (above) handles that case via tripRouteCoordsRef.
+  // Draw station-to-campsite walking route on a Canvas overlay.
+  // Using a 2D canvas bypasses MapLibre's GL pipeline entirely, which can fail
+  // silently on some browsers (e.g. iOS Safari) for GeoJSON source/layer updates.
   useEffect(() => {
+    const drawRoute = () => {
+      const map = mapRef.current
+      const canvas = routeCanvasRef.current
+      if (!canvas) return
+      const dpr = window.devicePixelRatio || 1
+      // No map yet → clear the canvas by drawing an empty route.
+      // map.project() returns CSS-pixel coords from the map container's top-left,
+      // and the canvas shares that origin (both absolute inset-0 in the wrapper).
+      const project = map
+        ? (ll: [number, number]) => map.project(ll)
+        : () => ({ x: 0, y: 0 })
+      drawTripRoute(canvas, project, map ? tripRouteCoords : [], dpr)
+    }
+
+    drawRouteFnRef.current = drawRoute
+    drawRoute()
+
     const map = mapRef.current
-    if (!map?.getSource('trip-route')) return
-
-    // Remove existing layers then source (order matters in MapLibre)
-    if (map.getLayer('trip-route-line')) map.removeLayer('trip-route-line')
-    if (map.getLayer('trip-route-casing')) map.removeLayer('trip-route-casing')
-    map.removeSource('trip-route')
-
-    // Re-add source with current data
-    map.addSource('trip-route', {
-      type: 'geojson',
-      data: { type: 'Feature', geometry: { type: 'LineString', coordinates: tripRouteCoords }, properties: {} },
-    })
-    map.addLayer({
-      id: 'trip-route-casing',
-      type: 'line',
-      source: 'trip-route',
-      paint: { 'line-color': '#ffffff', 'line-width': 8, 'line-opacity': 0.7 },
-    })
-    map.addLayer({
-      id: 'trip-route-line',
-      type: 'line',
-      source: 'trip-route',
-      paint: { 'line-color': '#10b981', 'line-width': 5, 'line-opacity': 1.0 },
-    })
-
-    if (tripRouteCoords.length >= 2) applyRouteBounds(map, tripRouteCoords)
+    if (map && tripRouteCoords.length >= 2) applyRouteBounds(map, tripRouteCoords)
   }, [tripRouteCoords])
 
   // Update waypoint markers + fetch routed path whenever waypoints change
@@ -585,10 +562,17 @@ export default function Map({
 
   return (
     <div
-      ref={containerRef}
-      className="w-full h-full"
+      className="w-full h-full relative"
       // Hide MapLibre controls in navigate mode (they obscure the overlay)
       style={appMode === 'navigate' ? { '--nav-display': 'none' } as React.CSSProperties : undefined}
-    />
+    >
+      <div ref={containerRef} className="absolute inset-0" />
+      {/* Canvas overlay for trip-route polyline — drawn with map.project() so it's
+          always pixel-perfect regardless of MapLibre's GL pipeline state */}
+      <canvas
+        ref={routeCanvasRef}
+        style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 10 }}
+      />
+    </div>
   )
 }
