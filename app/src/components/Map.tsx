@@ -564,8 +564,7 @@ export default function Map({
       <div ref={containerRef} className="w-full h-full" />
       <canvas
         ref={routeCanvasRef}
-        className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 10 }}
+        style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 10 }}
       />
     </div>
   )
