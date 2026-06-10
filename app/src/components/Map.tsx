@@ -112,13 +112,6 @@ export default function Map({
 
     mapRef.current = map
 
-    // Append the overlay canvas inside the MapLibre container so it sits in the
-    // same coordinate space (MapLibre sets position:relative on the container).
-    const overlayCanvas = document.createElement('canvas')
-    overlayCanvas.style.cssText = 'position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10'
-    containerRef.current.appendChild(overlayCanvas)
-    routeCanvasRef.current = overlayCanvas
-
     map.addControl(new maplibregl.NavigationControl(), 'top-right')
     map.addControl(new maplibregl.GeolocateControl({
       positionOptions: { enableHighAccuracy: true },
@@ -182,11 +175,10 @@ export default function Map({
         paint: { 'line-color': '#6366f1', 'line-width': 3, 'line-dasharray': [2, 2], 'line-opacity': 0.9 },
       })
 
-      // Trip planner route is drawn on a Canvas overlay (see routeCanvasRef).
-      // Register map event handlers so the canvas redraws whenever the view changes.
+      // Trip-route is drawn on a Canvas overlay — register redraw on view changes.
       map.on('move', () => drawRouteFnRef.current())
       map.on('resize', () => drawRouteFnRef.current())
-      // Draw any route that was set before the map finished loading
+      // Draw any route that was set before the map finished loading.
       drawRouteFnRef.current()
       const pendingCoords = tripRouteCoordsRef.current
       if (pendingCoords.length >= 2) applyRouteBounds(map, pendingCoords)
@@ -242,27 +234,21 @@ export default function Map({
   const onRouteUpdatedRef = useRef(onRouteUpdated)
   useEffect(() => { onRouteUpdatedRef.current = onRouteUpdated }, [onRouteUpdated])
 
-  // Draw station-to-campsite walking route on a Canvas overlay.
-  // Using a 2D canvas bypasses MapLibre's GL pipeline entirely, which can fail
-  // silently on some browsers (e.g. iOS Safari) for GeoJSON source/layer updates.
+  // Draw station-to-campsite walking route on the Canvas overlay.
+  // Canvas 2D bypasses MapLibre's GL pipeline, which fails silently on iOS Safari.
   useEffect(() => {
     const drawRoute = () => {
       const map = mapRef.current
       const canvas = routeCanvasRef.current
       if (!canvas) return
       const dpr = window.devicePixelRatio || 1
-      // No map yet → clear the canvas by drawing an empty route.
-      // map.project() returns CSS-pixel coords from the map container's top-left,
-      // and the canvas shares that origin (both absolute inset-0 in the wrapper).
       const project = map
         ? (ll: [number, number]) => map.project(ll)
-        : () => ({ x: 0, y: 0 })
+        : (_ll: [number, number]) => ({ x: 0, y: 0 })
       drawTripRoute(canvas, project, map ? tripRouteCoords : [], dpr)
     }
-
     drawRouteFnRef.current = drawRoute
     drawRoute()
-
     const map = mapRef.current
     if (map && tripRouteCoords.length >= 2) applyRouteBounds(map, tripRouteCoords)
   }, [tripRouteCoords])
@@ -567,12 +553,20 @@ export default function Map({
     destMarkerRef.current = marker
   }, [appMode, activeTrip])
 
+  // Wrapper is `relative` so the canvas can use `absolute inset-0` against it.
+  // The inner map-container uses `w-full h-full` (not `absolute`) so that when
+  // MapLibre forces `position:relative` on it, the element keeps its dimensions.
   return (
     <div
-      ref={containerRef}
-      className="w-full h-full"
-      // Hide MapLibre controls in navigate mode (they obscure the overlay)
+      className="w-full h-full relative"
       style={appMode === 'navigate' ? { '--nav-display': 'none' } as React.CSSProperties : undefined}
-    />
+    >
+      <div ref={containerRef} className="w-full h-full" />
+      <canvas
+        ref={routeCanvasRef}
+        className="absolute inset-0 pointer-events-none"
+        style={{ zIndex: 10 }}
+      />
+    </div>
   )
 }
